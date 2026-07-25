@@ -286,25 +286,51 @@
       <p style="color:#8c3a2e; font-family:'Cormorant Garamond', serif; font-style:italic; font-size:18px; text-transform:lowercase; margin-top:36px;">Understanding Precedes Change.</p>
     </div>
 
-    <form action="https://formspree.io/f/meebrwjw" method="POST" style="display:flex; flex-direction:column; gap:36px; padding-top:12px;">
+    <form id="kinglis-intake" style="display:flex; flex-direction:column; gap:36px; padding-top:12px;">
+      <label style="color:rgba(248,247,245,.35); font-size:10px; letter-spacing:.14em; text-transform:uppercase; display:flex; flex-direction:column; gap:14px;">
+        Name
+        <input name="name" type="text" placeholder="Your name" style="background:transparent; border:0; border-bottom:1px solid rgba(248,247,245,.2); color:#F8F7F5; font-size:16px; padding:14px 0; outline:0;" />
+      </label>
+      <label style="color:rgba(248,247,245,.35); font-size:10px; letter-spacing:.14em; text-transform:uppercase; display:flex; flex-direction:column; gap:14px;">
+        Company
+        <input name="company" type="text" placeholder="Company / Organisation" style="background:transparent; border:0; border-bottom:1px solid rgba(248,247,245,.2); color:#F8F7F5; font-size:16px; padding:14px 0; outline:0;" />
+      </label>
       <label style="color:rgba(248,247,245,.35); font-size:10px; letter-spacing:.14em; text-transform:uppercase; display:flex; flex-direction:column; gap:14px;">
         What are you seeing?
-        <textarea name="challenge" rows="5" required placeholder="A recurring decision, a constraint..." style="background:transparent; border:0; border-bottom:1px solid rgba(248,247,245,.2); color:#F8F7F5; font-size:16px; padding:14px 0; outline:0; resize:vertical;"></textarea>
+        <textarea name="message" rows="5" placeholder="A recurring decision, a constraint, what prompted you..." style="background:transparent; border:0; border-bottom:1px solid rgba(248,247,245,.2); color:#F8F7F5; font-size:16px; padding:14px 0; outline:0; resize:vertical;"></textarea>
       </label>
       <label style="color:rgba(248,247,245,.35); font-size:10px; letter-spacing:.14em; text-transform:uppercase; display:flex; flex-direction:column; gap:14px;">
         Best way to reach you securely
-        <input type="text" name="contact" required placeholder="Signal, ProtonMail, your preference" style="background:transparent; border:0; border-bottom:1px solid rgba(248,247,245,.2); color:#F8F7F5; font-size:16px; padding:14px 0; outline:0;" />
+        <input name="secure" type="text" placeholder="Signal, ProtonMail, your preference" style="background:transparent; border:0; border-bottom:1px solid rgba(248,247,245,.2); color:#F8F7F5; font-size:16px; padding:14px 0; outline:0;" />
       </label>
-      <button type="submit" style="background:#F8F7F5; color:#121212; border:1px solid #F8F7F5; box-shadow:0 0 0 1px #080808, 0 0 0 3px #F8F7F5; font-size:11px; letter-spacing:.14em; text-transform:uppercase; padding:20px; margin-top:12px; cursor:pointer;">
+      <button type="submit" style="background:#F8F7F5; color:#121212; border:1px solid #F8F7F5; font-size:11px; letter-spacing:.14em; text-transform:uppercase; padding:20px; margin-top:12px; cursor:pointer;">
         REQUEST A PRIVATE REVIEW →
       </button>
+      <p style="font-size:10px; letter-spacing:.12em; line-height:1.6; color:rgba(255,255,255,0.45); text-transform:uppercase;">No tracking. No newsletter. One human reply within 48h. Data deleted on request.</p>
     </form>
-    <!-- paste immediately after </button> -->
-<p style="margin-top: 14px; font-size: 10px; letter-spacing: 0.12em; line-height: 1.6; color: rgba(255,255,255,0.45); text-transform: uppercase; font-family: inherit;">
-  No tracking. No newsletter. One human reply within 48h. Data deleted on request.
-</p>
   </div>
 </section>
+
+<script>
+document.getElementById('kinglis-intake').addEventListener('submit', function(e){
+  e.preventDefault();
+  const f = e.target;
+  const name = f.name.value.trim();
+  const company = f.company.value.trim();
+  const msg = f.message.value.trim();
+  const secure = f.secure.value.trim();
+  const subject = encodeURIComponent('KINGLIS Private Review — ' + (company || name || 'Confidential Intake'));
+  const body = encodeURIComponent(
+`Name: ${name}
+Company: ${company}
+Secure contact: ${secure}
+
+What they are seeing:
+${msg}`
+  );
+  window.location.href = `mailto:intelligence@thisiskinglis.com?subject=${subject}&body=${body}`;
+});
+</script>
   <footer>
     <div class="container">
       <div>© 2026 KINGLIS</div>
