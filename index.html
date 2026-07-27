@@ -253,12 +253,12 @@ section{padding:7.5rem 0;border-bottom:1px solid var(--line)}
 <p class="contact-sub">I read every message myself. One paragraph is enough — you don't need to have it all figured out to begin.</p>
 <div class="confidential-note">Confidentiality: All enquiries are held in strict confidence. No attribution, no disclosure, and nothing shared beyond this intake without your explicit written consent.</div>
 </div>
-<form class="contact-form">
-<label>Name<input></label>
-<label>Company<input></label>
-<label>Email<input></label>
-<label>What are you seeing?<textarea rows="4" placeholder="A brief outline is enough..."></textarea></label>
-<button>Begin privately →</button>
+<form class="contact-form" action="https://formspree.io/f/xpqvbadz" method="POST">
+  <label>Name<input type="text" name="name" required></label>
+  <label>Company<input type="text" name="company"></label>
+  <label>Email<input type="email" name="email" required></label>
+  <label>What are you seeing?<textarea name="message" rows="4" placeholder="A brief outline is enough..." required></textarea></label>
+  <button type="submit">Begin privately →</button>
 </form>
 </div>
 </section>
