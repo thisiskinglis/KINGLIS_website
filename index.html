@@ -149,56 +149,142 @@
       We do not begin with a preferred solution. We begin with what is correct.
     </p>
     
-    <div class="model-pillars-simple" style="display:grid; grid-template-columns:repeat(3,1fr); gap:24px;">
-      <article style="border:1px solid rgba(0,0,0,0.08); border-radius:10px; padding:36px; background:#fff; display:flex; flex-direction:column;">
-        <span class="micro">Business X-Ray</span>
-        <h3 style="font-family:'Cormorant Garamond', serif; font-weight:400; font-size:1.5rem; margin:0.9rem 0 1rem;">Establish what actually happened.</h3>
-        <p style="font-size:.95rem; line-height:1.65; color:rgba(17,17,17,.78); flex-grow:1;">When the business has become difficult to understand.</p>
-        <a href="/evidence/" class="product-cta">Explore Business X-Ray <span>→</span></a>
-      </article>
+    <!-- THE KINGLIS MODEL - Full Section - HTML + Tailwind -->
+<!-- Add these fonts in <head>: Fraunces / Canela for serif, Inter for sans -->
 
-      <article style="border:1px solid rgba(0,0,0,0.08); border-radius:10px; padding:36px; background:#fff; display:flex; flex-direction:column;">
-        <span class="micro">Intelligence Advisory</span>
-        <h3 style="font-family:'Cormorant Garamond', serif; font-weight:400; font-size:1.5rem; margin:0.9rem 0 1rem;">Understand what it actually means.</h3>
-        <p style="font-size:.95rem; line-height:1.65; color:rgba(17,17,17,.78); flex-grow:1;">When ongoing strategic decisions require an independent thinking partner.</p>
-        <a href="/intelligence/" class="product-cta">Explore Advisory <span>→</span></a>
-      </article>
+<section id="kinglis-model" class="border-t border-[#E8E2DE] bg-[#FDFCFB]">
+  <div class="mx-auto max-w-[1280px] px-6 md:px-10 py-14 md:py-20">
+    <!-- Header -->
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10 md:mb-14">
+      <div>
+        <div class="text-[10px] tracking-[0.20em] text-[#8A8A8A] mb-3 uppercase">The Kinglis Model</div>
+        <h2 class="font-serif text-[32px] md:text-[44px] leading-[1.05] tracking-[-0.015em] text-[#2B1A1A]">Choose your starting point.</h2>
+        <p class="font-serif text-[16px] text-[#6B5A5A] mt-3 max-w-[520px] leading-[1.5]">
+          We do not begin with a preferred solution. We begin with what is correct. Six entry points, each defensible on its own, each combinable.
+        </p>
+      </div>
+      <div class="hidden md:flex items-center gap-2 text-[10px] tracking-[0.18em] text-[#8A8A8A] border border-[#E8E2DE] rounded-full px-4 h-[32px] bg-white uppercase">
+        <span class="w-1.5 h-1.5 rounded-full bg-[#4A1F1F] inline-block"></span>
+        6 Services · Direct Access
+      </div>
+    </div>
 
-      <article style="border:1px solid rgba(0,0,0,0.08); border-radius:10px; padding:36px; background:#fff; display:flex; flex-direction:column;">
-        <span class="micro">Founder Intellectual Ledger</span>
-        <h3 style="font-family:'Cormorant Garamond', serif; font-weight:400; font-size:1.5rem; margin:0.9rem 0 1rem;">Design what comes next.</h3>
-        <p style="font-size:.95rem; line-height:1.65; color:rgba(17,17,17,.78); flex-grow:1;">When critical knowledge exists in one person's head.</p>
-        <a href="/advisory/" class="product-cta">Explore Founder Ledger <span>→</span></a>
-      </article>
+    <!-- Grid - THIS IS THE 6 SERVICE SECTION -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[1px] bg-[#E8E2DE] border border-[#E8E2DE] rounded-[6px] overflow-hidden">
+      
+      <!-- CARD 1: BUSINESS X-RAY -->
+      <div class="bg-white p-7 md:p-8 flex flex-col min-h-[300px] group hover:bg-[#FFFEFD] transition">
+        <div class="flex items-start justify-between mb-6">
+          <span class="text-[10px] tracking-[0.20em] text-[#8A8A8A] uppercase">Business X-Ray</span>
+          <span class="text-[8px] tracking-[0.18em] px-2 py-1 rounded-full border border-[#E8D5D0] text-[#8A5A52] bg-[#FDF6F4] uppercase">Evidence</span>
+        </div>
+        <div class="space-y-3 mb-8">
+          <p class="text-[11px] tracking-[0.14em] text-[#4A1F1F] font-[600] uppercase">Establish what actually happened.</p>
+          <p class="font-serif text-[15px] leading-[1.5] text-[#5C4A4A]">When the business has become difficult to understand.</p>
+        </div>
+        <div class="mt-auto">
+          <a href="/business-xray" class="w-full md:w-auto h-[38px] px-4 bg-[#121212] text-white text-[10px] tracking-[0.18em] rounded-[4px] flex items-center justify-between gap-8 hover:bg-black transition uppercase">
+            <span>Explore Business X-Ray</span><span>→</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- CARD 2: INTELLIGENCE ADVISORY -->
+      <div class="bg-white p-7 md:p-8 flex flex-col min-h-[300px] group hover:bg-[#FFFEFD] transition">
+        <div class="flex items-start justify-between mb-6">
+          <span class="text-[10px] tracking-[0.20em] text-[#8A8A8A] uppercase">Intelligence Advisory</span>
+          <span class="text-[8px] tracking-[0.18em] px-2 py-1 rounded-full border border-[#D6DDE8] text-[#5A6B8A] bg-[#F5F7FB] uppercase">Intelligence</span>
+        </div>
+        <div class="space-y-3 mb-8">
+          <p class="text-[11px] tracking-[0.14em] text-[#4A1F1F] font-[600] uppercase">Understand what it actually means.</p>
+          <p class="font-serif text-[15px] leading-[1.5] text-[#5C4A4A]">When ongoing strategic decisions require an independent thinking partner.</p>
+        </div>
+        <div class="mt-auto">
+          <a href="/intelligence-advisory" class="w-full md:w-auto h-[38px] px-4 bg-[#121212] text-white text-[10px] tracking-[0.18em] rounded-[4px] flex items-center justify-between gap-8 hover:bg-black transition uppercase">
+            <span>Explore Advisory</span><span>→</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- CARD 3: FOUNDER INTELLECTUAL LEDGER -->
+      <div class="bg-white p-7 md:p-8 flex flex-col min-h-[300px] group hover:bg-[#FFFEFD] transition">
+        <div class="flex items-start justify-between mb-6">
+          <span class="text-[10px] tracking-[0.20em] text-[#8A8A8A] uppercase">Founder Intellectual Ledger</span>
+          <span class="text-[8px] tracking-[0.18em] px-2 py-1 rounded-full border border-[#DDD8D0] text-[#7A6E5F] bg-[#FBF9F5] uppercase">Advisory</span>
+        </div>
+        <div class="space-y-3 mb-8">
+          <p class="text-[11px] tracking-[0.14em] text-[#4A1F1F] font-[600] uppercase">Design what comes next.</p>
+          <p class="font-serif text-[15px] leading-[1.5] text-[#5C4A4A]">When critical knowledge exists in one person's head.</p>
+        </div>
+        <div class="mt-auto">
+          <a href="/founder-ledger" class="w-full md:w-auto h-[38px] px-4 bg-[#121212] text-white text-[10px] tracking-[0.18em] rounded-[4px] flex items-center justify-between gap-8 hover:bg-black transition uppercase">
+            <span>Explore Founder Ledger</span><span>→</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- CARD 4: EVIDENCE RECONSTRUCTION -->
+      <div class="bg-white p-7 md:p-8 flex flex-col min-h-[300px] group hover:bg-[#FFFEFD] transition">
+        <div class="flex items-start justify-between mb-6">
+          <span class="text-[10px] tracking-[0.20em] text-[#8A8A8A] uppercase">Evidence Reconstruction</span>
+          <span class="text-[8px] tracking-[0.18em] px-2 py-1 rounded-full border border-[#E8D5D0] text-[#8A5A52] bg-[#FDF6F4] uppercase">Evidence</span>
+        </div>
+        <div class="space-y-3 mb-8">
+          <p class="text-[11px] tracking-[0.14em] text-[#4A1F1F] font-[600] uppercase">Establish what actually happened.</p>
+          <p class="font-serif text-[15px] leading-[1.5] text-[#5C4A4A]">When the factual record is unclear, contested, or incomplete.</p>
+        </div>
+        <div class="mt-auto">
+          <a href="/evidence-reconstruction" class="w-full md:w-auto h-[38px] px-4 bg-[#121212] text-white text-[10px] tracking-[0.18em] rounded-[4px] flex items-center justify-between gap-8 hover:bg-black transition uppercase">
+            <span>Explore Evidence Reconstruction</span><span>→</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- CARD 5: POST ACQUISITION ENQUIRY -->
+      <div class="bg-white p-7 md:p-8 flex flex-col min-h-[300px] group hover:bg-[#FFFEFD] transition">
+        <div class="flex items-start justify-between mb-6">
+          <span class="text-[10px] tracking-[0.20em] text-[#8A8A8A] uppercase">Post Acquisition Enquiry</span>
+          <span class="text-[8px] tracking-[0.18em] px-2 py-1 rounded-full border border-[#D6DDE8] text-[#5A6B8A] bg-[#F5F7FB] uppercase">Intelligence</span>
+        </div>
+        <div class="space-y-3 mb-8">
+          <p class="text-[11px] tracking-[0.14em] text-[#4A1F1F] font-[600] uppercase">Understand what it actually means.</p>
+          <p class="font-serif text-[15px] leading-[1.5] text-[#5C4A4A]">When you need to know what you actually acquired.</p>
+        </div>
+        <div class="mt-auto">
+          <a href="/post-acquisition-enquiry" class="w-full md:w-auto h-[38px] px-4 bg-[#121212] text-white text-[10px] tracking-[0.18em] rounded-[4px] flex items-center justify-between gap-8 hover:bg-black transition uppercase">
+            <span>Explore Enquiry</span><span>→</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- CARD 6: GOVERNANCE INTELLIGENCE -->
+      <div class="bg-white p-7 md:p-8 flex flex-col min-h-[300px] group hover:bg-[#FFFEFD] transition">
+        <div class="flex items-start justify-between mb-6">
+          <span class="text-[10px] tracking-[0.20em] text-[#8A8A8A] uppercase">Governance Intelligence</span>
+          <span class="text-[8px] tracking-[0.18em] px-2 py-1 rounded-full border border-[#DDD8D0] text-[#7A6E5F] bg-[#FBF9F5] uppercase">Advisory</span>
+        </div>
+        <div class="space-y-3 mb-8">
+          <p class="text-[11px] tracking-[0.14em] text-[#4A1F1F] font-[600] uppercase">Design what comes next.</p>
+          <p class="font-serif text-[15px] leading-[1.5] text-[#5C4A4A]">TBC SUB</p>
+        </div>
+        <div class="mt-auto">
+          <a href="/governance-intelligence" class="w-full md:w-auto h-[38px] px-4 bg-[#121212] text-white text-[10px] tracking-[0.18em] rounded-[4px] flex items-center justify-between gap-8 hover:bg-black transition uppercase">
+            <span>Explore Governance Intelligence</span><span>→</span>
+          </a>
+          <div class="mt-3 text-[9px] tracking-[0.16em] text-[#B08A7A] border border-[#E8D5C8] inline-flex px-2 py-1 rounded-full bg-[#FDF6F1] uppercase">In Development</div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="mt-10 flex flex-col md:flex-row gap-6 md:items-center justify-between">
+      <p class="text-[10px] tracking-[0.14em] leading-[1.6] text-[#8A8A8A] max-w-[640px] uppercase">
+        Previously: Evidence → Intelligence → Advisory nested services. Now: 6 independent starting points, each can be commissioned alone. No preferred funnel. No upsell.
+      </p>
+      <div class="font-serif italic text-[14px] text-[#8A7A7A]">Understanding precedes change.</div>
     </div>
   </div>
-      <section id="model">
-  <div class="container">
-    <p style="font-family:'Cormorant Garamond', serif; font-size:1.18rem; line-height:1.35; max-width:28rem; margin:1.2rem 0 3.5rem;">
-    </p>
-    
-    <div class="model-pillars-simple" style="display:grid; grid-template-columns:repeat(3,1fr); gap:24px;">
-      <article style="border:1px solid rgba(0,0,0,0.08); border-radius:10px; padding:36px; background:#fff; display:flex; flex-direction:column;">
-        <span class="micro">Evidence Reconstruction™</span>
-        <h3 style="font-family:'Cormorant Garamond', serif; font-weight:400; font-size:1.5rem; margin:0.9rem 0 1rem;">Establish what actually happened.</h3>
-        <p style="font-size:.95rem; line-height:1.65; color:rgba(17,17,17,.78); flex-grow:1;">When the factual record is unclear, contested, or incomplete.</p>
-        <a href="/evidence/" class="product-cta">Explore Evidence Reconstruction <span>→</span></a>
-      </article>
-
-      <article style="border:1px solid rgba(0,0,0,0.08); border-radius:10px; padding:36px; background:#fff; display:flex; flex-direction:column;">
-        <span class="micro">Post Acquisition Enquiry™</span>
-        <h3 style="font-family:'Cormorant Garamond', serif; font-weight:400; font-size:1.5rem; margin:0.9rem 0 1rem;">Understand what it actually means.</h3>
-        <p style="font-size:.95rem; line-height:1.65; color:rgba(17,17,17,.78); flex-grow:1;">When you need to know what you actually acquired.</p>
-        <a href="/intelligence/" class="product-cta">Explore Enquiry <span>→</span></a>
-      </article>
-
-      <article style="border:1px solid rgba(0,0,0,0.08); border-radius:10px; padding:36px; background:#fff; display:flex; flex-direction:column;">
-        <span class="micro">Governance Intelligence</span>
-        <h3 style="font-family:'Cormorant Garamond', serif; font-weight:400; font-size:1.5rem; margin:0.9rem 0 1rem;">Design what comes next.</h3>
-        <p style="font-size:.95rem; line-height:1.65; color:rgba(17,17,17,.78); flex-grow:1;">TBC SUB</p>
-        <a href="/advisory/" class="product-cta">Explore GOVERnance Intelligence<span>→</span></a>
-      </article>
-    </div>
+</section>
   </div>
       <!-- NEW BLOCK: FOR LEADERS WHO CARRY THE DECISION ALONE — CLEAN VERSION -->
 <section id="moment" style="background:var(--paper); padding:6.5rem 0; border-bottom:1px solid var(--line)">
