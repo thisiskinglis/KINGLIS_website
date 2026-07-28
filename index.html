@@ -175,53 +175,89 @@ section{padding:7.5rem 0;border-bottom:1px solid var(--line)}
 <header><div class="container"><nav><div class="brand"><span class="small">ORGANIZATIONAL INTELLIGENCE</span></div><ul><li><a href="#model">MODEL</a></li><li><a href="#founder">Founder</a></li><li><a href="#contact">Contact</a></li></ul></nav></div></header>
 
 <main>
-<section class="hero" id="top">
-<div class="container">
-<img src="/assets/kinglis_logo.png" alt="KINGLIS" style="height:84px;margin-bottom:2.5rem;" />
-<h1 class="serif-display">Every organization <br><em style="font-style:italic;">exists</em> twice.</h1>
-   <p style="font-size:1.15rem;line-height:1.65;color:var(--teal);max-width:36rem;margin:2.2rem 0 0;font-weight:300;">Once in reality. Once in its understanding of itself.</p>
-  <p style="font-size:1.15rem;line-height:1.65;color:var(--teal);max-width:36rem;margin:2.2rem 0 0;font-weight:300;">When those two diverge — and they always do, over time — the organization continues making decisions. Intelligent decisions. According to a false premise.</p>
-<p style="font-size:1.15rem;line-height:1.65;color:var(--teal);max-width:36rem;margin:2.2rem 0 0;font-weight:300;">That is the problem KINGLIS exists to address.</p>
-  <p style="font-size:1.15rem;line-height:1.65;color:var(--teal);max-width:36rem;margin:2.2rem 0 0;font-weight:300;">Most organizational problems are not solved by more advice.
-They are solved by better understanding.
-Not understanding of the market. Not understanding of the competition. Understanding of the organization itself – what it actually is, what it is actually capable of, and what it has actually become.
-This is harder to establish than it sounds. The same understanding that governs an organization's decisions also governs how the organization perceives itself. When that understanding becomes inaccurate, the organization cannot see the inaccuracy from within it.
-KINGLIS provides what organizations cannot provide for themselves: an independent, evidence-based account of organizational reality – and the intelligence to act on it.
-</p>
-<h2 class="serif-display" style="font-size:clamp(1.6rem,2.8vw,2.1rem);margin:1.5rem 0 0;">Evidence. Intelligence. Advisory.</h2>
-<div style="display:flex;gap:16px;flex-wrap:wrap;margin-top:2.8rem;"><a href="#model" class="cta-premium">Explore Our Capabilities →</a><a href="https://secure.thisiskinglis.com" target="_blank" class="cta-secondary">Submit Confidentially</a></div>
-</div>
-</section>
-  <section id="founder-questions">
-  <h2>For founders who carry the decision alone.</h2>
-  
-  <div id="what-is-organizational-intelligence">
-    <h3>What is organizational intelligence?</h3>
-    <p>Organizational intelligence is the ability to arrive at organizational truth before you act. Not dashboards. The conditions that actually drive performance.</p>
-  </div>
+<section class="founder-intel-section">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500&display=swap');
+    .founder-intel-section{--bg:#F9F8F6;--ink:#0A0A0A;--line:#E8E5E0;background:var(--bg);color:var(--ink);font-family:"Inter",sans-serif;width:100%}
+    .founder-intel-section *{box-sizing:border-box}
+    .fis-inner{max-width:900px;margin:0 auto;padding:0 24px}
+    @media(min-width:640px){.fis-inner{padding:0 40px}}
+    .fis-top{padding:100px 0 0;text-align:center;display:flex;flex-direction:column;align-items:center}
+    .fis-eyebrow{font-size:11px;letter-spacing:.32em;text-transform:uppercase;color:rgba(10,10,10,.55);font-weight:500;margin-bottom:56px}
+    .fis-ctas{display:flex;flex-direction:column;gap:14px;width:100%;justify-content:center}
+    @media(min-width:640px){.fis-ctas{flex-direction:row;width:auto}}
+    .fis-btn{display:inline-flex;align-items:center;justify-content:center;height:44px;padding:0 28px;font-size:11px;letter-spacing:.18em;text-transform:uppercase;font-weight:500;border-radius:2px;cursor:pointer;transition:.3s;text-decoration:none}
+    .fis-btn-primary{background:#0A0A0A;color:#F9F8F6;border:1px solid #0A0A0A}
+    .fis-btn-secondary{background:#fff;color:#0A0A0A;border:1px solid #0A0A0A}
+    .fis-btn-primary:hover{background:#000}.fis-btn-secondary:hover{background:#0A0A0A;color:#fff}
+    .fis-divider{margin-top:90px;width:100%;height:1px;background:#E8E5E0}
+    .fis-intro{padding:80px 0;border-bottom:1px solid #E8E5E0}
+    .fis-h1{font-family:"Instrument Serif",Georgia,serif;font-size:38px;line-height:.92;letter-spacing:-.025em;font-weight:400;max-width:14ch;margin:0}
+    @media(min-width:640px){.fis-h1{font-size:54px}}@media(min-width:900px){.fis-h1{font-size:64px}}
+    .fis-intro-grid{margin-top:64px;display:grid;gap:44px}
+    @media(min-width:768px){.fis-intro-grid{grid-template-columns:1fr 1fr;gap:64px;margin-top:88px}}
+    .fis-q{font-family:"Instrument Serif",Georgia,serif;font-size:20px;line-height:1.25;font-weight:400;margin:0 0 18px}
+    .fis-a{font-size:15px;line-height:1.75;color:rgba(10,10,10,.65);margin:0;max-width:38ch}
+    .fis-label-row{padding-top:64px;display:flex;align-items:center;gap:20px}
+    .fis-label{font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:rgba(10,10,10,.45);font-weight:500;white-space:nowrap}
+    .fis-label-line{flex:1;height:1px;background:#E8E5E0}
+    .fis-faqs{padding-bottom:40px}
+    .fis-faq{display:flex;gap:24px;padding:48px 0;border-bottom:1px solid #E8E5E0}
+    @media(min-width:640px){.fis-faq{gap:48px;padding:62px 0}}
+    .fis-num{display:none;font-size:11px;letter-spacing:.12em;color:rgba(10,10,10,.25);padding-top:10px;font-weight:500}
+    @media(min-width:640px){.fis-num{display:block}}
+    .fis-num-m{font-size:10px;letter-spacing:.14em;color:rgba(10,10,10,.25);font-weight:500;margin-bottom:10px}
+    @media(min-width:640px){.fis-num-m{display:none}}
+    .fis-faq h3{font-family:"Instrument Serif",Georgia,serif;font-size:26px;line-height:1.08;letter-spacing:-.025em;font-weight:400;margin:0;color:rgba(10,10,10,.9)}
+    @media(min-width:640px){.fis-faq h3{font-size:33px}}
+    .fis-faq p{font-size:15px;line-height:1.85;color:rgba(10,10,10,.65);margin:22px 0 0;max-width:65ch}
+    .fis-close{padding:36px 0 90px}
+    .fis-close em{font-family:"Instrument Serif",Georgia,serif;font-style:italic;font-size:19px;line-height:1.45;color:rgba(10,10,10,.7)}
+    .fis-footer{border-top:1px solid #E8E5E0;padding:28px 0;display:flex;flex-direction:column;gap:10px;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:rgba(10,10,10,.35)}
+    @media(min-width:640px){.fis-footer{flex-direction:row;justify-content:space-between}}
+  </style>
 
-  <div id="how-to-diagnose-organizational-problems">
-    <h3>How do you diagnose organizational problems?</h3>
-    <p>Establish what actually happened from evidence. Then understand what it means. Then design what comes next. Evidence before assumption.</p>
-  </div>
-
-  <div id="why-transformation-programmes-fail">
-    <h3>Why do transformation programmes fail?</h3>
-    <p>They act on narrative, not evidence. They solve symptoms, not conditions.</p>
-  </div>
-
-  <div id="what-is-a-business-diagnostic">
-    <h3>What is a business diagnostic?</h3>
-    <p>A diagnostic is not an audit. It reconstructs reality when the record is fragmented, disputed, or incomplete. Business X-Ray™.</p>
-  </div>
-
-  <div id="how-founders-capture-institutional-knowledge">
-    <h3>How do founders capture institutional knowledge?</h3>
-    <p>Not by documenting procedures. By extracting and structuring judgment into a named system. Founder Intellectual Ledger™.</p>
-  </div>
+  <div class="fis-inner">
+    <div class="fis-top">
+      <div class="fis-eyebrow">Evidence. Intelligence. Advisory.</div>
+      <div class="fis-ctas">
+        <a href="#capabilities" class="fis-btn fis-btn-primary">EXPLORE OUR CAPABILITIES →</a>
+        <a href="#contact" class="fis-btn fis-btn-secondary">SUBMIT CONFIDENTIALLY</a>
+      </div>
+      <div class="fis-divider"></div>
     </div>
-</section>
 
+    <div class="fis-intro">
+      <h1 class="fis-h1">For founders who carry the decision alone.</h1>
+      <div class="fis-intro-grid">
+        <div>
+          <h2 class="fis-q">What is organizational intelligence?</h2>
+          <p class="fis-a">Organizational intelligence is the ability to arrive at organizational truth before you act. Not dashboards. The conditions that actually drive performance.</p>
+        </div>
+        <div>
+          <h2 class="fis-q">How do you diagnose organizational problems?</h2>
+          <p class="fis-a">Establish what actually happened from evidence. Then understand what it means. Then design what comes next. Evidence before assumption.</p>
+        </div>
+      </div>
+    </div>
+
+    <div id="capabilities" class="fis-label-row">
+      <div class="fis-label">THE QUESTIONS FOUNDERS ASK</div>
+      <div class="fis-label-line"></div>
+    </div>
+
+    <div class="fis-faqs">
+      <div class="fis-faq"><div class="fis-num">01</div><div><div class="fis-num-m">01</div><h3>Why do transformation programmes fail?</h3><p>They act on narrative rather than evidence. They address symptoms rather than the conditions that produce them. The organization changes. The underlying problem does not.</p></div></div>
+      <div class="fis-faq"><div class="fis-num">02</div><div><div class="fis-num-m">02</div><h3>What is the difference between a diagnostic and an audit?</h3><p>An audit verifies compliance against a known standard. A diagnostic reconstructs reality when the record is fragmented, disputed, or incomplete – when what actually happened is not yet established. Most organizations need a diagnostic. They commission an audit.</p></div></div>
+      <div class="fis-faq"><div class="fis-num">03</div><div><div class="fis-num-m">03</div><h3>Why can't we do this ourselves?</h3><p>The understanding that governs an organization's decisions also governs how the organization perceives itself. An organization cannot assess the accuracy of its own self-understanding using the same understanding whose accuracy is in question. This is not a failure of intelligence. It is a structural property of self-referential systems.</p></div></div>
+      <div class="fis-faq"><div class="fis-num">04</div><div><div class="fis-num-m">04</div><h3>What does organizational intelligence actually produce?</h3><p>A defensible account of what the organization actually is – its real capabilities, its operative values, its actual decision-making patterns – against which the accuracy of the existing organizational understanding can be assessed. And the intelligence to act on that account.</p></div></div>
+      <div class="fis-faq"><div class="fis-num">05</div><div><div class="fis-num-m">05</div><h3>Who is this for?</h3><p>Founders who sense that the organization has become something they no longer fully understand. Executives making major decisions who are not confident that their understanding of the organization is accurate. Boards and investors who need an independent account of organizational reality that does not depend on management's own assessment.</p></div></div>
+    </div>
+
+    <div class="fis-close"><em>No pitch deck. No diagnostic framework to download. The work begins with what is true.</em></div>
+    <div id="contact" class="fis-footer"><span>© Evidence. Intelligence. Advisory. Confidential by design.</span><span>London — Correspondence only</span></div>
+  </div>
+</section>
 <section id="model">
 <div class="container">
 <div style="margin-bottom:2rem;">
