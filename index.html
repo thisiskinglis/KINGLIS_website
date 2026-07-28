@@ -94,26 +94,21 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
- 
   /* ============================================================
      TOKENS — derived from the existing KINGLIS system
-     (off-white ground, charcoal ink, muted bronze/oxblood accent)
      ============================================================ */
   :root{
-    --color-ground:      #F5F1EA;   /* existing off-white */
-    --color-ground-alt:  #EFEAE1;   /* one step darker, for hairlines/panels */
-    --color-ink:         #1E1B18;   /* charcoal — primary text */
-    --color-ink-soft:    #4A4640;   /* body copy grey */
-    --color-accent:      #6E3A2E;   /* muted bronze/oxblood — headline + emphasis */
-    --color-accent-soft: #8C5A45;   /* lighter bronze for italic/emphasis strokes */
+    --color-ground:      #F5F1EA;
+    --color-ground-alt:  #EFEAE1;
+    --color-ink:         #1E1B18;
+    --color-ink-soft:    #4A4640;
+    --color-accent:      #6E3A2E;
+    --color-accent-soft: #8C5A45;
     --color-line:        rgba(30,27,24,0.14);
- 
     --font-display: 'Source Serif 4', Georgia, serif;
     --font-sans:    'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
- 
     --measure-headline: 15ch;
     --measure-body:     42ch;
- 
     --container: 1180px;
     --gutter: clamp(24px, 5vw, 64px);
   }
@@ -126,22 +121,24 @@
     color: var(--color-ink);
     font-family: var(--font-sans);
   }
- 
   a{ color: inherit; text-decoration: none; }
- 
-  .wrap{
+  img{ max-width:100%; }
+
+  .wrap, .container{
     max-width: var(--container);
     margin: 0 auto;
     padding-left: var(--gutter);
     padding-right: var(--gutter);
   }
- 
-  /* ============================================================
-     NAV — unchanged in kind, only tightened to sit on the same
-     baseline grid as the hero below it
-     ============================================================ */
+
+  /* NAV */
   .nav{
     border-bottom: 1px solid var(--color-line);
+    position: sticky;
+    top: 0;
+    background: rgba(245,241,234,0.92);
+    backdrop-filter: blur(8px);
+    z-index: 10;
   }
   .nav__row{
     display:flex;
@@ -173,27 +170,18 @@
   }
   .nav__links a:hover{ color: var(--color-accent); }
   .nav__toggle{ display:none; }
- 
-  /* ============================================================
-     HERO
-     Reading order: eyebrow → headline → rule → lede → proof line
-     → CTA pair. Two-column measure on desktop (headline block /
-     breathing room), collapsing to a single centered column isn't
-     used — this stays left-aligned and architectural, not centered
-     and "landing-page."
-     ============================================================ */
+
+  /* HERO */
   .hero{
     padding-top: clamp(72px, 10vw, 128px);
     padding-bottom: clamp(64px, 8vw, 112px);
   }
- 
   .hero__grid{
     display:grid;
     grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
     gap: var(--gutter);
     align-items: end;
   }
- 
   .hero__eyebrow{
     font-family: var(--font-sans);
     font-size: 11px;
@@ -203,7 +191,6 @@
     color: var(--color-accent);
     margin: 0 0 22px;
   }
- 
   .hero__headline{
     font-family: var(--font-display);
     font-weight: 500;
@@ -219,11 +206,6 @@
     font-weight: 400;
     color: var(--color-accent);
   }
- 
-  /* right-hand column: sits beside the headline, holds the lede.
-     This is the structural device that replaces the old stacked
-     paragraph block — it gives the hero two working columns
-     instead of one long centered one. */
   .hero__lede{
     font-family: var(--font-sans);
     font-size: 16px;
@@ -236,19 +218,16 @@
     color: var(--color-ink);
     font-weight: 600;
   }
- 
   .hero__rule{
     border: none;
     border-top: 1px solid var(--color-line);
     margin: clamp(36px, 5vw, 56px) 0 clamp(28px, 4vw, 40px);
   }
- 
   .hero__body{
     display:grid;
     grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
     gap: var(--gutter);
   }
- 
   .hero__body-text{
     font-family: var(--font-sans);
     font-size: 15px;
@@ -257,7 +236,6 @@
     max-width: 56ch;
   }
   .hero__body-text + .hero__body-text{ margin-top: 16px; }
- 
   .hero__thesis{
     font-family: var(--font-display);
     font-style: italic;
@@ -266,14 +244,13 @@
     color: var(--color-ink);
     max-width: 34ch;
   }
- 
   .hero__actions{
     display:flex;
     align-items:center;
     gap: 16px;
     margin-top: clamp(36px, 5vw, 52px);
+    flex-wrap: wrap;
   }
- 
   .btn{
     display:inline-flex;
     align-items:center;
@@ -294,14 +271,12 @@
     border: 1px solid var(--color-ink);
   }
   .btn--primary:hover{ background: var(--color-accent); border-color: var(--color-accent); }
- 
   .btn--ghost{
     background: transparent;
     color: var(--color-ink);
     border: 1px solid var(--color-line);
   }
   .btn--ghost:hover{ border-color: var(--color-ink); }
- 
   .hero__foot{
     text-align:center;
     font-family: var(--font-sans);
@@ -313,19 +288,290 @@
     opacity: .55;
     margin-top: clamp(64px, 9vw, 96px);
   }
- 
+
   /* ============================================================
-     RESPONSIVE — the two-column device collapses to a single
-     measured column; nothing else changes shape
+     MODEL — rebuilt to match token system, keeps your copy
      ============================================================ */
+  #model{
+    padding: clamp(72px, 8vw, 120px) 0;
+    border-top: 1px solid var(--color-line);
+    background: var(--color-ground);
+  }
+  .model-kicker, .kicker{
+    font-family: var(--font-sans);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    display:block;
+    margin:0 0 16px;
+  }
+  .model-title{
+    font-family: var(--font-display);
+    font-weight: 500;
+    color: var(--color-ink);
+    font-size: clamp(32px, 4vw, 48px);
+    line-height: 1.08;
+    letter-spacing: -0.015em;
+    margin: 0 0 14px;
+  }
+  .model-sub{
+    font-family: var(--font-sans);
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--color-ink-soft);
+    max-width: 58ch;
+    margin:0;
+  }
+  .km-grid{
+    display:grid;
+    grid-template-columns: repeat(3, minmax(0,1fr));
+    gap: 1px;
+    background: var(--color-line);
+    border: 1px solid var(--color-line);
+    margin-top: 56px;
+  }
+  .km-card{
+    background: var(--color-ground);
+    padding: 32px 28px 24px;
+    display:flex;
+    flex-direction:column;
+    min-height: 340px;
+    transition: background .2s ease;
+  }
+  .km-card:hover{ background: #FAF7F1; }
+  .km-label{
+    font-family: var(--font-display);
+    font-weight: 500;
+    line-height: 1.05;
+    color: var(--color-ink);
+    display:block;
+  }
+  .km-label.large{
+    font-size: clamp(22px, 2.2vw, 28px);
+    letter-spacing: -0.01em;
+  }
+  .km-lensline{
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 14px;
+    line-height: 1.4;
+    color: var(--color-accent-soft);
+    margin-top: 18px;
+    display:block;
+  }
+  .km-oneliner{
+    font-family: var(--font-sans);
+    font-size: 13.5px;
+    line-height: 1.65;
+    color: var(--color-ink-soft);
+    margin: 14px 0 0;
+    max-width: 28ch;
+  }
+  .km-spacer{ flex: 1 1 auto; min-height: 24px; }
+  .km-btn{
+    width: 40px;
+    height: 40px;
+    border-radius: 999px;
+    border: 1px solid var(--color-line);
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    margin-top: 28px;
+    font-family: var(--font-sans);
+    font-size: 16px;
+    line-height:1;
+    transition: all .22s ease;
+  }
+  .km-btn:hover{
+    border-color: var(--color-ink);
+    background: var(--color-ink);
+    color: var(--color-ground);
+  }
+
+  /* FOUNDER */
+  #founder{
+    padding: clamp(72px, 8vw, 120px) 0;
+    border-top: 1px solid var(--color-line);
+    background: var(--color-ground-alt);
+  }
+  .founder-grid{
+    display:grid;
+    grid-template-columns: 420px minmax(0, 1fr);
+    gap: clamp(32px, 6vw, 80px);
+    align-items: start;
+  }
+  .founder-image{
+    background:#EDE7DF;
+    border: 1px solid var(--color-line);
+    line-height:0;
+    overflow:hidden;
+  }
+  .founder-image img{
+    width:100%;
+    height:auto;
+    display:block;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    filter: saturate(0.85) contrast(1.02);
+  }
+  .serif-display{
+    font-family: var(--font-display);
+    font-weight: 500;
+    color: var(--color-ink);
+    font-size: clamp(28px, 3.5vw, 44px);
+    line-height: 1.06;
+    letter-spacing: -0.01em;
+    margin: 0 0 20px;
+    text-transform: uppercase;
+  }
+  .founder-lead{
+    font-family: var(--font-display);
+    font-size: 18px;
+    line-height: 1.6;
+    color: var(--color-ink);
+    margin: 0 0 22px;
+    max-width: 50ch;
+  }
+  .founder-body{
+    font-family: var(--font-sans);
+    font-size: 14.5px;
+    line-height: 1.78;
+    color: var(--color-ink-soft);
+    max-width: 56ch;
+    margin: 0 0 14px;
+  }
+
+  /* CONTACT */
+  #contact{
+    background: var(--color-ink);
+    color: var(--color-ground);
+    padding: clamp(72px, 8vw, 112px) 0;
+    border-top: 1px solid var(--color-ink);
+  }
+  .contact-grid{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(32px, 6vw, 80px);
+    align-items: start;
+  }
+  .kicker.light{
+    color: var(--color-ground);
+    opacity: .55;
+  }
+  .serif-display.light{ color: var(--color-ground); }
+  .contact-sub{
+    font-family: var(--font-sans);
+    font-size: 15px;
+    line-height: 1.7;
+    color: rgba(245,241,234,.68);
+    max-width: 42ch;
+    margin: 0;
+  }
+  .confidential-note{
+    margin-top: 32px;
+    padding: 16px 18px;
+    border: 1px solid rgba(245,241,234,.14);
+    background: rgba(245,241,234,.04);
+    font-family: var(--font-sans);
+    font-size: 12.5px;
+    line-height: 1.6;
+    color: rgba(245,241,234,.58);
+    max-width: 46ch;
+  }
+  .contact-form{
+    display:grid;
+    gap: 18px;
+    margin-top: 8px;
+  }
+  .contact-form label{
+    font-family: var(--font-sans);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(245,241,234,.55);
+    display:grid;
+    gap: 10px;
+  }
+  .contact-form input,
+  .contact-form textarea{
+    width: 100%;
+    background: rgba(245,241,234,.06);
+    border: 1px solid rgba(245,241,234,.14);
+    color: var(--color-ground);
+    padding: 14px 16px;
+    font-family: var(--font-sans);
+    font-size: 14px;
+    line-height: 1.5;
+    outline: none;
+    border-radius: 2px;
+    transition: border-color .2s ease, background .2s ease;
+  }
+  .contact-form input:focus,
+  .contact-form textarea:focus{
+    border-color: rgba(245,241,234,.34);
+    background: rgba(245,241,234,.08);
+  }
+  .contact-form textarea{ resize: vertical; min-height: 120px; }
+  .contact-form button{
+    justify-self: start;
+    background: var(--color-ground);
+    color: var(--color-ink);
+    border: 1px solid var(--color-ground);
+    padding: 15px 26px;
+    font-family: var(--font-sans);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-radius: 2px;
+    transition: all .2s ease;
+    margin-top: 8px;
+  }
+  .contact-form button:hover{
+    background: transparent;
+    color: var(--color-ground);
+  }
+
+  /* FOOTER */
+  .site-footer{
+    background: var(--color-ink);
+    border-top: 1px solid rgba(245,241,234,.1);
+    padding: 28px 0 32px;
+  }
+  .footer-inner{
+    display:flex;
+    justify-content: space-between;
+    gap: 24px;
+    flex-wrap: wrap;
+    font-family: var(--font-sans);
+    font-size: 11px;
+    line-height: 1.6;
+    letter-spacing: 0.06em;
+    color: rgba(245,241,234,.42);
+  }
+  .footer-left strong{ color: rgba(245,241,234,.7); font-weight:600; letter-spacing:0.08em; }
+  .footer-right{ font-style: italic; font-family: var(--font-display); font-size: 12px; letter-spacing:0.02em; }
+
+  /* RESPONSIVE */
+  @media (max-width: 1024px){
+    .km-grid{ grid-template-columns: repeat(2, minmax(0,1fr)); }
+    .founder-grid{ grid-template-columns: 360px 1fr; }
+  }
   @media (max-width: 860px){
     .hero__grid{ grid-template-columns: 1fr; align-items: start; }
     .hero__lede{ padding-bottom: 0; }
     .hero__body{ grid-template-columns: 1fr; }
     .hero__headline{ max-width: 100%; }
     .nav__links{ display:none; }
+    .km-grid{ grid-template-columns: 1fr; }
+    .founder-grid{ grid-template-columns: 1fr; }
+    .founder-image{ max-width: 420px; }
+    .contact-grid{ grid-template-columns: 1fr; }
   }
- 
 </style>
 </head>
 <body>
@@ -341,54 +587,48 @@
   </div>
 </header>
  
-<main class="hero">
-  <div class="wrap">
- 
-    <div class="hero__grid">
-      <div>
-        <p class="hero__eyebrow">Organizational Intelligence</p>
-        <h1 class="hero__headline">Every organization<br>exists <em>twice</em>.</h1>
+<main>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero__grid">
+        <div>
+          <p class="hero__eyebrow">Organizational Intelligence</p>
+          <h1 class="hero__headline">Every organization<br>exists <em>twice</em>.</h1>
+        </div>
+        <p class="hero__lede">
+          Once in reality. Once in its understanding of itself.
+          <strong>When those two diverge — and they always do, over time — the organization keeps making intelligent decisions according to a false premise.</strong>
+        </p>
       </div>
-      <p class="hero__lede">
-        Once in reality. Once in its understanding of itself.
-        <strong>When those two diverge — and they always do, over time — the organization keeps making intelligent decisions according to a false premise.</strong>
-      </p>
-    </div>
- 
-    <hr class="hero__rule">
- 
-    <div class="hero__body">
-      <div>
-        <p class="hero__body-text">That is the problem KINGLIS exists to address. Most organizational problems are not solved by more advice — they are solved by better understanding.</p>
-        <p class="hero__body-text">Not understanding of the market. Not understanding of the competition. Understanding of the organization itself: what it actually is, what it is actually capable of, and what it has actually become.</p>
-        <p class="hero__body-text">This is harder to establish than it sounds. The same understanding that governs an organization's decisions also governs how it perceives itself. When that understanding becomes inaccurate, the organization cannot see the inaccuracy from within.</p>
+      <hr class="hero__rule">
+      <div class="hero__body">
+        <div>
+          <p class="hero__body-text">That is the problem KINGLIS exists to address. Most organizational problems are not solved by more advice — they are solved by better understanding.</p>
+          <p class="hero__body-text">Not understanding of the market. Not understanding of the competition. Understanding of the organization itself: what it actually is, what it is actually capable of, and what it has actually become.</p>
+          <p class="hero__body-text">This is harder to establish than it sounds. The same understanding that governs an organization's decisions also governs how it perceives itself. When that understanding becomes inaccurate, the organization cannot see the inaccuracy from within.</p>
+        </div>
+        <p class="hero__thesis">KINGLIS provides what organizations cannot provide for themselves — an independent, evidence-based account of organizational reality, and the intelligence to act on it.</p>
       </div>
-      <p class="hero__thesis">KINGLIS provides what organizations cannot provide for themselves — an independent, evidence-based account of organizational reality, and the intelligence to act on it.</p>
+      <div class="hero__actions">
+        <a href="#model" class="btn btn--primary">Explore Our Capabilities →</a>
+        <a href="#contact" class="btn btn--ghost">Submit Confidentially</a>
+      </div>
+      <p class="hero__foot">Evidence · Intelligence · Advisory</p>
     </div>
- 
-    <div class="hero__actions">
-      <a href="#model" class="btn btn--primary">Explore Our Capabilities →</a>
-      <a href="#contact" class="btn btn--ghost">Submit Confidentially</a>
-    </div>
- 
-    <p class="hero__foot">Evidence · Intelligence · Advisory</p>
- 
-  </div>
-</main>
- 
-</body>
-</html>
-</section>
-<section id="model">
-<div class="container">
-<div style="margin-bottom:2rem;">
-<div class="model-kicker">The Kinglis Model</div>
-<h2 class="model-title">Choose your starting point.</h2>
-<p class="model-sub">We do not begin with a preferred solution. Six independent starting points, each can be commissioned alone. No preferred funnel.</p>
-</div>
+  </section>
 
-<div class="km-grid">
-   <div class="km-card">
+  <!-- MODEL -->
+  <section id="model">
+    <div class="container">
+      <div style="margin-bottom:2rem;">
+        <div class="model-kicker">The Kinglis Model</div>
+        <h2 class="model-title">Choose your starting point.</h2>
+        <p class="model-sub">We do not begin with a preferred solution. Six independent starting points, each can be commissioned alone. No preferred funnel.</p>
+      </div>
+
+      <div class="km-grid">
+         <div class="km-card">
           <span class="km-label large">Business<br>X-Ray</span>
           <span class="km-lensline">Establish what actually happened.</span>
           <p class="km-oneliner">When the business has become difficult to understand.</p>
@@ -453,50 +693,53 @@
             <span>→</span>
           </a>
         </div>
-  </div>
-</section>
+      </div>
+    </div>
+  </section>
 
-<section id="founder">
-<div class="container founder-grid">
-<div style="background:#EDE7DF"><img src="/assets/kj.png" alt="Kaylee-Jane Inglis"></div>
-<div>
-<span class="kicker">FOUNDER</span>
-<h2 class="serif-display">KAYLEE-JANE INGLIS</h2>
-<p class="founder-lead">Kaylee-Jane works confidentially with founders, executives, and organizations where the picture is unclear, the stakes are high, and important decisions depend on establishing a defensible understanding of what is actually happening.
+  <!-- FOUNDER -->
+  <section id="founder">
+    <div class="container founder-grid">
+      <div class="founder-image"><img src="/assets/kj.png" alt="Kaylee-Jane Inglis"></div>
+      <div>
+        <span class="kicker">FOUNDER</span>
+        <h2 class="serif-display">KAYLEE-JANE INGLIS</h2>
+        <p class="founder-lead">Kaylee-Jane works confidentially with founders, executives, and organizations where the picture is unclear, the stakes are high, and important decisions depend on establishing a defensible understanding of what is actually happening.
 She founded KINGLIS on a single conviction: that most organizational problems are not solved by more advice. They are solved by better understanding.
 </p>
-<p class="founder-body">Her practice sits at the intersection of organizational architecture, governance, and evidence-led inquiry. She has developed an uncommon capacity to recognize patterns across fragmented evidence, reason through complexity that resists conventional analysis, and translate what is difficult to see into intelligence that is impossible to ignore.</p>
-<p class="founder-body">All enquiries are handled personally.</p>
-</div>
-</div>
-</section>
+        <p class="founder-body">Her practice sits at the intersection of organizational architecture, governance, and evidence-led inquiry. She has developed an uncommon capacity to recognize patterns across fragmented evidence, reason through complexity that resists conventional analysis, and translate what is difficult to see into intelligence that is impossible to ignore.</p>
+        <p class="founder-body">All enquiries are handled personally.</p>
+      </div>
+    </div>
+  </section>
 
-<section id="contact">
-<div class="container contact-grid">
-<div>
-<span class="kicker light">Confidential Intake</span>
-<h3 class="serif-display light">A private<br>starting point.</h3>
-<p class="contact-sub">I read every message myself. One paragraph is enough — you don't need to have it all figured out to begin.</p>
-<div class="confidential-note">Confidentiality: All enquiries are held in strict confidence. No attribution, no disclosure, and nothing shared beyond this intake without your explicit written consent.</div>
-</div>
-<form class="contact-form" action="https://formspree.io/f/xpqvbadz" method="POST">
-  <label>Name<input type="text" name="name" required></label>
-  <label>Company<input type="text" name="company"></label>
-  <label>Email<input type="email" name="email" required></label>
-  <label>What are you seeing?<textarea name="message" rows="4" placeholder="A brief outline is enough..." required></textarea></label>
-  <input type="hidden" name="_next" value="https://thisiskinglis.com/thank-you.html">
-  <button type="submit">Begin privately →</button>
-</form>
-</div>
-</section>
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="container contact-grid">
+      <div>
+        <span class="kicker light">Confidential Intake</span>
+        <h3 class="serif-display light">A private<br>starting point.</h3>
+        <p class="contact-sub">I read every message myself. One paragraph is enough — you don't need to have it all figured out to begin.</p>
+        <div class="confidential-note">Confidentiality: All enquiries are held in strict confidence. No attribution, no disclosure, and nothing shared beyond this intake without your explicit written consent.</div>
+      </div>
+      <form class="contact-form" action="https://formspree.io/f/xpqvbadz" method="POST">
+        <label>Name<input type="text" name="name" required></label>
+        <label>Company<input type="text" name="company"></label>
+        <label>Email<input type="email" name="email" required></label>
+        <label>What are you seeing?<textarea name="message" rows="4" placeholder="A brief outline is enough..." required></textarea></label>
+        <input type="hidden" name="_next" value="https://thisiskinglis.com/thank-you.html">
+        <button type="submit">Begin privately →</button>
+      </form>
+    </div>
+  </section>
+</main>
 
 <footer class="site-footer">
-<div class="container footer-inner">
-<div class="footer-left"><strong>© 2025 KINGLIS</strong> — All rights reserved. Confidential. No part of this site may be reproduced without written consent.</div>
-<div class="footer-right">Understanding precedes change.</div>
-</div>
+  <div class="container footer-inner">
+    <div class="footer-left"><strong>© 2025 KINGLIS</strong> — All rights reserved. Confidential. No part of this site may be reproduced without written consent.</div>
+    <div class="footer-right">Understanding precedes change.</div>
+  </div>
 </footer>
 
-</main>
 </body>
 </html>
