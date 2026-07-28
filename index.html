@@ -10,8 +10,6 @@
 <meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="canonical" href="https://thisiskinglis.com/">
 <meta name="theme-color" content="#F5F1EA">
- 
-<!-- Open Graph -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="KINGLIS">
 <meta property="og:url" content="https://thisiskinglis.com/">
@@ -24,8 +22,6 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://thisiskinglis.com/assets/og/og-home.png">
 <link rel="icon" type="image/png" href="/assets/og/og-home.png">
- 
-<!-- Schema: Organization -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -37,8 +33,6 @@
   "founder": {"@type": "Person", "name": "Kaylee-Jane Inglis"}
 }
 </script>
- 
-<!-- Schema: The KINGLIS Model (six services) -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -54,528 +48,172 @@
   ]
 }
 </script>
- 
-<!-- Schema: FAQPage -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "What is organizational intelligence?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Organizational intelligence is the ability of an organization to arrive at an accurate, defensible account of what is actually happening — and what it means — before it acts. It is not Business Intelligence. It is the discipline of turning fragmented evidence into decision-ready understanding." }
-    },
-    {
-      "@type": "Question",
-      "name": "How do you diagnose organizational problems?",
-      "acceptedAnswer": { "@type": "Answer", "text": "You diagnose organizational problems by establishing what actually happened from primary evidence before attempting to explain why. It requires evidence reconstruction, pattern analysis, and a clear separation between evidence, inference, and assumption." }
-    },
-    {
-      "@type": "Question",
-      "name": "Why do transformation programmes fail?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Transformation programmes fail because they intervene before they understand. They restructure or implement new systems without first establishing what is actually happening and what conditions will cause the new model to fail in the same way." }
-    },
-    {
-      "@type": "Question",
-      "name": "What is a business diagnostic?",
-      "acceptedAnswer": { "@type": "Answer", "text": "A business diagnostic is a disciplined, evidence-led investigation that establishes what is actually happening inside an organization when growth, risk, or transition has created opacity. Unlike an audit, it reconstructs reality from fragmented evidence." }
-    },
-    {
-      "@type": "Question",
-      "name": "How do founders capture institutional knowledge?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Founders capture institutional knowledge by extracting, distilling, and structuring their tacit thinking into a named, ownable system — the Founder Intellectual Ledger — not by documenting processes." }
-    }
+    {"@type": "Question","name": "What is organizational intelligence?","acceptedAnswer": { "@type": "Answer", "text": "Organizational intelligence is the ability of an organization to arrive at an accurate, defensible account of what is actually happening — and what it means — before it acts. It is not Business Intelligence. It is the discipline of turning fragmented evidence into decision-ready understanding." }},
+    {"@type": "Question","name": "How do you diagnose organizational problems?","acceptedAnswer": { "@type": "Answer", "text": "You diagnose organizational problems by establishing what actually happened from primary evidence before attempting to explain why. It requires evidence reconstruction, pattern analysis, and a clear separation between evidence, inference, and assumption." }},
+    {"@type": "Question","name": "Why do transformation programmes fail?","acceptedAnswer": { "@type": "Answer", "text": "Transformation programmes fail because they intervene before they understand. They restructure or implement new systems without first establishing what is actually happening and what conditions will cause the new model to fail in the same way." }},
+    {"@type": "Question","name": "What is a business diagnostic?","acceptedAnswer": { "@type": "Answer", "text": "A business diagnostic is a disciplined, evidence-led investigation that establishes what is actually happening inside an organization when growth, risk, or transition has created opacity. Unlike an audit, it reconstructs reality from fragmented evidence." }},
+    {"@type": "Question","name": "How do founders capture institutional knowledge?","acceptedAnswer": { "@type": "Answer", "text": "Founders capture institutional knowledge by extracting, distilling, and structuring their tacit thinking into a named, ownable system — the Founder Intellectual Ledger — not by documenting processes." }}
   ]
 }
 </script>
- 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-  /* ============================================================
-     TOKENS — derived from the existing KINGLIS system
-     ============================================================ */
-  :root{
-    --color-ground:      #F5F1EA;
-    --color-ground-alt:  #EFEAE1;
-    --color-ink:         #1E1B18;
-    --color-ink-soft:    #4A4640;
-    --color-accent:      #6E3A2E;
-    --color-accent-soft: #8C5A45;
-    --color-line:        rgba(30,27,24,0.14);
-    --font-display: 'Source Serif 4', Georgia, serif;
-    --font-sans:    'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-    --measure-headline: 15ch;
-    --measure-body:     42ch;
-    --container: 1180px;
-    --gutter: clamp(24px, 5vw, 64px);
-  }
- 
-  *{ box-sizing: border-box; }
-  html{ -webkit-font-smoothing: antialiased; scroll-behavior: smooth; }
-  body{
-    margin:0;
-    background: var(--color-ground);
-    color: var(--color-ink);
-    font-family: var(--font-sans);
-  }
-  a{ color: inherit; text-decoration: none; }
-  img{ max-width:100%; }
+:root{
+  --color-ground:#F5F1EA;
+  --color-ground-alt:#EFEAE1;
+  --color-ink:#1E1B18;
+  --color-ink-soft:#4A4640;
+  --color-accent:#6E3A2E;
+  --color-accent-soft:#8C5A45;
+  --color-line:rgba(30,27,24,0.12);
+  --font-display:'Source Serif 4', Georgia, serif;
+  --font-sans:'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --container:1180px;
+  --gutter:clamp(24px,5vw,64px);
+  --ease: cubic-bezier(.16,1,.3,1);
+}
+*{box-sizing:border-box}
+html{-webkit-font-smoothing:antialiased;scroll-behavior:smooth}
+body{margin:0;background:var(--color-ground);color:var(--color-ink);font-family:var(--font-sans);overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
 
-  .wrap, .container{
-    max-width: var(--container);
-    margin: 0 auto;
-    padding-left: var(--gutter);
-    padding-right: var(--gutter);
-  }
+/* texture & progress */
+.grain{position:fixed;inset:0;pointer-events:none;z-index:9999;opacity:.045;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 250 250' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.95' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.progress{position:fixed;top:0;left:0;height:2px;background:var(--color-accent);width:0;z-index:100;transform-origin:left}
 
-  /* NAV */
-  .nav{
-    border-bottom: 1px solid var(--color-line);
-    position: sticky;
-    top: 0;
-    background: rgba(245,241,234,0.92);
-    backdrop-filter: blur(8px);
-    z-index: 10;
-  }
-  .nav__row{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    height: 84px;
-  }
-  .nav__mark{
-    font-family: var(--font-sans);
-    font-size: 12px;
-    font-weight: 600;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--color-ink);
-  }
-  .nav__links{
-    display:flex;
-    gap: 40px;
-    list-style:none;
-    margin:0; padding:0;
-  }
-  .nav__links a{
-    font-size: 12px;
-    font-weight: 500;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--color-ink-soft);
-    transition: color .2s ease;
-  }
-  .nav__links a:hover{ color: var(--color-accent); }
-  .nav__toggle{ display:none; }
+.wrap,.container{max-width:var(--container);margin:0 auto;padding-left:var(--gutter);padding-right:var(--gutter)}
 
-  /* HERO */
-  .hero{
-    padding-top: clamp(72px, 10vw, 128px);
-    padding-bottom: clamp(64px, 8vw, 112px);
-  }
-  .hero__grid{
-    display:grid;
-    grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
-    gap: var(--gutter);
-    align-items: end;
-  }
-  .hero__eyebrow{
-    font-family: var(--font-sans);
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: var(--color-accent);
-    margin: 0 0 22px;
-  }
-  .hero__headline{
-    font-family: var(--font-display);
-    font-weight: 500;
-    color: var(--color-ink);
-    font-size: clamp(40px, 5.4vw, 68px);
-    line-height: 1.06;
-    letter-spacing: -0.01em;
-    max-width: var(--measure-headline);
-    margin: 0;
-  }
-  .hero__headline em{
-    font-style: italic;
-    font-weight: 400;
-    color: var(--color-accent);
-  }
-  .hero__lede{
-    font-family: var(--font-sans);
-    font-size: 16px;
-    line-height: 1.65;
-    color: var(--color-ink-soft);
-    max-width: var(--measure-body);
-    padding-bottom: 6px;
-  }
-  .hero__lede strong{
-    color: var(--color-ink);
-    font-weight: 600;
-  }
-  .hero__rule{
-    border: none;
-    border-top: 1px solid var(--color-line);
-    margin: clamp(36px, 5vw, 56px) 0 clamp(28px, 4vw, 40px);
-  }
-  .hero__body{
-    display:grid;
-    grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
-    gap: var(--gutter);
-  }
-  .hero__body-text{
-    font-family: var(--font-sans);
-    font-size: 15px;
-    line-height: 1.75;
-    color: var(--color-ink-soft);
-    max-width: 56ch;
-  }
-  .hero__body-text + .hero__body-text{ margin-top: 16px; }
-  .hero__thesis{
-    font-family: var(--font-display);
-    font-style: italic;
-    font-size: 19px;
-    line-height: 1.5;
-    color: var(--color-ink);
-    max-width: 34ch;
-  }
-  .hero__actions{
-    display:flex;
-    align-items:center;
-    gap: 16px;
-    margin-top: clamp(36px, 5vw, 52px);
-    flex-wrap: wrap;
-  }
-  .btn{
-    display:inline-flex;
-    align-items:center;
-    gap: 10px;
-    padding: 15px 26px;
-    font-family: var(--font-sans);
-    font-size: 12px;
-    font-weight: 600;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    border-radius: 2px;
-    transition: background .2s ease, color .2s ease, border-color .2s ease;
-    white-space: nowrap;
-  }
-  .btn--primary{
-    background: var(--color-ink);
-    color: var(--color-ground);
-    border: 1px solid var(--color-ink);
-  }
-  .btn--primary:hover{ background: var(--color-accent); border-color: var(--color-accent); }
-  .btn--ghost{
-    background: transparent;
-    color: var(--color-ink);
-    border: 1px solid var(--color-line);
-  }
-  .btn--ghost:hover{ border-color: var(--color-ink); }
-  .hero__foot{
-    text-align:center;
-    font-family: var(--font-sans);
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.28em;
-    text-transform: uppercase;
-    color: var(--color-ink-soft);
-    opacity: .55;
-    margin-top: clamp(64px, 9vw, 96px);
-  }
+/* NAV - glass + line draw */
+.nav{border-bottom:1px solid var(--color-line);position:sticky;top:0;background:rgba(245,241,234,.82);backdrop-filter:blur(14px) saturate(1.2);z-index:10}
+.nav__row{display:flex;align-items:center;justify-content:space-between;height:84px}
+.nav__mark{font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase}
+.nav__links{display:flex;gap:40px;list-style:none;margin:0;padding:0}
+.nav__links a{font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--color-ink-soft);position:relative;padding:4px 0}
+.nav__links a::after{content:'';position:absolute;left:0;bottom:-2px;width:0;height:1px;background:var(--color-accent);transition:width .4s var(--ease)}
+.nav__links a:hover::after{width:100%}
+.nav__links a:hover{color:var(--color-ink)}
 
-  /* ============================================================
-     MODEL — rebuilt to match token system, keeps your copy
-     ============================================================ */
-  #model{
-    padding: clamp(72px, 8vw, 120px) 0;
-    border-top: 1px solid var(--color-line);
-    background: var(--color-ground);
-  }
-  .model-kicker, .kicker{
-    font-family: var(--font-sans);
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: var(--color-accent);
-    display:block;
-    margin:0 0 16px;
-  }
-  .model-title{
-    font-family: var(--font-display);
-    font-weight: 500;
-    color: var(--color-ink);
-    font-size: clamp(32px, 4vw, 48px);
-    line-height: 1.08;
-    letter-spacing: -0.015em;
-    margin: 0 0 14px;
-  }
-  .model-sub{
-    font-family: var(--font-sans);
-    font-size: 15px;
-    line-height: 1.7;
-    color: var(--color-ink-soft);
-    max-width: 58ch;
-    margin:0;
-  }
-  .km-grid{
-    display:grid;
-    grid-template-columns: repeat(3, minmax(0,1fr));
-    gap: 1px;
-    background: var(--color-line);
-    border: 1px solid var(--color-line);
-    margin-top: 56px;
-  }
-  .km-card{
-    background: var(--color-ground);
-    padding: 32px 28px 24px;
-    display:flex;
-    flex-direction:column;
-    min-height: 340px;
-    transition: background .2s ease;
-  }
-  .km-card:hover{ background: #FAF7F1; }
-  .km-label{
-    font-family: var(--font-display);
-    font-weight: 500;
-    line-height: 1.05;
-    color: var(--color-ink);
-    display:block;
-  }
-  .km-label.large{
-    font-size: clamp(22px, 2.2vw, 28px);
-    letter-spacing: -0.01em;
-  }
-  .km-lensline{
-    font-family: var(--font-display);
-    font-style: italic;
-    font-size: 14px;
-    line-height: 1.4;
-    color: var(--color-accent-soft);
-    margin-top: 18px;
-    display:block;
-  }
-  .km-oneliner{
-    font-family: var(--font-sans);
-    font-size: 13.5px;
-    line-height: 1.65;
-    color: var(--color-ink-soft);
-    margin: 14px 0 0;
-    max-width: 28ch;
-  }
-  .km-spacer{ flex: 1 1 auto; min-height: 24px; }
-  .km-btn{
-    width: 40px;
-    height: 40px;
-    border-radius: 999px;
-    border: 1px solid var(--color-line);
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
-    margin-top: 28px;
-    font-family: var(--font-sans);
-    font-size: 16px;
-    line-height:1;
-    transition: all .22s ease;
-  }
-  .km-btn:hover{
-    border-color: var(--color-ink);
-    background: var(--color-ink);
-    color: var(--color-ground);
-  }
+/* HERO - editorial luxury */
+.hero{position:relative;padding-top:clamp(72px,10vw,128px);padding-bottom:clamp(64px,8vw,112px);overflow:hidden}
+.hero::before{content:'';position:absolute;top:-20%;right:-10%;width:60vw;height:60vw;background:radial-gradient(ellipse at center, rgba(110,58,46,.09) 0%, transparent 65%);pointer-events:none}
+.hero__watermark{position:absolute;left:-2vw;top:4%;font-family:var(--font-display);font-size:clamp(120px,22vw,320px);line-height:.8;letter-spacing:-.06em;color:var(--color-ink);opacity:.025;pointer-events:none;user-select:none;font-weight:500}
+.hero__grid{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:var(--gutter);align-items:end;position:relative}
+.hero__eyebrow{font-size:11px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--color-accent);margin:0 0 22px;opacity:0;transform:translateY(12px);animation:reveal .8s var(--ease) forwards .1s}
+.hero__headline{font-family:var(--font-display);font-weight:500;color:var(--color-ink);font-size:clamp(42px,5.6vw,74px);line-height:.98;letter-spacing:-.02em;max-width:15ch;margin:0;opacity:0;transform:translateY(18px);animation:reveal .9s var(--ease) forwards .2s}
+.hero__headline em{font-style:italic;font-weight:400;color:var(--color-accent);position:relative;display:inline-block}
+.hero__headline em::after{content:'';position:absolute;left:0;right:0;bottom:.12em;height:.32em;background:rgba(110,58,46,.12);z-index:-1;transform:scaleX(0);transform-origin:left;animation:lineDraw .9s var(--ease) forwards .9s}
+.hero__lede{font-size:16px;line-height:1.65;color:var(--color-ink-soft);max-width:42ch;padding-bottom:6px;opacity:0;transform:translateY(14px);animation:reveal .8s var(--ease) forwards .35s}
+.hero__lede strong{color:var(--color-ink);font-weight:600}
+.hero__rule{border:none;border-top:1px solid var(--color-line);margin:clamp(36px,5vw,56px) 0 clamp(28px,4vw,40px);transform:scaleX(0);transform-origin:left;animation:lineDraw .9s var(--ease) forwards .6s}
+.hero__body{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:var(--gutter);position:relative}
+.hero__body-text{font-size:15px;line-height:1.78;color:var(--color-ink-soft);max-width:56ch;opacity:0;transform:translateY(12px)}
+.hero__body-text + .hero__body-text{margin-top:16px}
+.hero__thesis{font-family:var(--font-display);font-style:italic;font-size:20px;line-height:1.5;color:var(--color-ink);max-width:34ch;position:relative;padding-left:28px;opacity:0;transform:translateY(12px)}
+.hero__thesis::before{content:'';position:absolute;left:0;top:.4em;width:14px;height:1px;background:var(--color-accent);transform-origin:left;transform:scaleX(0);animation:lineDraw .6s var(--ease) forwards 1s}
+.hero__actions{display:flex;align-items:center;gap:16px;margin-top:clamp(36px,5vw,52px);flex-wrap:wrap;opacity:0;transform:translateY(12px);animation:reveal .8s var(--ease) forwards .8s}
+.btn{position:relative;display:inline-flex;align-items:center;gap:12px;padding:16px 28px;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;border-radius:2px;transition:all .35s var(--ease);white-space:nowrap;overflow:hidden;isolation:isolate}
+.btn::before{content:'';position:absolute;inset:0;background:var(--color-accent);transform:scaleX(0);transform-origin:left;transition:transform .5s var(--ease);z-index:-1}
+.btn--primary{background:var(--color-ink);color:var(--color-ground);border:1px solid var(--color-ink)}
+.btn--primary:hover{border-color:var(--color-accent);color:var(--color-ground)}
+.btn--primary:hover::before{transform:scaleX(1)}
+.btn--ghost{background:transparent;color:var(--color-ink);border:1px solid rgba(30,27,24,.18)}
+.btn--ghost::before{background:var(--color-ink)}
+.btn--ghost:hover{color:var(--color-ground);border-color:var(--color-ink)}
+.btn--ghost:hover::before{transform:scaleX(1)}
+.hero__foot{text-align:center;font-size:10px;font-weight:600;letter-spacing:.34em;text-transform:uppercase;color:var(--color-ink-soft);opacity:0;margin-top:clamp(64px,9vw,96px);animation:reveal .8s var(--ease) forwards 1.1s}
 
-  /* FOUNDER */
-  #founder{
-    padding: clamp(72px, 8vw, 120px) 0;
-    border-top: 1px solid var(--color-line);
-    background: var(--color-ground-alt);
-  }
-  .founder-grid{
-    display:grid;
-    grid-template-columns: 420px minmax(0, 1fr);
-    gap: clamp(32px, 6vw, 80px);
-    align-items: start;
-  }
-  .founder-image{
-    background:#EDE7DF;
-    border: 1px solid var(--color-line);
-    line-height:0;
-    overflow:hidden;
-  }
-  .founder-image img{
-    width:100%;
-    height:auto;
-    display:block;
-    aspect-ratio: 4 / 5;
-    object-fit: cover;
-    filter: saturate(0.85) contrast(1.02);
-  }
-  .serif-display{
-    font-family: var(--font-display);
-    font-weight: 500;
-    color: var(--color-ink);
-    font-size: clamp(28px, 3.5vw, 44px);
-    line-height: 1.06;
-    letter-spacing: -0.01em;
-    margin: 0 0 20px;
-    text-transform: uppercase;
-  }
-  .founder-lead{
-    font-family: var(--font-display);
-    font-size: 18px;
-    line-height: 1.6;
-    color: var(--color-ink);
-    margin: 0 0 22px;
-    max-width: 50ch;
-  }
-  .founder-body{
-    font-family: var(--font-sans);
-    font-size: 14.5px;
-    line-height: 1.78;
-    color: var(--color-ink-soft);
-    max-width: 56ch;
-    margin: 0 0 14px;
-  }
+/* reveals */
+@keyframes reveal{to{opacity:1;transform:translateY(0)}}
+@keyframes lineDraw{to{transform:scaleX(1)}}
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+.reveal.is-visible{opacity:1;transform:translateY(0)}
+.reveal.delay-1{transition-delay:.1s}.reveal.delay-2{transition-delay:.2s}.reveal.delay-3{transition-delay:.25s}
 
-  /* CONTACT */
-  #contact{
-    background: var(--color-ink);
-    color: var(--color-ground);
-    padding: clamp(72px, 8vw, 112px) 0;
-    border-top: 1px solid var(--color-ink);
-  }
-  .contact-grid{
-    display:grid;
-    grid-template-columns: 1fr 1fr;
-    gap: clamp(32px, 6vw, 80px);
-    align-items: start;
-  }
-  .kicker.light{
-    color: var(--color-ground);
-    opacity: .55;
-  }
-  .serif-display.light{ color: var(--color-ground); }
-  .contact-sub{
-    font-family: var(--font-sans);
-    font-size: 15px;
-    line-height: 1.7;
-    color: rgba(245,241,234,.68);
-    max-width: 42ch;
-    margin: 0;
-  }
-  .confidential-note{
-    margin-top: 32px;
-    padding: 16px 18px;
-    border: 1px solid rgba(245,241,234,.14);
-    background: rgba(245,241,234,.04);
-    font-family: var(--font-sans);
-    font-size: 12.5px;
-    line-height: 1.6;
-    color: rgba(245,241,234,.58);
-    max-width: 46ch;
-  }
-  .contact-form{
-    display:grid;
-    gap: 18px;
-    margin-top: 8px;
-  }
-  .contact-form label{
-    font-family: var(--font-sans);
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: rgba(245,241,234,.55);
-    display:grid;
-    gap: 10px;
-  }
-  .contact-form input,
-  .contact-form textarea{
-    width: 100%;
-    background: rgba(245,241,234,.06);
-    border: 1px solid rgba(245,241,234,.14);
-    color: var(--color-ground);
-    padding: 14px 16px;
-    font-family: var(--font-sans);
-    font-size: 14px;
-    line-height: 1.5;
-    outline: none;
-    border-radius: 2px;
-    transition: border-color .2s ease, background .2s ease;
-  }
-  .contact-form input:focus,
-  .contact-form textarea:focus{
-    border-color: rgba(245,241,234,.34);
-    background: rgba(245,241,234,.08);
-  }
-  .contact-form textarea{ resize: vertical; min-height: 120px; }
-  .contact-form button{
-    justify-self: start;
-    background: var(--color-ground);
-    color: var(--color-ink);
-    border: 1px solid var(--color-ground);
-    padding: 15px 26px;
-    font-family: var(--font-sans);
-    font-size: 12px;
-    font-weight: 600;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    cursor: pointer;
-    border-radius: 2px;
-    transition: all .2s ease;
-    margin-top: 8px;
-  }
-  .contact-form button:hover{
-    background: transparent;
-    color: var(--color-ground);
-  }
+/* MODEL */
+#model{padding:clamp(80px,9vw,136px) 0;border-top:1px solid var(--color-line);background:var(--color-ground);position:relative}
+#model::before{content:'';position:absolute;inset:0 0 auto 0;height:1px;background:linear-gradient(90deg, transparent, rgba(110,58,46,.25), transparent);opacity:.6}
+.model-kicker,.kicker{font-size:11px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--color-accent);display:block;margin:0 0 16px}
+.model-title{font-family:var(--font-display);font-weight:500;font-size:clamp(36px,4.4vw,56px);line-height:1.02;letter-spacing:-.02em;margin:0 0 16px}
+.model-sub{font-size:15px;line-height:1.7;color:var(--color-ink-soft);max-width:56ch;margin:0}
+.km-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--color-line);border:1px solid var(--color-line);margin-top:64px;position:relative}
+.km-card{background:var(--color-ground);padding:36px 32px 28px;display:flex;flex-direction:column;min-height:380px;position:relative;overflow:hidden;transition:all .55s var(--ease)}
+.km-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1.5px;background:var(--color-accent);transform:scaleX(0);transform-origin:left;transition:transform .55s var(--ease)}
+.km-card::after{content:'';position:absolute;inset:0;background:radial-gradient(400px 400px at var(--mx,50%) var(--my,50%), rgba(110,58,46,.06), transparent 60%);opacity:0;transition:opacity .4s ease;pointer-events:none}
+.km-card:hover{transform:translateY(-4px);background:#FBF8F2;box-shadow:0 18px 40px rgba(30,27,24,.06)}
+.km-card:hover::before{transform:scaleX(1)}
+.km-card:hover::after{opacity:1}
+.km-index{position:absolute;top:22px;right:24px;font-family:var(--font-display);font-size:42px;line-height:1;font-weight:500;color:var(--color-ink);opacity:.06;transition:opacity .4s, transform .5s var(--ease)}
+.km-card:hover .km-index{opacity:.12;transform:translateY(-2px)}
+.km-label{font-family:var(--font-display);font-weight:500;line-height:.98;color:var(--color-ink);display:block;position:relative;z-index:1}
+.km-label.large{font-size:clamp(24px,2.3vw,30px);letter-spacing:-.015em}
+.km-lensline{font-family:var(--font-display);font-style:italic;font-size:14px;line-height:1.4;color:var(--color-accent-soft);margin-top:20px;display:block;z-index:1}
+.km-oneliner{font-size:13.8px;line-height:1.66;color:var(--color-ink-soft);margin:14px 0 0;max-width:28ch;z-index:1}
+.km-spacer{flex:1 1 auto;min-height:28px}
+.km-btn{width:44px;height:44px;border-radius:999px;border:1px solid rgba(30,27,24,.16);display:inline-flex;align-items:center;justify-content:center;margin-top:28px;font-size:16px;line-height:1;transition:all .35s var(--ease);z-index:1;background:rgba(255,255,255,.4)}
+.km-card:hover .km-btn{border-color:var(--color-ink);background:var(--color-ink);color:var(--color-ground);transform:translateX(2px)}
 
-  /* FOOTER */
-  .site-footer{
-    background: var(--color-ink);
-    border-top: 1px solid rgba(245,241,234,.1);
-    padding: 28px 0 32px;
-  }
-  .footer-inner{
-    display:flex;
-    justify-content: space-between;
-    gap: 24px;
-    flex-wrap: wrap;
-    font-family: var(--font-sans);
-    font-size: 11px;
-    line-height: 1.6;
-    letter-spacing: 0.06em;
-    color: rgba(245,241,234,.42);
-  }
-  .footer-left strong{ color: rgba(245,241,234,.7); font-weight:600; letter-spacing:0.08em; }
-  .footer-right{ font-style: italic; font-family: var(--font-display); font-size: 12px; letter-spacing:0.02em; }
+/* FOUNDER - magazine */
+#founder{padding:clamp(88px,10vw,144px) 0;border-top:1px solid var(--color-line);background:var(--color-ground-alt);position:relative;overflow:hidden}
+#founder::after{content:'';position:absolute;right:-10%;bottom:-10%;width:50vw;height:50vw;background:radial-gradient(ellipse at center, rgba(110,58,46,.07), transparent 70%);pointer-events:none}
+.founder-grid{display:grid;grid-template-columns:460px minmax(0,1fr);gap:clamp(36px,6vw,88px);align-items:start;position:relative}
+.founder-image{position:relative;background:#EDE7DF;border:1px solid var(--color-line);line-height:0;padding:12px 12px 0 0}
+.founder-image::before{content:'';position:absolute;inset:12px -12px -12px 12px;border:1px solid rgba(30,27,24,.1);pointer-events:none;z-index:0}
+.founder-image img{position:relative;z-index:1;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;filter:saturate(.88) contrast(1.03)}
+.founder-meta{position:absolute;left:-18px;bottom:36px;z-index:2;background:var(--color-ground);border:1px solid var(--color-line);padding:14px 18px;display:flex;flex-direction:column;gap:2px;box-shadow:0 12px 30px rgba(30,27,24,.08)}
+.founder-meta small{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--color-accent);font-weight:600}
+.founder-meta span{font-family:var(--font-display);font-size:13px;font-style:italic;color:var(--color-ink)}
+.serif-display{font-family:var(--font-display);font-weight:500;color:var(--color-ink);font-size:clamp(30px,3.6vw,48px);line-height:.96;letter-spacing:-.02em;margin:0 0 22px;text-transform:uppercase}
+.founder-lead{font-family:var(--font-display);font-size:19px;line-height:1.58;color:var(--color-ink);margin:0 0 24px;max-width:50ch}
+.founder-body{font-size:14.7px;line-height:1.8;color:var(--color-ink-soft);max-width:56ch;margin:0 0 16px}
 
-  /* RESPONSIVE */
-  @media (max-width: 1024px){
-    .km-grid{ grid-template-columns: repeat(2, minmax(0,1fr)); }
-    .founder-grid{ grid-template-columns: 360px 1fr; }
-  }
-  @media (max-width: 860px){
-    .hero__grid{ grid-template-columns: 1fr; align-items: start; }
-    .hero__lede{ padding-bottom: 0; }
-    .hero__body{ grid-template-columns: 1fr; }
-    .hero__headline{ max-width: 100%; }
-    .nav__links{ display:none; }
-    .km-grid{ grid-template-columns: 1fr; }
-    .founder-grid{ grid-template-columns: 1fr; }
-    .founder-image{ max-width: 420px; }
-    .contact-grid{ grid-template-columns: 1fr; }
-  }
+/* CONTACT - dark luxury */
+#contact{background:var(--color-ink);color:var(--color-ground);padding:clamp(88px,10vw,132px) 0;position:relative;overflow:hidden}
+#contact::before{content:'';position:absolute;inset:0;background:radial-gradient(600px 600px at 20% 10%, rgba(245,241,234,.07), transparent 60%), radial-gradient(700px 700px at 90% 90%, rgba(110,58,46,.18), transparent 60%);pointer-events:none}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,6vw,96px);align-items:start;position:relative}
+.kicker.light{color:var(--color-ground);opacity:.5}
+.serif-display.light{color:var(--color-ground)}
+.contact-sub{font-size:15px;line-height:1.7;color:rgba(245,241,234,.66);max-width:42ch;margin:0}
+.confidential-note{margin-top:36px;padding:18px 20px;border:1px solid rgba(245,241,234,.12);background:rgba(245,241,234,.04);backdrop-filter:blur(6px);font-size:12.5px;line-height:1.65;color:rgba(245,241,234,.56);max-width:48ch}
+.contact-form{display:grid;gap:20px;margin-top:10px}
+.contact-form label{font-size:10px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:rgba(245,241,234,.48);display:grid;gap:10px}
+.contact-form input,.contact-form textarea{width:100%;background:rgba(245,241,234,.05);border:1px solid rgba(245,241,234,.13);color:var(--color-ground);padding:15px 16px;font-family:var(--font-sans);font-size:14px;line-height:1.5;outline:none;border-radius:2px;transition:all .25s var(--ease)}
+.contact-form input:focus,.contact-form textarea:focus{border-color:rgba(245,241,234,.32);background:rgba(245,241,234,.08);box-shadow:0 0 0 3px rgba(245,241,234,.06)}
+.contact-form textarea{resize:vertical;min-height:132px}
+.contact-form button{justify-self:start;background:var(--color-ground);color:var(--color-ink);border:1px solid var(--color-ground);padding:16px 30px;font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;cursor:pointer;border-radius:2px;transition:all .35s var(--ease);margin-top:10px;position:relative;overflow:hidden}
+.contact-form button::before{content:'';position:absolute;inset:0;background:var(--color-accent);transform:scaleX(0);transform-origin:left;transition:transform .5s var(--ease);z-index:0}
+.contact-form button span{position:relative;z-index:1}
+.contact-form button:hover{color:var(--color-ground);border-color:var(--color-accent)}
+.contact-form button:hover::before{transform:scaleX(1)}
+
+.site-footer{background:var(--color-ink);border-top:1px solid rgba(245,241,234,.08);padding:32px 0 36px;position:relative}
+.footer-inner{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;font-size:11px;line-height:1.6;letter-spacing:.06em;color:rgba(245,241,234,.38)}
+.footer-left strong{color:rgba(245,241,234,.62);font-weight:600;letter-spacing:.08em}
+.footer-right{font-style:italic;font-family:var(--font-display);font-size:12px}
+
+@media (max-width:1024px){.km-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.founder-grid{grid-template-columns:380px 1fr}}
+@media (max-width:860px){
+  .hero__grid,.hero__body,.founder-grid,.contact-grid{grid-template-columns:1fr}
+  .hero__watermark{font-size:26vw;top:12%}
+  .nav__links{display:none}
+  .km-grid{grid-template-columns:1fr}
+  .founder-image{max-width:420px}
+  .founder-meta{left:12px;bottom:-18px}
+  .hero__thesis{padding-left:0;margin-top:8px}
+  .hero__thesis::before{display:none}
+}
 </style>
 </head>
 <body>
- 
+<div class="grain"></div>
+<div class="progress" id="progress"></div>
 <header class="nav">
   <div class="wrap nav__row">
     <span class="nav__mark">KINGLIS</span>
@@ -586,10 +224,9 @@
     </ul>
   </div>
 </header>
- 
 <main>
-  <!-- HERO -->
   <section class="hero">
+    <div class="hero__watermark">KINGLIS</div>
     <div class="wrap">
       <div class="hero__grid">
         <div>
@@ -604,142 +241,153 @@
       <hr class="hero__rule">
       <div class="hero__body">
         <div>
-          <p class="hero__body-text">That is the problem KINGLIS exists to address. Most organizational problems are not solved by more advice — they are solved by better understanding.</p>
-          <p class="hero__body-text">Not understanding of the market. Not understanding of the competition. Understanding of the organization itself: what it actually is, what it is actually capable of, and what it has actually become.</p>
-          <p class="hero__body-text">This is harder to establish than it sounds. The same understanding that governs an organization's decisions also governs how it perceives itself. When that understanding becomes inaccurate, the organization cannot see the inaccuracy from within.</p>
+          <p class="hero__body-text reveal">That is the problem KINGLIS exists to address. Most organizational problems are not solved by more advice — they are solved by better understanding.</p>
+          <p class="hero__body-text reveal delay-1">Not understanding of the market. Not understanding of the competition. Understanding of the organization itself: what it actually is, what it is actually capable of, and what it has actually become.</p>
+          <p class="hero__body-text reveal delay-2">This is harder to establish than it sounds. The same understanding that governs an organization's decisions also governs how it perceives itself. When that understanding becomes inaccurate, the organization cannot see the inaccuracy from within.</p>
         </div>
-        <p class="hero__thesis">KINGLIS provides what organizations cannot provide for themselves — an independent, evidence-based account of organizational reality, and the intelligence to act on it.</p>
+        <p class="hero__thesis reveal delay-1">KINGLIS provides what organizations cannot provide for themselves — an independent, evidence-based account of organizational reality, and the intelligence to act on it.</p>
       </div>
       <div class="hero__actions">
-        <a href="#model" class="btn btn--primary">Explore Our Capabilities →</a>
+        <a href="#model" class="btn btn--primary" id="magnetic">Explore Our Capabilities →</a>
         <a href="#contact" class="btn btn--ghost">Submit Confidentially</a>
       </div>
       <p class="hero__foot">Evidence · Intelligence · Advisory</p>
     </div>
   </section>
 
-  <!-- MODEL -->
   <section id="model">
     <div class="container">
-      <div style="margin-bottom:2rem;">
+      <div style="margin-bottom:2rem;" class="reveal">
         <div class="model-kicker">The Kinglis Model</div>
         <h2 class="model-title">Choose your starting point.</h2>
         <p class="model-sub">We do not begin with a preferred solution. Six independent starting points, each can be commissioned alone. No preferred funnel.</p>
       </div>
-
       <div class="km-grid">
-         <div class="km-card">
+         <div class="km-card reveal">
+          <div class="km-index">01</div>
           <span class="km-label large">Business<br>X-Ray</span>
           <span class="km-lensline">Establish what actually happened.</span>
           <p class="km-oneliner">When the business has become difficult to understand.</p>
           <div class="km-spacer"></div>
-          <a class="km-btn" href="/intelligence/Business_xray/">
-            <span></span>
-            <span>→</span>
-          </a>
+          <a class="km-btn" href="/intelligence/Business_xray/"><span></span><span>→</span></a>
         </div>
-
-        <div class="km-card">
+        <div class="km-card reveal delay-1">
+          <div class="km-index">02</div>
           <span class="km-label large">Intelligence<br>Advisory</span>
           <span class="km-lensline">Understand what it actually means.</span>
           <p class="km-oneliner">When ongoing strategic decisions require an independent thinking partner.</p>
           <div class="km-spacer"></div>
-          <a class="km-btn" href="/advisory/intelligence-advisory/">
-            <span></span>
-            <span>→</span>
-          </a>
+          <a class="km-btn" href="/advisory/intelligence-advisory/"><span></span><span>→</span></a>
         </div>
-
-        <div class="km-card">
+        <div class="km-card reveal delay-2">
+          <div class="km-index">03</div>
           <span class="km-label large">Founder<br>Intellectual Ledger</span>
           <span class="km-lensline">Design what comes next.</span>
           <p class="km-oneliner">When critical knowledge exists in one person's head.</p>
           <div class="km-spacer"></div>
-          <a class="km-btn" href="/intelligence/founder-intellectual-identity/">
-            <span></span>
-            <span>→</span>
-          </a>
+          <a class="km-btn" href="/intelligence/founder-intellectual-identity/"><span></span><span>→</span></a>
         </div>
-
-        <div class="km-card">
+        <div class="km-card reveal">
+          <div class="km-index">04</div>
           <span class="km-label large">Evidence<br>Reconstruction</span>
           <span class="km-lensline">Establish what actually happened.</span>
           <p class="km-oneliner">When the factual record is unclear, contested, or incomplete.</p>
           <div class="km-spacer"></div>
-          <a class="km-btn" href="/evidence/evidence-reconstruction/">
-            <span></span>
-            <span>→</span>
-          </a>
+          <a class="km-btn" href="/evidence/evidence-reconstruction/"><span></span><span>→</span></a>
         </div>
-
-        <div class="km-card">
+        <div class="km-card reveal delay-1">
+          <div class="km-index">05</div>
           <span class="km-label large">Post Acquisition<br>Enquiry</span>
           <span class="km-lensline">Understand what it actually means.</span>
           <p class="km-oneliner">When you need to know what you actually acquired.</p>
           <div class="km-spacer"></div>
-          <a class="km-btn" href="/evidence/post-acquisition/">
-            <span></span>
-            <span>→</span>
-          </a>
+          <a class="km-btn" href="/evidence/post-acquisition/"><span></span><span>→</span></a>
         </div>
-
-        <div class="km-card">
+        <div class="km-card reveal delay-2">
+          <div class="km-index">06</div>
           <span class="km-label large">Governance<br>Intelligence</span>
           <span class="km-lensline">Design what comes next.</span>
           <p class="km-oneliner">Governance structures and decision integrity when oversight is needed.</p>
           <div class="km-spacer"></div>
-          <a class="km-btn" href="/intelligence/Governance_Intelligence/">
-            <span></span>
-            <span>→</span>
-          </a>
+          <a class="km-btn" href="/intelligence/Governance_Intelligence/"><span></span><span>→</span></a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- FOUNDER -->
   <section id="founder">
     <div class="container founder-grid">
-      <div class="founder-image"><img src="/assets/kj.png" alt="Kaylee-Jane Inglis"></div>
+      <div class="founder-image reveal">
+        <img src="/assets/kj.png" alt="Kaylee-Jane Inglis">
+        <div class="founder-meta"><small>Founder</small><span>All enquiries handled personally</span></div>
+      </div>
       <div>
-        <span class="kicker">FOUNDER</span>
-        <h2 class="serif-display">KAYLEE-JANE INGLIS</h2>
-        <p class="founder-lead">Kaylee-Jane works confidentially with founders, executives, and organizations where the picture is unclear, the stakes are high, and important decisions depend on establishing a defensible understanding of what is actually happening.
-She founded KINGLIS on a single conviction: that most organizational problems are not solved by more advice. They are solved by better understanding.
-</p>
-        <p class="founder-body">Her practice sits at the intersection of organizational architecture, governance, and evidence-led inquiry. She has developed an uncommon capacity to recognize patterns across fragmented evidence, reason through complexity that resists conventional analysis, and translate what is difficult to see into intelligence that is impossible to ignore.</p>
-        <p class="founder-body">All enquiries are handled personally.</p>
+        <span class="kicker reveal">FOUNDER</span>
+        <h2 class="serif-display reveal">KAYLEE-JANE INGLIS</h2>
+        <p class="founder-lead reveal">Kaylee-Jane works confidentially with founders, executives, and organizations where the picture is unclear, the stakes are high, and important decisions depend on establishing a defensible understanding of what is actually happening.
+She founded KINGLIS on a single conviction: that most organizational problems are not solved by more advice. They are solved by better understanding.</p>
+        <p class="founder-body reveal delay-1">Her practice sits at the intersection of organizational architecture, governance, and evidence-led inquiry. She has developed an uncommon capacity to recognize patterns across fragmented evidence, reason through complexity that resists conventional analysis, and translate what is difficult to see into intelligence that is impossible to ignore.</p>
+        <p class="founder-body reveal delay-1">All enquiries are handled personally.</p>
       </div>
     </div>
   </section>
 
-  <!-- CONTACT -->
   <section id="contact">
     <div class="container contact-grid">
-      <div>
+      <div class="reveal">
         <span class="kicker light">Confidential Intake</span>
         <h3 class="serif-display light">A private<br>starting point.</h3>
         <p class="contact-sub">I read every message myself. One paragraph is enough — you don't need to have it all figured out to begin.</p>
         <div class="confidential-note">Confidentiality: All enquiries are held in strict confidence. No attribution, no disclosure, and nothing shared beyond this intake without your explicit written consent.</div>
       </div>
-      <form class="contact-form" action="https://formspree.io/f/xpqvbadz" method="POST">
+      <form class="contact-form reveal delay-1" action="https://formspree.io/f/xpqvbadz" method="POST">
         <label>Name<input type="text" name="name" required></label>
         <label>Company<input type="text" name="company"></label>
         <label>Email<input type="email" name="email" required></label>
         <label>What are you seeing?<textarea name="message" rows="4" placeholder="A brief outline is enough..." required></textarea></label>
         <input type="hidden" name="_next" value="https://thisiskinglis.com/thank-you.html">
-        <button type="submit">Begin privately →</button>
+        <button type="submit"><span>Begin privately →</span></button>
       </form>
     </div>
   </section>
 </main>
-
 <footer class="site-footer">
   <div class="container footer-inner">
     <div class="footer-left"><strong>© 2025 KINGLIS</strong> — All rights reserved. Confidential. No part of this site may be reproduced without written consent.</div>
     <div class="footer-right">Understanding precedes change.</div>
   </div>
 </footer>
+<script>
+const progress = document.getElementById('progress');
+window.addEventListener('scroll', () => {
+  const h = document.documentElement;
+  const scrolled = (h.scrollTop / (h.scrollHeight - h.clientHeight)) * 100;
+  progress.style.width = scrolled + '%';
+}, {passive:true});
 
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('is-visible'); });
+}, {threshold:0.15});
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+document.querySelectorAll('.km-card').forEach(card => {
+  card.addEventListener('mousemove', e => {
+    const rect = card.getBoundingClientRect();
+    card.style.setProperty('--mx', ((e.clientX - rect.left) / rect.width * 100) + '%');
+    card.style.setProperty('--my', ((e.clientY - rect.top) / rect.height * 100) + '%');
+  });
+});
+
+const mag = document.getElementById('magnetic');
+if(mag){
+  mag.addEventListener('mousemove', (e) => {
+    const r = mag.getBoundingClientRect();
+    const x = e.clientX - (r.left + r.width/2);
+    const y = e.clientY - (r.top + r.height/2);
+    mag.style.transform = `translate(${x*0.12}px, ${y*0.18}px)`;
+  });
+  mag.addEventListener('mouseleave', () => { mag.style.transform = 'translate(0,0)'; });
+}
+</script>
 </body>
 </html>
