@@ -16,12 +16,6 @@
   <script>tailwind.config={theme:{extend:{fontFamily:{serif:['Playfair Display','serif'],sans:['Inter','sans-serif']},colors:{paper:'#FCFBF8',ink:'#111',muted:'#4A4A4A',line:'#E8E2D9',fog:'#8A857D'}}}}</script>
 </head>
 <body class="min-h-screen bg-[#FCFBF8] text-[#111]">
-  <script>
-    // FIXED: absolute path, new filename
-    const HERO_IMAGE_PATH = "/assets/intro-banner.png";
-    const OG_IMAGE_PATH = "https://thisiskinglis.com/pvt-intro.png";
-  </script>
-
   <header class="border-b border-[#E8E2D9] bg-white/60 sticky top-0 z-20">
     <div class="mx-auto max-w-[1200px] px-6 h-[68px] flex items-center justify-between">
       <span class="font-serif text-[17px] tracking-[0.18em]">KINGLIS</span>
@@ -30,8 +24,8 @@
   </header>
 
   <div class="bg-white border-b border-[#E8E2D9]">
-    <div class="mx-auto max-w-[1200px] py-[80px] px-6 flex justify-center">
-     <img src="/assets/intro-banner.png" alt="KINGLIS" class="w-full max-w-[720px] h-auto max-h-[280px] object-contain mx-auto"
+    <div class="mx-auto max-w-[1200px] py-10 px-6 flex justify-center">
+      <img src="/assets/intro-banner.png" alt="KINGLIS" class="w-full max-w-[720px] h-auto max-h-[280px] object-contain mx-auto" />
     </div>
   </div>
 
@@ -47,6 +41,5 @@
       <p class="mt-4 text-[12px] text-[#8A857D]">Private Reference: PVT-261311</p>
     </div>
   </main>
-
 </body>
 </html>
