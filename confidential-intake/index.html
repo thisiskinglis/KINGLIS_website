@@ -54,7 +54,7 @@
           </div>
           <div>
             <label class="block uppercase text-muted mb-2" style="font-size:12px;letter-spacing:0.08em">Telephone Number *</label>
-            <input required name="phone" type="tel" class="w-full bg-white border border-beige px-4 py-3.5 text-sm" placeholder="+27..." />
+            <input required name="phone" type="tel" class="w-full bg-white border border-beige px-4 py-3.5 text-sm" placeholder="(+)..." />
           </div>
           <div class="md:col-span-2">
             <label class="block uppercase text-muted mb-2" style="font-size:12px;letter-spacing:0.08em">Website <span class="normal-case tracking-normal text-fog">(Optional)</span></label>
@@ -64,29 +64,36 @@
       </section>
 
       <section>
-        <div class="flex items-baseline gap-4 mb-8">
-          <span class="uppercase text-fog" style="font-size:11px;letter-spacing:0.16em">Section 02</span>
-          <h2 class="font-serif" style="font-size:22px">Professional Introduction</h2>
-        </div>
-        <div class="space-y-6">
-          <div>
-            <label class="block uppercase text-muted mb-2" style="font-size:12px;letter-spacing:0.08em">Introduced By</label>
-            <input name="introducedBy" type="text" class="w-full bg-white border border-beige px-4 py-3.5 text-sm" placeholder="Full name of referrer" />
-          </div>
-          <div>
-            <label class="block uppercase text-muted mb-2" style="font-size:12px;letter-spacing:0.08em">Private Reference <span class="normal-case text-fog">(auto populated from URL)</span></label>
-            <input id="privateRef" name="privateRef" type="text" readonly class="w-full bg-cream border border-beige px-4 py-3.5 text-sm text-muted" placeholder="e.g. PVT-261311" />
-          </div>
-          <div>
-            <label class="block uppercase text-muted mb-2" style="font-size:12px;letter-spacing:0.08em">How do you know the person who introduced you?</label>
-            <textarea name="relationship" rows="3" class="w-full bg-white border border-beige px-4 py-3.5 text-sm resize-none" placeholder="Brief context..."></textarea>
-          </div>
-        </div>
-      </section>
+  <div class="flex items-baseline gap-4 mb-8">
+    <span class="uppercase text-fog" style="font-size:11px;letter-spacing:0.16em">Section 02</span>
+    <h2 class="font-serif" style="font-size:22px">How did you find KINGLIS?</h2>
+  </div>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div>
+      <label class="block uppercase text-muted mb-2" style="font-size:12px;letter-spacing:0.08em">Source</label>
+      <select id="sourceSelect" name="source" class="w-full bg-white border border-beige px-4 py-3.5 text-sm">
+        <option value="" disabled selected>Select one</option>
+        <option value="Referred by someone">Referred by someone</option>
+        <option value="LinkedIn">LinkedIn</option>
+        <option value="Search">Search / Google</option>
+        <option value="Word of mouth">Word of mouth</option>
+        <option value="Other">Other</option>
+      </select>
+    </div>
+    <div id="referrerWrap" class="hidden">
+      <label class="block uppercase text-muted mb-2" style="font-size:12px;letter-spacing:0.08em">Introduced By <span class="normal-case text-fog">(if referred)</span></label>
+      <input name="introducedBy" type="text" class="w-full bg-white border border-beige px-4 py-3.5 text-sm" placeholder="Full name of referrer" />
+    </div>
+    <div id="refCodeWrap" class="md:col-span-2 hidden">
+      <label class="block uppercase text-muted mb-2" style="font-size:12px;letter-spacing:0.08em">Private Reference <span class="normal-case text-fog">(auto populated from URL)</span></label>
+      <input id="privateRef" name="privateRef" type="text" readonly class="w-full bg-cream border border-beige px-4 py-3.5 text-sm text-muted" placeholder="e.g. PVT-261311" />
+    </div>
+  </div>
+</section>
 
       <section>
         <div class="flex items-baseline gap-4 mb-8">
-          <span class="uppercase text-fog" style="font-size:11px;letter-spacing:0.16em">Section 04</span>
+          <span class="uppercase text-fog" style="font-size:11px;letter-spacing:0.16em">Section 03</span>
           <h2 class="font-serif" style="font-size:22px">Understanding</h2>
         </div>
         <p class="italic text-fog mb-8" style="font-size:13px">This is the important part.</p>
@@ -129,9 +136,43 @@
   </main>
 
   <script>
-    (function(){const p=new URLSearchParams(location.search);const r=p.get('ref')||'';if(r)document.getElementById('privateRef').value=r.toUpperCase();})();
-    document.querySelector('input[type="file"]').addEventListener('change',function(){const l=document.getElementById('fileList');l.innerHTML='';Array.from(this.files).forEach(f=>{const d=document.createElement('div');d.textContent='• '+f.name;l.appendChild(d);});});
-    document.getElementById('intakeForm').addEventListener('submit',async function(e){e.preventDefault();const b=e.target.querySelector('button');b.textContent='Sending...';b.disabled=true;const d=new FormData(e.target);try{const r=await fetch(e.target.action,{method:'POST',body:d,headers:{'Accept':'application/json'}});if(r.ok){e.target.classList.add('hidden');document.getElementById('successState').classList.remove('hidden');window.scrollTo({top:0,behavior:'smooth'});}else{alert('Error - check Formspree dashboard');b.textContent='Submit Confidential Intake™';b.disabled=false;}}catch{alert('Network error');b.textContent='Submit Confidential Intake™';b.disabled=false;}});
-  </script>
+  (function(){
+    const p = new URLSearchParams(location.search);
+    const r = p.get('ref') || p.get('reference') || '';
+    const refEl = document.getElementById('privateRef');
+    const srcEl = document.getElementById('sourceSelect');
+    const wrap1 = document.getElementById('referrerWrap');
+    const wrap2 = document.getElementById('refCodeWrap');
+    
+    if(r && refEl){
+      refEl.value = r.toUpperCase();
+      if(srcEl){ srcEl.value = 'Referred by someone'; }
+      if(wrap1) wrap1.classList.remove('hidden');
+      if(wrap2) wrap2.classList.remove('hidden');
+    }
+  })();
+
+  document.querySelector('input[type="file"]')?.addEventListener('change',function(){
+    const l=document.getElementById('fileList'); if(!l) return;
+    l.innerHTML=''; Array.from(this.files).forEach(f=>{const d=document.createElement('div');d.textContent='• '+f.name; l.appendChild(d);});
+  });
+
+  document.getElementById('intakeForm')?.addEventListener('submit',async function(e){
+    e.preventDefault();
+    const b=e.target.querySelector('button'); b.textContent='Sending...'; b.disabled=true;
+    const d=new FormData(e.target);
+    try{
+      const r=await fetch(e.target.action,{method:'POST',body:d,headers:{'Accept':'application/json'}});
+      if(r.ok){ e.target.classList.add('hidden'); document.getElementById('successState').classList.remove('hidden'); window.scrollTo({top:0,behavior:'smooth'}); }
+      else{ alert('Error - check Formspree'); b.textContent='Submit Confidential Intake™'; b.disabled=false; }
+    }catch{ alert('Network error'); b.textContent='Submit Confidential Intake™'; b.disabled=false; }
+  });
+
+  document.getElementById('sourceSelect')?.addEventListener('change', function(){
+    const isRef = this.value === 'Referred by someone';
+    document.getElementById('referrerWrap')?.classList.toggle('hidden', !isRef);
+    document.getElementById('refCodeWrap')?.classList.toggle('hidden', !isRef);
+  });
+</script>
 </body>
 </html>
