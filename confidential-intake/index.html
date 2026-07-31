@@ -169,6 +169,8 @@ document.getElementById('intakeForm')?.addEventListener('submit',async function(
     site.value = 'https://' + site.value.trim();
   }
   btn.textContent='Sending...'; btn.disabled=true;
+  // Ensure no file field is sent to Formspree free
+form.querySelector('input[type="file"]')?.removeAttribute('name');
   const data=new FormData(form);
   try{
     const r=await fetch(form.action,{method:'POST',body:data,headers:{'Accept':'application/json'}});
