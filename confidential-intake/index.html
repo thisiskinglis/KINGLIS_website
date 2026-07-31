@@ -123,61 +123,82 @@
       </section>
 
       <section class="pt-8 border-t border-line">
-        <div class="flex items-start gap-3">
-          <input required type="checkbox" id="authCheck" name="authorized" class="mt-1 w-4 h-4 accent-black">
-          <label for="authCheck" class="leading-6 text-muted" style="font-size:13px">I confirm I am authorized to share this information and agree to handling per <a href="/privacy-policy/" class="underline underline-offset-4">Privacy Policy</a> and <a href="/terms-of-service/" class="underline underline-offset-4">Terms of Service</a>.</label>
-        </div>
-        <button type="submit" class="mt-10 w-full md:w-auto bg-ink text-white uppercase px-10 py-4 hover:bg-black transition" style="font-size:12px;letter-spacing:0.16em">Submit Confidential Intake™</button>
-        <p class="mt-4 text-fog" style="font-size:11px">Secure & Confidential · Required for all engagements</p>
-      </section>
-    </form>
+  <div class="flex items-start gap-3">
+    <input required type="checkbox" id="authCheck" name="authorized" class="mt-1 w-4 h-4 accent-black">
+    <label for="authCheck" class="leading-6 text-muted" style="font-size:13px">I confirm I am authorized to share this information and agree to handling per <a href="/privacy-policy/" class="underline underline-offset-4">Privacy Policy</a> and <a href="/terms-of-service/" class="underline underline-offset-4">Terms of Service</a>.</label>
+  </div>
+  <button type="submit" class="mt-10 w-full md:w-auto bg-ink text-white uppercase px-10 py-4 hover:bg-black transition" style="font-size:12px;letter-spacing:0.16em">Submit Confidential Intake™</button>
+  <p class="mt-4 text-fog" style="font-size:11px">Secure & Confidential · Required for all engagements</p>
+</section>
+</form>
 
-    <div id="successState" class="hidden py-16">
-      <div class="border border-line bg-white p-10 md:p-14">
-        <h2 class="font-serif font-medium leading-tight" style="font-size:38px">Confidential Intake Received</h2>
-        <p class="mt-6 leading-7 text-muted" style="font-size:15px">Your intake has been received and will undergo initial structural review.</p>
-      </div>
-    </div>
-  </main>
+<div id="successState" class="hidden py-16">
+  <div class="border border-line bg-white p-10 md:p-14">
+    <h2 class="font-serif font-medium leading-tight" style="font-size:38px">Confidential Intake Received</h2>
+    <p class="mt-6 leading-7 text-muted" style="font-size:15px">Your intake has been received and will undergo initial structural review.</p>
+  </div>
+</div>
+</main>
 
-  <script>
-  (function(){
-    const p = new URLSearchParams(location.search);
-    const r = p.get('ref') || p.get('reference') || '';
-    const refEl = document.getElementById('privateRef');
-    const srcEl = document.getElementById('sourceSelect');
-    const wrap1 = document.getElementById('referrerWrap');
-    const wrap2 = document.getElementById('refCodeWrap');
-    
-    if(r && refEl){
-      refEl.value = r.toUpperCase();
-      if(srcEl){ srcEl.value = 'Referred by someone'; }
-      if(wrap1) wrap1.classList.remove('hidden');
-      if(wrap2) wrap2.classList.remove('hidden');
+<script>
+(function(){
+  const p = new URLSearchParams(location.search);
+  const r = p.get('ref') || p.get('reference') || '';
+  const refEl = document.getElementById('privateRef');
+  const srcEl = document.getElementById('sourceSelect');
+  const wrap1 = document.getElementById('referrerWrap');
+  const wrap2 = document.getElementById('refCodeWrap');
+  if(r && refEl){
+    refEl.value = r.toUpperCase();
+    if(srcEl) srcEl.value = 'Referred by someone';
+    if(wrap1) wrap1.classList.remove('hidden');
+    if(wrap2) wrap2.classList.remove('hidden');
+  }
+})();
+
+document.querySelector('input[type="file"]')?.addEventListener('change',function(){
+  const l=document.getElementById('fileList'); if(!l) return;
+  l.innerHTML=''; Array.from(this.files).forEach(f=>{const d=document.createElement('div');d.textContent='• '+f.name; l.appendChild(d);});
+});
+
+document.getElementById('sourceSelect')?.addEventListener('change', function(){
+  const isRef = this.value === 'Referred by someone';
+  document.getElementById('referrerWrap')?.classList.toggle('hidden', !isRef);
+  document.getElementById('refCodeWrap')?.classList.toggle('hidden', !isRef);
+});
+
+document.getElementById('intakeForm')?.addEventListener('submit',async function(e){
+  e.preventDefault();
+  const form = e.target;
+  const btn = form.querySelector('button[type="submit"]');
+  
+  // Fix website field - auto add https
+  const site = form.querySelector('input[name="website"]');
+  if(site && site.value.trim() && !/^https?:\/\//i.test(site.value.trim())){
+    site.value = 'https://' + site.value.trim();
+  }
+
+  btn.textContent='Sending...'; btn.disabled=true;
+  const data=new FormData(form);
+  
+  try{
+    const r=await fetch(form.action,{method:'POST',body:data,headers:{'Accept':'application/json'}});
+    const j=await r.json().catch(()=>({}));
+    console.log('Formspree:', j);
+    if(r.ok){ 
+      form.classList.add('hidden'); 
+      document.getElementById('successState').classList.remove('hidden'); 
+      window.scrollTo({top:0,behavior:'smooth'}); 
+    } else { 
+      alert('Formspree error: ' + (j.error || 'Check Formspree dashboard - verify email + enable file uploads')); 
+      btn.textContent='Submit Confidential Intake™'; btn.disabled=false; 
     }
-  })();
-
-  document.querySelector('input[type="file"]')?.addEventListener('change',function(){
-    const l=document.getElementById('fileList'); if(!l) return;
-    l.innerHTML=''; Array.from(this.files).forEach(f=>{const d=document.createElement('div');d.textContent='• '+f.name; l.appendChild(d);});
-  });
-
-  document.getElementById('intakeForm')?.addEventListener('submit',async function(e){
-    e.preventDefault();
-    const b=e.target.querySelector('button'); b.textContent='Sending...'; b.disabled=true;
-    const d=new FormData(e.target);
-    try{
-      const r=await fetch(e.target.action,{method:'POST',body:d,headers:{'Accept':'application/json'}});
-      if(r.ok){ e.target.classList.add('hidden'); document.getElementById('successState').classList.remove('hidden'); window.scrollTo({top:0,behavior:'smooth'}); }
-      else{ alert('Error - check Formspree'); b.textContent='Submit Confidential Intake™'; b.disabled=false; }
-    }catch{ alert('Network error'); b.textContent='Submit Confidential Intake™'; b.disabled=false; }
-  });
-
-  document.getElementById('sourceSelect')?.addEventListener('change', function(){
-    const isRef = this.value === 'Referred by someone';
-    document.getElementById('referrerWrap')?.classList.toggle('hidden', !isRef);
-    document.getElementById('refCodeWrap')?.classList.toggle('hidden', !isRef);
-  });
+  }catch(err){ 
+    console.error(err);
+    alert('Network error: ' + err.message); 
+    btn.textContent='Submit Confidential Intake™'; btn.disabled=false; 
+  }
+});
 </script>
 </body>
 </html>
