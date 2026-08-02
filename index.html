@@ -355,6 +355,52 @@ img{max-width:100%;display:block}
         <p class="founder-body reveal">Originally educated in psychodynamics, she founded KINGLIS on a single conviction: that most organizational problems are not solved by more advice. They are solved by better understanding.</p>
         <p class="founder-body reveal delay-1">Her practice now sits at the intersection of organizational architecture, governance, and evidence-led inquiry — recognizing patterns across fragmented evidence, reasoning through complexity that resists conventional analysis, and translating what is difficult to see into intelligence that is impossible to ignore.</p>
         <p class="founder-personal reveal delay-1">All enquiries are handled personally.</p>
+        <div class="founder-audio reveal delay-2">
+  <button class="founder-audio__btn" aria-label="Play founder introduction">
+    <span class="founder-audio__icon">▶</span>
+  </button>
+  <div class="founder-audio__meta">
+    <span class="founder-audio__label">Listen — Kaylee-Jane on KINGLIS, 38 seconds</span>
+    <span class="founder-audio__line"></span>
+  </div>
+  <audio id="founderAudio" src="/audio/kaylee-jane-intro.mp3" preload="none"></audio>
+</div>
+
+<style>
+.founder-audio{
+  display:flex; align-items:center; gap:16px; 
+  margin-top: 32px; padding-top: 24px;
+  border-top: 1px solid rgba(30,27,24,.08);
+}
+.founder-audio__btn{
+  width:36px; height:36px; border-radius:50%;
+  border:1px solid rgba(30,27,24,.18);
+  background:transparent; cursor:pointer;
+  display:grid; place-items:center;
+  transition: all .3s ease;
+}
+.founder-audio__btn:hover{
+  background: var(--color-ink); color:#fff; border-color: var(--color-ink);
+}
+.founder-audio__icon{ font-size:10px; margin-left:2px; }
+.founder-audio__label{
+  font-size:11px; letter-spacing:.12em; text-transform:uppercase;
+  opacity:.6;
+}
+.founder-audio__line{
+  display:block; width:40px; height:1px; 
+  background: rgba(30,27,24,.15); margin-top:6px;
+}
+</style>
+
+<script>
+const btn = document.querySelector('.founder-audio__btn');
+const audio = document.getElementById('founderAudio');
+btn.addEventListener('click', () => {
+  if(audio.paused){ audio.play(); btn.innerHTML='❚❚'; } 
+  else { audio.pause(); btn.innerHTML='<span class="founder-audio__icon">▶</span>'; }
+});
+</script>
       </div>
     </div>
   </section>
