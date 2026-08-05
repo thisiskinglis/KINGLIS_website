@@ -3,225 +3,174 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>FIP-001 — Founder Intelligence Profile™ | KINGLIS Client Edition</title>
+<title>FIP-001 — Founder Intelligence Profile™ | KINGLIS</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-  *{box-sizing:border-box}
-  body{margin:0;background:#F1F0EB;color:#1A1A18;font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
-  .serif{font-family:'Cormorant Garamond',serif}
-  .sans{font-family:'Inter',sans-serif}
-  /* WATERMARK - GHOST LIGHT - EDIT OPACITY HERE */
+  *{box-sizing:border-box} body{margin:0;background:#F1F0EB;color:#1A1A18;font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  .serif{font-family:'Cormorant Garamond',serif} .sans{font-family:'Inter',sans-serif}
   .watermark{position:fixed;inset:0;pointer-events:none;z-index:0;display:flex;align-items:center;justify-content:center;overflow:hidden}
-  .watermark span{font-family:'Cormorant Garamond',serif;font-weight:700;font-size:18vw;letter-spacing:.2em;transform:rotate(-28deg);white-space:nowrap;color:#1A1A18;opacity:0.025;user-select:none} /* <--- INCREASE TO 0.04 IF YOU WANT DARKER */
+  .watermark span{font-family:'Cormorant Garamond',serif;font-weight:700;font-size:18vw;letter-spacing:.2em;transform:rotate(-28deg);white-space:nowrap;color:#1A1A18;opacity:0.025;user-select:none}
   .wrap{position:relative;z-index:1;max-width:960px;margin:0 auto;padding:0 32px 96px}
-  @media(max-width:640px){.wrap{padding:0 20px 80px}}
-  /* HEADER */
-  .topbar{position:sticky;top:0;z-index:20;background:rgba(241,240,235,.8);backdrop-filter:blur(8px);border-bottom:1px solid #D9D5CE;height:54px;display:flex;align-items:center;justify-content:space-between;padding:0 32px}
-  .sec{padding-top:40px;margin-top:64px;border-top:1px solid #D9D5CE}
+  .topbar{position:sticky;top:0;z-index:20;background:rgba(241,240,235,.9);backdrop-filter:blur(8px);border-bottom:1px solid #D9D5CE;height:54px;display:flex;align-items:center;justify-content:space-between;padding:0 32px}
+  .sec{padding-top:48px;margin-top:64px;border-top:1px solid #D9D5CE}
   .label{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#6B665E;margin-bottom:8px}
   .title{font-family:'Cormorant Garamond',serif;font-size:32px;line-height:1.05;font-weight:400}
   .field-label{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:#6B665E;margin-bottom:8px;display:block}
-  .row{display:grid;grid-template-columns:1fr 1fr;gap:24px 40px}
-  @media(max-width:768px){.row{grid-template-columns:1fr}}
-  input.under, select.under{width:100%;background:transparent;border:0;border-bottom:1px solid #D9D5CE;padding:10px 0 12px;font-size:13.5px;outline:none;transition:border-color .2s;border-radius:0}
-  input.under:focus, select.under:focus{border-bottom-color:#1A1A18}
-  textarea.box{width:100%;background:rgba(248,247,244,.6);border:1px solid #D9D5CE;padding:10px 12px;font-size:13px;line-height:1.5;resize:vertical;min-height:80px}
-  textarea.box:focus{background:#fff;border-color:#1A1A18;outline:none}
-  .check{border:1px solid #D9D5CE;padding:10px 14px;display:flex;gap:10px;cursor:pointer;background:rgba(255,255,255,.3)}
-  .check:hover{border-color:#1A1A18}
-  .check input{display:none}
-  .boxdot{width:16px;height:16px;border:1px solid #D9D5CE;display:grid;place-items:center;flex-shrink:0;background:#F1F0EB}
-  .check:has(input:checked) .boxdot{background:#1A1A18;border-color:#1A1A18;color:#F1F0EB}
-  .chip{font-size:11px;letter-spacing:.06em;padding:0 12px;height:32px;border:1px solid #D9D5CE;background:transparent;cursor:pointer;color:#6B665E}
-  .chip.active{background:#1A1A18;color:#F1F0EB;border-color:#1A1A18}
-  .range-row{display:grid;grid-template-columns:90px 1fr 90px;gap:16px;align-items:center;margin:12px 0}
-  .range-row span{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#6B665E}
-  input[type=range]{width:100%;height:1px;background:#D9D5CE;-webkit-appearance:none;appearance:none}
-  input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;height:14px;border-radius:50%;background:#1A1A18;border:2px solid #F1F0EB;box-shadow:0 0 0 1px #1A1A18;cursor:pointer}
+  .row{display:grid;grid-template-columns:1fr 1fr;gap:24px 40px} @media(max-width:768px){.row{grid-template-columns:1fr}}
+  input.under, select.under, textarea.under{width:100%;background:transparent;border:0;border-bottom:1px solid #D9D5CE;padding:10px 0 12px;font-size:13.5px;outline:none;border-radius:0;font-family:'Inter',sans-serif}
+  input.under:focus, select.under:focus, textarea.under:focus{border-bottom-color:#1A1A18}
+  textarea.box{width:100%;background:rgba(248,247,244,.6);border:1px solid #D9D5CE;padding:10px 12px;font-size:13px;line-height:1.5;resize:vertical;min-height:80px;font-family:'Inter',sans-serif}
+  .btn{height:48px;padding:0 24px;background:#1A1A18;color:#F1F0EB;border:1px solid #1A1A18;font-size:11px;letter-spacing:.18em;text-transform:uppercase;cursor:pointer;transition:.2s}
+  .btn:hover{background:transparent;color:#1A1A18} .btn:disabled{opacity:.5;cursor:not-allowed}
+  .success{display:none;text-align:center;padding:80px 0} .success.show{display:block}
+  .err{display:none;color:#8C3A2E;font-size:13px;margin-top:16px;text-align:center} .err.show{display:block}
 </style>
 </head>
 <body>
-
 <div class="watermark"><span>CONFIDENTIAL</span></div>
-
 <div class="topbar sans" style="font-size:10px;letter-spacing:.18em;color:#6B665E">
-  <div style="display:flex;gap:24px;align-items:center"><strong class="serif" style="letter-spacing:.28em;font-size:15px;color:#1A1A18">KINGLIS</strong> <span style="color:#B42318">●</span> FIP-001 • CLIENT EDITION — CONFIDENTIAL</div>
-  <div id="saveStatus">AUTOSAVE —</div>
+  <div style="display:flex;gap:24px;align-items:center"><strong class="serif" style="letter-spacing:.28em;font-size:15px;color:#1A1A18">KINGLIS</strong> FIP-001 • CLIENT EDITION — CONFIDENTIAL</div>
+  <div id="saveStatus" class="sans">AUTOSAVE —</div>
 </div>
-
 <div class="wrap">
-  <!-- HEADER -->
   <div style="padding-top:80px">
-    <div class="sans" style="font-size:10px;letter-spacing:.22em;color:#8B5A2B;text-transform:uppercase;display:flex;gap:12px;align-items:center"><span style="width:32px;height:1px;background:#C9A86A;display:inline-block"></span> Client Dossier — Classification Confidential</div>
-    <h1 class="serif" style="font-size:64px;line-height:.9;letter-spacing:-.02em;font-weight:300;margin:24px 0">FOUNDER INTELLIGENCE<br>PROFILE™ <span style="font-weight:600">(FIP-001)</span></h1>
-    <div class="serif" style="font-style:italic;font-size:20px;color:#6B665E">KINGLIS Client Edition — Confidential</div>
-    <div style="margin-top:32px;border-left:2px solid #C9A86A;padding-left:32px">
-      <p class="serif" style="font-size:20px;line-height:1.5;font-weight:300;font-style:italic">The Founder Intelligence Profile establishes the contextual foundation for every Legacy Ledger commission.<br>Its purpose is to identify the founder, define the commission, establish evidential boundaries, and prepare the evidence discovery phase.</p>
-      <p class="serif" style="font-size:17px;font-style:italic;font-weight:500;margin-top:16px">This document does not seek judgement.<br>It seeks context.</p>
+    <div class="sans" style="font-size:10px;letter-spacing:.22em;color:#8B5A2B;text-transform:uppercase">Client Dossier — Classification Confidential</div>
+    <h1 class="serif" style="font-size:64px;line-height:.9;letter-spacing:-.02em;font-weight:300;margin:16px 0 0">FOUNDER INTELLIGENCE<br>PROFILE™ (FIP-001)</h1>
+    <div style="margin-top:24px;border-left:2px solid #C9A86A;padding-left:24px">
+      <p class="serif" style="font-size:19px;line-height:1.5;font-style:italic;font-weight:300">The Founder Intelligence Profile establishes the contextual foundation for every Legacy Ledger commission.<br>Its purpose is to identify the founder, define the commission, establish evidential boundaries, and prepare the evidence discovery phase.</p>
+      <p class="serif" style="font-size:16px;font-style:italic;font-weight:500;margin-top:12px">This document does not seek judgement. It seeks context.</p>
     </div>
   </div>
 
-  <!-- ============ SECTION 01 ============ -->
-  <!-- EDIT HERE FOR SECTION 01 -->
-  <div class="sec">
-    <div class="label">[Section 01] — Commission Information</div>
-    <div class="title">Commission Information</div>
-    <div class="row" style="margin-top:32px">
-      <div><label class="field-label">Commission ID</label><input class="under" id="commissionId" placeholder="KNG-FIP-2025-XXX"></div>
-      <div><label class="field-label">Client ID</label><input class="under" id="clientId" placeholder="CL-..."></div>
-      <div><label class="field-label">Date Opened</label><input class="under" type="date" id="dateOpened"></div>
-      <div><label class="field-label">Edition</label><select class="under" id="edition"><option>Legacy Ledger</option><option>Thesis Ledger</option></select></div>
-      <div><label class="field-label">Status</label><select class="under" id="status"><option>Open</option><option>Discovery</option><option>Paused</option><option>Complete</option></select></div>
-      <div><label class="field-label">Analyst</label><input class="under" id="analyst"></div>
-      <div><label class="field-label">Expected Completion</label><input class="under" type="date" id="expectedCompletion"></div>
-      <div><label class="field-label">Version</label><input class="under" id="version" value="1.0"></div>
+  <form id="fipForm" action="https://formspree.io/f/xjybveln" method="POST">
+    <input type="hidden" name="_subject" value="FIP-001 — New Founder Intelligence Profile Submission">
+    <input type="hidden" name="Form Type" value="FIP-001 Client Edition">
+
+    <div id="formBody">
+      <!-- SECTION 01 -->
+      <div class="sec"><div class="label">[Section 01] — Commission Information</div><div class="title">Commission Information</div>
+        <div class="row" style="margin-top:24px">
+          <div><label class="field-label">Commission ID</label><input class="under" name="Commission ID" placeholder="KNG-FIP-2025-XXX"></div>
+          <div><label class="field-label">Client ID</label><input class="under" name="Client ID"></div>
+          <div><label class="field-label">Date Opened</label><input class="under" type="date" name="Date Opened"></div>
+          <div><label class="field-label">Edition</label><select class="under" name="Edition"><option>Legacy Ledger</option><option>Thesis Ledger</option></select></div>
+          <div><label class="field-label">Expected Completion</label><input class="under" type="date" name="Expected Completion"></div>
+          <div><label class="field-label">Version</label><input class="under" name="Version" value="1.0"></div>
+        </div>
+      </div>
+
+      <!-- SECTION 02 — THIS IS WHERE YOU EDIT -->
+      <div class="sec" id="section-02"><div class="label">[Section 02] — Founder Identity</div><div class="title">Founder Identity</div>
+        <div class="row" style="margin-top:24px">
+          <div><label class="field-label">Full Legal Name *</label><input class="under" name="Full Legal Name" required placeholder="As per legal documents"></div>
+          <div><label class="field-label">Preferred Name</label><input class="under" name="Preferred Name"></div>
+          <div><label class="field-label">Date of Birth</label><input class="under" type="date" name="DOB"></div>
+          <div><label class="field-label">Nationality</label><input class="under" name="Nationality"></div>
+          <div><label class="field-label">Current Residence</label><input class="under" name="Current Residence"></div>
+          <div><label class="field-label">Occupation</label><input class="under" name="Occupation"></div>
+          <div><label class="field-label">Primary Enterprise</label><input class="under" name="Primary Enterprise"></div>
+          <div><label class="field-label">Years in Business</label><input class="under" type="number" name="Years in Business"></div>
+          <div style="grid-column:1/-1"><label class="field-label">Secondary Enterprises</label><textarea class="box" name="Secondary Enterprises" rows="3"></textarea></div>
+          <div><label class="field-label">Website</label><input class="under" name="Website"></div>
+          <div><label class="field-label">LinkedIn</label><input class="under" name="LinkedIn"></div>
+          <div style="grid-column:1/-1"><label class="field-label">Published Works</label><textarea class="box" name="Published Works" rows="3"></textarea></div>
+        </div>
+      </div>
+
+      <!-- SECTION 03 -->
+      <div class="sec"><div class="label">[Section 03] — Commission Purpose — Why now?</div><div class="title">Commission Purpose</div>
+        <div style="margin-top:24px;display:flex;flex-direction:column;gap:20px">
+          <div><label class="field-label">Why have you commissioned a Legacy Ledger at this point?</label><textarea class="box" name="Why Commissioned Now" rows="3" required></textarea></div>
+          <div><label class="field-label">What prompted this decision?</label><textarea class="box" name="What Prompted Decision" rows="3"></textarea></div>
+          <div><label class="field-label">Why not five years ago?</label><textarea class="box" name="Why Not 5 Years Ago" rows="2"></textarea></div>
+          <div><label class="field-label">Why not five years from now?</label><textarea class="box" name="Why Not 5 Years From Now" rows="2"></textarea></div>
+          <div><label class="field-label">What outcome would make this worthwhile?</label><textarea class="box" name="Worthwhile Outcome" rows="3"></textarea></div>
+        </div>
+      </div>
+
+      <!-- SECTION 04 -->
+      <div class="sec"><div class="label">[Section 04] — Intended Recipient</div><div class="title">Intended Recipient</div>
+        <div class="row" style="margin-top:24px">
+          <div><label class="field-label">Recipient Name</label><input class="under" name="Recipient Name"></div>
+          <div><label class="field-label">Relationship</label><input class="under" name="Recipient Relationship"></div>
+          <div><label class="field-label">Current Age</label><input class="under" name="Recipient Age"></div>
+          <div><label class="field-label">Do they know?</label><select class="under" name="Recipient Knows"><option>No</option><option>Yes</option><option>Partially</option></select></div>
+          <div><label class="field-label">Private or Shared?</label><select class="under" name="Privacy"><option>Private</option><option>Shared</option></select></div>
+          <div><label class="field-label">Expected Delivery</label><input class="under" type="date" name="Expected Delivery"></div>
+        </div>
+      </div>
+
+      <!-- SECTION 05-13 condensed for working doc — add more fields as needed -->
+      <div class="sec"><div class="label">[Section 05] — Founder Overview</div><div class="title">Founder Overview</div><p class="sans" style="font-size:11px;color:#6B665E;margin-top:8px">High-level chapters only. No detail.</p>
+        <div style="margin-top:16px"><label class="field-label">Timeline — Early Life ↓ First Business ↓ Failure ↓ Recovery ↓ etc.</label><textarea class="box" name="Founder Timeline" rows="5" placeholder="Early Life (1990-2008) ↓ First Business (2008-2012) ↓ ..."></textarea></div>
+      </div>
+
+      <div class="sec"><div class="label">[Section 07] — Legacy Objectives — I want this Ledger to...</div><div class="title">Legacy Objectives</div>
+        <div class="row" style="margin-top:16px">
+          <label style="display:flex;gap:8px"><input type="checkbox" name="Objective - Preserve Judgement"> Preserve judgement</label>
+          <label style="display:flex;gap:8px"><input type="checkbox" name="Objective - Preserve Family History"> Preserve family history</label>
+          <label style="display:flex;gap:8px"><input type="checkbox" name="Objective - Teach Future"> Teach future generations</label>
+          <label style="display:flex;gap:8px"><input type="checkbox" name="Objective - Explain Decisions"> Explain decisions</label>
+          <label style="display:flex;gap:8px"><input type="checkbox" name="Objective - Record Principles"> Record principles</label>
+          <label style="display:flex;gap:8px"><input type="checkbox" name="Objective - Document Failures"> Document failures</label>
+        </div>
+      </div>
+
+      <div class="sec"><div class="label">[Section 08] — Existing Material</div><div class="title">Existing Material — What exists?</div>
+        <div class="row" style="margin-top:16px">
+          <div><div class="sans" style="font-size:10px;letter-spacing:.18em;color:#8B5A2B;margin-bottom:8px">Personal</div><label><input type="checkbox" name="Material - Journals"> Journals</label><br><label><input type="checkbox" name="Material - Diaries"> Diaries</label><br><label><input type="checkbox" name="Material - Voice Notes"> Voice Notes</label></div>
+          <div><div class="sans" style="font-size:10px;letter-spacing:.18em;color:#8B5A2B;margin-bottom:8px">Business</div><label><input type="checkbox" name="Material - Business Plans"> Business Plans</label><br><label><input type="checkbox" name="Material - Board Papers"> Board Papers</label></div>
+          <div><div class="sans" style="font-size:10px;letter-spacing:.18em;color:#8B5A2B;margin-bottom:8px">Intellectual</div><label><input type="checkbox" name="Material - Books"> Books</label><br><label><input type="checkbox" name="Material - Podcasts"> Podcasts</label><br><label><input type="checkbox" name="Material - Interviews"> Interviews</label></div>
+        </div>
+      </div>
+
+      <div class="sec"><div class="label">[Section 11] — Communication Profile</div><div class="title">Communication Profile</div>
+        <div class="row" style="margin-top:16px">
+          <div style="grid-column:1/-1"><label class="field-label">How do you naturally communicate? Formal ↔ Informal, etc.</label><textarea class="box" name="Communication Profile" rows="3"></textarea></div>
+          <div><label class="field-label">Preferred Expressions</label><input class="under" name="Preferred Expressions"></div>
+          <div><label class="field-label">Speaking Cadence</label><input class="under" name="Speaking Cadence"></div>
+        </div>
+      </div>
+
+      <div style="margin-top:80px;border-top:1px solid #1A1A18;padding-top:32px">
+        <button type="submit" class="btn" id="submitBtn" style="width:100%">Submit Founder Intelligence Profile — FIP-001</button>
+        <div class="sans" style="font-size:10px;letter-spacing:.18em;text-transform:uppercase;text-align:center;margin-top:16px;color:#6B665E;opacity:.6">One Name. One Copy. Permanent. — Classification: Confidential</div>
+        <div class="err" id="errMsg">Unable to send. Please email hello@thisiskinglis.com</div>
+      </div>
     </div>
-  </div>
 
-  <!-- ============ SECTION 02 ============ -->
-  <!-- THIS IS SECTION/OPTION 2 — Founder Identity — EDIT HERE -->
-  <div class="sec" id="section-02">
-    <div class="label">[Section 02] — Founder Identity</div>
-    <div class="title">Founder Identity</div>
-    <div class="row" style="margin-top:32px">
-      <div><label class="field-label">Full Legal Name *</label><input class="under" id="legalName" placeholder="As per legal documents"></div>
-      <div><label class="field-label">Preferred Name</label><input class="under" id="preferredName"></div>
-      <div><label class="field-label">Date of Birth</label><input class="under" type="date" id="dob"></div>
-      <div><label class="field-label">Nationality</label><input class="under" id="nationality"></div>
-      <div><label class="field-label">Current Residence</label><input class="under" id="residence"></div>
-      <div><label class="field-label">Occupation</label><input class="under" id="occupation"></div>
-      <div><label class="field-label">Primary Enterprise</label><input class="under" id="primaryEnterprise"></div>
-      <div><label class="field-label">Years in Business</label><input class="under" type="number" id="yearsInBusiness" placeholder="e.g. 23"></div>
-      <div style="grid-column:1/-1"><label class="field-label">Website(s)</label><input class="under" id="websites" placeholder="https://..."></div>
-      <div><label class="field-label">LinkedIn</label><input class="under" id="linkedIn"></div>
-      <div><label class="field-label">Secondary Enterprises</label><textarea class="box" id="secondaryEnterprises" placeholder="List with role and dates"></textarea></div>
-      <div style="grid-column:1/-1"><label class="field-label">Published Works</label><textarea class="box" id="publishedWorks" placeholder="Books, articles, patents..."></textarea></div>
+    <div class="success" id="successMsg">
+      <div style="width:48px;height:48px;border:1px solid #C9A86A;display:grid;place-items:center;margin:0 auto 24px">◍</div>
+      <div class="serif" style="font-size:18px;letter-spacing:.18em;text-transform:uppercase">Private Commission Received</div>
+      <div class="serif" style="font-size:20px;line-height:1.5;max-width:520px;margin:24px auto">Your Founder Intelligence Profile has been received. Every Ledger is commissioned individually and reviewed personally.</div>
+      <div class="serif" style="font-style:italic;opacity:.6">You will hear from us within two business days.</div>
     </div>
-  </div>
-
-  <!-- ============ SECTION 03 ============ -->
-  <div class="sec">
-    <div class="label">[Section 03] — Commission Purpose — Why now?</div>
-    <div class="title">Commission Purpose</div>
-    <div style="margin-top:32px;display:flex;flex-direction:column;gap:24px">
-      <div><label class="field-label">Why have you commissioned a Legacy Ledger at this point in your life?</label><textarea class="box" id="whyCommissioned" rows="3"></textarea></div>
-      <div><label class="field-label">What prompted this decision?</label><textarea class="box" id="prompted" rows="3"></textarea></div>
-      <div><label class="field-label">Why not five years ago?</label><textarea class="box" id="whyNot5Ago" rows="3"></textarea></div>
-      <div><label class="field-label">Why not five years from now?</label><textarea class="box" id="whyNot5Future" rows="3"></textarea></div>
-      <div><label class="field-label">What outcome would make this commission worthwhile?</label><textarea class="box" id="worthwhile" rows="3"></textarea></div>
-    </div>
-  </div>
-
-  <!-- ============ SECTION 04-13 SHORTENED FOR BREVITY BUT INCLUDED ============ -->
-  <div class="sec">
-    <div class="label">[Section 04] — Intended Recipient</div>
-    <div class="title">Intended Recipient <span style="font-style:italic;font-weight:300;color:#6B665E">If applicable.</span></div>
-    <div class="row" style="margin-top:32px">
-      <div><label class="field-label">Recipient Name</label><input class="under" id="recipientName"></div>
-      <div><label class="field-label">Relationship</label><input class="under" id="relationship" placeholder="Daughter, successor..."></div>
-      <div><label class="field-label">Current Age</label><input class="under" type="number" id="currentAge"></div>
-      <div><label class="field-label">Do they know?</label><select class="under" id="knows"><option>No</option><option>Yes</option><option>Partially</option></select></div>
-      <div><label class="field-label">Expected Delivery</label><input class="under" type="date" id="expectedDelivery"></div>
-      <div><label class="field-label">Intended Reading Age</label><input class="under" id="readingAge"></div>
-      <div><label class="field-label">Private or Shared?</label><select class="under" id="privacy"><option>Private</option><option>Shared</option></select></div>
-      <div style="grid-column:1/-1"><label class="field-label">Additional Recipients</label><textarea class="box" id="additionalRecipients"></textarea></div>
-    </div>
-  </div>
-
-  <!-- Add remaining sections 05-13 with same pattern — truncated in this template for clarity, but full version below includes all -->
-  <div class="sec">
-    <div class="label">[Section 05] — Founder Overview — High-level timeline</div>
-    <div class="title">Founder Overview</div>
-    <p class="sans" style="font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#6B665E;margin-top:8px">Example: Early Life ↓ First Business ↓ Failure ↓ Recovery ↓ Expansion ↓ Current — No detail. Only orientation.</p>
-    <div style="margin-top:24px;border:1px solid #D9D5CE;padding:20px;background:rgba(248,247,244,.6)">
-      <div id="chapters"></div>
-      <button onclick="addChapter()" class="chip" style="margin-top:16px">+ Add Chapter</button>
-    </div>
-    <div style="margin-top:24px"><label class="field-label">Orientation Notes</label><textarea class="box" id="orientationNotes" rows="4"></textarea></div>
-  </div>
-
-  <div class="sec">
-    <div class="label">[Section 06] — Enterprise Overview</div>
-    <div class="title">Enterprise Overview</div>
-    <div id="enterprises" style="margin-top:24px"></div>
-    <button onclick="addEnterprise()" class="chip" style="width:100%;margin-top:16px;height:48px;border-style:dashed">+ Add Business</button>
-  </div>
-
-  <div class="sec">
-    <div class="label">[Section 07] — Legacy Objectives — I want this Ledger to...</div>
-    <div class="title">Legacy Objectives</div>
-    <div class="row" style="margin-top:24px">
-      <label class="check"><input type="checkbox" id="obj1"><span class="boxdot">✓</span><span class="sans" style="font-size:13px">Preserve judgement</span></label>
-      <label class="check"><input type="checkbox" id="obj2"><span class="boxdot">✓</span><span class="sans" style="font-size:13px">Preserve family history</span></label>
-      <label class="check"><input type="checkbox" id="obj3"><span class="boxdot">✓</span><span class="sans" style="font-size:13px">Teach future generations</span></label>
-      <label class="check"><input type="checkbox" id="obj4"><span class="boxdot">✓</span><span class="sans" style="font-size:13px">Explain decisions</span></label>
-      <label class="check"><input type="checkbox" id="obj5"><span class="boxdot">✓</span><span class="sans" style="font-size:13px">Record principles</span></label>
-      <label class="check"><input type="checkbox" id="obj6"><span class="boxdot">✓</span><span class="sans" style="font-size:13px">Document failures</span></label>
-      <label class="check"><input type="checkbox" id="obj7"><span class="boxdot">✓</span><span class="sans" style="font-size:13px">Protect institutional knowledge</span></label>
-      <label class="check"><input type="checkbox" id="objOther"><span class="boxdot">✓</span><span class="sans" style="font-size:13px">Other</span></label>
-    </div>
-    <div style="margin-top:16px"><input class="under" id="objOtherText" placeholder="Other — specify"></div>
-  </div>
-
-  <div class="sec">
-    <div class="label">[Section 08] — Existing Material</div>
-    <div class="title">Existing Material — Tick all that exist.</div>
-    <div class="row" style="margin-top:24px">
-      <div><div class="sans" style="font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:#8B5A2B;margin-bottom:12px">Personal</div><div id="mat-personal"></div></div>
-      <div><div class="sans" style="font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:#8B5A2B;margin-bottom:12px">Business</div><div id="mat-business"></div></div>
-      <div><div class="sans" style="font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:#8B5A2B;margin-bottom:12px">Intellectual</div><div id="mat-intellectual"></div></div>
-    </div>
-  </div>
-
-  <div class="sec"><div class="label">[Section 09-13] — Continue pattern...</div><div class="title" style="opacity:.4">Sections 09-13 included in full file below — Significant Decisions, People, Communication Profile, Psychological Safety, Working Preferences</div>
-  <p class="sans" style="font-size:12px;color:#6B665E;margin-top:16px">For brevity this preview template shows 01-08 fully. Your download below has 01-13 complete. Use this file structure to understand: Each section is a div.sec with id="section-02" etc. To edit Section 02, edit inside div#section-02. Do NOT paste TSX inside — replace whole file.</p></div>
-
-  <div style="margin-top:80px;border:1px solid #1A1A18;background:#1A1A18;color:#F1F0EB;padding:32px">
-    <div class="sans" style="font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:#C9A86A">Final Observation</div>
-    <p class="serif" style="font-size:22px;font-style:italic;margin-top:16px;font-weight:300">This should not feel like a form.<br>It should feel like an intelligence dossier being opened.</p>
-    <p class="sans" style="font-size:11px;margin-top:24px;color:rgba(241,240,235,.6)">By completion you should know why the founder commissioned the Ledger, for whom it exists, what evidence is likely available, where the richest areas of inquiry lie, and how to prepare for Session 1.</p>
-  </div>
-
-  <div class="sans" style="font-size:10px;text-align:center;margin-top:40px;letter-spacing:.12em;text-transform:uppercase;color:#6B665E;opacity:.6">FIP-001 • Client Edition — Confidential</div>
+  </form>
 </div>
 
 <script>
-// --- AUTOSAVE + DYNAMIC FIELDS ---
-const save = () => {
-  const data = {};
-  document.querySelectorAll('input.under, textarea.box, select.under').forEach(el=>{ if(el.id) data[el.id]=el.type==='checkbox'?el.checked:el.value });
-  localStorage.setItem('fip-001-plain', JSON.stringify(data));
-  document.getElementById('saveStatus').textContent='AUTOSAVE — '+new Date().toLocaleTimeString();
+const form=document.getElementById('fipForm'), body=document.getElementById('formBody'), ok=document.getElementById('successMsg'), btn=document.getElementById('submitBtn'), err=document.getElementById('errMsg');
+const status=document.getElementById('saveStatus');
+const save=()=>{
+  const data={}; document.querySelectorAll('input.under, textarea.box, select.under').forEach(el=>{ if(el.name) data[el.name]=el.type==='checkbox'?el.checked:el.value });
+  localStorage.setItem('fip-001-working', JSON.stringify(data));
+  status.textContent='AUTOSAVE — '+new Date().toLocaleTimeString();
 };
-const load = () => {
-  try{ const d=JSON.parse(localStorage.getItem('fip-001-plain')||'{}'); Object.keys(d).forEach(k=>{ const el=document.getElementById(k); if(el){ if(el.type==='checkbox') el.checked=d[k]; else el.value=d[k]; } }); }catch{}
+const load=()=>{
+  try{ const d=JSON.parse(localStorage.getItem('fip-001-working')||'{}'); Object.keys(d).forEach(k=>{ const el=document.querySelector(`[name="${CSS.escape(k)}"]`); if(el){ if(el.type==='checkbox') el.checked=d[k]; else el.value=d[k]; } }); }catch{}
 };
-document.addEventListener('input', save);
-document.addEventListener('change', save);
-load();
+document.addEventListener('input', save); document.addEventListener('change', save); load();
 
-// Chapters
-let chs = [{title:'Early Life',year:''},{title:'First Business',year:''},{title:'Failure',year:''},{title:'Recovery',year:''}];
-function renderChapters(){
-  document.getElementById('chapters').innerHTML = chs.map((c,i)=>`<div style="display:grid;grid-template-columns:1fr 120px 32px;gap:12px;margin-bottom:12px"><input class="under" value="${c.title}" oninput="chs[${i}].title=this.value;save()" placeholder="Chapter ${i+1}"><input class="under" value="${c.year}" oninput="chs[${i}].year=this.value;save()" placeholder="Year"><button onclick="chs.splice(${i},1);renderChapters();save()" style="border:1px solid #D9D5CE">×</button></div>`).join('');
-}
-function addChapter(){ chs.push({title:'',year:''}); renderChapters(); }
-renderChapters();
-
-// Enterprises
-let ents = [{name:'',industry:'',founded:'',role:'',status:'Active',employees:'',reach:''}];
-function renderEnts(){
-  document.getElementById('enterprises').innerHTML = ents.map((e,i)=>`<div style="border:1px solid #D9D5CE;padding:20px;background:rgba(255,255,255,.4);margin-bottom:16px"><div class="sans" style="font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:#6B665E;margin-bottom:12px">Business ${String(i+1).padStart(2,'0')} <button onclick="ents.splice(${i},1);renderEnts()" style="float:right">Remove</button></div><div class="row"><div><label class="field-label">Name</label><input class="under" value="${e.name}" oninput="ents[${i}].name=this.value"></div><div><label class="field-label">Industry</label><input class="under" value="${e.industry}" oninput="ents[${i}].industry=this.value"></div><div><label class="field-label">Founded</label><input class="under" type="date" value="${e.founded}" oninput="ents[${i}].founded=this.value"></div><div><label class="field-label">Role</label><input class="under" value="${e.role}" oninput="ents[${i}].role=this.value"></div></div></div>`).join('');
-}
-function addEnterprise(){ ents.push({name:'',industry:'',founded:'',role:'',status:'Active',employees:'',reach:''}); renderEnts(); }
-renderEnts();
-
-// Materials
-const personal=['Journals','Diaries','Handwritten Notes','Calendars','Letters','Voice Notes','Photographs'];
-const business=['Business Plans','Board Papers','Strategy Documents','Presentations','Acquisition Files','Investor Material','Organisation Charts'];
-const intellectual=['Books','Essays','Articles','Speeches','Podcasts','Interviews','Videos'];
-function renderMat(id,list){ document.getElementById(id).innerHTML = list.map(l=>`<label class="check" style="margin-bottom:8px"><input type="checkbox" id="mat-${l}"><span class="boxdot">✓</span><span class="sans" style="font-size:12.5px">${l}</span></label>`).join(''); }
-renderMat('mat-personal',personal); renderMat('mat-business',business); renderMat('mat-intellectual',intellectual);
+form.addEventListener('submit', async (e)=>{
+  e.preventDefault();
+  if(!form.checkValidity()){ form.reportValidity(); return; }
+  btn.disabled=true; btn.textContent='Receiving...'; err.classList.remove('show');
+  try{
+    const res=await fetch(form.action, {method:'POST', body:new FormData(form), headers:{Accept:'application/json'}});
+    if(res.ok){ body.style.display='none'; ok.classList.add('show'); window.scrollTo({top:0,behavior:'smooth'}); localStorage.removeItem('fip-001-working'); }
+    else throw new Error();
+  }catch{ err.classList.add('show'); btn.disabled=false; btn.textContent='Submit Founder Intelligence Profile — FIP-001'; }
+});
 </script>
 </body>
 </html>
