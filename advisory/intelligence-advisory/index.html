@@ -161,6 +161,120 @@
     <div class="hidden lg:block"></div>
   </section>
 
+  <!-- ========= 03B / IN PRACTICE — LUXE CATALOGUE (FULLY EDITABLE) ========= -->
+<style>
+  /* you can delete this if you already have these in your page */
+ .im-catalog-item{cursor:pointer; transition: background.25s}
+ .im-catalog-item:hover{ background: rgba(26,26,26,.02); }
+ .im-modal{ display:none; position:fixed; inset:0; z-index:100; align-items:center; justify-content:center; padding:24px }
+ .im-modal.is-open{ display:flex }
+ .im-modal-backdrop{ position:absolute; inset:0; background:rgba(26,26,26,.55); backdrop-filter: blur(10px) }
+ .im-modal-panel{ position:relative; background:#FFFDFA; border:1px solid #1A1A1A; width:min(560px,92vw); padding:40px; }
+</style>
+
+<section class="border-t border-[#D8D2CC] py-14 md:py-20 grid md:grid-cols-[140px_1fr] lg:grid-cols-[180px_1fr_140px] gap-8 md:gap-12">
+  <div class="font-mono-label text- tracking-[0.2em] uppercase">03B / IN PRACTICE</div>
+  <div class="max-w- w-full">
+    <h3 class="font-serif-display text- md:text- leading-[1.05] tracking-[-0.015em] mb-4">Applied in Practice</h3>
+    <p class="font-mono-label text- tracking-[0.18em] uppercase opacity-50 mb-10">Commissioned, not templated. View piece to request memorandum.</p>
+
+    <div class="border-t border-[#D8D2CC]">
+      <!-- EDIT THESE 3 — COPY/PASTE TO ADD MORE -->
+      <div class="im-catalog-item grid md:grid-cols-[200px_1fr] gap-4 py-7 border-b border-[#D8D2CC]/70" data-piece="moi">
+        <div>
+          <div class="font-mono-label text- tracking-[0.2em] uppercase opacity-30 mb-2">01 / GOVERNANCE</div>
+          <div class="font-serif-display text- leading-[1.25]">Memorandum of Incorporation</div>
+        </div>
+        <div class="flex justify-between gap-6">
+          <div class="font-serif-display text- leading-[1.7] opacity-70 max-w-">How authority, ownership and decision rights actually operate — not how it was originally drafted.</div>
+          <div class="font-mono-label text- tracking-[0.18em] uppercase opacity-60 whitespace-nowrap mt-1">View piece →</div>
+        </div>
+      </div>
+
+      <div class="im-catalog-item grid md:grid-cols-[200px_1fr] gap-4 py-7 border-b border-[#D8D2CC]/70" data-piece="doa">
+        <div>
+          <div class="font-mono-label text- tracking-[0.2em] uppercase opacity-30 mb-2">02 / AUTHORITY</div>
+          <div class="font-serif-display text- leading-[1.25]">Delegation of Authority</div>
+        </div>
+        <div class="flex justify-between gap-6">
+          <div class="font-serif-display text- leading-[1.7] opacity-70 max-w-">Clarifying who can decide what, at what threshold, and when escalation is required.</div>
+          <div class="font-mono-label text- tracking-[0.18em] uppercase opacity-60 whitespace-nowrap mt-1">View piece →</div>
+        </div>
+      </div>
+
+      <div class="im-catalog-item grid md:grid-cols-[200px_1fr] gap-4 py-7 border-b border-[#D8D2CC]" data-piece="srr">
+        <div>
+          <div class="font-mono-label text- tracking-[0.2em] uppercase opacity-30 mb-2">03 / RISK</div>
+          <div class="font-serif-display text- leading-[1.25]">Strategic Risk Register</div>
+        </div>
+        <div class="flex justify-between gap-6">
+          <div class="font-serif-display text- leading-[1.7] opacity-70 max-w-">A usable register the board can review, prioritize and act on before risk becomes incident.</div>
+          <div class="font-mono-label text- tracking-[0.18em] uppercase opacity-60 whitespace-nowrap mt-1">View piece →</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="hidden lg:block"></div>
+</section>
+
+<!-- MODAL - KEEP THIS RIGHT AFTER SECTION -->
+<div id="im-modal" class="im-modal" aria-hidden="true">
+  <div class="im-modal-backdrop" data-close></div>
+  <div class="im-modal-panel">
+    <button class="im-modal-close font-mono-label text- tracking-[0.2em] uppercase" data-close>✕</button>
+    <div class="font-mono-label text- tracking-[0.2em] uppercase opacity-40 mb-4" id="im-kicker"></div>
+    <h3 class="font-serif-display text- md:text- leading-[1.05] mb-4" id="im-title"></h3>
+    <p class="font-serif-display text- leading-[1.7] opacity-70" id="im-body"></p>
+    <div class="mt-8">
+      <a id="im-cta" href="mailto:intelligence@thisiskinglis.com?subject=Intelligence%20Memorandum%20Request" class="inline-block bg-[#1A1A1A] text-[#F9F6F2] font-mono-label text- tracking-[0.2em] uppercase px-8 py- hover:bg-black transition-colors">Request an Intelligence Memorandum →</a>
+      <div class="font-mono-label text- tracking-[0.16em] uppercase opacity-40 mt-3">Private commission. NDA by default. No templates distributed.</div>
+    </div>
+  </div>
+</div>
+
+<script>
+// === EDIT YOUR CONTENT HERE ===
+const pieces = {
+  moi: {
+    kicker:"01 / GOVERNANCE — CATALOGUE PIECE",
+    title:"Memorandum of Incorporation",
+    body:"A private articulation of how authority, ownership and decision rights actually operate in your organisation today. Commissioned against current practice, not the original draft. Includes authority map, decision thresholds, and alignment to Companies Act.",
+    subject:"Intelligence Memorandum — MOI"
+  },
+  doa: {
+    kicker:"02 / AUTHORITY — CATALOGUE PIECE",
+    title:"Delegation of Authority",
+    body:"A clear framework for who can decide what, at what financial and risk threshold, and when escalation is required. Built to stop decisions stalling or overreaching. Board-ready.",
+    subject:"Intelligence Memorandum — Delegation of Authority"
+  },
+  srr: {
+    kicker:"03 / RISK — CATALOGUE PIECE",
+    title:"Strategic Risk Register",
+    body:"Translating vague concerns into a usable register that can be reviewed, prioritized and sequenced. Designed for board discussion before risk becomes incident.",
+    subject:"Intelligence Memorandum — Strategic Risk Register"
+  }
+};
+// === NO NEED TO EDIT BELOW ===
+const modal = document.getElementById('im-modal');
+const kicker = document.getElementById('im-kicker');
+const mTitle = document.getElementById('im-title');
+const mBody = document.getElementById('im-body');
+const cta = document.getElementById('im-cta');
+function openPiece(key){
+  const p = pieces[key]; if(!p) return;
+  kicker.textContent = p.kicker; mTitle.textContent = p.title; mBody.textContent = p.body;
+  cta.href = `mailto:intelligence@thisiskinglis.com?subject=${encodeURIComponent(p.subject)}`;
+  modal.classList.add('is-open'); modal.setAttribute('aria-hidden','false'); document.body.style.overflow='hidden';
+}
+function closeModal(){
+  modal.classList.remove('is-open'); modal.setAttribute('aria-hidden','true'); document.body.style.overflow='';
+}
+document.querySelectorAll('[data-piece]').forEach(el=> el.addEventListener('click', ()=> openPiece(el.dataset.piece)));
+document.querySelectorAll('[data-close]').forEach(el=> el.addEventListener('click', closeModal));
+document.addEventListener('keydown', e=>{ if(e.key==='Escape') closeModal(); });
+</script>
+<!-- ========= END LUXE SECTION ========= -->
+
   <!-- 04 OUTCOME -->
   <section class="border-t border-[#D8D2CC] py-14 md:py-20 grid md:grid-cols-[140px_1fr] lg:grid-cols-[180px_1fr_140px] gap-8 md:gap-12">
     <div class="font-mono-label text-[10px] tracking-[0.2em] uppercase">04 / OUTCOME</div>
