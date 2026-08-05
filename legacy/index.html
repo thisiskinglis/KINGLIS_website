@@ -420,4 +420,53 @@ tailwind.config={theme:{extend:{colors:{cream:'#F1F0EB',creamDark:'#E8E6E1',ink:
   });
 })();
 </script>
-<!-- END KINGLIS BLOCK -->
+<style>
+  .site-footer{
+    background:#F7F3EB;
+    border-top:1px solid rgba(26,18,13,.12);
+    padding:32px 0;
+    font-family:'Inter',system-ui,sans-serif;
+    font-size:11px;
+    line-height:1.6;
+    letter-spacing:.04em;
+    color:rgba(26,18,13,.6);
+  }
+  .site-footer .footer-inner{
+    max-width:880px;
+    margin:0 auto;
+    padding:0 40px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:12px;
+  }
+  .site-footer strong{
+    font-weight:500;
+    color:#1A120D;
+    letter-spacing:.06em;
+  }
+  .site-footer a{
+    color:rgba(26,18,13,.6);
+    text-decoration:underline;
+    text-underline-offset:3px;
+    transition:color .2s;
+  }
+  .site-footer a:hover{color:#1A120D}
+  @media(max-width:640px){
+    .site-footer .footer-inner{padding:0 20px; flex-direction:column; align-items:flex-start}
+  }
+</style>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div class="footer-left">
+      <strong>© 2025 KINGLIS</strong> — All rights reserved. Confidential. No part of this site may be reproduced without written consent.
+      <span style="margin-left:14px; opacity:.6;">
+        <a href="/privacy-policy/">Privacy Policy</a>
+        <span style="margin:0 8px;">·</span>
+        <a href="/terms-of-service/">Terms of Service</a>
+      </span>
+    </div>
+  </div>
+</footer>
