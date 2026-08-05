@@ -245,45 +245,70 @@ tailwind.config={theme:{extend:{colors:{cream:'#F1F0EB',creamDark:'#E8E6E1',ink:
   </div>
 </section>
 
-  <!-- KINGLIS L01 - PRIVATE COMMISSION ENQUIRY - Formspree: xjybveln -->
-<div id="kinglis-commission" style="max-width:720px;margin:0 auto;padding:80px 24px;background:#F7F3EB;color:#1A120D;font-family:Inter,system-ui,sans-serif;">
+ <!-- KINGLIS L01 - DROPDOWN WIDENED - PASTE THIS ENTIRE BLOCK -->
+<div id="kinglis-ledger-dropdown">
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500&display=swap');
-  #kinglis-commission .eyebrow{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#8C6A4A}
-  #kinglis-commission .title{font-family:'Playfair Display',serif;font-size:42px;margin:12px 0 64px}
-  #kinglis-commission .sec{margin-bottom:64px;padding-top:32px;border-top:1px solid rgba(26,18,13,.12)}
-  #kinglis-commission .sec-label{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#8C6A4A;margin-bottom:24px}
-  #kinglis-commission .q{font-family:'Playfair Display',serif;font-size:22px;line-height:1.3;margin-bottom:24px}
-  #kinglis-commission input,#kinglis-commission textarea{width:100%;background:transparent;border:0;border-bottom:1px solid rgba(26,18,13,.28);padding:12px 0;font-family:'Playfair Display',serif;font-size:18px;outline:none}
-  #kinglis-commission input:focus,#kinglis-commission textarea:focus{border-color:#8C6A4A}
-  #kinglis-commission textarea{min-height:96px;resize:vertical}
-  #kinglis-commission .helper{font-family:'Playfair Display',serif;font-style:italic;font-size:14px;color:rgba(26,18,13,.6);margin-top:12px;line-height:1.5}
-  #kinglis-commission .radio{display:flex;gap:14px;align-items:center;padding:12px 0;cursor:pointer}
-  #kinglis-commission .dot{width:20px;height:20px;border:1px solid rgba(26,18,13,.3);border-radius:50%;display:grid;place-items:center}
-  #kinglis-commission .dot::after{content:'';width:8px;height:8px;background:#C9A96E;border-radius:50%;opacity:0;transform:scale(0);transition:.2s}
-  #kinglis-commission .radio input{display:none}
-  #kinglis-commission .radio input:checked+.dot::after{opacity:1;transform:scale(1)}
-  #kinglis-commission .btn{width:100%;background:#1A120D;color:#F7F3EB;border:1px solid #1A120D;padding:20px;letter-spacing:.2em;text-transform:uppercase;font-size:12px;cursor:pointer;transition:.3s}
-  #kinglis-commission .btn:hover{background:transparent;color:#1A120D}
-  #kinglis-commission .success{display:none;text-align:center;padding:80px 0}
-  #kinglis-commission .success.show{display:block}
-  #kinglis-commission .form-body.hide{display:none}
+  #kinglis-ledger-dropdown{max-width:880px;margin:0 auto;padding:80px 40px;background:#F7F3EB;color:#1A120D;font-family:'Inter',system-ui,sans-serif;box-sizing:border-box}
+  #kinglis-ledger-dropdown *{box-sizing:border-box}
+  #kinglis-ledger-dropdown .eyebrow{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#8C6A4A;font-weight:500}
+  #kinglis-ledger-dropdown .title{font-family:'Playfair Display',serif;font-size:46px;font-weight:400;margin:12px 0 72px;letter-spacing:-.02em}
+  #kinglis-ledger-dropdown .sec{margin-bottom:72px;padding-top:32px;border-top:1px solid rgba(26,18,13,.12)}
+  #kinglis-ledger-dropdown .sec-label{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#8C6A4A;margin-bottom:28px}
+  #kinglis-ledger-dropdown .q{font-family:'Playfair Display',serif;font-size:22px;line-height:1.3;margin-bottom:28px}
+  #kinglis-ledger-dropdown .q.sm{font-size:19px;font-weight:600}
+  #kinglis-ledger-dropdown .row{display:grid;grid-template-columns:1fr 1fr;gap:28px 36px}
+  @media(max-width:640px){#kinglis-ledger-dropdown{padding:48px 20px} #kinglis-ledger-dropdown .row{grid-template-columns:1fr}}
+  #kinglis-ledger-dropdown .field{position:relative}
+  #kinglis-ledger-dropdown .field.full{grid-column:1/-1}
+  #kinglis-ledger-dropdown .field label{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:rgba(26,18,13,.5);display:block;margin-bottom:10px}
+  #kinglis-ledger-dropdown .field input,#kinglis-ledger-dropdown .field textarea{width:100%;background:transparent;border:0;border-bottom:1px solid rgba(26,18,13,.28);padding:12px 0 14px;font-family:'Playfair Display',serif;font-size:18px;color:#1A120D;outline:none;transition:border-color .2s;border-radius:0}
+  #kinglis-ledger-dropdown .field input:focus,#kinglis-ledger-dropdown .field textarea:focus{border-bottom-color:#8C6A4A}
+  #kinglis-ledger-dropdown textarea{min-height:100px;resize:vertical;line-height:1.6}
+  #kinglis-ledger-dropdown .helper{font-family:'Playfair Display',serif;font-style:italic;font-size:14px;color:rgba(26,18,13,.6);margin-top:14px;line-height:1.5}
+  /* Custom dropdown */
+  #kinglis-ledger-dropdown .k-select{position:relative;width:100%;}
+  #kinglis-ledger-dropdown .k-select-btn{width:100%;display:flex;align-items:center;justify-content:space-between;background:transparent;border:0;border-bottom:1px solid rgba(26,18,13,.28);padding:12px 0 14px;cursor:pointer;text-align:left;transition:border-color .2s}
+  #kinglis-ledger-dropdown .k-select-btn:focus{outline:none;border-bottom-color:#8C6A4A}
+  #kinglis-ledger-dropdown .k-select-btn.open{border-bottom-color:#8C6A4A}
+  #kinglis-ledger-dropdown .k-select-value{font-family:'Playfair Display',serif;font-size:18px;color:#1A120D}
+  #kinglis-ledger-dropdown .k-select-value.placeholder{color:rgba(26,18,13,.35);font-size:17px}
+  #kinglis-ledger-dropdown .k-chevron{width:18px;height:18px;flex-shrink:0;transition:transform .25s;opacity:.6}
+  #kinglis-ledger-dropdown .k-select-btn.open .k-chevron{transform:rotate(180deg)}
+  #kinglis-ledger-dropdown .k-options{position:absolute;top:100%;left:0;right:0;background:#FFFEFB;border:1px solid rgba(26,18,13,.12);border-top:none;z-index:20;display:none;box-shadow:0 12px 32px rgba(26,18,13,.08)}
+  #kinglis-ledger-dropdown .k-options.show{display:block;animation:kfade .2s ease}
+  @keyframes kfade{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
+  #kinglis-ledger-dropdown .k-option{padding:14px 16px;font-family:'Playfair Display',serif;font-size:16px;cursor:pointer;transition:background .15s}
+  #kinglis-ledger-dropdown .k-option:hover{background:rgba(201,169,110,.10)}
+  #kinglis-ledger-dropdown .k-option.selected{background:rgba(201,169,110,.16);color:#1A120D}
+  #kinglis-ledger-dropdown .other-box{display:none;margin-top:16px}
+  #kinglis-ledger-dropdown .other-box.show{display:block}
+  #kinglis-ledger-dropdown .submit-wrap{margin-top:80px;padding-top:40px;border-top:1px solid #1A120D}
+  #kinglis-ledger-dropdown .btn{width:100%;background:#1A120D;color:#F7F3EB;border:1px solid #1A120D;padding:20px;letter-spacing:.2em;text-transform:uppercase;font-size:12px;font-weight:500;cursor:pointer;transition:.3s}
+  #kinglis-ledger-dropdown .btn:hover{background:transparent;color:#1A120D}
+  #kinglis-ledger-dropdown .btn:disabled{opacity:.5;cursor:not-allowed}
+  #kinglis-ledger-dropdown .micro{text-align:center;margin-top:18px;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:rgba(26,18,13,.4)}
+  #kinglis-ledger-dropdown .success{display:none;text-align:center;padding:96px 0 40px}
+  #kinglis-ledger-dropdown .success.show{display:block;animation:kfade .5s ease}
+  #kinglis-ledger-dropdown .form-body.hide{display:none}
+  #kinglis-ledger-dropdown .err{display:none;color:#8C3A2E;font-size:13px;margin-top:16px;text-align:center}
+  #kinglis-ledger-dropdown .err.show{display:block}
 </style>
 
   <div class="eyebrow">L01 — Private Commission Enquiry</div>
   <div class="title">Begin.</div>
 
-  <form id="ledgerForm" action="https://formspree.io/f/xjybveln" method="POST">
-  <div class="form-body" id="formBody">
+  <form id="kForm" action="https://formspree.io/f/xjybveln" method="POST">
+  <div class="form-body" id="kBody">
     <!-- SECTION 1 -->
     <div class="sec">
       <div class="sec-label">Section 1</div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px">
-        <div style="grid-column:1/-1"><label style="font-size:11px;opacity:.5;letter-spacing:.14em;text-transform:uppercase">Founder Name *</label><input name="Founder Name" required placeholder=""></div>
-        <div style="grid-column:1/-1"><label style="font-size:11px;opacity:.5;letter-spacing:.14em;text-transform:uppercase">Company</label><input name="Company" placeholder=""></div>
-        <div style="grid-column:1/-1"><label style="font-size:11px;opacity:.5;letter-spacing:.14em;text-transform:uppercase">Email *</label><input type="email" name="Email" required></div>
-        <div><label style="font-size:11px;opacity:.5;letter-spacing:.14em;text-transform:uppercase">Phone</label><input name="Phone"></div>
-        <div><label style="font-size:11px;opacity:.5;letter-spacing:.14em;text-transform:uppercase">Country *</label><input name="Country" required></div>
+      <div class="row">
+        <div class="field full"><label>Founder Name *</label><input name="Founder Name" required placeholder="Graham Tuxford"></div>
+        <div class="field full"><label>Company</label><input name="Company" placeholder="Kinglis"></div>
+        <div class="field full"><label>Email *</label><input type="email" name="Email" required placeholder="graham@company.com"></div>
+        <div class="field"><label>Phone</label><input type="tel" name="Phone" placeholder="+27 ..."></div>
+        <div class="field"><label>Country *</label><input name="Country" required placeholder="South Africa"></div>
       </div>
     </div>
 
@@ -291,66 +316,108 @@ tailwind.config={theme:{extend:{colors:{cream:'#F1F0EB',creamDark:'#E8E6E1',ink:
     <div class="sec">
       <div class="sec-label">Section 2</div>
       <div class="q">Which edition interests you?</div>
-      <label class="radio"><input type="radio" name="Edition Interest" value="Legacy Ledger" required><span class="dot"></span> Legacy Ledger</label>
-      <label class="radio"><input type="radio" name="Edition Interest" value="Thesis Ledger"><span class="dot"></span> Thesis Ledger</label>
-      <label class="radio"><input type="radio" name="Edition Interest" value="Not yet sure"><span class="dot"></span> Not yet sure</label>
+      <div class="k-select" data-name="Edition Interest" data-required="true">
+        <button type="button" class="k-select-btn"><span class="k-select-value placeholder">Select an edition</span><svg class="k-chevron" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="#1A120D" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <div class="k-options">
+          <div class="k-option" data-value="Legacy Ledger">Legacy Ledger</div>
+          <div class="k-option" data-value="Thesis Ledger">Thesis Ledger</div>
+          <div class="k-option" data-value="Not yet sure">Not yet sure</div>
+        </div>
+        <input type="hidden" name="Edition Interest">
+      </div>
     </div>
 
     <!-- SECTION 3 -->
     <div class="sec">
       <div class="sec-label">Section 3</div>
       <div class="q">Who is the Ledger for?</div>
-      <label class="radio"><input type="radio" name="Ledger For" value="Myself" required><span class="dot"></span> Myself</label>
-      <label class="radio"><input type="radio" name="Ledger For" value="My child"><span class="dot"></span> My child</label>
-      <label class="radio"><input type="radio" name="Ledger For" value="My successor"><span class="dot"></span> My successor</label>
-      <label class="radio"><input type="radio" name="Ledger For" value="My leadership team"><span class="dot"></span> My leadership team</label>
-      <label class="radio"><input type="radio" name="Ledger For" value="Other"><span class="dot"></span> Other</label>
+      <div class="k-select" data-name="Ledger For" data-required="true" id="ledgerForSelect">
+        <button type="button" class="k-select-btn"><span class="k-select-value placeholder">Select one</span><svg class="k-chevron" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="#1A120D" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <div class="k-options">
+          <div class="k-option" data-value="Myself">Myself</div>
+          <div class="k-option" data-value="My child">My child</div>
+          <div class="k-option" data-value="My successor">My successor</div>
+          <div class="k-option" data-value="My leadership team">My leadership team</div>
+          <div class="k-option" data-value="Other">Other</div>
+        </div>
+        <input type="hidden" name="Ledger For">
+      </div>
+      <div class="field other-box" id="otherBox"><input name="Ledger For Other" placeholder="Please specify"></div>
     </div>
 
     <!-- SECTION 4 -->
     <div class="sec">
       <div class="sec-label">Section 4</div>
       <div class="q" style="margin-bottom:8px">The single most important question...</div>
-      <div class="q" style="font-size:19px;font-weight:600">What made you decide now is the right time to preserve your intellectual legacy?</div>
-      <textarea name="Legacy Question" required placeholder="In your own words..."></textarea>
-      <div class="helper">That's it.<br>No essay.<br>No autobiography.<br>Just enough to hear their voice.</div>
+      <div class="q sm">What made you decide now is the right time to preserve your intellectual legacy?</div>
+      <div class="field full"><textarea name="Legacy Question" required placeholder="In your own words..."></textarea><div class="helper">That's it.<br>No essay.<br>No autobiography.<br>Just enough to hear their voice.</div></div>
     </div>
 
     <!-- SECTION 5 -->
     <div class="sec">
       <div class="sec-label">Section 5</div>
       <div class="q">How did you hear about KINGLIS?</div>
-      <label class="radio"><input type="radio" name="Heard About" value="Referral"><span class="dot"></span> Referral</label>
-      <label class="radio"><input type="radio" name="Heard About" value="LinkedIn"><span class="dot"></span> LinkedIn</label>
-      <label class="radio"><input type="radio" name="Heard About" value="Website"><span class="dot"></span> Website</label>
-      <label class="radio"><input type="radio" name="Heard About" value="Family Office"><span class="dot"></span> Family Office</label>
-      <label class="radio"><input type="radio" name="Heard About" value="Advisor"><span class="dot"></span> Advisor</label>
-      <label class="radio"><input type="radio" name="Heard About" value="Search"><span class="dot"></span> Search</label>
-      <label class="radio"><input type="radio" name="Heard About" value="Other"><span class="dot"></span> Other</label>
+      <div class="k-select" data-name="Heard About">
+        <button type="button" class="k-select-btn"><span class="k-select-value placeholder">Select one</span><svg class="k-chevron" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="#1A120D" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <div class="k-options">
+          <div class="k-option" data-value="Referral">Referral</div>
+          <div class="k-option" data-value="LinkedIn">LinkedIn</div>
+          <div class="k-option" data-value="Website">Website</div>
+          <div class="k-option" data-value="Family Office">Family Office</div>
+          <div class="k-option" data-value="Advisor">Advisor</div>
+          <div class="k-option" data-value="Search">Search</div>
+          <div class="k-option" data-value="Other">Other</div>
+        </div>
+        <input type="hidden" name="Heard About">
+      </div>
     </div>
 
-    <button class="btn" type="submit" id="btn">Submit</button>
-    <div style="text-align:center;margin-top:16px;font-size:11px;letter-spacing:.18em;text-transform:uppercase;opacity:.4">One name. One copy. Permanent.</div>
+    <div class="submit-wrap">
+      <button class="btn" type="submit" id="kBtn">Submit</button>
+      <div class="micro">One name. One copy. Permanent.</div>
+      <div class="err" id="kErr">Unable to send. Please email hello@thisiskinglis.com</div>
+    </div>
   </div>
 
-  <div class="success" id="ok">
-    <div style="width:48px;height:48px;border:1px solid #C9A96E;display:grid;place-items:center;margin:0 auto 32px">◍</div>
-    <div style="font-family:'Playfair Display',serif;letter-spacing:.18em;text-transform:uppercase;margin-bottom:24px">Private Commission Received</div>
-    <div style="font-family:'Playfair Display',serif;font-size:20px;line-height:1.6;max-width:460px;margin:0 auto 24px">Your request has been received. Every Legacy Ledger is commissioned individually and reviewed personally.</div>
-    <div style="font-style:italic;opacity:.6">You will hear from us within two business days.</div>
+  <div class="success" id="kOk">
+    <div style="width:48px;height:48px;border:1px solid #C9A96E;display:grid;place-items:center;margin:0 auto 32px;font-size:20px">◍</div>
+    <div style="font-family:'Playfair Display',serif;font-size:18px;letter-spacing:.18em;text-transform:uppercase;margin-bottom:32px">Private Commission Received</div>
+    <div style="font-family:'Playfair Display',serif;font-size:21px;line-height:1.6;max-width:520px;margin:0 auto 24px">Your request has been received. Every Legacy Ledger is commissioned individually and reviewed personally.</div>
+    <div style="font-family:'Playfair Display',serif;font-style:italic;opacity:.6">You will hear from us within two business days.</div>
   </div>
   </form>
 </div>
 
 <script>
-document.getElementById('ledgerForm').addEventListener('submit',async e=>{
- e.preventDefault();
- const btn=document.getElementById('btn'); btn.textContent='Receiving...'; btn.disabled=true;
- const res=await fetch('https://formspree.io/f/xjybveln',{method:'POST',body:new FormData(e.target),headers:{Accept:'application/json'}});
- if(res.ok){document.getElementById('formBody').classList.add('hide');document.getElementById('ok').classList.add('show');window.scrollTo({top:0,behavior:'smooth'})}
- else{btn.textContent='Submit';btn.disabled=false;alert('Unable to send. Please email hello@thisiskinglis.com')}
-});
+(function(){
+  const form=document.getElementById('kForm'),body=document.getElementById('kBody'),ok=document.getElementById('kOk'),btn=document.getElementById('kBtn'),err=document.getElementById('kErr'),otherBox=document.getElementById('otherBox');
+  document.querySelectorAll('#kinglis-ledger-dropdown .k-select').forEach(sel=>{
+    const btnEl=sel.querySelector('.k-select-btn'),valEl=sel.querySelector('.k-select-value'),opts=sel.querySelector('.k-options'),hidden=sel.querySelector('input[type=hidden]');
+    btnEl.addEventListener('click',e=>{e.preventDefault();document.querySelectorAll('#kinglis-ledger-dropdown .k-options.show').forEach(o=>{if(o!==opts)o.classList.remove('show')});document.querySelectorAll('#kinglis-ledger-dropdown .k-select-btn.open').forEach(b=>{if(b!==btnEl)b.classList.remove('open')});opts.classList.toggle('show');btnEl.classList.toggle('open')});
+    opts.querySelectorAll('.k-option').forEach(opt=>{
+      opt.addEventListener('click',()=>{
+        const v=opt.dataset.value;
+        hidden.value=v; valEl.textContent=v; valEl.classList.remove('placeholder');
+        opts.querySelectorAll('.k-option').forEach(o=>o.classList.remove('selected')); opt.classList.add('selected');
+        opts.classList.remove('show'); btnEl.classList.remove('open');
+        if(sel.id==='ledgerForSelect'){if(v==='Other'){otherBox.classList.add('show');otherBox.querySelector('input').focus()}else{otherBox.classList.remove('show')}}
+      });
+    });
+  });
+  document.addEventListener('click',e=>{if(!e.target.closest('#kinglis-ledger-dropdown .k-select')){document.querySelectorAll('#kinglis-ledger-dropdown .k-options.show').forEach(o=>o.classList.remove('show'));document.querySelectorAll('#kinglis-ledger-dropdown .k-select-btn.open').forEach(b=>b.classList.remove('open'))}});
+  form.addEventListener('submit',async e=>{
+    e.preventDefault();
+    // validate required dropdowns
+    let valid=true;
+    form.querySelectorAll('.k-select[data-required="true"] input[type=hidden]').forEach(h=>{if(!h.value){valid=false;h.closest('.k-select').querySelector('.k-select-btn').style.borderBottomColor='#8C6A4A'}});
+    if(!form.checkValidity()||!valid){form.reportValidity();return}
+    btn.disabled=true;btn.textContent='Receiving...';err.classList.remove('show');
+    try{
+      const res=await fetch('https://formspree.io/f/xjybveln',{method:'POST',body:new FormData(form),headers:{Accept:'application/json'}});
+      if(res.ok){body.classList.add('hide');ok.classList.add('show');window.scrollTo({top:0,behavior:'smooth'})}
+      else throw new Error()
+    }catch{err.classList.add('show');btn.disabled=false;btn.textContent='Submit'}
+  });
+})();
 </script>
-
-</body>
-</html>
+<!-- END KINGLIS BLOCK -->
