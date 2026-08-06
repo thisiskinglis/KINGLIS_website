@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>KINGLIS — Business X-Ray™ Foundation | $1,750 | 14-Day Diagnostic</title>
-<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,400;0,500;1,400&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&family=Inter:wght@400;500;700&family=Source+Serif+4:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
 <style>
 :root{--bg:#F9F6F2;--bg2:#F1EEE8;--ink:#1A1715;--ink2:#6E6A66;--line:rgba(26,23,21,.11);--muted:#9A958E;--tan:#8C6A4A;--olive:#8C6A4A}
 *{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--ink);font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased}
@@ -18,7 +18,7 @@ a{color:inherit;text-decoration:none}
 .h1{font-family:'Source Serif 4',serif;font-size:62px;line-height:.92;letter-spacing:-.03em;margin:0 0 14px;font-weight:500} .h1 em{font-style:italic;font-weight:400}
 .lede{font-size:15.5px;line-height:1.5;color:var(--ink2);max-width:34ch;margin:0 0 20px}
 .pills{display:flex;gap:12px;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:26px}
-.btn{display:inline-flex;padding:14px 22px;background:var(--ink);color:var(--bg);font-size:11px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;border-radius:2px}
+.btn{display:inline-flex;padding:14px 22px;background:var(--ink);color:var(--bg);font-size:11px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;border-radius:2px;cursor:pointer}
 .btn-sub{font-size:11px;color:var(--muted);margin-top:10px}
 .card{background:var(--bg2);border:1px solid var(--line);border-radius:16px;padding:20px}
 .card-top{display:flex;justify-content:space-between;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:16px}
@@ -35,13 +35,17 @@ a{color:inherit;text-decoration:none}
 .p-card{border:1px solid var(--line);border-radius:14px;padding:20px;background:var(--bg)} .p-card.feat{background:var(--ink);color:var(--bg);border-color:var(--ink)}
 .p-k{font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)} .feat .p-k{color:rgba(249,246,242,.6)} .p-v{font-family:'Source Serif 4',serif;font-size:26px;margin:8px 0} .p-s{font-size:12px;line-height:1.45;color:var(--ink2)} .feat .p-s{color:rgba(249,246,242,.7)}
 .legal{font-size:11px;line-height:1.5;color:var(--ink2)}
-@media(max-width:900px){.hero{grid-template-columns:1fr;gap:28px;padding:44px 0}.grid2,.pricing{grid-template-columns:1fr}.h1{font-size:46px}}
+.img-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.img-grid figure{margin:0;background:#F9F8F7}
+.img-box{aspect-ratio:4/3;overflow:hidden;background:#EDE7DF;display:flex;align-items:center;justify-content:center}
+.img-box img{width:100%;height:100%;object-fit:cover;display:block}
+@media(max-width:900px){.hero{grid-template-columns:1fr;gap:28px;padding:44px 0}.grid2,.pricing,.img-grid{grid-template-columns:1fr}.h1{font-size:46px}}
 </style>
 </head>
 <body>
 <div class="wrap nav">
   <div class="nav-left">KINGLIS <span>ORGANIZATIONAL INTELLIGENCE</span></div>
-  <div style="display:flex;gap:22px;align-items:center"><div class="nav-links"><a>HOME</a><a>MODEL</a><a>DELIVERABLES</a><a>CONTACT</a></div><div class="nav-cta">BOOK REVIEW</div></div>
+  <div style="display:flex;gap:22px;align-items:center"><div class="nav-links"><a href="/">HOME</a><a href="/#model">MODEL</a><a href="/confidential-intake/">CONTACT</a></div><div class="nav-cta">BOOK REVIEW</div></div>
 </div>
 
 <div class="wrap hero">
@@ -71,14 +75,11 @@ a{color:inherit;text-decoration:none}
   </div>
 </div>
 
-  <!-- 3 IMAGE -->
-  <section style="padding:0;background:#fff;border-bottom:1px solid var(--line);">
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);">
-      <figure style="margin:0;background:#F9F8F7;"><div style="aspect-ratio:4/3;overflow:hidden;background:#EDE7DF;"><img src="/assets/business-xray-01.png" alt="Evidence Index" style="width:100%;height:100%;object-fit:cover;display:block;" onerror="this.style.display='none'" /></div><figcaption style="padding:18px 22px;"><div style="font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--olive);">01 — Evidence</div><div style="font-family:'Cormorant Garamond',serif;font-size:1.05rem;margin-top:6px;">Evidence Index</div></figcaption></figure>
-      <figure style="margin:0;background:#F9F8F7;"><div style="aspect-ratio:4/3;overflow:hidden;background:#EDE7DF;"><img src="/assets/business-xray-02.png" alt="Reconstruction" style="width:100%;height:100%;object-fit:cover;display:block;" onerror="this.style.display='none'" /></div><figcaption style="padding:18px 22px;"><div style="font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--olive);">02 — Investigation</div><div style="font-family:'Cormorant Garamond',serif;font-size:1.05rem;margin-top:6px;">Evidence Reconstruction</div></figcaption></figure>
-      <figure style="margin:0;background:#F9F8F7;"><div style="aspect-ratio:4/3;overflow:hidden;background:#EDE7DF;"><img src="/assets/business-xray-03.png" alt="Briefing" style="width:100%;height:100%;object-fit:cover;display:block;" onerror="this.style.display='none'" /></div><figcaption style="padding:18px 22px;"><div style="font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--olive);">03 — Intelligence</div><div style="font-family:'Cormorant Garamond',serif;font-size:1.05rem;margin-top:6px;">Executive Briefing</div></figcaption></figure>
-    </div>
-  </section>
+<section class="img-grid">
+  <figure><div class="img-box"><img src="/assets/business-xray-01.png" alt="Evidence Index" onerror="this.parentElement.innerHTML='<div style=color:#8C6A4A;font-size:10px;letter-spacing:.12em>01 — EVIDENCE</div>'" /></div><figcaption style="padding:18px 22px;"><div style="font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--olive);">01 — Evidence</div><div style="font-family:'Cormorant Garamond',serif;font-size:18px;margin-top:6px;">Evidence Index</div></figcaption></figure>
+  <figure><div class="img-box"><img src="/assets/business-xray-02.png" alt="Reconstruction" onerror="this.parentElement.innerHTML='<div style=color:#8C6A4A;font-size:10px;letter-spacing:.12em>02 — INVESTIGATION</div>'" /></div><figcaption style="padding:18px 22px;"><div style="font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--olive);">02 — Investigation</div><div style="font-family:'Cormorant Garamond',serif;font-size:18px;margin-top:6px;">Evidence Reconstruction</div></figcaption></figure>
+  <figure><div class="img-box"><img src="/assets/business-xray-03.png" alt="Briefing" onerror="this.parentElement.innerHTML='<div style=color:#8C6A4A;font-size:10px;letter-spacing:.12em>03 — INTELLIGENCE</div>'" /></div><figcaption style="padding:18px 22px;"><div style="font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--olive);">03 — Intelligence</div><div style="font-family:'Cormorant Garamond',serif;font-size:18px;margin-top:6px;">Executive Briefing</div></figcaption></figure>
+</section>
 
 <div class="wrap section">
   <div class="grid2">
