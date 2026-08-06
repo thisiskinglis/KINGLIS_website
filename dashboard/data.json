@@ -1,0 +1,304 @@
+{
+  "commissionId": "LL-2027-004",
+  "founderName": "[Founder Name]",
+  "recipientName": "[Recipient Name]",
+  "relationship": "[Relationship]",
+  "analyst": "Kaylee-Jane",
+  "edition": "Legacy Ledger™",
+  "status": "Active",
+  "opened": "12 July 2027",
+  "estimatedCompletion": "14 November 2027",
+  "currentPhase": "Evidence Discovery",
+  "phaseDescription": "Your evidence is currently being examined to establish the Decision Inventory that will guide the Founder Extraction sessions.",
+  "nextAction": {
+    "items": [
+      "Board papers (2018–2020)",
+      "Notebook from the primary enterprise"
+    ],
+    "estimatedTime": "15 minutes"
+  },
+  "timeline": [
+    {
+      "date": "12 Jul 2027",
+      "name": "Commission Activated",
+      "desc": "Commission Agreement and NDA signed. Portal opened.",
+      "status": "completed"
+    },
+    {
+      "date": "19 Jul 2027",
+      "name": "Founder Intelligence Profile",
+      "desc": "Completed in session with Kaylee-Jane.",
+      "status": "completed"
+    },
+    {
+      "date": "24 Jul 2027",
+      "name": "Evidence Discovery Companion Issued",
+      "desc": "Uploaded to portal and discussed at close of FIP session.",
+      "status": "completed"
+    },
+    {
+      "date": "—",
+      "name": "Evidence Discovery",
+      "desc": "Evidence under submission and review.",
+      "status": "current"
+    },
+    {
+      "date": "—",
+      "name": "Readiness Assessment",
+      "desc": "Confirms evidence is sufficient to begin extraction.",
+      "status": "future"
+    },
+    {
+      "date": "—",
+      "name": "Session 1 — Formation Register",
+      "desc": "",
+      "status": "future"
+    },
+    {
+      "date": "—",
+      "name": "Session 2 — Decision Register",
+      "desc": "",
+      "status": "future"
+    },
+    {
+      "date": "—",
+      "name": "Session 3 — Human Judgement Register",
+      "desc": "",
+      "status": "future"
+    },
+    {
+      "date": "—",
+      "name": "Session 4 — Worldview Register",
+      "desc": "",
+      "status": "future"
+    },
+    {
+      "date": "—",
+      "name": "Session 5 — Legacy Transmission",
+      "desc": "",
+      "status": "future"
+    },
+    {
+      "date": "—",
+      "name": "Intelligence Mapping",
+      "desc": "",
+      "status": "future"
+    },
+    {
+      "date": "—",
+      "name": "Writing",
+      "desc": "",
+      "status": "future"
+    },
+    {
+      "date": "—",
+      "name": "Founder Validation",
+      "desc": "",
+      "status": "future"
+    },
+    {
+      "date": "—",
+      "name": "Production",
+      "desc": "",
+      "status": "future"
+    },
+    {
+      "date": "—",
+      "name": "Delivery",
+      "desc": "14 November 2027",
+      "status": "future"
+    }
+  ],
+  "observation": {
+    "date": "18 September 2027",
+    "author": "Kaylee-Jane",
+    "text": "Three recurring decision principles have been identified across the submitted evidence. One contradiction requires discussion.",
+    "subtext": "A potential evidence gap around the 2016 acquisition period will be explored during Session 2. Your journals from 2011–2013 have substantially strengthened our understanding of decision-making under uncertainty."
+  },
+  "evidence": {
+    "received": [
+      {
+        "name": "Personal Journals (3 volumes)",
+        "date": "14 Aug 2027"
+      },
+      {
+        "name": "Email Correspondence (2009–2019)",
+        "date": "16 Aug 2027"
+      },
+      {
+        "name": "Voice Notes (7 recordings)",
+        "date": "16 Aug 2027"
+      },
+      {
+        "name": "Early Business Plans",
+        "date": "19 Aug 2027"
+      },
+      {
+        "name": "Annotated Books (4 volumes)",
+        "date": "21 Aug 2027"
+      }
+    ],
+    "pending": [
+      "Board Papers (2018–2020)",
+      "Family Correspondence",
+      "Photographs — Early Career",
+      "Organisational Charts"
+    ],
+    "requested": [
+      {
+        "name": "2007 Notebook",
+        "context": "Mentioned during FIP session"
+      },
+      {
+        "name": "Resignation Letter (undated)",
+        "context": "Referenced in email evidence"
+      },
+      {
+        "name": "Investor Memo — Series A",
+        "context": "Gap identified in business record"
+      }
+    ]
+  },
+  "sessions": [
+    {
+      "title": "Session 1 — Formation Register",
+      "status": "Completed",
+      "date": "Conducted 24 September 2027",
+      "desc": "The intellectual architecture that existed before success.",
+      "note": "Outputs recorded in your Formation Register.",
+      "prep": null
+    },
+    {
+      "title": "Session 2 — Decision Register",
+      "status": "Scheduled",
+      "date": "14 October 2027 — 10:00",
+      "desc": "Reconstruct consequential decisions from documentary evidence.",
+      "note": null,
+      "prep": {
+        "Review": "Evidence Discovery Companion Ch. 9",
+        "Bring": "Board papers, 2018 strategy document",
+        "Consider": "Which decision, if misunderstood by your successors, would cause the most damage?"
+      }
+    },
+    {
+      "title": "Session 3 — Human Judgement Register",
+      "status": "Upcoming",
+      "date": "Date to be confirmed",
+      "desc": "",
+      "note": null,
+      "prep": null
+    },
+    {
+      "title": "Session 4 — Worldview Register",
+      "status": "Upcoming",
+      "date": "Date to be confirmed",
+      "desc": "",
+      "note": null,
+      "prep": null
+    },
+    {
+      "title": "Session 5 — Legacy Transmission",
+      "status": "Upcoming",
+      "date": "Date to be confirmed",
+      "desc": "",
+      "note": null,
+      "prep": null
+    }
+  ],
+  "documents": {
+    "foundation": [
+      {
+        "name": "Commission Agreement",
+        "meta": "Signed 12 Jul 2027",
+        "view": true
+      },
+      {
+        "name": "Non-Disclosure Agreement",
+        "meta": "Signed 12 Jul 2027",
+        "view": true
+      },
+      {
+        "name": "Founder Intelligence Profile",
+        "meta": "Completed 19 Jul 2027",
+        "view": true
+      }
+    ],
+    "evidence": [
+      {
+        "name": "Evidence Discovery Companion™",
+        "meta": "Issued 24 Jul 2027",
+        "view": true
+      },
+      {
+        "name": "Evidence Register",
+        "meta": "Updated 21 Aug 2027",
+        "view": true
+      },
+      {
+        "name": "Documentary Gap Report",
+        "meta": "Updated 21 Aug 2027",
+        "view": true
+      }
+    ],
+    "extraction": [
+      {
+        "name": "Readiness Assessment",
+        "meta": "Pending",
+        "view": false
+      },
+      {
+        "name": "Session Registers",
+        "meta": "In progress",
+        "view": false
+      }
+    ],
+    "production": [
+      {
+        "name": "Ledger Architecture",
+        "meta": "Pending",
+        "view": false
+      },
+      {
+        "name": "Validation Copy",
+        "meta": "Pending",
+        "view": false
+      },
+      {
+        "name": "Completion Certificate",
+        "meta": "Pending",
+        "view": false
+      }
+    ]
+  },
+  "messages": [
+    {
+      "date": "18 September 2027",
+      "from": "Kaylee-Jane — KINGLIS",
+      "title": "Commission Note",
+      "body": "Evidence from the 2011–2013 period has substantially strengthened our understanding of your decision-making under uncertainty. We will revisit this in depth during Session Two.\n\nIf you are able to locate the notebook referenced during your FIP session, please submit it before our next meeting."
+    },
+    {
+      "date": "14 August 2027",
+      "from": "Kaylee-Jane — KINGLIS",
+      "title": "Evidence Receipt Confirmed",
+      "body": "Your first evidence submission has been received and is now under review. The Evidence Register has been updated in your portal."
+    }
+  ],
+  "payments": [
+    {
+      "name": "Commission Activation Fee",
+      "amount": "US$4,500",
+      "status": "Received 12 Jul 2027"
+    },
+    {
+      "name": "Evidence & Extraction Fee",
+      "amount": "US$6,000",
+      "status": "Pending"
+    },
+    {
+      "name": "Ledger Creation & Production",
+      "amount": "US$4,500",
+      "status": "Pending"
+    }
+  ]
+}
