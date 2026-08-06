@@ -3,136 +3,314 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>KINGLIS — Business X-Ray™ Foundation | $1,750 | 14-Day Diagnostic</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&family=Inter:wght@400;500;700&family=Source+Serif+4:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<title>Business X-Ray™ — Foundation | KINGLIS</title>
 <style>
-:root{--bg:#F9F6F2;--bg2:#F1EEE8;--ink:#1A1715;--ink2:#6E6A66;--line:rgba(26,23,21,.11);--muted:#9A958E;--tan:#8C6A4A;--olive:#8C6A4A}
-*{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--ink);font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased}
-a{color:inherit;text-decoration:none}
-.wrap{max-width:1180px;margin:0 auto;padding:0 28px}
-.nav{height:64px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line)}
-.nav-left{font-size:11px;letter-spacing:.18em;font-weight:700} .nav-left span{font-weight:400;color:var(--muted);margin-left:12px}
-.nav-links{display:flex;gap:22px;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink2)} .nav-cta{background:var(--ink);color:var(--bg);padding:9px 16px;border-radius:100px;font-size:10px;letter-spacing:.12em;cursor:pointer}
-.hero{display:grid;grid-template-columns:1.05fr .95fr;gap:64px;padding:84px 0 52px;align-items:start}
-.kicker{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--tan);margin-bottom:18px}
-.h1{font-family:'Source Serif 4',serif;font-size:62px;line-height:.92;letter-spacing:-.03em;margin:0 0 14px;font-weight:500} .h1 em{font-style:italic;font-weight:400}
-.lede{font-size:15.5px;line-height:1.5;color:var(--ink2);max-width:34ch;margin:0 0 20px}
-.pills{display:flex;gap:12px;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:26px}
-.btn{display:inline-flex;padding:14px 22px;background:var(--ink);color:var(--bg);font-size:11px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;border-radius:2px;cursor:pointer}
-.btn-sub{font-size:11px;color:var(--muted);margin-top:10px}
-.card{background:var(--bg2);border:1px solid var(--line);border-radius:16px;padding:20px}
-.card-top{display:flex;justify-content:space-between;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:16px}
-.step{display:flex;gap:12px;margin-bottom:12px} .num{width:22px;height:22px;border-radius:50%;background:white;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:600;flex-shrink:0} .num.dark{background:var(--ink);color:white;border-color:var(--ink)}
-.step-t{font-size:10px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;margin-bottom:2px} .step-p{font-size:12px;line-height:1.4;color:var(--ink2)}
-.strip{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--bg2);padding:18px 0;margin:0}
-.strip-inner{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:11px;letter-spacing:.06em;color:var(--ink2)}
-.strip-inner b{color:var(--ink);font-weight:600}
-.section{padding:52px 0;border-top:1px solid var(--line)}
-.h2{font-family:'Source Serif 4',serif;font-size:32px;line-height:1.02;margin:0 0 20px;font-weight:500}
-.grid2{display:grid;grid-template-columns:1fr 1fr;gap:48px}
-.list{list-style:none;padding:0;margin:0} .list li{padding:8px 0;border-bottom:1px solid var(--line);font-size:13px;line-height:1.4;color:var(--ink2);display:flex;gap:8px} .list li b{color:var(--ink)}
-.pricing{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:28px}
-.p-card{border:1px solid var(--line);border-radius:14px;padding:20px;background:var(--bg)} .p-card.feat{background:var(--ink);color:var(--bg);border-color:var(--ink)}
-.p-k{font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)} .feat .p-k{color:rgba(249,246,242,.6)} .p-v{font-family:'Source Serif 4',serif;font-size:26px;margin:8px 0} .p-s{font-size:12px;line-height:1.45;color:var(--ink2)} .feat .p-s{color:rgba(249,246,242,.7)}
-.legal{font-size:11px;line-height:1.5;color:var(--ink2)}
-.img-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-.img-grid figure{margin:0;background:#F9F8F7}
-.img-box{aspect-ratio:4/3;overflow:hidden;background:#EDE7DF;display:flex;align-items:center;justify-content:center}
-.img-box img{width:100%;height:100%;object-fit:cover;display:block}
-@media(max-width:900px){.hero{grid-template-columns:1fr;gap:28px;padding:44px 0}.grid2,.pricing,.img-grid{grid-template-columns:1fr}.h1{font-size:46px}}
+  :root{
+    --bg:#0c1826; /* exact blue from Thesis Ledger */
+    --bg2:#111f32;
+    --bg3:#162a45;
+    --line:#1e3450;
+    --text:#f5f5f2;
+    --muted:#8da6c0;
+    --muted2:#5c7591;
+    --accent:#c9a86a; /* gold accent from Thesis image */
+    --max:1080px;
+    --radius:16px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--text);font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, Helvetica, Arial, sans-serif; -webkit-font-smoothing:antialiased; line-height:1.6}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+  .eyebrow{font-size:11px;letter-spacing:0.22em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:16px}
+  h1{font-size: clamp(32px, 5vw, 52px);line-height:0.95;letter-spacing:-0.03em;font-weight:700;margin:0 0 20px}
+  h2{font-size: clamp(24px, 3.2vw, 36px);line-height:1.05;letter-spacing:-0.02em;font-weight:700;margin:0 0 16px}
+  h3{font-size:14px;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);font-weight:600;margin:0 0 12px}
+  p{margin:0 0 16px;color:var(--text)}
+  .muted{color:var(--muted)}
+  .small{font-size:13px;line-height:1.5}
+  .btn{display:inline-flex;align-items:center;justify-content:center;padding:14px 22px;border-radius:999px;font-size:13px;font-weight:600;letter-spacing:0.02em;border:1px solid var(--text);background:var(--text);color:#0c1826;transition:.2s;cursor:pointer}
+  .btn:hover{transform:translateY(-1px);opacity:.92}
+  .btn-secondary{background:transparent;color:var(--text);border-color:var(--line)}
+  .btn-secondary:hover{border-color:var(--muted);background:var(--bg2)}
+  .hero{padding:88px 0 48px;border-bottom:1px solid var(--line)}
+  .hero-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:48px;align-items:end}
+  .qual{margin-top:24px;padding-top:24px;border-top:1px solid var(--line);font-size:13px;color:var(--muted);line-height:1.5}
+  .cta-row{display:flex;gap:12px;margin-top:28px;flex-wrap:wrap}
+  .scope-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;margin-top:40px}
+  .scope-strip div{background:var(--bg2);padding:18px 20px}
+  .scope-strip b{display:block;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted2);margin-bottom:6px}
+  .scope-strip span{font-size:14px;font-weight:600}
+  section{padding:72px 0;border-bottom:1px solid var(--line)}
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+  .card{background:var(--bg2);border:1px solid var(--line);border-radius:var(--radius);padding:24px}
+  .list{list-style:none;padding:0;margin:20px 0 0}
+  .list li{position:relative;padding-left:20px;margin-bottom:14px;color:var(--muted);font-size:15px}
+  .list li:before{content:"—";position:absolute;left:0;color:var(--muted2)}
+  .lens-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;margin-top:24px}
+  .lens-grid div{background:var(--bg2);padding:22px}
+  .lens-grid b{font-size:13px;letter-spacing:-0.01em;color:var(--text)}
+  .lens-grid p{font-size:13px;color:var(--muted);margin-top:8px;line-height:1.5}
+  .spec-table{width:100%;border-collapse:collapse;margin-top:24px;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
+  .spec-table th{text-align:left;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted2);padding:14px 18px;background:var(--bg3);border-bottom:1px solid var(--line)}
+  .spec-table td{padding:14px 18px;font-size:14px;border-bottom:1px solid var(--line);background:var(--bg2)}
+  .spec-table tr:last-child td{border-bottom:0}
+  .steps{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;margin-top:24px}
+  .steps div{background:var(--bg2);padding:22px}
+  .steps b{font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted2);display:block;margin-bottom:10px}
+  .steps strong{display:block;font-size:14px;margin-bottom:8px}
+  .steps p{font-size:13px;color:var(--muted);line-height:1.5;margin:0}
+  .deliverables{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:24px}
+  .deliverables .card h4{margin:0 0 8px;font-size:15px}
+  .deliverables .card p{font-size:13px;color:var(--muted);line-height:1.5;margin:0}
+  .notice{background:var(--bg3);border:1px dashed var(--line);border-radius:var(--radius);padding:20px;margin-top:24px}
+  .faq{margin-top:24px}
+  .faq details{background:var(--bg2);border:1px solid var(--line);border-radius:12px;padding:18px 20px;margin-bottom:10px}
+  .faq summary{cursor:pointer;font-weight:600;font-size:15px;list-style:none}
+  .faq summary::-webkit-details-marker{display:none}
+  .faq details p{margin-top:12px;color:var(--muted);font-size:14px;line-height:1.6}
+  .investment-box{background:var(--text);color:#0c1826;border-radius:var(--radius);padding:28px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+  .investment-box b{font-size:11px;letter-spacing:0.14em;text-transform:uppercase;opacity:.6;display:block;margin-bottom:4px}
+  .investment-box span{font-size:28px;font-weight:700;letter-spacing:-0.02em}
+  @media(max-width:900px){
+    .hero-grid,.two-col{grid-template-columns:1fr}
+    .scope-strip{grid-template-columns:1fr 1fr}
+    .lens-grid{grid-template-columns:1fr 1fr}
+    .steps{grid-template-columns:1fr}
+    .deliverables{grid-template-columns:1fr}
+  }
+  /* EDITABLE MARKERS FOR GHL */
 </style>
 </head>
 <body>
-<div class="wrap nav">
-  <div class="nav-left">KINGLIS <span>ORGANIZATIONAL INTELLIGENCE</span></div>
-  <div style="display:flex;gap:22px;align-items:center"><div class="nav-links"><a href="index.html">HOME</a><a href="index.html#model">MODEL</a><a href="confidential-intake/">CONTACT</a></div><a class="nav-cta" href="confidential-intake/">BOOK REVIEW</a></div>
-</div>
 
-<div class="wrap hero">
-  <div>
-    <div class="kicker">02 — Intelligence / Business X-Ray™ — 14-Day Diagnostic</div>
-    <h1 class="h1">Establish what is<br><em>actually happening.</em></h1>
-    <p class="lede">For 5–25 employees when the official story no longer explains outcomes.</p>
-    <div class="pills"><span>✓ Confidential</span><span>•</span><span>✓ No disruption</span><span>•</span><span>✓ Founder-led</span></div>
-    <div><a class="btn" href="confidential-intake/">Start with Confidential Intake →</a><div class="btn-sub">3 mins. I read every one myself.</div></div>
-  </div>
-  <div class="card">
-    <div class="card-top"><span>Sprint — 14 Days</span><span>Foundation • $1,750</span></div>
-    <div class="step"><div class="num">1</div><div><div class="step-t">Collect</div><div class="step-p">30 docs / 300pp max + 3 interviews x 60 mins</div></div></div>
-    <div class="step"><div class="num">2</div><div><div class="step-t">Evaluate</div><div class="step-p">6 functions, tied to one question</div></div></div>
-    <div class="step"><div class="num">3</div><div><div class="step-t">Translate</div><div class="step-p">Report + Map + 90-Day Architecture</div></div></div>
-    <div class="step"><div class="num dark">4</div><div><div class="step-t">Briefing</div><div class="step-p">60-min meeting. 10 days after Sufficiency.</div></div></div>
-  </div>
-</div>
+<!-- ================= HERO ================= -->
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Business X-Ray™ — Foundation</div>
+    <div class="hero-grid">
+      <div>
+        <h1>Establish what is actually happening—before you decide what to change.</h1>
+        <p class="muted" style="font-size:17px;max-width:52ch">When explanations no longer account for outcomes, Business X-Ray™ examines the evidence surrounding one material executive question. KINGLIS reconstructs the relevant decisions, authority, information flow, dependencies and operating conditions—then establishes the clearest account the available evidence responsibly supports.</p>
+        <div class="cta-row">
+          <a href="#intake" class="btn">Begin Confidential Intake™</a>
+          <a href="#scoping" class="btn btn-secondary">Request a Private Scoping Conversation</a>
+        </div>
+        <div class="qual">For one organisation of 5–25 employees. One agreed central executive question. Confidential, founder-led and remote-first.</div>
+      </div>
+      <div>
+        <div class="card" style="background:var(--bg3)">
+          <h3>Foundation is deliberately narrow</h3>
+          <p class="small muted">It does not attempt to diagnose the entire organisation. It establishes what the available evidence reveals about one agreed executive question and the structures materially connected to it.</p>
+          <div style="margin-top:20px;display:grid;gap:10px">
+            <div style="display:flex;justify-content:space-between"><span class="small muted">Price</span><span class="small" style="font-weight:700">$1,750 · 100% upfront</span></div>
+            <div style="display:flex;justify-content:space-between"><span class="small muted">Payment confirms scope</span><span class="small muted">✓</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-<div class="strip">
-  <div class="wrap strip-inner">
-    <span><b>Not an audit.</b> No all-hands.</span>
-    <span><b>Evidence-led.</b> 30 docs / 300pp cap.</span>
-    <span><b>Contained.</b> 1 org, 1 question, 6 functions.</span>
-    <span><b>Delivery.</b> 10 business days after Sufficiency.</span>
-    <span><b>Terms.</b> 100% upfront. Factual corrections only.</span>
+    <!-- SCOPE STRIP - EDITABLE -->
+    <div class="scope-strip">
+      <div><b>Price</b><span>$1,750</span></div>
+      <div><b>Evidence</b><span>Up to 30 docs / 300 pages</span></div>
+      <div><b>Interviews</b><span>Up to 3 stakeholders</span></div>
+      <div><b>Delivery</b><span>10 business days after Evidence Sufficiency</span></div>
+    </div>
   </div>
-</div>
+</header>
 
-<section class="img-grid">
-  <figure><div class="img-box"><img src="assets/business-xray-01.png" alt="Evidence Index" onerror="this.parentElement.innerHTML='<div style=color:#8C6A4A;font-size:10px;letter-spacing:.12em>01 — EVIDENCE</div>'" /></div><figcaption style="padding:18px 22px;"><div style="font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--olive);">01 — Evidence</div><div style="font-family:'Cormorant Garamond',serif;font-size:18px;margin-top:6px;">Evidence Index</div></figcaption></figure>
-  <figure><div class="img-box"><img src="assets/business-xray-02.png" alt="Reconstruction" onerror="this.parentElement.innerHTML='<div style=color:#8C6A4A;font-size:10px;letter-spacing:.12em>02 — INVESTIGATION</div>'" /></div><figcaption style="padding:18px 22px;"><div style="font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--olive);">02 — Investigation</div><div style="font-family:'Cormorant Garamond',serif;font-size:18px;margin-top:6px;">Evidence Reconstruction</div></figcaption></figure>
-  <figure><div class="img-box"><img src="assets/business-xray-03.png" alt="Briefing" onerror="this.parentElement.innerHTML='<div style=color:#8C6A4A;font-size:10px;letter-spacing:.12em>03 — INTELLIGENCE</div>'" /></div><figcaption style="padding:18px 22px;"><div style="font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--olive);">03 — Intelligence</div><div style="font-family:'Cormorant Garamond',serif;font-size:18px;margin-top:6px;">Executive Briefing</div></figcaption></figure>
+<!-- ================= TRIGGER ================= -->
+<section>
+  <div class="wrap">
+    <div class="two-col">
+      <div>
+        <div class="eyebrow">Trigger Conditions</div>
+        <h2>For the point at which the official explanation is no longer sufficient.</h2>
+        <p class="muted">Business X-Ray™ is designed for a bounded but consequential question—where acting on an incomplete explanation could produce expensive, disruptive or difficult-to-reverse decisions.</p>
+      </div>
+      <div>
+        <ul class="list">
+          <li>Growth has reduced visibility across functions, entities or leadership levels.</li>
+          <li>Different people provide materially different explanations for the same recurring outcome.</li>
+          <li>Decisions repeatedly stall, return for approval or depend on one individual.</li>
+          <li>Responsibilities appear clear formally but operate differently in practice.</li>
+          <li>Important information is fragmented across people, systems and informal channels.</li>
+          <li>A restructure, system change, leadership intervention or investment decision depends on understanding the present condition first.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
 </section>
 
-<div class="wrap section">
-  <div class="grid2">
-    <div>
-      <div class="h2">When to use it</div>
-      <ul class="list">
-        <li><span>→</span><span>Growth outpaced visibility</span></li>
-        <li><span>→</span><span>Different stories for same failure</span></li>
-        <li><span>→</span><span>Pre-restructure / acquire / raise</span></li>
-        <li><span>→</span><span>Signals inconsistent or disputed</span></li>
-        <li><span>→</span><span>Need confidential account to act on</span></li>
-      </ul>
-    </div>
-    <div>
-      <div class="h2">What you get</div>
-      <ul class="list">
-        <li><span>•</span><span><b>Executive Findings Report</b> — what evidence supports</span></li>
-        <li><span>•</span><span><b>Structural Intelligence Map</b> — conditions, not just events</span></li>
-        <li><span>•</span><span><b>90-Day Action Architecture</b> — where to start</span></li>
-        <li><span>•</span><span><b>60-min Executive Briefing</b></span></li>
-      </ul>
-      <div class="legal" style="margin-top:16px">Evidence Sufficiency: <b>KINGLIS confirms in writing</b> docs received + interviews scheduled. Client supplies evidence within 10 business days. Delays pause delivery.</div>
-    </div>
-  </div>
-</div>
-
-<div class="wrap section" style="padding-top:28px">
-  <div class="h2" style="margin-bottom:8px">Investment</div>
-  <div class="legal">One organisation. One question. Hard boundary. Cheaper than being wrong.</div>
-  <div class="pricing">
-    <div class="p-card feat">
-      <div class="p-k">Foundation — 5–25 — Most booked</div>
-      <div class="p-v">$1,750</div>
-      <div class="p-s">3 interviews, 30 docs / 300pp, up to 6 functions. 14-day sprint. Delivery 10 business days after Sufficiency.<br><br>100% upfront. One factual-correction round.</div>
-      <div style="margin-top:16px"><a class="btn" style="background:white;color:var(--ink);width:100%;justify-content:center" href="confidential-intake/">Start Intake →</a></div>
-    </div>
-    <div class="p-card">
-      <div class="p-k">Extended — 26–50 employees</div>
-      <div class="p-v">$2,750</div>
-      <div class="p-s">5 interviews, 50 docs / 500pp, up to 8 functions. 14–15 business days after Sufficiency.</div>
-    </div>
-    <div class="p-card">
-      <div class="p-k">Enterprise — 51–100+ / multi-entity</div>
-      <div class="p-v">Custom from $4,500</div>
-      <div class="p-s">Scoped after 30-min call. Entities, countries, evidence volume determine fee.<br><br>Workforce Module: Up to 25: $650 | 26–50: $950 | 51+ custom.</div>
+<!-- ================= WHAT IT EXAMINES ================= -->
+<section style="background:var(--bg2)">
+  <div class="wrap">
+    <div class="eyebrow">What KINGLIS examines</div>
+    <h2>Evidence before explanation.</h2>
+    <div class="two-col" style="margin-top:24px">
+      <div>
+        <p class="muted">KINGLIS examines the parts of the organisation that materially affect the agreed question. Depending on the evidence, this may include strategy, structure, governance, operations, leadership and performance.</p>
+        <div class="card" style="margin-top:20px">
+          <h3>What the engagement seeks to establish</h3>
+          <ul class="list" style="margin-top:12px">
+            <li>What can be directly observed from the available evidence.</li>
+            <li>Which explanations are supported, contradicted or remain untested.</li>
+            <li>Which structural conditions are producing or sustaining the outcome.</li>
+            <li>What risks and dependencies follow from those conditions.</li>
+            <li>Which matters require priority executive attention.</li>
+          </ul>
+        </div>
+      </div>
+      <div>
+        <div class="lens-grid">
+          <div><b>Decisions</b><p>Where decisions originate, who can authorise them, where they stall and how completion is evidenced.</p></div>
+          <div><b>Authority</b><p>The difference between formal responsibility and authority exercised in practice.</p></div>
+          <div><b>Information</b><p>Where material information originates, how it moves, where it fragments and who can access it.</p></div>
+          <div><b>Workflows</b><p>The handoffs, dependencies, controls and exceptions shaping execution.</p></div>
+          <div><b>Knowledge</b><p>Where critical organisational knowledge is documented, concentrated or vulnerable.</p></div>
+          <div><b>Conditions</b><p>The structures and recurring mechanisms that make observed outcomes more likely.</p></div>
+        </div>
+      </div>
     </div>
   </div>
-  <div class="legal" style="margin-top:16px;text-align:center">Excludes: employee-wide surveys beyond scope, financial audit/forensics, legal advice, implementation, new evidence after Sufficiency, rewrites.</div>
-</div>
+</section>
 
-<div class="wrap section" style="padding:28px 0 48px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px">
-  <div class="legal">© KINGLIS — Organizational Intelligence — Confidential. Remote-first. Founder-led.</div>
-  <a class="btn" href="confidential-intake/">Start with Confidential Intake →</a>
-</div>
+<!-- ================= FOUNDATION SCOPE ================= -->
+<section>
+  <div class="wrap">
+    <div class="eyebrow">Foundation Scope</div>
+    <h2>One question. A controlled evidence set. A defensible answer.</h2>
+    
+    <table class="spec-table">
+      <thead><tr><th>Control</th><th>Limit</th></tr></thead>
+      <tbody>
+        <tr><td>Organisation</td><td>One organisation, normally 5–25 employees</td></tr>
+        <tr><td>Central question</td><td>One agreed executive question</td></tr>
+        <tr><td>Functions</td><td>Up to six, only insofar as they relate to the question</td></tr>
+        <tr><td>Documents</td><td>Up to 30 relevant documents; maximum 300 pages</td></tr>
+        <tr><td>Interviews</td><td>Up to three stakeholder interviews; maximum 60 minutes each</td></tr>
+        <tr><td>Delivery</td><td>Within 10 business days after written Evidence Sufficiency confirmation</td></tr>
+        <tr><td>Corrections</td><td>One consolidated factual-correction round</td></tr>
+        <tr><td>Payment</td><td>100% upfront; payment confirms scope</td></tr>
+      </tbody>
+    </table>
+
+    <div class="two-col" style="margin-top:24px">
+      <div class="notice"><h3>Evidence formatting</h3><p class="small muted">Documents must be searchable, legible and supplied in English unless otherwise agreed. Material submitted outside the agreed evidence set may require a variation or rescheduling.</p></div>
+      <div class="notice"><h3>Complexity</h3><p class="small muted">The Foundation fee applies to the controlled scope above. Multi-entity, cross-border, highly regulated, urgent or materially broader matters are scoped separately.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= METHOD ================= -->
+<section style="background:var(--bg2)">
+  <div class="wrap">
+    <div class="eyebrow">How the engagement works</div>
+    <h2>Understanding is built in sequence.</h2>
+    <div class="steps">
+      <div><b>01 — Orient</b><strong>Scope is locked before evidence review.</strong><p>KINGLIS confirms the question, organisation, functions, access and handling requirements.</p></div>
+      <div><b>02 — Establish Evidence Sufficiency</b><strong>The delivery clock has not yet started.</strong><p>A tailored evidence request is issued. Each item is registered and assessed for usability, relevance and restriction.</p></div>
+      <div><b>03 — Investigate</b><strong>Automated candidates are reviewed against source evidence.</strong><p>KINGLIS reconstructs material events, decision pathways, authority, information flow and dependencies. Up to three interviews test specific uncertainties.</p></div>
+      <div><b>04 — Develop Intelligence</b><strong>Findings require KINGLIS analyst judgement.</strong><p>Evidence is tested for corroboration, contradiction and alternative explanations. Conditions, mechanisms, risks and priorities are established.</p></div>
+      <div><b>05 — Deliver</b><strong>Advisory follows validated intelligence.</strong><p>The controlled deliverables are issued, followed by one factual-correction round and the Executive Findings Meeting.</p></div>
+    </div>
+    <p class="small muted" style="margin-top:16px">Doctrine: Understanding precedes change: Evidence → Intelligence → Advisory.</p>
+  </div>
+</section>
+
+<!-- ================= DELIVERABLES ================= -->
+<section>
+  <div class="wrap">
+    <div class="eyebrow">What the client receives</div>
+    <h2>Four outputs. Each derived from the same evidential record.</h2>
+    <div class="deliverables">
+      <div class="card"><h4>01 — Executive Findings Report</h4><p>A focused, evidence-grounded account of the question, sources examined, material limitations, organisational reality, defensible chronology, findings, structural conditions, risks, implications, priorities and open questions.</p></div>
+      <div class="card"><h4>02 — Structural Intelligence Map</h4><p>A one-page visual showing the authority, decision pathways, information movement, dependencies, bottlenecks, control gaps and reinforcing conditions materially connected to the question.</p></div>
+      <div class="card"><h4>03 — 90-Day Action Architecture</h4><p>A sequenced architecture connecting each priority to the condition being addressed, accountable owner, required action, dependency, evidence of completion and 30-, 60- or 90-day horizon. It is not an implementation plan.</p></div>
+      <div class="card"><h4>04 — Executive Findings Meeting</h4><p>One 60-minute confidential meeting to present the findings, explain evidential confidence, clarify implications and establish the available decision landscape.</p></div>
+    </div>
+    <div class="notice" style="margin-top:16px"><p class="small"><b>Corrections:</b> One consolidated factual-correction round is included for demonstrable factual inaccuracies. It does not include new evidence, expanded analysis, restructuring or removal of supported findings.</p></div>
+  </div>
+</section>
+
+<!-- ================= EVIDENCE SUFFICIENCY / EXCLUSIONS / INVESTMENT ================= -->
+<section style="background:var(--bg2)">
+  <div class="wrap">
+    <div class="two-col">
+      <div>
+        <div class="eyebrow">Evidence Sufficiency</div>
+        <h2>Delivery begins only when sufficiency is confirmed in writing.</h2>
+        <p class="small muted">The delivery clock begins only when KINGLIS confirms Evidence Sufficiency in writing. Sufficiency means that required documents have been received or their absence recorded, material is usable, the question remains within scope, interviews are scheduled, restrictions are known and the evidence can responsibly support analysis.</p>
+        <p class="small muted">KINGLIS—not the client—determines Evidence Sufficiency. Client-caused delays, cancellations, access failures or material evidence submitted afterwards may pause or revise delivery.</p>
+        
+        <div style="margin-top:32px">
+          <div class="eyebrow">Not included</div>
+          <ul class="list">
+            <li>Employee-wide surveys or workforce research.</li>
+            <li>More than three stakeholder interviews.</li>
+            <li>Financial audit, assurance, valuation or forensic work.</li>
+            <li>Legal, tax, regulatory or employment advice.</li>
+            <li>Implementation, project management or ongoing advisory.</li>
+            <li>Unlimited evidence review or open-ended organisational discovery.</li>
+          </ul>
+        </div>
+      </div>
+      <div>
+        <div class="investment-box">
+          <div>
+            <b>Investment</b>
+            <span>$1,750</span>
+            <div class="small" style="margin-top:6px">100% upfront · Payment confirms scope</div>
+          </div>
+          <a href="#intake" class="btn" style="background:#0c1826;color:#f5f5f2;border-color:#0c1826">Begin Confidential Intake™</a>
+        </div>
+        <div class="notice" style="margin-top:16px"><p class="small muted">A custom scope applies where the matter exceeds Foundation limits because of entities, countries, functions, evidence fragmentation, interview requirements, complexity, regulatory sensitivity or urgency.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FAQ ================= -->
+<section>
+  <div class="wrap">
+    <div class="eyebrow">FAQ</div>
+    <h2>Clarity before engagement.</h2>
+    <div class="faq">
+      <details><summary>Is this disruptive to the organisation?</summary><p>The engagement is designed to minimise unnecessary disruption. It uses existing evidence and no more than three targeted stakeholder interviews. No employee-wide survey, workshop or all-hands process is included.</p></details>
+      <details><summary>When does the ten-business-day period begin?</summary><p>Only after KINGLIS confirms Evidence Sufficiency in writing. Payment, onboarding or partial document receipt does not start the delivery clock.</p></details>
+      <details><summary>Will KINGLIS tell us what to do?</summary><p>KINGLIS first establishes what the evidence supports and the conditions producing the observed outcomes. The 90-Day Action Architecture then sequences evidence-grounded priorities. Implementation remains a separate decision and engagement.</p></details>
+      <details><summary>What if the evidence does not support a firm conclusion?</summary><p>KINGLIS will state the limitation directly, distinguish supported findings from indicative conditions and identify the evidence or clarification required. A report is not manufactured to create false certainty.</p></details>
+      <details><summary>Can the scope expand after commencement?</summary><p>Yes, but only through written variation or a separate engagement. Additional evidence, interviews, entities, countries, functions or questions are not absorbed silently into Foundation.</p></details>
+      <details><summary>What happens after delivery?</summary><p>The engagement closes after the factual-correction process and Executive Findings Meeting. Implementation support or continuing Organisational Intelligence Advisory may be proposed separately where appropriate.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FINAL CTA ================= -->
+<section id="intake" style="background:var(--text);color:#0c1826;padding:88px 0">
+  <div class="wrap">
+    <div class="two-col">
+      <div>
+        <div class="eyebrow" style="color:#6b6b68">Confidential Intake™</div>
+        <h2 style="color:#0c1826">Begin with the question that cannot responsibly remain unclear.</h2>
+        <p style="color:#444">Every KINGLIS engagement begins with a Confidential Intake™. It allows KINGLIS to understand the organisation, the circumstances prompting the enquiry, the decision depending on greater clarity and whether Business X-Ray™ — Foundation is the appropriate engagement.</p>
+        <div class="cta-row">
+          <a href="#" class="btn" style="background:#0c1826;color:#f5f5f2;border-color:#0c1826">Begin Confidential Intake™</a>
+          <a href="#scoping" id="scoping" class="btn btn-secondary" style="border-color:#0c1826;color:#0c1826">Request a Private Scoping Conversation</a>
+        </div>
+        <p class="small" style="margin-top:20px;color:#6b6b68">Confidential · Founder-led · Evidence-led · No advisory relationship is created by submitting an intake.</p>
+      </div>
+      <div>
+        <div class="card" style="background:#f5f5f2;border-color:#e5e5e0">
+          <h3 style="color:#6b6b68">Implementation Rule</h3>
+          <p class="small" style="color:#0c1826">Publish the client-facing copy exactly as controlled. Design may change; meaning, limits, price, timing and deliverables may not.</p>
+          <p class="small" style="color:#6b6b68;margin-top:12px">Removed from Foundation page: 14-day sprint, 62-point protocol, 4–6 conversations, 8 artifacts, 25–60 page report, Starting at $4,000, 90-min briefing, enterprise-wide truth claims.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 </body>
 </html>
