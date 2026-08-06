@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,75 +9,134 @@
 :root{
   --bg:#FDFBF7;--surface:#F8F4EE;--surface-2:#FCFAF6;--card:#FFFFFF;--card-alt:#F9F5EF;
   --border:#EAE1D2;--border-soft:#F0E8D8;--gold:#C9A84C;--gold-deep:#A8893D;
-  --gold-line:rgba(201,168,76,0.24);--gold-line-faint:rgba(201,168,76,0.14);
+  --gold-line:rgba(201,168,76,0.22);--gold-line-faint:rgba(201,168,76,0.12);
   --text:#1E1C19;--text-2:#6E685F;--text-3:#9A958E;--text-faint:#C4BEB6;--mono:'JetBrains Mono', monospace;
 }
 *{box-sizing:border-box}html{scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--text);font-family:'Inter', sans-serif;font-weight:300;line-height:1.7;-webkit-font-smoothing:antialiased}
+body{margin:0;background:var(--bg);color:var(--text);font-family:'Inter', sans-serif;font-weight:300;line-height:1.85;-webkit-font-smoothing:antialiased}
 button{font-family:inherit}a{color:inherit;text-decoration:none}
 .app{display:flex;min-height:100vh}
-.sidebar{position:fixed;left:0;top:0;bottom:0;width:240px;background:var(--surface-2);border-right:1px solid var(--border);display:flex;flex-direction:column;justify-content:space-between;z-index:10}
-.sidebar-top{padding:40px 26px 24px 26px}
-.wordmark{font-family:'Cormorant Garamond', serif;font-weight:400;letter-spacing:0.22em;font-size:18px;color:var(--gold);line-height:1}
-.commission-id{font-family:var(--mono);font-size:10.5px;letter-spacing:0.08em;color:var(--text-3);margin-top:10px}
-.nav{margin-top:64px;display:flex;flex-direction:column;gap:1px}
-.nav-item{display:block;width:100%;text-align:left;background:none;border:none;border-left:2px solid transparent;padding:10px 22px;font-size:12.5px;letter-spacing:0.02em;color:var(--text-2);cursor:pointer;transition:all 200ms ease}
+.sidebar{position:fixed;left:0;top:0;bottom:0;width:192px;background:var(--surface-2);border-right:1px solid var(--border);display:flex;flex-direction:column;justify-content:space-between;z-index:10}
+.sidebar-top{padding:32px 20px 20px 20px}
+.wordmark{font-family:'Cormorant Garamond', serif;font-weight:400;letter-spacing:0.22em;font-size:17px;color:var(--gold);line-height:1}
+.commission-id{font-family:var(--mono);font-size:10px;letter-spacing:0.08em;color:var(--text-3);margin-top:8px}
+.nav{margin-top:48px;display:flex;flex-direction:column;gap:1px}
+.nav-item{display:block;width:100%;text-align:left;background:none;border:none;border-left:2px solid transparent;padding:8px 18px;font-size:11.8px;letter-spacing:0.02em;color:var(--text-2);cursor:pointer;transition:all 200ms ease}
 .nav-item:hover{color:var(--text)}.nav-item.active{border-left-color:var(--gold);color:var(--text);font-weight:400}
-.sidebar-bottom{border-top:1px solid var(--border-soft);padding:18px 26px;display:flex;align-items:center;justify-content:space-between;font-family:var(--mono);font-size:10.5px;color:var(--text-3)}
+.sidebar-bottom{border-top:1px solid var(--border-soft);padding:14px 20px;display:flex;align-items:center;justify-content:space-between;font-family:var(--mono);font-size:10px;color:var(--text-3)}
 .dot{width:5px;height:5px;background:var(--gold);border-radius:50%;display:inline-block}
-.main{margin-left:240px;flex:1;min-height:100vh;padding:0 64px 140px 64px}.content-inner{max-width:720px;width:100%}
-.eyebrow{font-family:'Inter', sans-serif;font-size:0.62rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--text-3);font-weight:400}.eyebrow.gold{color:var(--gold-deep)}.mono{font-family:var(--mono)}
+.main{margin-left:192px;flex:1;min-height:100vh;padding:0 48px 100px 48px;display:flex;flex-direction:column}
+.content-inner{max-width:800px;width:100%;flex:1}
+.eyebrow{font-family:'Inter', sans-serif;font-size:0.56rem;letter-spacing:0.18em;text-transform:uppercase;color:#B0AAA2;font-weight:400}
+.eyebrow.gold{color:var(--gold-deep);opacity:0.9}
+.mono{font-family:var(--mono)}
 .divider{height:1px;background:var(--border);width:100%}.divider.gold{background:var(--gold-line)}
 .page{display:none}.page.active{display:block;animation:fade 240ms ease}@keyframes fade{from{opacity:0}to{opacity:1}}
-.commission-hero{padding-top:72px}.hero-title{font-family:'Cormorant Garamond', serif;font-weight:300;font-size:44px;line-height:0.95;letter-spacing:-0.02em;margin:0;color:var(--text)}
-.hero-commission-id{font-family:var(--mono);font-size:11px;letter-spacing:0.08em;color:var(--text-3);margin-top:18px}
-.hero-prepared{margin-top:88px;font-family:'Cormorant Garamond', serif;font-weight:300;font-style:italic;font-size:24px;line-height:1.3;color:var(--text-2)}.hero-prepared span{color:var(--text)}
-.spacer-96{height:96px}.current-phase-block{margin-top:24px;max-width:560px}.phase-name{font-family:'Cormorant Garamond', serif;font-size:32px;font-weight:400;line-height:1.1;letter-spacing:-0.01em}
-.phase-desc{margin-top:16px;font-size:15px;line-height:1.75;color:var(--text-2);max-width:480px}
-.action-wrap{margin-top:120px;border-top:1px solid var(--gold-line);padding-top:36px}
-.action-card{background:var(--card);border:1px solid var(--border);border-radius:2px;padding:32px 32px 28px 32px;margin-top:20px;max-width:520px}
-.action-list{list-style:none;margin:16px 0 0 0;padding:0}.action-list li{font-size:14px;line-height:1.8;color:var(--text);padding-left:18px;position:relative}
-.action-list li::before{content:'•';position:absolute;left:0;color:var(--gold);font-size:10px;top:2px}
-.action-meta{margin-top:20px;font-family:var(--mono);font-size:10.5px;color:var(--text-3);letter-spacing:0.04em}
-.timeline-editorial{margin-top:120px;border-top:1px solid var(--gold-line);padding-top:36px}
-.tl-minimal{margin-top:28px;position:relative;padding-left:2px}.tl-minimal::before{content:'';position:absolute;left:4px;top:6px;bottom:6px;width:1px;background:var(--border)}
-.tl-m-row{display:flex;gap:22px;padding:12px 0;align-items:flex-start}.tl-m-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0;margin-top:6px;background:var(--bg);border:1px solid var(--text-faint);z-index:1}
-.tl-m-dot.filled{background:var(--gold);border-color:var(--gold)}.tl-m-dot.check{border:none;background:none;color:var(--gold);font-size:11px;line-height:1;width:9px;height:14px;display:flex;align-items:center;justify-content:center}
-.tl-m-text{font-size:13.5px;line-height:1.5}.tl-m-text .n{color:var(--text);font-weight:400}.tl-m-text .n.muted{color:var(--text-3);font-weight:300}.tl-m-text .n.gold{color:var(--gold-deep);font-weight:400}.tl-m-text .d{color:var(--text-3);font-size:12.5px;margin-top:2px}
-.observation-wrap{margin-top:120px;border-top:1px solid var(--gold-line);padding-top:36px}
-.observation-card{margin-top:24px;max-width:560px;padding-left:24px;border-left:1px solid var(--gold-line)}
-.observation-meta{font-family:var(--mono);font-size:10.5px;color:var(--text-3);margin-bottom:16px;letter-spacing:0.04em}
-.observation-text{font-family:'Cormorant Garamond', serif;font-size:20px;line-height:1.55;font-weight:300;font-style:italic;color:var(--text)}
-.observation-sub{margin-top:16px;font-size:13px;line-height:1.7;color:var(--text-2);font-family:'Inter', sans-serif}
-.foot-note{margin-top:120px;padding-top:24px;border-top:1px solid var(--border-soft);display:flex;gap:32px;flex-wrap:wrap;font-family:var(--mono);font-size:10.5px;color:var(--text-3)}
-.page-header{padding-top:64px;margin-bottom:40px}.page-title{font-family:'Cormorant Garamond', serif;font-weight:300;font-size:38px;line-height:1.05;letter-spacing:-0.02em;margin:12px 0 0 0}
-.page-sub{margin-top:14px;font-size:13.5px;color:var(--text-2);line-height:1.6;max-width:520px}
-.tl-full{margin-top:24px}.tl-row{display:grid;grid-template-columns:110px 20px 1fr;gap:16px;padding:16px 0;border-bottom:1px solid var(--border-soft)}
-.tl-date{font-family:var(--mono);font-size:11px;color:var(--text-3);padding-top:2px}.tl-ind{display:flex;justify-content:center;padding-top:4px}
-.tl-ind .c{width:8px;height:8px;border-radius:50%;border:1px solid var(--text-faint)}.tl-ind .c.filled{background:var(--gold);border-color:var(--gold)}.tl-ind .c.check{border:none;color:var(--gold);font-size:11px;width:auto;height:auto}.tl-ind .c.pulse{animation:pulse 3s infinite ease-in-out}
-@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(201,168,76,0.3)}70%{box-shadow:0 0 0 8px rgba(201,168,76,0)}100%{box-shadow:0 0 0 0 rgba(201,168,76,0)}}
-.tl-content .name{font-size:14px;font-weight:400;color:var(--text)}.tl-content .name.muted{color:var(--text-3)}.tl-content .name.gold{color:var(--gold-deep)}.tl-content .desc{font-size:13px;color:var(--text-2);margin-top:3px}
-.ev-section{margin-top:48px}.ev-label{margin-bottom:18px}.ev-item{display:flex;justify-content:space-between;gap:16px;padding:11px 0;border-bottom:1px solid var(--border-soft);font-size:13.5px}.ev-item:last-child{border-bottom:none}
+
+/* Commission - perfected */
+.commission-hero{padding-top:56px}
+.hero-title{font-family:'Cormorant Garamond', serif;font-weight:300;font-size:42px;line-height:0.95;letter-spacing:-0.02em;margin:0;color:var(--text)}
+.hero-prepared{margin-top:56px;font-family:'Cormorant Garamond', serif;font-weight:300;font-size:38px;line-height:1.12;color:var(--text);letter-spacing:-0.015em}
+.hero-prepared span{color:var(--text)}
+.spacer-72{height:64px}
+.current-phase-block{margin-top:32px;max-width:600px}
+.phase-name{font-family:'Cormorant Garamond', serif;font-size:52px;font-weight:300;line-height:0.95;letter-spacing:-0.025em;color:var(--text);margin-top:8px}
+.phase-desc{margin-top:20px;font-size:15.5px;line-height:1.9;color:var(--text-2);max-width:520px}
+
+/* Next Action - editorial, no box */
+.action-wrap{margin-top:88px}
+.action-simple{margin-top:18px;max-width:480px}
+.action-label{font-size:14px;color:var(--text-2);line-height:1.7}
+.action-list{list-style:none;margin:12px 0 0 0;padding:0}
+.action-list li{font-size:15px;line-height:1.9;color:var(--text);padding-left:18px;position:relative;font-weight:400}
+.action-list li::before{content:'•';position:absolute;left:0;color:var(--gold);font-size:10px;top:1px}
+.action-meta{margin-top:18px;font-family:var(--mono);font-size:10.5px;color:var(--text-3);letter-spacing:0.04em;line-height:1.6}
+
+/* Timeline editorial - more air, no dividers */
+.timeline-editorial{margin-top:88px}
+.tl-minimal{margin-top:20px;position:relative;padding-left:2px}
+.tl-minimal::before{content:'';position:absolute;left:4px;top:8px;bottom:8px;width:1px;background:var(--border-soft)}
+.tl-m-row{display:flex;gap:22px;padding:14px 0;align-items:flex-start}
+.tl-m-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0;margin-top:8px;background:var(--bg);border:1px solid var(--text-faint);z-index:1}
+.tl-m-dot.filled{background:var(--text);border-color:var(--text);width:9px;height:9px;margin-top:7px}
+.tl-m-dot.check{border:none;background:none;color:var(--text);font-size:10px;line-height:1;width:9px;height:14px;display:flex;align-items:center;justify-content:center;font-weight:400}
+.tl-m-text{font-size:13.5px;line-height:1.5}
+.tl-m-text .n{color:var(--text);font-weight:400}
+.tl-m-text .n.muted{color:#C8C2B8;font-weight:300}
+.tl-m-text .n.completed{color:var(--text);font-weight:400}
+.tl-m-text .n.future{color:#C8C2B8;font-weight:300}
+.tl-m-text .n.current{font-family:'Cormorant Garamond', serif;font-size:19px;font-weight:500;line-height:1.2;letter-spacing:-0.01em;color:var(--text)}
+.tl-m-text .d{color:var(--text-3);font-size:12px;margin-top:3px;line-height:1.6}
+
+/* Observation */
+.observation-wrap{margin-top:88px}
+.observation-card{margin-top:20px;max-width:560px;padding-left:22px;border-left:1px solid var(--gold-line-faint)}
+.observation-meta{font-family:var(--mono);font-size:10px;color:var(--text-3);margin-bottom:14px;letter-spacing:0.04em}
+.observation-text{font-family:'Cormorant Garamond', serif;font-size:20px;line-height:1.6;font-weight:300;font-style:italic;color:var(--text)}
+.observation-sub{margin-top:14px;font-size:13.5px;line-height:1.85;color:var(--text-2);font-family:'Inter', sans-serif}
+.foot-note{margin-top:88px;padding-top:20px;border-top:1px solid var(--border-soft);display:flex;gap:28px;flex-wrap:wrap;font-family:var(--mono);font-size:10px;color:var(--text-3)}
+
+/* Other pages */
+.page-header{padding-top:48px;margin-bottom:28px}
+.page-title{font-family:'Cormorant Garamond', serif;font-weight:300;font-size:42px;line-height:1.02;letter-spacing:-0.02em;margin:10px 0 0 0}
+.page-sub{margin-top:12px;font-size:13.5px;color:var(--text-2);line-height:1.8;max-width:540px}
+.tl-full{margin-top:18px}
+.tl-row{display:grid;grid-template-columns:110px 20px 1fr;gap:16px;padding:22px 0}
+.tl-date{font-family:var(--mono);font-size:11px;color:var(--text-3);padding-top:2px}
+.tl-ind{display:flex;justify-content:center;padding-top:5px}
+.tl-ind .c{width:7px;height:7px;border-radius:50%;border:1px solid var(--text-faint)}
+.tl-ind .c.filled{background:var(--text);border-color:var(--text);width:8px;height:8px}
+.tl-ind .c.check{border:none;color:var(--text);font-size:11px;width:auto;height:auto}
+.tl-content .name{font-size:14px;font-weight:400}
+.tl-content .name.completed{color:var(--text)}
+.tl-content .name.muted{color:#C8C2B8}
+.tl-content .name.future{color:#C8C2B8;font-weight:300}
+.tl-content .name.current{font-family:'Cormorant Garamond', serif;font-size:20px;font-weight:500;letter-spacing:-0.01em;color:var(--text)}
+.tl-content .desc{font-size:13px;color:var(--text-2);margin-top:4px;line-height:1.7}
+
+.ev-section{margin-top:36px}.ev-label{margin-bottom:16px}
+.ev-item{display:flex;justify-content:space-between;gap:16px;padding:10px 0;border-bottom:1px solid var(--border-soft);font-size:13.5px}
+.ev-item:last-child{border-bottom:none}
 .ev-left{display:flex;gap:14px}.ev-mark{width:14px;text-align:center;font-size:11px;flex-shrink:0}.ev-mark.gold{color:var(--gold)}.ev-mark.muted{color:var(--text-faint)}
-.ev-name{color:var(--text);font-weight:400}.ev-pending .ev-name{color:var(--text-3);font-weight:300}.ev-meta{font-family:var(--mono);font-size:11px;color:var(--text-3);white-space:nowrap}.ev-context{font-size:12px;color:var(--text-3);font-style:italic;margin:2px 0 8px 28px}
-.session-stack{display:flex;flex-direction:column;gap:18px;margin-top:28px}.session-card{background:var(--card);border:1px solid var(--border);border-radius:2px;padding:30px 28px}.session-card.scheduled{border-left:2px solid var(--gold)}.session-card.upcoming{background:transparent;border-style:dashed}
+.ev-name{color:var(--text);font-weight:400}.ev-pending .ev-name{color:#B8B2A8;font-weight:300}.ev-meta{font-family:var(--mono);font-size:11px;color:var(--text-3);white-space:nowrap}.ev-context{font-size:12px;color:var(--text-3);font-style:italic;margin:2px 0 8px 28px;line-height:1.6}
+
+.session-stack{display:flex;flex-direction:column;gap:16px;margin-top:22px}
+.session-card{background:var(--card);border:1px solid var(--border);border-radius:2px;padding:26px 26px}
+.session-card.scheduled{border-left:2px solid var(--gold)}.session-card.upcoming{background:transparent;border-style:dashed}
 .s-head{display:flex;justify-content:space-between;gap:16px;align-items:flex-start}.s-title{font-family:'Cormorant Garamond', serif;font-size:20px;font-weight:400;line-height:1.15}
-.s-status{font-size:0.6rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-3);border:1px solid var(--border);padding:4px 8px;border-radius:2px}.s-status.gold{color:var(--gold-deep);border-color:var(--gold-line)}
-.s-date{font-family:var(--mono);font-size:11px;color:var(--text-3);margin-top:8px}.s-desc{font-size:13.5px;color:var(--text-2);margin-top:14px;max-width:520px;line-height:1.65}
-.s-prep{margin-top:22px;border-top:1px solid var(--border-soft);padding-top:16px}.prep-row{display:grid;grid-template-columns:76px 1fr;gap:10px;font-size:13px;padding:4px 0}.prep-row .k{font-size:0.62rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-3)}
-.doc-group-title{font-size:0.62rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--text-3);margin:40px 0 14px 0}
-.doc-row{display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-bottom:1px solid var(--border-soft);font-size:13.5px;align-items:baseline}.doc-meta{font-family:var(--mono);font-size:11px;color:var(--text-3);display:flex;gap:16px}.doc-view{color:var(--gold-deep);font-size:10.5px;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer}
-.sealed{margin-top:56px;padding-top:28px;border-top:1px solid var(--gold-line);display:flex;gap:14px;max-width:520px}.sealed p{margin:0;font-size:13px;color:var(--text-3);font-style:italic;line-height:1.6}
-.msg-list{margin-top:20px}.msg{padding:32px 0;border-bottom:1px solid var(--gold-line-faint)}.msg:first-child{border-top:1px solid var(--gold-line-faint)}
-.msg-head{display:flex;flex-direction:column;gap:2px;margin-bottom:18px}.msg-date{font-family:var(--mono);font-size:11px;color:var(--text-3)}.msg-from{font-size:13px;color:var(--text);font-weight:400}
-.msg-title{font-family:'Cormorant Garamond', serif;font-size:20px;font-weight:400;margin-bottom:12px}.msg-body{font-size:14px;color:var(--text-2);line-height:1.75;max-width:560px;white-space:pre-wrap}
-.compose{margin-top:56px;max-width:600px}.compose textarea{width:100%;background:var(--card);border:1px solid var(--border);border-radius:2px;color:var(--text);font-family:'Inter', sans-serif;font-size:14px;padding:16px;min-height:110px;resize:vertical;outline:none;transition:border-color 200ms}
-.compose textarea:focus{border-color:var(--gold-line)}.compose-foot{display:flex;justify-content:flex-end;margin-top:12px}
-.send-btn{background:none;border:none;color:var(--gold-deep);font-size:0.68rem;letter-spacing:0.14em;text-transform:uppercase;cursor:pointer;padding:6px 0;transition:opacity 200ms}.send-btn:hover{opacity:0.7}
-.record-grid{display:grid;grid-template-columns:180px 1fr;gap:12px 24px;font-size:13.5px;margin-top:24px}.record-grid .k{color:var(--text-3);font-size:0.64rem;letter-spacing:0.13em;text-transform:uppercase;padding-top:3px}.record-grid .v{color:var(--text);font-weight:400}
-.pay-table{margin-top:20px;width:100%;border-collapse:collapse}.pay-table td{padding:11px 0;border-bottom:1px solid var(--border-soft);font-size:13.5px}
-.pay-table td:last-child{text-align:right;font-family:var(--mono);font-size:11px;color:var(--text-3)}.pay-table td:nth-child(2){font-family:var(--mono);font-size:12px;text-align:right;color:var(--text-2)}.total-row td{border-bottom:none;font-weight:500;padding-top:16px}
-@media(max-width:900px){.sidebar{position:relative;width:100%;border-right:none;border-bottom:1px solid var(--border)}.main{margin-left:0;padding:0 22px 100px 22px}.nav{margin-top:24px;flex-direction:row;flex-wrap:wrap;gap:8px 16px}.nav-item{width:auto;border-left:none;border-bottom:2px solid transparent;padding:6px 2px 8px 2px}.nav-item.active{border-left-color:transparent;border-bottom-color:var(--gold)}.hero-title{font-size:34px}.spacer-96{height:56px}.record-grid{grid-template-columns:1fr}.tl-row{grid-template-columns:86px 18px 1fr}}
+.s-status{font-size:0.56rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-3);border:1px solid var(--border);padding:4px 8px;border-radius:2px}.s-status.gold{color:var(--gold-deep);border-color:var(--gold-line)}
+.s-date{font-family:var(--mono);font-size:11px;color:var(--text-3);margin-top:8px}.s-desc{font-size:13.5px;color:var(--text-2);margin-top:12px;max-width:520px;line-height:1.8}
+.s-prep{margin-top:18px;border-top:1px solid var(--border-soft);padding-top:14px}.prep-row{display:grid;grid-template-columns:76px 1fr;gap:10px;font-size:13px;padding:4px 0}.prep-row .k{font-size:0.56rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-3)}
+
+.doc-group-title{font-size:0.56rem;letter-spacing:0.16em;text-transform:uppercase;color:#B0AAA2;margin:32px 0 12px 0}
+.doc-row{display:flex;justify-content:space-between;gap:16px;padding:11px 0;border-bottom:1px solid var(--border-soft);font-size:13.5px;align-items:baseline}
+.doc-meta{font-family:var(--mono);font-size:11px;color:var(--text-3);display:flex;gap:16px}.doc-view{color:var(--gold-deep);font-size:10.5px;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer}
+.sealed{margin-top:48px;padding-top:24px;border-top:1px solid var(--gold-line-faint);display:flex;gap:14px;max-width:520px}.sealed p{margin:0;font-size:13px;color:var(--text-3);font-style:italic;line-height:1.7}
+
+.msg-list{margin-top:16px}.msg{padding:28px 0;border-bottom:1px solid var(--gold-line-faint)}.msg:first-child{border-top:1px solid var(--gold-line-faint)}
+.msg-head{display:flex;flex-direction:column;gap:2px;margin-bottom:16px}.msg-date{font-family:var(--mono);font-size:11px;color:var(--text-3)}.msg-from{font-size:13px;color:var(--text);font-weight:400}
+.msg-title{font-family:'Cormorant Garamond', serif;font-size:20px;font-weight:400;margin-bottom:10px}.msg-body{font-size:14px;color:var(--text-2);line-height:1.85;max-width:560px;white-space:pre-wrap}
+.compose{margin-top:44px;max-width:600px}.compose textarea{width:100%;background:var(--card);border:1px solid var(--border);border-radius:2px;color:var(--text);font-family:'Inter', sans-serif;font-size:14px;padding:16px;min-height:100px;resize:vertical;outline:none;transition:border-color 200ms}
+.compose textarea:focus{border-color:var(--gold-line)}.compose-foot{display:flex;justify-content:flex-end;margin-top:10px}
+.send-btn{background:none;border:none;color:var(--gold-deep);font-size:0.66rem;letter-spacing:0.14em;text-transform:uppercase;cursor:pointer;padding:6px 0;transition:opacity 200ms}.send-btn:hover{opacity:0.7}
+
+.record-grid{display:grid;grid-template-columns:170px 1fr;gap:10px 24px;font-size:13.5px;margin-top:20px}.record-grid .k{color:var(--text-3);font-size:0.58rem;letter-spacing:0.13em;text-transform:uppercase;padding-top:3px}.record-grid .v{color:var(--text);font-weight:400}
+.pay-table{margin-top:18px;width:100%;border-collapse:collapse}.pay-table td{padding:10px 0;border-bottom:1px solid var(--border-soft);font-size:13.5px}
+.pay-table td:last-child{text-align:right;font-family:var(--mono);font-size:11px;color:var(--text-3)}.pay-table td:nth-child(2){font-family:var(--mono);font-size:12px;text-align:right;color:var(--text-2)}.total-row td{border-bottom:none;font-weight:500;padding-top:14px}
+
+/* Global footer */
+.workspace-footer{margin-top:auto;padding-top:64px;padding-bottom:24px;font-family:var(--mono);font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:#C2BDB5;opacity:0.8}
+
+@media(max-width:900px){
+  .sidebar{position:relative;width:100%;border-right:none;border-bottom:1px solid var(--border)}
+  .main{margin-left:0;padding:0 20px 80px 20px}
+  .nav{margin-top:20px;flex-direction:row;flex-wrap:wrap;gap:6px 14px}
+  .nav-item{width:auto;border-left:none;border-bottom:2px solid transparent;padding:5px 2px 6px 2px}
+  .nav-item.active{border-left-color:transparent;border-bottom-color:var(--gold)}
+  .hero-title{font-size:32px}.hero-prepared{font-size:28px;margin-top:40px}.phase-name{font-size:38px}
+  .record-grid{grid-template-columns:1fr}.tl-row{grid-template-columns:84px 18px 1fr}
+}
+
 /* edit mode */
 .edit-badge{position:fixed;bottom:18px;right:18px;background:var(--text);color:var(--bg);font-family:var(--mono);font-size:11px;padding:10px 14px;border-radius:2px;cursor:pointer;z-index:100;display:none;letter-spacing:0.06em}
 body.is-edit .edit-badge{display:block}
@@ -89,7 +147,7 @@ body.is-edit .edit-badge{display:block}
 .edit-panel p.sub{font-size:13px;color:var(--text-2);margin:0 0 24px 0}
 .edit-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 .edit-field{display:flex;flex-direction:column;gap:6px;margin-bottom:14px}.edit-field.full{grid-column:1/-1}
-.edit-field label{font-size:0.62rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-3)}
+.edit-field label{font-size:0.56rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-3)}
 .edit-field input,.edit-field textarea{border:1px solid var(--border);border-radius:2px;padding:10px 12px;font-family:'Inter', sans-serif;font-size:13px;background:var(--bg)}
 .edit-field textarea{min-height:80px;resize:vertical}
 .edit-actions{display:flex;gap:12px;margin-top:24px;flex-wrap:wrap}
@@ -99,13 +157,6 @@ body.is-edit .edit-badge{display:block}
 </head>
 <body>
 
-<!-- 
-  ===================================================================
-  KINGLIS — EASY EDIT BLOCK
-  Edit everything here. No HTML knowledge needed.
-  This is the ONLY place you need to touch to update a commission.
-  ===================================================================
--->
 <script id="commission-data" type="application/json">
 {
   "commissionId": "LL-2027-004",
@@ -122,7 +173,7 @@ body.is-edit .edit-badge{display:block}
   "nextAction": {
     "items": [
       "Board papers (2018–2020)",
-      "The notebook you carried while building your primary enterprise"
+      "Notebook from the primary enterprise"
     ],
     "estimatedTime": "15 minutes"
   },
@@ -220,8 +271,8 @@ body.is-edit .edit-badge{display:block}
         <button class="nav-item" data-page="evidence">Evidence</button>
         <button class="nav-item" data-page="sessions">Sessions</button>
         <button class="nav-item" data-page="documents">Documents</button>
-        <button class="nav-item" data-page="messages">Messages</button>
-        <button class="nav-item" data-page="record">Record</button>
+        <button class="nav-item" data-page="messages">Correspondence</button>
+        <button class="nav-item" data-page="record">Commission File</button>
       </nav>
     </div>
     <div class="sidebar-bottom"><span id="sb-analyst">Analyst — Kaylee-Jane</span><span class="dot"></span></div>
@@ -231,26 +282,37 @@ body.is-edit .edit-badge{display:block}
     <div class="content-inner">
       <section class="page active" id="page-commission">
         <div class="commission-hero">
-          <div><div class="eyebrow gold" style="letter-spacing:0.22em;margin-bottom:20px">Legacy Ledger™</div>
-          <h1 class="hero-title">Commission<br><span id="h-commission-id">LL-2027-004</span></h1>
-          <div class="hero-commission-id" id="h-status">LL-2027-004 — Active</div></div>
+          <div><div class="eyebrow gold" style="letter-spacing:0.2em;margin-bottom:14px">Legacy Ledger™</div>
+          <h1 class="hero-title" id="h-commission-id">Commission LL-2027-004</h1></div>
           <div class="hero-prepared">Prepared exclusively for<br><span id="h-founder">[Founder Name]</span></div>
-          <div class="spacer-96"></div><div class="divider gold"></div>
-          <div class="current-phase-block"><div class="eyebrow" style="margin-bottom:18px">Current Phase</div><div class="phase-name" id="h-phase">Evidence Discovery</div><div class="phase-desc" id="h-phase-desc"></div></div>
-          <div class="action-wrap"><div class="eyebrow">Next Action</div><div class="action-card"><div style="font-size:13px;color:var(--text-2);margin-bottom:6px">Please upload when you are ready:</div><ul class="action-list" id="h-action-list"></ul><div class="action-meta" id="h-action-meta"></div></div></div>
+          <div class="spacer-72"></div>
+          <div class="current-phase-block">
+            <div class="eyebrow" style="margin-bottom:10px">Current Phase</div>
+            <div class="phase-name" id="h-phase">Evidence Discovery</div>
+            <div class="phase-desc" id="h-phase-desc"></div>
+          </div>
+          <div class="action-wrap">
+            <div class="eyebrow">Next Action</div>
+            <div class="action-simple">
+              <div class="action-label">Please upload:</div>
+              <ul class="action-list" id="h-action-list"></ul>
+              <div class="action-meta" id="h-action-meta"></div>
+            </div>
+          </div>
           <div class="timeline-editorial"><div class="eyebrow">Commission Timeline</div><div class="tl-minimal" id="h-tl-mini"></div></div>
           <div class="observation-wrap"><div class="eyebrow">Analyst Observation</div><div class="observation-card"><div class="observation-meta" id="h-obs-meta"></div><div class="observation-text" id="h-obs-text"></div><div class="observation-sub" id="h-obs-sub"></div></div></div>
           <div class="foot-note"><span id="f-evidence">Evidence Picture — Growing</span><span id="f-completion"></span><span id="f-analyst"></span></div>
         </div>
       </section>
 
-      <section class="page" id="page-timeline"><div class="page-header"><div class="eyebrow gold">History</div><h1 class="page-title">Timeline</h1><div class="page-sub">Full history of Commission <span class="js-commission-id"></span>. A confidential archival record.</div><div class="divider gold" style="margin-top:20px"></div></div><div class="tl-full" id="tl-full"></div></section>
-      <section class="page" id="page-evidence"><div class="page-header"><div class="eyebrow gold">Register</div><h1 class="page-title">Evidence</h1><div class="page-sub">Material submitted, pending, and requested for this commission.</div><div class="divider gold" style="margin-top:20px"></div></div><div class="ev-section"><div class="eyebrow ev-label">Received</div><div id="ev-received"></div></div><div class="ev-section"><div class="eyebrow ev-label">Pending</div><div id="ev-pending"></div></div><div class="ev-section"><div class="eyebrow ev-label" style="color:var(--gold-deep)">Requested by your Analyst</div><div id="ev-requested"></div></div><div style="margin-top:64px;padding-top:24px;border-top:1px solid var(--gold-line);max-width:520px"><div class="eyebrow" style="margin-bottom:12px">Documentary Gaps</div><div style="font-size:13px;color:var(--text-2);line-height:1.7">Two gaps have been formally noted in your evidence record. These will be explored during your extraction sessions. Details are held in your Gap Report under Documents.</div></div></section>
-      <section class="page" id="page-sessions"><div class="page-header"><div class="eyebrow gold">Extraction</div><h1 class="page-title">Sessions</h1><div class="divider gold" style="margin-top:20px"></div></div><div class="session-stack" id="session-stack"></div></section>
-      <section class="page" id="page-documents"><div class="page-header"><div class="eyebrow gold">Library</div><h1 class="page-title">Documents</h1><div class="page-sub">All documents created for Commission <span class="js-commission-id"></span>.</div><div class="divider gold" style="margin-top:20px"></div></div><div id="docs-root"></div><div class="sealed"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="2" y="6" width="10" height="7" stroke="#9A958E" stroke-width="0.9"/><path d="M4 6V4.5C4 2.5 5.8 1 7 1C8.2 1 10 2.5 10 4.5V6" stroke="#9A958E" stroke-width="0.9"/><circle cx="7" cy="9.5" r="1.1" fill="#9A958E"/></svg><p>▪ Sealed materials are held under the conditions you defined. They are not visible here.</p></div></section>
-      <section class="page" id="page-messages"><div class="page-header"><div class="eyebrow gold">Correspondence</div><h1 class="page-title">Messages</h1><div class="page-sub">Commission correspondence only. All communication regarding <span class="js-commission-id"></span>.</div><div class="divider gold" style="margin-top:20px"></div></div><div class="msg-list" id="msg-list"></div><div class="compose"><label class="eyebrow">Send a message to your analyst</label><textarea id="msg-input"></textarea><div class="compose-foot"><button class="send-btn" id="send-btn">Send</button></div></div></section>
-      <section class="page" id="page-record"><div class="page-header"><div class="eyebrow gold">Administrative</div><h1 class="page-title">Record</h1><div class="divider gold" style="margin-top:20px"></div></div><div class="record-grid" id="record-grid"></div><div class="divider" style="margin:40px 0"></div><div class="eyebrow" style="margin-bottom:12px">Payments</div><table class="pay-table" id="pay-table"></table><div class="divider" style="margin:40px 0"></div><div class="eyebrow" style="margin-bottom:12px">Custodianship</div><div style="max-width:520px;font-size:13px;color:var(--text-2);line-height:1.7">Evidence handling, storage, and post-completion options are governed by your Commission Agreement.<br><br><span class="eyebrow" style="display:inline">Post-completion instruction</span><span style="margin-left:12px;color:var(--text-3);font-family:var(--mono);font-size:11px">To be confirmed</span></div></section>
+      <section class="page" id="page-timeline"><div class="page-header"><div class="eyebrow gold">History</div><h1 class="page-title">Timeline</h1><div class="page-sub">Full history of Commission <span class="js-commission-id"></span>. A confidential archival record.</div></div><div class="tl-full" id="tl-full"></div></section>
+      <section class="page" id="page-evidence"><div class="page-header"><div class="eyebrow gold">Register</div><h1 class="page-title">Evidence</h1><div class="page-sub">Material submitted, pending, and requested for this commission.</div></div><div class="ev-section"><div class="eyebrow ev-label">Received</div><div id="ev-received"></div></div><div class="ev-section"><div class="eyebrow ev-label">Pending</div><div id="ev-pending"></div></div><div class="ev-section"><div class="eyebrow ev-label" style="color:var(--gold-deep)">Requested by your Analyst</div><div id="ev-requested"></div></div><div style="margin-top:48px;padding-top:20px;border-top:1px solid var(--gold-line-faint);max-width:520px"><div class="eyebrow" style="margin-bottom:10px">Documentary Gaps</div><div style="font-size:13px;color:var(--text-2);line-height:1.85">Two gaps have been formally noted in your evidence record. These will be explored during your extraction sessions. Details are held in your Gap Report under Documents.</div></div></section>
+      <section class="page" id="page-sessions"><div class="page-header"><div class="eyebrow gold">Extraction</div><h1 class="page-title">Sessions</h1></div><div class="session-stack" id="session-stack"></div></section>
+      <section class="page" id="page-documents"><div class="page-header"><div class="eyebrow gold">Library</div><h1 class="page-title">Documents</h1><div class="page-sub">All documents created for Commission <span class="js-commission-id"></span>.</div></div><div id="docs-root"></div><div class="sealed"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="2" y="6" width="10" height="7" stroke="#9A958E" stroke-width="0.9"/><path d="M4 6V4.5C4 2.5 5.8 1 7 1C8.2 1 10 2.5 10 4.5V6" stroke="#9A958E" stroke-width="0.9"/><circle cx="7" cy="9.5" r="1.1" fill="#9A958E"/></svg><p>▪ Sealed materials are held under the conditions you defined. They are not visible here.</p></div></section>
+      <section class="page" id="page-messages"><div class="page-header"><div class="eyebrow gold">Correspondence</div><h1 class="page-title">Correspondence</h1><div class="page-sub">Commission correspondence only. All communication regarding <span class="js-commission-id"></span>.</div></div><div class="msg-list" id="msg-list"></div><div class="compose"><label class="eyebrow">Send a message to your analyst</label><textarea id="msg-input"></textarea><div class="compose-foot"><button class="send-btn" id="send-btn">Send</button></div></div></section>
+      <section class="page" id="page-record"><div class="page-header"><div class="eyebrow gold">Administrative</div><h1 class="page-title">Commission File</h1></div><div class="record-grid" id="record-grid"></div><div class="divider" style="margin:32px 0"></div><div class="eyebrow" style="margin-bottom:10px">Payments</div><table class="pay-table" id="pay-table"></table><div class="divider" style="margin:32px 0"></div><div class="eyebrow" style="margin-bottom:10px">Custodianship</div><div style="max-width:520px;font-size:13px;color:var(--text-2);line-height:1.85">Evidence handling, storage, and post-completion options are governed by your Commission Agreement.<br><br><span class="eyebrow" style="display:inline">Post-completion instruction</span><span style="margin-left:12px;color:var(--text-3);font-family:var(--mono);font-size:11px">To be confirmed</span></div></section>
     </div>
+    <div class="workspace-footer">Private Commission Workspace — Commission <span class="js-commission-id">LL-2027-004</span></div>
   </main>
 </div>
 
@@ -259,23 +321,21 @@ body.is-edit .edit-badge{display:block}
   <h2>Edit Commission</h2><p class="sub">This panel only appears when you add <span class="mono">?edit</span> to your URL. Clients never see it. Edit fields, then download a new index.html.</p>
   <div class="edit-grid" id="editGrid"></div>
   <div class="edit-actions"><button class="btn primary" id="downloadBtn">Download Updated index.html</button><button class="btn" id="closeEdit">Close</button><button class="btn gold" id="copyJson">Copy Data JSON</button></div>
-  <div style="margin-top:20px"><div class="eyebrow">Raw JSON — paste this back into the file if you prefer</div><textarea id="rawJson" style="width:100%;min-height:260px;margin-top:8px;font-family:var(--mono);font-size:11px;padding:12px;border:1px solid var(--border)"></textarea></div>
+  <div style="margin-top:20px"><div class="eyebrow">Raw JSON</div><textarea id="rawJson" style="width:100%;min-height:260px;margin-top:8px;font-family:var(--mono);font-size:11px;padding:12px;border:1px solid var(--border)"></textarea></div>
 </div></div>
 
 <script>
 const DATA = JSON.parse(document.getElementById('commission-data').textContent);
-
 function render(){
   document.title = `KINGLIS — Commission ${DATA.commissionId}`;
   document.getElementById('sb-commission-id').textContent = DATA.commissionId;
   document.getElementById('sb-analyst').textContent = `Analyst — ${DATA.analyst}`;
-  document.getElementById('h-commission-id').textContent = DATA.commissionId;
-  document.getElementById('h-status').textContent = `${DATA.commissionId} — ${DATA.status}`;
+  document.getElementById('h-commission-id').textContent = `Commission ${DATA.commissionId}`;
   document.getElementById('h-founder').textContent = DATA.founderName;
   document.getElementById('h-phase').textContent = DATA.currentPhase;
   document.getElementById('h-phase-desc').textContent = DATA.phaseDescription;
   document.getElementById('h-action-list').innerHTML = DATA.nextAction.items.map(i=>`<li>${i}</li>`).join('');
-  document.getElementById('h-action-meta').textContent = `Estimated time: ${DATA.nextAction.estimatedTime} — No rush.`;
+  document.getElementById('h-action-meta').textContent = `Estimated time: ${DATA.nextAction.estimatedTime}. No rush.`;
   document.getElementById('h-obs-meta').textContent = `${DATA.observation.date} — ${DATA.observation.author}`;
   document.getElementById('h-obs-text').textContent = DATA.observation.text;
   document.getElementById('h-obs-sub').textContent = DATA.observation.subtext;
@@ -283,51 +343,40 @@ function render(){
   document.getElementById('f-analyst').textContent = `Analyst — ${DATA.analyst}`;
   document.querySelectorAll('.js-commission-id').forEach(el=>el.textContent=DATA.commissionId);
 
-  // mini timeline (first 7)
   const mini = DATA.timeline.slice(0,7);
   document.getElementById('h-tl-mini').innerHTML = mini.map(t=>{
-    let dot = '<div class="tl-m-dot"></div>';
-    if(t.status==='completed') dot='<div class="tl-m-dot check">✓</div>';
-    if(t.status==='current') dot='<div class="tl-m-dot filled"></div>';
-    const cls = t.status==='current'?'gold': t.status==='completed'?'muted':'muted';
-    return `<div class="tl-m-row">${dot}<div class="tl-m-text"><div class="n ${cls}">${t.name}${t.date!=='—'?' — '+t.date:''}${t.status==='current'?' — now':''}</div>${t.desc?`<div class="d">${t.desc}</div>`:''}</div></div>`;
+    let dot = '<div class="tl-m-dot"></div>'; let cls='future';
+    if(t.status==='completed'){dot='<div class="tl-m-dot check">✓</div>'; cls='completed';}
+    if(t.status==='current'){dot='<div class="tl-m-dot filled"></div>'; cls='current';}
+    return `<div class="tl-m-row">${dot}<div class="tl-m-text"><div class="n ${cls}">${t.name}${t.date!=='—'?' — '+t.date:''}</div>${t.desc && t.status!=='future'?`<div class="d">${t.desc}</div>`:''}</div></div>`;
   }).join('');
 
-  // full timeline
   document.getElementById('tl-full').innerHTML = DATA.timeline.map(t=>{
-    let c='<div class="c"></div>'; if(t.status==='completed') c='<div class="c check">✓</div>'; if(t.status==='current') c='<div class="c filled pulse"></div>';
-    const nameCls = t.status==='current'?'gold': t.status==='completed'?'':'muted';
+    let c='<div class="c"></div>'; let nameCls='future';
+    if(t.status==='completed'){c='<div class="c check">✓</div>'; nameCls='completed';}
+    if(t.status==='current'){c='<div class="c filled"></div>'; nameCls='current';}
     return `<div class="tl-row"><div class="tl-date">${t.date}</div><div class="tl-ind">${c}</div><div class="tl-content"><div class="name ${nameCls}">${t.name}</div>${t.desc?`<div class="desc">${t.desc}</div>`:''}</div></div>`;
   }).join('');
 
-  // evidence
   document.getElementById('ev-received').innerHTML = DATA.evidence.received.map(e=>`<div class="ev-item"><div class="ev-left"><span class="ev-mark gold">✓</span><span class="ev-name">${e.name}</span></div><span class="ev-meta">${e.date}</span></div>`).join('');
   document.getElementById('ev-pending').innerHTML = DATA.evidence.pending.map(n=>`<div class="ev-item ev-pending"><div class="ev-left"><span class="ev-mark muted">○</span><span class="ev-name">${n}</span></div></div>`).join('');
   document.getElementById('ev-requested').innerHTML = DATA.evidence.requested.map(r=>`<div><div class="ev-item" style="border-bottom:none;padding-bottom:2px"><div class="ev-left"><span class="ev-mark gold">◈</span><span class="ev-name">${r.name}</span></div></div><div class="ev-context">${r.context}</div></div>`).join('');
 
-  // sessions
   document.getElementById('session-stack').innerHTML = DATA.sessions.map(s=>{
     const isSched = s.status==='Scheduled';
-    return `<div class="session-card ${isSched?'scheduled':''} ${s.status==='Upcoming'?'upcoming':''}"><div class="s-head"><div class="s-title">${s.title}</div><span class="s-status ${isSched?'gold':''}">${s.status}</span></div><div class="s-date">${s.date}</div>${s.desc?`<div class="s-desc">${s.desc}</div>`:''}${s.note?`<div class="s-desc" style="font-style:italic;color:var(--text-3)">${s.note}</div>`:''}${s.prep?`<div class="s-prep"><div class="eyebrow" style="margin-bottom:10px">Preparation</div>${Object.entries(s.prep).map(([k,v])=>`<div class="prep-row"><span class="k">${k}</span><span>${v}</span></div>`).join('')}</div>`:''}</div>`;
+    return `<div class="session-card ${isSched?'scheduled':''} ${s.status==='Upcoming'?'upcoming':''}"><div class="s-head"><div class="s-title">${s.title}</div><span class="s-status ${isSched?'gold':''}">${s.status}</span></div><div class="s-date">${s.date}</div>${s.desc?`<div class="s-desc">${s.desc}</div>`:''}${s.note?`<div class="s-desc" style="font-style:italic;color:var(--text-3)">${s.note}</div>`:''}${s.prep?`<div class="s-prep"><div class="eyebrow" style="margin-bottom:8px">Preparation</div>${Object.entries(s.prep).map(([k,v])=>`<div class="prep-row"><span class="k">${k}</span><span>${v}</span></div>`).join('')}</div>`:''}</div>`;
   }).join('');
 
-  // docs
-  const docsRoot = document.getElementById('docs-root');
-  let docsHtml='';
+  const docsRoot = document.getElementById('docs-root'); let docsHtml='';
   for(const [key,label] of [['foundation','Foundation'],['evidence','Evidence'],['extraction','Extraction'],['production','Production']]){
-    const arr = DATA.documents[key]||[];
-    if(!arr.length) continue;
+    const arr = DATA.documents[key]||[]; if(!arr.length) continue;
     docsHtml+=`<div class="doc-group-title">${label}</div>`;
-    arr.forEach(d=>{
-      docsHtml+=`<div class="doc-row"><span style="${!d.view?'color:var(--text-3)':''}">${d.name}</span><span class="doc-meta"><span class="${d.view?'':'doc-pending'}">${d.meta}</span>${d.view?'<span class="doc-view">View</span>':''}</span></div>`;
-    });
+    arr.forEach(d=>{docsHtml+=`<div class="doc-row"><span style="${!d.view?'color:#B8B2A8':''}">${d.name}</span><span class="doc-meta"><span class="${d.view?'':'doc-pending'}">${d.meta}</span>${d.view?'<span class="doc-view">View</span>':''}</span></div>`;});
   }
   docsRoot.innerHTML=docsHtml;
 
-  // messages
   document.getElementById('msg-list').innerHTML = DATA.messages.map(m=>`<div class="msg"><div class="msg-head"><span class="msg-date">${m.date}</span><span class="msg-from">${m.from}</span></div><div class="msg-title">${m.title}</div><div class="msg-body">${m.body.replace(/</g,'&lt;')}</div></div>`).join('');
 
-  // record
   document.getElementById('record-grid').innerHTML = `
     <div class="k">Commission ID</div><div class="v mono">${DATA.commissionId}</div>
     <div class="k">Edition</div><div class="v">${DATA.edition}</div>
@@ -342,28 +391,18 @@ function render(){
     <div class="k">Delivery Condition</div><div class="v">Personal presentation</div>
   `;
   document.getElementById('pay-table').innerHTML = DATA.payments.map(p=>`<tr><td>${p.name}</td><td>${p.amount}</td><td>${p.status}</td></tr>`).join('')+`<tr class="total-row"><td>Total Commission</td><td>US$15,000</td><td></td></tr>`;
-
   document.getElementById('rawJson').value = JSON.stringify(DATA,null,2);
 }
-
 render();
-
-// nav
 const nav=document.getElementById('nav');const pages=document.querySelectorAll('.page');
 nav.addEventListener('click',e=>{const btn=e.target.closest('.nav-item');if(!btn)return;const t=btn.dataset.page;document.querySelectorAll('.nav-item').forEach(b=>b.classList.remove('active'));btn.classList.add('active');pages.forEach(p=>p.classList.remove('active'));const el=document.getElementById('page-'+t);if(el){el.classList.add('active');window.scrollTo({top:0,behavior:'auto'});}});
-
-// messages local add
 const msgInput=document.getElementById('msg-input');const sendBtn=document.getElementById('send-btn');const msgList=document.getElementById('msg-list');
 function addMsg(text){if(!text.trim())return;const now=new Date();const months=['January','February','March','April','May','June','July','August','September','October','November','December'];const dateStr=now.getDate()+' '+months[now.getMonth()]+' '+now.getFullYear();const msg=document.createElement('div');msg.className='msg';msg.innerHTML=`<div class="msg-head"><span class="msg-date">${dateStr}</span><span class="msg-from">${DATA.founderName} — Founder</span></div><div class="msg-title">Message</div><div class="msg-body"></div>`;msg.querySelector('.msg-body').textContent=text;msgList.prepend(msg);msg.style.opacity='0';requestAnimationFrame(()=>{msg.style.transition='opacity 200ms';msg.style.opacity='1';});}
 sendBtn.addEventListener('click',()=>{addMsg(msgInput.value);msgInput.value='';});
 msgInput.addEventListener('keydown',e=>{if(e.key==='Enter'&&(e.metaKey||e.ctrlKey)){addMsg(msgInput.value);msgInput.value='';}});
-
-// EDIT MODE
-const isEdit = location.search.includes('edit');
-if(isEdit){document.body.classList.add('is-edit');}
+const isEdit = location.search.includes('edit'); if(isEdit){document.body.classList.add('is-edit');}
 document.getElementById('editBadge').addEventListener('click',()=>document.getElementById('editPanel').classList.add('open'));
 document.getElementById('closeEdit').addEventListener('click',()=>document.getElementById('editPanel').classList.remove('open'));
-
 function buildEditForm(){
   const grid=document.getElementById('editGrid');const fields=[
     {k:'founderName',label:'Founder Name',type:'text'},
@@ -379,7 +418,7 @@ function buildEditForm(){
     {k:'nextAction.items',label:'Next Action Items (one per line)',type:'textarea',full:true},
   ];
   grid.innerHTML=fields.map(f=>{
-    let val='';if(f.k.includes('.')){const [a,b]=f.k.split('.'); if(f.k==='observation.text') val=DATA.observation.text; else if(f.k==='observation.subtext') val=DATA.observation.subtext; else if(f.k==='nextAction.items') val=DATA.nextAction.items.join('\n'); } else {val=DATA[f.k]||''}
+    let val=''; if(f.k==='observation.text') val=DATA.observation.text; else if(f.k==='observation.subtext') val=DATA.observation.subtext; else if(f.k==='nextAction.items') val=DATA.nextAction.items.join('\n'); else val=DATA[f.k]||'';
     const input = f.type==='textarea'?`<textarea data-key="${f.k}">${val}</textarea>`:`<input data-key="${f.k}" value="${val.replace(/"/g,'&quot;')}">`;
     return `<div class="edit-field ${f.full?'full':''}"><label>${f.label}</label>${input}</div>`;
   }).join('');
@@ -397,23 +436,18 @@ function buildEditForm(){
       if(k==='observation.text') DATA.observation.text=e.target.value;
       if(k==='observation.subtext') DATA.observation.subtext=e.target.value;
       if(k==='nextAction.items') DATA.nextAction.items=e.target.value.split('\n').filter(Boolean);
-      document.getElementById('rawJson').value=JSON.stringify(DATA,null,2);
-      render();
+      document.getElementById('rawJson').value=JSON.stringify(DATA,null,2); render();
     });
   });
 }
 if(isEdit) buildEditForm();
-
 document.getElementById('copyJson').addEventListener('click',()=>{navigator.clipboard.writeText(JSON.stringify(DATA,null,2));});
 document.getElementById('rawJson').addEventListener('input',e=>{try{const parsed=JSON.parse(e.target.value);Object.assign(DATA,parsed);render();}catch(err){}});
-
 document.getElementById('downloadBtn').addEventListener('click',()=>{
   const jsonStr = JSON.stringify(DATA,null,2);
   let html = document.documentElement.outerHTML;
-  // replace old json block
   const oldBlock = document.getElementById('commission-data').textContent;
   html = html.replace(oldBlock, '\n'+jsonStr+'\n');
-  // remove edit param artifacts (keep as is)
   const blob = new Blob([html],{type:'text/html'});
   const url = URL.createObjectURL(blob);
   const a=document.createElement('a');a.href=url;a.download='index.html';a.click();URL.revokeObjectURL(url);
