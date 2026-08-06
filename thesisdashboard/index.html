@@ -7,510 +7,93 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
 <style>
 :root{
-  /* Colours matched to L02 — THESIS EDITION cover */
-  --bg:#0A1931;
-  --bg-deep:#081425;
-  --surface:#0F223E;
-  --surface-2:#112845;
-  --card:#122A4A;
-  --card-alt:#0E2340;
-  --border:rgba(90,141,190,0.12);
-  --border-strong:rgba(201,168,76,0.22);
-  --gold:#C9A84C;
-  --gold-subtle:#A8893D;
-  --gold-line:rgba(201,168,76,0.22);
-  --gold-line-strong:rgba(201,168,76,0.35);
-  --blue-accent:#5A8DBE;
-  --blue-faint:rgba(90,141,190,0.18);
-  --text-primary:#E8E6E1;
-  --text-secondary:#9BA9BE;
-  --text-muted:#5E6E86;
-  --text-faint:#3A4A64;
-  --success:#4A7C59;
-  --pending:#1A2A44;
+  --bg:#0A1931;--bg-deep:#081425;--surface:#0F223E;--card:#122A4A;--card-alt:#0E2340;
+  --border:rgba(90,141,190,0.12);--border-strong:rgba(201,168,76,0.22);
+  --gold:#C9A84C;--gold-subtle:#A8893D;--gold-line:rgba(201,168,76,0.22);--gold-line-strong:rgba(201,168,76,0.35);
+  --blue-accent:#5A8DBE;--blue-faint:rgba(90,141,190,0.18);
+  --text-primary:#E8E6E1;--text-secondary:#9BA9BE;--text-muted:#5E6E86;--success:#4A7C59;--pending:#1A2A44;
 }
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{
-  margin:0;
-  background:var(--bg);
-  color:var(--text-primary);
-  font-family:'Inter', sans-serif;
-  font-weight:300;
-  line-height:1.65;
-  -webkit-font-smoothing:antialiased;
-  -moz-osx-font-smoothing:grayscale;
-  /* blueprint grid - matches cover background */
-  background-image:
-    linear-gradient(rgba(90,141,190,0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(90,141,190,0.04) 1px, transparent 1px),
-    linear-gradient(rgba(90,141,190,0.02) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(90,141,190,0.02) 1px, transparent 1px);
-  background-size: 80px 80px, 80px 80px, 16px 16px, 16px 16px;
-  background-position: -1px -1px;
-}
-a{color:inherit;text-decoration:none}
-button{font-family:inherit}
-.mono{font-family:'JetBrains Mono', monospace}
-
-/* App */
-.app{display:flex;min-height:100vh}
-.sidebar{
-  position:fixed;left:0;top:0;bottom:0;width:220px;
-  background:rgba(8,20,37,0.92);
-  border-right:1px solid var(--border);
-  backdrop-filter:blur(12px);
-  display:flex;flex-direction:column;justify-content:space-between;
-  z-index:20;
-}
-.sidebar-top{padding:36px 24px 24px 24px}
-.wordmark{
-  font-family:'Cormorant Garamond', serif;
-  font-weight:400;
-  font-size:16px;
-  letter-spacing:0.2em;
-  color:var(--gold);
-  line-height:1;
-  text-transform:uppercase;
-}
-.commission-id{
-  font-family:'JetBrains Mono', monospace;
-  font-size:10px;
-  letter-spacing:0.06em;
-  color:var(--text-muted);
-  margin-top:10px;
-}
-.nav{margin-top:56px;display:flex;flex-direction:column;gap:1px}
-.nav-item{
-  display:block;width:100%;text-align:left;
-  background:none;border:none;
-  border-left:2px solid transparent;
-  padding:12px 24px;
-  font-family:'Inter', sans-serif;
-  font-size:13px;font-weight:400;
-  color:var(--text-secondary);
-  cursor:pointer;
-  transition:opacity 200ms ease, color 200ms ease, border-color 200ms ease;
-}
-.nav-item:hover{color:var(--text-primary)}
-.nav-item.active{border-left-color:var(--gold);color:var(--text-primary)}
-.sidebar-bottom{
-  border-top:1px solid var(--border);
-  padding:18px 24px;
-  display:flex;align-items:center;justify-content:space-between;
-  font-size:11px;font-family:'Inter', sans-serif;
-  color:var(--text-muted);
-}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text-primary);font-family:'Inter',sans-serif;font-weight:300;line-height:1.65;-webkit-font-smoothing:antialiased;
+background-image:linear-gradient(rgba(90,141,190,0.04) 1px, transparent 1px),linear-gradient(90deg, rgba(90,141,190,0.04) 1px, transparent 1px),linear-gradient(rgba(90,141,190,0.02) 1px, transparent 1px),linear-gradient(90deg, rgba(90,141,190,0.02) 1px, transparent 1px);background-size:80px 80px,80px 80px,16px 16px,16px 16px;background-position:-1px -1px}
+a{color:inherit;text-decoration:none}button{font-family:inherit}.mono{font-family:'JetBrains Mono',monospace}
+.app{display:flex;min-height:100vh}.sidebar{position:fixed;left:0;top:0;bottom:0;width:220px;background:rgba(8,20,37,0.92);border-right:1px solid var(--border);backdrop-filter:blur(12px);display:flex;flex-direction:column;justify-content:space-between;z-index:20}
+.sidebar-top{padding:36px 24px 24px 24px}.wordmark{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:16px;letter-spacing:0.2em;color:var(--gold);line-height:1;text-transform:uppercase}
+.commission-id{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.06em;color:var(--text-muted);margin-top:10px}
+.nav{margin-top:56px;display:flex;flex-direction:column;gap:1px}.nav-item{display:block;width:100%;text-align:left;background:none;border:none;border-left:2px solid transparent;padding:12px 24px;font-size:13px;font-weight:400;color:var(--text-secondary);cursor:pointer;transition:all 200ms ease}
+.nav-item:hover{color:var(--text-primary)}.nav-item.active{border-left-color:var(--gold);color:var(--text-primary)}.sidebar-bottom{border-top:1px solid var(--border);padding:18px 24px;display:flex;align-items:center;justify-content:space-between;font-size:11px;color:var(--text-muted)}
 .dot{width:6px;height:6px;background:var(--gold);border-radius:50%;display:inline-block;flex-shrink:0}
-
-/* Main */
-.main{margin-left:220px;flex:1;min-height:100vh;padding:48px 48px 120px 48px;display:flex;flex-direction:column}
-.content-inner{max-width:820px;width:100%;flex:1}
-.eyebrow{
-  font-family:'JetBrains Mono', monospace;
-  font-size:0.65rem;
-  letter-spacing:0.15em;
-  text-transform:uppercase;
-  color:var(--blue-accent);
-  font-weight:400;
-}
-.eyebrow.gold{color:var(--gold-subtle)}
-.divider{height:1px;background:var(--border);width:100%}
-.divider.gold{background:var(--gold-line)}
-.divider.gold-strong{background:var(--gold-line-strong)}
-.page{display:none}
-.page.active{display:block;animation:fadeIn 200ms ease}
-@keyframes fadeIn{from{opacity:0}to{opacity:1}}
-
-/* Overview */
-.overview-header{margin-bottom:40px}
-.thesis-mark{
-  font-family:'Cormorant Garamond', serif;
-  font-weight:300;
-  font-size:28px;
-  color:var(--text-primary);
-}
-.thesis-mark .tm{color:var(--gold);font-weight:400;letter-spacing:0.08em}
-  letter-spacing:0.02em;
-  line-height:1;
-}
-.commission-line{
-  margin-top:10px;
-  font-family:'JetBrains Mono', monospace;
-  font-size:11px;
-  letter-spacing:0.06em;
-  color:var(--text-muted);
-}
-.header-rule{height:1px;background:var(--gold-line);margin-top:18px;width:100%}
-.founder-line{
-  margin-top:18px;
-  font-family:'Inter', sans-serif;
-  font-size:13px;
-  color:var(--text-secondary);
-  line-height:1.8;
-}
-.founder-line span{color:var(--text-primary);font-weight:400}
-
-/* Phase tracker */
-.section-label{
-  font-family:'Inter', sans-serif;
-  font-size:0.65rem;
-  letter-spacing:0.15em;
-  text-transform:uppercase;
-  color:var(--text-muted);
-  font-weight:400;
-  margin:0 0 20px 0;
-}
-.phase-tracker{position:relative;padding-left:0;margin-top:8px}
-.phase-tracker::before{
-  content:'';
-  position:absolute;left:7px;top:8px;bottom:8px;width:1px;background:var(--border);
-}
-.phase{
-  display:flex;align-items:flex-start;gap:18px;
-  padding:8px 0;
-  position:relative;
-}
-.phase-ind{
-  width:16px;height:16px;
-  display:flex;align-items:center;justify-content:center;
-  flex-shrink:0;margin-top:1px;
-  background:var(--bg);
-  position:relative;z-index:1;
-  font-size:11px;line-height:1;
-}
-.phase-ind .circle{width:9px;height:9px;border:1px solid var(--text-muted);border-radius:50%}
-.phase-ind .circle.filled{background:var(--gold);border-color:var(--gold)}
-.phase-ind .check{color:var(--gold);font-size:11px}
-.phase-text{font-size:13px;line-height:1.4;font-family:'Inter', sans-serif}
-.phase.completed .phase-text{color:var(--text-muted)}
-.phase.current .phase-text{color:var(--gold);font-weight:400}
-.phase.current{border-left:2px solid var(--gold);margin-left:-24px;padding-left:22px}
-.phase.future .phase-text{color:var(--text-muted)}
-
-/* Info strip */
-.info-strip{
-  display:grid;grid-template-columns:1fr 1fr 1fr;
-  border-top:1px solid var(--border);
-  border-bottom:1px solid var(--border);
-  margin-top:40px;
-}
-.info-cell{padding:16px 20px 16px 0;position:relative}
-.info-cell:not(:last-child)::after{
-  content:'';position:absolute;right:0;top:16px;bottom:16px;width:1px;background:var(--gold-line);
-}
-.info-label{
-  font-family:'Inter', sans-serif;
-  font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;
-  color:var(--text-muted);margin-bottom:8px;
-}
-.info-value{font-family:'Inter', sans-serif;font-size:13px;color:var(--text-primary);line-height:1.5}
-.info-value.gold{color:var(--gold)}
-.info-value .sub{display:block;color:var(--text-secondary);margin-top:2px;font-size:12px}
-
-/* Analyst Note */
-.analyst-card{
-  margin-top:40px;
-  background:var(--card);
-  border-left:2px solid var(--gold);
-  padding:24px;
-  max-width:620px;
-}
-.analyst-meta{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:16px;gap:16px;flex-wrap:wrap}
-.analyst-date{font-family:'JetBrains Mono', monospace;font-size:10px;color:var(--text-muted);letter-spacing:0.02em}
-.analyst-body{font-family:'Inter', sans-serif;font-size:13px;line-height:1.8;color:var(--text-secondary);max-width:520px}
-
-/* Estimated Delivery */
-.est-row{
-  margin-top:40px;
-  border-top:1px solid var(--gold-line);
-  padding-top:14px;
-  display:flex;justify-content:space-between;align-items:baseline;
-  max-width:620px;
-  font-family:'Inter', sans-serif;font-size:13px;
-}
-.est-row .label{font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-muted)}
-.est-row .value{color:var(--text-primary)}
-
-/* Evidence */
-.evidence-title{
-  font-family:'Cormorant Garamond', serif;
-  font-weight:300;font-size:32px;line-height:1.1;
-  color:var(--text-primary);letter-spacing:-0.01em;
-  margin:0 0 20px 0;
-}
-.evidence-body{font-family:'Inter', sans-serif;font-size:13px;line-height:1.8;color:var(--text-secondary);max-width:480px}
-.evidence-body p{margin:0 0 16px 0}
-.upload-btn{
-  display:inline-block;
-  margin-top:24px;
-  border:2px solid var(--gold);
-  color:var(--gold);
-  background:transparent;
-  padding:10px 20px;
-  font-family:'Inter', sans-serif;
-  font-size:12px;letter-spacing:0.06em;
-  text-transform:uppercase;
-  cursor:pointer;
-  transition:all 200ms ease;
-  border-radius:2px;
-  text-decoration:none;
-}
-.upload-btn:hover{background:var(--gold);color:var(--bg)}
-.evidence-meta-grid{
-  margin-top:32px;
-  border-top:1px solid var(--gold-line);
-  padding-top:20px;
-  max-width:480px;
-}
-.ev-meta-row{display:flex;justify-content:space-between;padding:8px 0;font-size:13px;border-bottom:1px solid var(--border)}
-.ev-meta-row .k{color:var(--text-muted);font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;padding-top:2px}
-.ev-meta-row .v{color:var(--text-primary)}
-.secure-embed{margin-top:32px;border:1px solid var(--border);overflow:hidden;border-radius:2px;max-width:620px}
-.secure-embed-head{padding:10px 16px;background:var(--surface);border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center}
-.secure-embed-head span{font-family:'JetBrains Mono', monospace;font-size:9px;color:var(--text-muted);letter-spacing:0.08em;text-transform:uppercase}
-
-/* Sessions */
-.sessions-stack{display:flex;flex-direction:column;gap:16px;margin-top:8px}
-.session-card{
-  border:1px solid var(--border);
-  padding:24px 24px 20px 24px;
-  background:var(--bg);
-  border-radius:2px;
-  position:relative;
-}
-.session-card.scheduled{border-left:2px solid var(--gold)}
-.session-head{display:flex;justify-content:space-between;align-items:flex-start;gap:16px}
-.session-title{font-family:'Cormorant Garamond', serif;font-size:18px;font-weight:400;line-height:1.2;color:var(--text-primary);letter-spacing:-0.01em}
-.session-status{
-  font-family:'Inter', sans-serif;
-  font-size:10px;letter-spacing:0.12em;text-transform:uppercase;
-  padding:4px 8px;border:1px solid var(--border);
-  border-radius:2px;white-space:nowrap;
-}
-.session-status.complete{color:var(--success);border-color:rgba(74,124,89,0.3);background:rgba(74,124,89,0.08)}
-.session-status.scheduled{color:var(--gold);border-color:var(--gold-line);background:rgba(201,168,76,0.08)}
-.session-status.upcoming{color:var(--text-muted);border-color:var(--border)}
-.session-date{font-family:'JetBrains Mono', monospace;font-size:11px;color:var(--text-muted);margin-top:8px}
-.session-desc{font-size:13px;color:var(--text-secondary);margin-top:12px;line-height:1.7;max-width:520px}
-.session-note{margin-top:12px;font-size:12px;color:var(--text-muted);font-style:italic}
-.session-prep{margin-top:18px;border-top:1px solid var(--border);padding-top:14px}
-.prep-row{display:grid;grid-template-columns:80px 1fr;gap:10px;font-size:12px;padding:4px 0}
-.prep-row .k{font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-muted)}
-.prep-row .v{color:var(--text-secondary);line-height:1.6;font-style:italic}
-.session-card.upcoming{background:var(--surface);opacity:0.7;padding:18px 24px}
-.session-card.upcoming .session-title{font-size:15px;color:var(--text-muted)}
-.session-card.upcoming .session-date{color:var(--text-muted)}
-
-/* Documents */
-.doc-intro{font-size:13px;color:var(--text-secondary);line-height:1.7;max-width:520px;margin-top:8px}
-.doc-section{margin-top:32px}
-.doc-section-title{font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-muted);margin:0 0 14px 0}
-.doc-row{display:flex;justify-content:space-between;gap:16px;padding:10px 0;border-bottom:1px solid var(--border);font-size:13px;align-items:baseline}
-.doc-name{color:var(--text-primary);font-weight:400}
-.doc-name.pending{color:var(--text-muted);font-weight:300}
-.doc-meta{font-family:'JetBrains Mono', monospace;font-size:11px;color:var(--text-muted);white-space:nowrap}
-.doc-view{color:var(--gold);font-family:'Inter', sans-serif;font-size:11px;letter-spacing:0.06em;text-transform:uppercase;cursor:pointer;text-decoration:none}
-.doc-view:hover{text-decoration:underline;text-underline-offset:3px}
-.sealed-block{margin-top:48px;padding-top:24px;border-top:1px solid var(--gold-line);display:flex;gap:14px;max-width:520px}
-.sealed-block p{margin:0;font-size:13px;color:var(--text-muted);font-style:italic;line-height:1.7}
-
-/* Commission */
-.record-grid{display:grid;grid-template-columns:170px 1fr;gap:10px 24px;font-size:13px;margin-top:8px}
-.record-grid .k{color:var(--text-muted);font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;padding-top:3px}
-.record-grid .v{color:var(--text-primary);font-weight:400}
-.pay-table{margin-top:8px;width:100%;border-collapse:collapse;max-width:620px}
-.pay-table td{padding:12px 0;border-bottom:1px solid var(--border);font-size:13px}
-.pay-table td:last-child{text-align:right;font-family:'JetBrains Mono', monospace;font-size:11px;color:var(--text-muted)}
-.pay-table td:nth-child(2){font-family:'JetBrains Mono', monospace;font-size:12px;text-align:right;color:var(--text-secondary)}
-.total-row td{border-bottom:none;font-weight:500;padding-top:16px;color:var(--text-primary)}
+.main{margin-left:220px;flex:1;min-height:100vh;padding:48px 48px 120px 48px;display:flex;flex-direction:column}.content-inner{max-width:820px;width:100%;flex:1}
+.eyebrow{font-family:'JetBrains Mono',monospace;font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--blue-accent);font-weight:400}.eyebrow.gold{color:var(--gold-subtle)}
+.divider{height:1px;background:var(--border);width:100%}.divider.gold{background:var(--gold-line)}.page{display:none}.page.active{display:block;animation:fadeIn 200ms ease}@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+.overview-header{margin-bottom:40px}.thesis-mark{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:28px;color:var(--text-primary);letter-spacing:0.02em;line-height:1}.thesis-mark .tm{color:var(--gold);font-weight:400}
+.commission-line{margin-top:10px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.06em;color:var(--text-muted)}.header-rule{height:1px;background:var(--gold-line);margin-top:18px;width:100%}
+.founder-line{margin-top:18px;font-size:13px;color:var(--text-secondary);line-height:1.8}.founder-line span{color:var(--text-primary);font-weight:400}
+.section-label{font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-muted);margin:0 0 20px 0}
+.phase-tracker{position:relative;padding-left:0;margin-top:8px}.phase-tracker::before{content:'';position:absolute;left:7px;top:8px;bottom:8px;width:1px;background:var(--border)}
+.phase{display:flex;align-items:flex-start;gap:18px;padding:8px 0;position:relative}.phase-ind{width:16px;height:16px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;background:var(--bg);position:relative;z-index:1;font-size:11px}
+.phase-ind .circle{width:9px;height:9px;border:1px solid var(--text-muted);border-radius:50%}.phase-ind .circle.filled{background:var(--gold);border-color:var(--gold)}.phase-ind .check{color:var(--gold);font-size:11px}
+.phase-text{font-size:13px;line-height:1.4}.phase.completed .phase-text{color:var(--text-muted)}.phase.current .phase-text{color:var(--gold);font-weight:400}.phase.current{border-left:2px solid var(--gold);margin-left:-24px;padding-left:22px}.phase.future .phase-text{color:var(--text-muted)}
+.info-strip{display:grid;grid-template-columns:1fr 1fr 1fr;border-top:1px solid var(--border);border-bottom:1px solid var(--border);margin-top:40px}.info-cell{padding:16px 20px 16px 0;position:relative}.info-cell:not(:last-child)::after{content:'';position:absolute;right:0;top:16px;bottom:16px;width:1px;background:var(--gold-line)}
+.info-label{font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-muted);margin-bottom:8px}.info-value{font-size:13px;color:var(--text-primary);line-height:1.5}.info-value.gold{color:var(--gold)}.info-value .sub{display:block;color:var(--text-secondary);margin-top:2px;font-size:12px}
+.analyst-card{margin-top:40px;background:var(--card);border-left:2px solid var(--gold);padding:24px;max-width:620px}.analyst-meta{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:16px;gap:16px;flex-wrap:wrap}.analyst-date{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--text-muted)}.analyst-body{font-size:13px;line-height:1.8;color:var(--text-secondary);max-width:520px}
+.est-row{margin-top:40px;border-top:1px solid var(--gold-line);padding-top:14px;display:flex;justify-content:space-between;align-items:baseline;max-width:620px;font-size:13px}.est-row .label{font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-muted)}.est-row .value{color:var(--text-primary)}
+.evidence-title{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:32px;line-height:1.1;color:var(--text-primary);margin:0 0 20px 0}.evidence-body{font-size:13px;line-height:1.8;color:var(--text-secondary);max-width:480px}.evidence-body p{margin:0 0 16px 0}
+.upload-btn{display:inline-block;margin-top:24px;border:2px solid var(--gold);color:var(--gold);background:transparent;padding:10px 20px;font-size:12px;letter-spacing:0.06em;text-transform:uppercase;cursor:pointer;transition:all 200ms ease;border-radius:2px;text-decoration:none}.upload-btn:hover{background:var(--gold);color:var(--bg)}
+.evidence-meta-grid{margin-top:32px;border-top:1px solid var(--gold-line);padding-top:20px;max-width:480px}.ev-meta-row{display:flex;justify-content:space-between;padding:8px 0;font-size:13px;border-bottom:1px solid var(--border)}.ev-meta-row .k{color:var(--text-muted);font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;padding-top:2px}.ev-meta-row .v{color:var(--text-primary)}
+.secure-embed{margin-top:32px;border:1px solid var(--border);overflow:hidden;border-radius:2px;max-width:620px}.secure-embed-head{padding:10px 16px;background:var(--surface);border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center}.secure-embed-head span{font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--text-muted);letter-spacing:0.08em;text-transform:uppercase}
+.sessions-stack{display:flex;flex-direction:column;gap:16px;margin-top:8px}.session-card{border:1px solid var(--border);padding:24px 24px 20px 24px;background:var(--bg);border-radius:2px;position:relative}.session-card.scheduled{border-left:2px solid var(--gold)}
+.session-head{display:flex;justify-content:space-between;align-items:flex-start;gap:16px}.session-title{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:400;line-height:1.2;color:var(--text-primary)}.session-status{font-size:10px;letter-spacing:0.12em;text-transform:uppercase;padding:4px 8px;border:1px solid var(--border);border-radius:2px;white-space:nowrap}
+.session-status.complete{color:var(--success);border-color:rgba(74,124,89,0.3);background:rgba(74,124,89,0.08)}.session-status.scheduled{color:var(--gold);border-color:var(--gold-line);background:rgba(201,168,76,0.08)}.session-status.upcoming{color:var(--text-muted);border-color:var(--border)}
+.session-date{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text-muted);margin-top:8px}.session-desc{font-size:13px;color:var(--text-secondary);margin-top:12px;line-height:1.7;max-width:520px}.session-note{margin-top:12px;font-size:12px;color:var(--text-muted);font-style:italic}
+.session-prep{margin-top:18px;border-top:1px solid var(--border);padding-top:14px}.prep-row{display:grid;grid-template-columns:80px 1fr;gap:10px;font-size:12px;padding:4px 0}.prep-row .k{font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-muted)}.prep-row .v{color:var(--text-secondary);line-height:1.6;font-style:italic}
+.session-card.upcoming{background:var(--surface);opacity:0.7;padding:18px 24px}.session-card.upcoming .session-title{font-size:15px;color:var(--text-muted)}
+.record-grid{display:grid;grid-template-columns:170px 1fr;gap:10px 24px;font-size:13px;margin-top:8px}.record-grid .k{color:var(--text-muted);font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;padding-top:3px}.record-grid .v{color:var(--text-primary);font-weight:400}
+.pay-table{margin-top:8px;width:100%;border-collapse:collapse;max-width:620px}.pay-table td{padding:12px 0;border-bottom:1px solid var(--border);font-size:13px}.pay-table td:last-child{text-align:right;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text-muted)}.pay-table td:nth-child(2){font-family:'JetBrains Mono',monospace;font-size:12px;text-align:right;color:var(--text-secondary)}.total-row td{border-bottom:none;font-weight:500;padding-top:16px;color:var(--text-primary)}
 .custody-text{max-width:520px;font-size:13px;color:var(--text-secondary);line-height:1.7;margin-top:8px}
-
-/* Mobile */
-.mobile-top{display:none;position:fixed;top:0;left:0;right:0;height:56px;background:var(--surface);border-bottom:1px solid var(--border);z-index:30;align-items:center;justify-content:space-between;padding:0 20px}
-.mobile-wordmark{font-family:'Cormorant Garamond', serif;letter-spacing:0.2em;color:var(--gold);font-size:15px;text-transform:uppercase}
-.hamburger{width:24px;height:18px;display:flex;flex-direction:column;justify-content:space-between;cursor:pointer;background:none;border:none;padding:0}
-.hamburger span{display:block;height:1px;background:var(--text-primary);width:100%}
+.mobile-top{display:none;position:fixed;top:0;left:0;right:0;height:56px;background:var(--surface);border-bottom:1px solid var(--border);z-index:30;align-items:center;justify-content:space-between;padding:0 20px}.mobile-wordmark{font-family:'Cormorant Garamond',serif;letter-spacing:0.2em;color:var(--gold);font-size:15px;text-transform:uppercase}
+.hamburger{width:24px;height:18px;display:flex;flex-direction:column;justify-content:space-between;cursor:pointer;background:none;border:none;padding:0}.hamburger span{display:block;height:1px;background:var(--text-primary);width:100%}
 .sidebar-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:15}
-@media(max-width:900px){
-  .mobile-top{display:flex}
-  .sidebar{transform:translateX(-100%);transition:transform 200ms ease;z-index:25}
-  .sidebar.open{transform:translateX(0)}
-  .sidebar-overlay.open{display:block}
-  .main{margin-left:0;padding:72px 20px 80px 20px}
-  .info-strip{grid-template-columns:1fr;gap:0}
-  .info-cell{padding:14px 0}
-  .info-cell:not(:last-child)::after{display:none}
-  .info-cell{border-bottom:1px solid var(--border)}
-  .record-grid{grid-template-columns:1fr;gap:6px}
-  .pay-table td{font-size:12px}
-}
+@media(max-width:900px){.mobile-top{display:flex}.sidebar{transform:translateX(-100%);transition:transform 200ms ease;z-index:25}.sidebar.open{transform:translateX(0)}.sidebar-overlay.open{display:block}.main{margin-left:0;padding:72px 20px 80px 20px}.info-strip{grid-template-columns:1fr;gap:0}.info-cell{padding:14px 0}.info-cell:not(:last-child)::after{display:none}.info-cell{border-bottom:1px solid var(--border)}.record-grid{grid-template-columns:1fr;gap:6px}}
 </style>
 </head>
 <body>
-
-<div class="mobile-top" id="mobileTop">
-  <div class="mobile-wordmark">KINGLIS</div>
-  <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
-</div>
+<div class="mobile-top" id="mobileTop"><div class="mobile-wordmark">KINGLIS</div><button class="hamburger" id="hamburger"><span></span><span></span><span></span></button></div>
 <div class="sidebar-overlay" id="sidebarOverlay"></div>
-
 <div class="app">
-  <aside class="sidebar" id="sidebar">
-    <div class="sidebar-top">
-      <div class="wordmark">KINGLIS</div>
-      <div class="commission-id" id="sb-commission-id">TL-2027-001</div>
-      <nav class="nav" id="nav">
-        <button class="nav-item active" data-page="overview">Overview</button>
-        <button class="nav-item" data-page="evidence">Evidence</button>
-        <button class="nav-item" data-page="sessions">Sessions</button>
-        <button class="nav-item" data-page="documents">Documents</button>
-        <button class="nav-item" data-page="commission">Commission</button>
-      </nav>
-    </div>
-    <div class="sidebar-bottom">
-      <span id="sb-analyst">Analyst — Kaylee-Jane</span>
-      <span class="dot"></span>
-    </div>
-  </aside>
+<aside class="sidebar" id="sidebar"><div class="sidebar-top"><div class="wordmark">KINGLIS</div><div class="commission-id" id="sb-commission-id">TL-2027-001</div><nav class="nav" id="nav"><button class="nav-item active" data-page="overview">Overview</button><button class="nav-item" data-page="evidence">Evidence</button><button class="nav-item" data-page="sessions">Sessions</button><button class="nav-item" data-page="commission">Commission</button></nav></div><div class="sidebar-bottom"><span id="sb-analyst">Analyst — Kaylee-Jane</span><span class="dot"></span></div></aside>
+<main class="main"><div class="content-inner">
 
-  <main class="main">
-    <div class="content-inner">
+<section class="page active" id="page-overview">
+<div class="overview-header"><div class="thesis-mark">THESIS LEDGER<span class="tm">™</span></div><div class="commission-line" id="ov-commission-id">Commission TL-2027-001</div><div class="header-rule"></div><div class="founder-line"><div>A private commission for <span id="ov-founder">[Founder Name]</span></div><div>Analyst — <span id="ov-analyst">Kaylee-Jane</span></div></div></div>
+<div style="margin-top:40px"><div class="section-label">Phase Progress</div><div class="phase-tracker" id="phase-tracker"></div></div>
+<div class="info-strip" id="info-strip"></div>
+<div class="analyst-card"><div class="analyst-meta"><div class="eyebrow">Analyst Note</div><div class="analyst-date" id="analyst-date">Last updated 8 October 2027</div></div><div class="analyst-body" id="analyst-body"></div></div>
+<div class="est-row"><div class="label">Estimated Delivery</div><div class="value" id="est-delivery">14 November 2027</div></div>
+</section>
 
-      <!-- OVERVIEW -->
-      <section class="page active" id="page-overview">
-        <div class="overview-header">
-          <div class="thesis-mark">THESIS LEDGER™</div>
-          <div class="commission-line" id="ov-commission-id">Commission TL-2027-001</div>
-          <div class="header-rule"></div>
-          <div class="founder-line">
-            <div>A private commission for <span id="ov-founder">[Founder Name]</span></div>
-            <div>Analyst — <span id="ov-analyst">Kaylee-Jane</span></div>
-          </div>
-        </div>
+<section class="page" id="page-evidence">
+<div id="evidence-awaiting" style="display:none"><div class="evidence-title">Evidence</div><div class="evidence-body"><p>Your Intellectual Asset Discovery Guide has been issued.</p><p>When you are ready, please submit your evidence through the secure upload area below.</p><p>All submitted materials are held under the terms of your Commission Agreement and Custodianship provisions.</p><a class="upload-btn" href="https://secure.thisiskinglis.com/" target="_blank">Upload Evidence →</a></div><div class="secure-embed"><div class="secure-embed-head"><span>Secure Submission • Encrypted</span><span>SECURE.THISISKINGLIS.COM</span></div><iframe id="secure-iframe-awaiting" src="https://secure.thisiskinglis.com/" style="width:100%;height:560px;border:none;background:#fff;display:block" title="Secure Drop" loading="lazy"></iframe></div></div>
+<div id="evidence-received" style="display:none"><div class="evidence-title">Evidence</div><div style="margin-top:8px"><div class="eyebrow gold">Submission Received</div><div class="mono" style="font-size:11px;color:var(--text-muted);margin-top:6px" id="ev-date">14 September 2027</div></div><div class="evidence-body" style="margin-top:20px"><p>Your evidence has been received and is currently under review. Your analyst will contact you when the review is complete and extraction sessions are ready to be scheduled.</p></div><div class="evidence-meta-grid"><div class="ev-meta-row"><span class="k">Items Submitted</span><span class="v" id="ev-count">47 documents across 6 categories</span></div><div class="ev-meta-row"><span class="k">Review Status</span><span class="v" id="ev-status">In Progress</span></div></div><div style="margin-top:24px;font-size:12px;color:var(--text-muted);line-height:1.6;max-width:480px">Questions about your submission?<br>Contact your analyst directly.</div></div>
+</section>
 
-        <div style="margin-top:40px">
-          <div class="section-label">Phase Progress</div>
-          <div class="phase-tracker" id="phase-tracker"></div>
-        </div>
+<section class="page" id="page-sessions"><div class="overview-header" style="margin-bottom:24px"><div class="thesis-mark" style="font-size:22px">Sessions</div><div class="commission-line">Five sessions — extraction of the intellectual architecture</div><div class="header-rule" style="margin-top:12px"></div></div><div class="sessions-stack" id="sessions-stack"></div></section>
 
-        <div class="info-strip" id="info-strip"></div>
+<section class="page" id="page-commission"><div class="overview-header" style="margin-bottom:24px"><div class="thesis-mark" style="font-size:22px">Commission Record</div><div class="header-rule" style="margin-top:12px"></div></div><div class="record-grid" id="record-grid"></div><div style="margin-top:40px"><div class="section-label">Payments</div><table class="pay-table" id="pay-table"></table></div><div style="margin-top:40px"><div class="section-label">Custodianship</div><div class="custody-text">Evidence handling and post-completion options are governed by your Commission Agreement.<br><br><span class="eyebrow" style="display:inline">Post-completion instruction</span><span style="margin-left:12px;color:var(--text-muted);font-family:'JetBrains Mono',monospace;font-size:11px" id="post-instruction">To be confirmed</span></div></div><div style="margin-top:40px"><div class="section-label">Contact</div><div class="record-grid"><div class="k">Founder Email</div><div class="v" id="contact-email">james@whitfieldgroup.com</div><div class="k">Preferred Communication</div><div class="v" id="contact-comm">Email</div><div class="k">Session Platform</div><div class="v" id="contact-platform">Zoom</div></div></div><div style="margin-top:40px"><div class="section-label">Document Delivery</div><div class="custody-text">Session registers, Framework Catalogue™, and Final Thesis Ledger™ are delivered directly via email or shared folder. No upload to this portal required.</div></div></section>
 
-        <div class="analyst-card">
-          <div class="analyst-meta">
-            <div class="eyebrow">Analyst Note</div>
-            <div class="analyst-date" id="analyst-date">Last updated 8 October 2027</div>
-          </div>
-          <div class="analyst-body" id="analyst-body"></div>
-        </div>
-
-        <div class="est-row">
-          <div class="label">Estimated Delivery</div>
-          <div class="value" id="est-delivery">14 November 2027</div>
-        </div>
-      </section>
-
-      <!-- EVIDENCE -->
-      <section class="page" id="page-evidence">
-        <div id="evidence-awaiting" style="display:none">
-          <div class="evidence-title">Evidence</div>
-          <div class="evidence-body">
-            <p>Your Intellectual Asset Discovery Guide has been issued.</p>
-            <p>When you are ready, please submit your evidence through the secure upload area below.</p>
-            <p>All submitted materials are held under the terms of your Commission Agreement and Custodianship provisions.</p>
-            <a class="upload-btn" href="https://secure.thisiskinglis.com/" target="_blank">Upload Evidence →</a>
-          </div>
-          <div class="secure-embed">
-            <div class="secure-embed-head"><span>Secure Submission • Encrypted</span><span>SECURE.THISISKINGLIS.COM</span></div>
-            <iframe id="secure-iframe-awaiting" src="https://secure.thisiskinglis.com/" style="width:100%;height:560px;border:none;background:#fff;display:block" title="Secure Drop" loading="lazy"></iframe>
-          </div>
-        </div>
-
-        <div id="evidence-received" style="display:none">
-          <div class="evidence-title">Evidence</div>
-          <div style="margin-top:8px">
-            <div class="eyebrow gold">Submission Received</div>
-            <div class="mono" style="font-size:11px;color:var(--text-muted);margin-top:6px" id="ev-date">14 September 2027</div>
-          </div>
-          <div class="evidence-body" style="margin-top:20px">
-            <p>Your evidence has been received and is currently under review. Your analyst will contact you when the review is complete and extraction sessions are ready to be scheduled.</p>
-          </div>
-          <div class="evidence-meta-grid">
-            <div class="ev-meta-row"><span class="k">Items Submitted</span><span class="v" id="ev-count">47 documents across 6 categories</span></div>
-            <div class="ev-meta-row"><span class="k">Review Status</span><span class="v" id="ev-status">In Progress</span></div>
-          </div>
-          <div style="margin-top:24px;font-size:12px;color:var(--text-muted);line-height:1.6;max-width:480px">
-            Questions about your submission?<br>Send a message through the Commission page.
-          </div>
-        </div>
-      </section>
-
-      <!-- SESSIONS -->
-      <section class="page" id="page-sessions">
-        <div class="overview-header" style="margin-bottom:24px">
-          <div class="thesis-mark" style="font-size:22px">Sessions</div>
-          <div class="commission-line">Five sessions — extraction of the intellectual architecture</div>
-          <div class="header-rule" style="margin-top:12px"></div>
-        </div>
-        <div class="sessions-stack" id="sessions-stack"></div>
-      </section>
-
-      <!-- DOCUMENTS -->
-      <section class="page" id="page-documents">
-        <div class="overview-header" style="margin-bottom:24px">
-          <div class="thesis-mark" style="font-size:22px">Commission Documents</div>
-          <div class="doc-intro">All documents produced for Commission <span id="doc-commission-id">TL-2027-001</span>.</div>
-          <div class="header-rule" style="margin-top:16px"></div>
-        </div>
-        <div id="docs-container"></div>
-        <div class="sealed-block">
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="2" y="6" width="10" height="7" stroke="#4A4640" stroke-width="0.9"/><path d="M4 6V4.5C4 2.5 5.8 1 7 1C8.2 1 10 2.5 10 4.5V6" stroke="#4A4640" stroke-width="0.9"/><circle cx="7" cy="9.5" r="1.1" fill="#4A4640"/></svg>
-          <p>▪ Sealed materials are held under the conditions you defined. They are not visible here.</p>
-        </div>
-      </section>
-
-      <!-- COMMISSION -->
-      <section class="page" id="page-commission">
-        <div class="overview-header" style="margin-bottom:24px">
-          <div class="thesis-mark" style="font-size:22px">Commission Record</div>
-          <div class="header-rule" style="margin-top:12px"></div>
-        </div>
-
-        <div class="record-grid" id="record-grid"></div>
-
-        <div style="margin-top:40px"><div class="section-label">Payments</div><table class="pay-table" id="pay-table"></table></div>
-
-        <div style="margin-top:40px">
-          <div class="section-label">Custodianship</div>
-          <div class="custody-text">
-            Evidence handling and post-completion options are governed by your Commission Agreement.<br><br>
-            <span class="eyebrow" style="display:inline">Post-completion instruction</span><span style="margin-left:12px;color:var(--text-muted);font-family:'JetBrains Mono',monospace;font-size:11px" id="post-instruction">To be confirmed</span>
-          </div>
-        </div>
-
-        <div style="margin-top:40px">
-          <div class="section-label">Contact</div>
-          <div class="record-grid">
-            <div class="k">Founder Email</div><div class="v" id="contact-email">james@whitfieldgroup.com</div>
-            <div class="k">Preferred Communication</div><div class="v" id="contact-comm">Email</div>
-            <div class="k">Session Platform</div><div class="v" id="contact-platform">Zoom</div>
-          </div>
-        </div>
-      </section>
-
-    </div>
-  </main>
-</div>
+</div></main></div>
 
 <script>
-// ============================================
+// ============================================================================
+// !! KAYLEE-JANE — EDIT ONLY THIS BLOCK — 4 PAGES ONLY
+// Overview / Evidence / Sessions / Commission — No Documents page
+// Documents are emailed directly — zero portal maintenance
+// ============================================================================
 // COMMISSION CONFIGURATION
 // Edit only this section to update the portal
-// ============================================
+// ============================================================================
 
 const commission = {
-
-  // FOUNDER DETAILS
   founderName: "James Whitfield",
   commissionId: "TL-2027-001",
   analystName: "Kaylee-Jane",
@@ -518,111 +101,34 @@ const commission = {
   estimatedDelivery: "14 November 2027",
   intendedUse: ["Exit Preparation", "Succession Planning"],
 
-  // CURRENT PHASE
-  // Options: "activation" | "evidence" | "extraction" |
-  //          "validation" | "writing" | "production" | "delivered"
-  currentPhase: "validation",
+  currentPhase: "extraction",
 
-  // ANALYST NOTE
   analystNote: "Session 2 identified three strong Doctrine candidates across the governance layer. Session 3 will focus on Framework extraction — the most evidence-intensive phase of the commission.",
   analystNoteDate: "8 October 2027",
 
-  // EVIDENCE STATE
-  // Options: "awaiting" | "received"
   evidenceState: "received",
   evidenceSubmissionDate: "14 September 2027",
   evidenceItemCount: "47 documents across 6 categories",
   evidenceReviewStatus: "In Progress",
 
-  // SESSIONS
   sessions: [
-    {
-      number: 1,
-      title: "Foundations",
-      description: "The Value Logic and Mental Models that form the deepest layer of the intellectual architecture.",
-      status: "complete",
-      date: "24 September 2027",
-      time: "",
-      preparation: "",
-      note: "Session register recorded."
-    },
-    {
-      number: 2,
-      title: "Governance",
-      description: "The Doctrines, Principles, and Operating Rules that govern behaviour.",
-      status: "complete",
-      date: "8 October 2027",
-      time: "",
-      preparation: "",
-      note: "Session register recorded."
-    },
-    {
-      number: 3,
-      title: "Decision Systems",
-      description: "The Frameworks and Diagnostics that govern how consequential decisions are made.",
-      status: "scheduled",
-      date: "14 October 2027",
-      time: "10:00",
-      preparation: "Consider: How do you make your most consequential decisions — what is the actual mechanism?"
-    },
-    {
-      number: 4,
-      title: "Execution",
-      description: "The Patterns, Triggers, and Thresholds that activate the decision architecture.",
-      status: "upcoming",
-      date: "",
-      time: "",
-      preparation: ""
-    },
-    {
-      number: 5,
-      title: "Transferability",
-      description: "Testing every extracted object against the transferability standard.",
-      status: "upcoming",
-      date: "",
-      time: "",
-      preparation: ""
-    }
+    { number: 1, title: "Foundations", description: "The Value Logic and Mental Models that form the deepest layer of the intellectual architecture.", status: "complete", date: "24 September 2027", time: "", preparation: "", note: "Session register recorded." },
+    { number: 2, title: "Governance", description: "The Doctrines, Principles, and Operating Rules that govern behaviour.", status: "complete", date: "8 October 2027", time: "", preparation: "", note: "Session register recorded." },
+    { number: 3, title: "Decision Systems", description: "The Frameworks and Diagnostics that govern how consequential decisions are made.", status: "scheduled", date: "14 October 2027", time: "10:00", preparation: "Consider: How do you make your most consequential decisions — what is the actual mechanism?" },
+    { number: 4, title: "Execution", description: "The Patterns, Triggers, and Thresholds that activate the decision architecture.", status: "upcoming", date: "", time: "", preparation: "" },
+    { number: 5, title: "Transferability", description: "Testing every extracted object against the transferability standard.", status: "upcoming", date: "", time: "", preparation: "" }
   ],
 
-  // DOCUMENTS
-  documents: {
-    foundation: [
-      { name: "Commission Agreement", date: "Signed 12 Jul 2027", visible: true },
-      { name: "Mutual Confidentiality Agreement", date: "Signed 12 Jul 2027", visible: true },
-      { name: "Thesis Intelligence Profile™", date: "Completed 19 Jul 2027", visible: true },
-      { name: "Intellectual Asset Discovery Guide™", date: "Issued 24 Jul 2027", visible: true }
-    ],
-    extraction: [
-      { name: "Session 1 Register", date: "Completed 24 Sep 2027", visible: true },
-      { name: "Session 2 Register", date: "Completed 8 Oct 2027", visible: true },
-      { name: "Session 3 Register", date: "", visible: false },
-      { name: "Session 4 Register", date: "", visible: false },
-      { name: "Session 5 Register", date: "", visible: false }
-    ],
-    production: [
-      { name: "Framework Catalogue™", date: "", visible: false },
-      { name: "Intellectual Asset Register™", date: "", visible: false },
-      { name: "Thesis Ledger Draft", date: "", visible: false },
-      { name: "Validation Copy", date: "", visible: false },
-      { name: "Final Thesis Ledger™", date: "", visible: false },
-      { name: "Completion Certificate", date: "", visible: false }
-    ]
-  },
-
-  // PAYMENTS
   payments: [
     { name: "Commission Activation Fee", amount: "US$7,500", status: "received", date: "12 Jul 2027" },
     { name: "Evidence & Extraction Fee", amount: "US$10,000", status: "pending", date: "" },
     { name: "Production Fee", amount: "US$7,500", status: "pending", date: "" }
   ],
 
-  // CONTACT
   founderEmail: "james@whitfieldgroup.com",
   sessionPlatform: "Zoom",
   preferredCommunication: "Email",
   postCompletionInstruction: "To be confirmed"
-
 };
 
 // ============================================
@@ -630,213 +136,47 @@ const commission = {
 // Do not edit below this line
 // ============================================
 
-// Phase definitions
-const PHASES = [
-  { key: "activation", label: "Commission Activated" },
-  { key: "profile", label: "Thesis Intelligence Profile" },
-  { key: "evidence", label: "Evidence Discovery" },
-  { key: "extraction", label: "Extraction" },
-  { key: "validation", label: "Validation" },
-  { key: "writing", label: "Writing" },
-  { key: "production", label: "Production" },
-  { key: "delivered", label: "Delivery" }
-];
-
-const PHASE_ORDER = {
-  "activation": 0,
-  "evidence": 2,
-  "extraction": 3,
-  "validation": 4,
-  "writing": 5,
-  "production": 6,
-  "delivered": 7
-};
-
-function getCurrentPhaseIndex(){
-  const key = commission.currentPhase;
-  if(PHASE_ORDER.hasOwnProperty(key)) return PHASE_ORDER[key];
-  // fallback if profile
-  if(key === "profile") return 1;
-  return 0;
-}
-
+const PHASES=[{key:"activation",label:"Commission Activated"},{key:"profile",label:"Thesis Intelligence Profile"},{key:"evidence",label:"Evidence Discovery"},{key:"extraction",label:"Extraction"},{key:"validation",label:"Validation"},{key:"writing",label:"Writing"},{key:"production",label:"Production"},{key:"delivered",label:"Delivery"}];
+const PHASE_ORDER={"activation":0,"evidence":2,"extraction":3,"validation":4,"writing":5,"production":6,"delivered":7};
+function getCurrentPhaseIndex(){const k=commission.currentPhase;if(PHASE_ORDER.hasOwnProperty(k)) return PHASE_ORDER[k];if(k==="profile") return 1;return 0;}
 function renderOverview(){
-  document.getElementById('sb-commission-id').textContent = commission.commissionId;
-  document.getElementById('ov-commission-id').textContent = 'Commission ' + commission.commissionId;
-  document.getElementById('ov-founder').textContent = commission.founderName;
-  document.getElementById('ov-analyst').textContent = commission.analystName;
-  document.getElementById('sb-analyst').textContent = 'Analyst — ' + commission.analystName;
-  document.getElementById('analyst-date').textContent = 'Last updated ' + commission.analystNoteDate;
-  document.getElementById('analyst-body').textContent = commission.analystNote;
-  document.getElementById('est-delivery').textContent = commission.estimatedDelivery;
-  document.getElementById('doc-commission-id').textContent = commission.commissionId;
-
-  // Phase tracker
-  const currentIdx = getCurrentPhaseIndex();
-  const tracker = document.getElementById('phase-tracker');
-  tracker.innerHTML = PHASES.map((p, idx)=>{
-    let state = 'future';
-    let icon = '<div class="circle"></div>';
-    if(idx < currentIdx){ state='completed'; icon='<div class="check">✓</div>'; }
-    if(idx === currentIdx){ state='current'; icon='<div class="circle filled"></div>'; }
-    return `<div class="phase ${state}"><div class="phase-ind">${icon}</div><div class="phase-text">${p.label}</div></div>`;
-  }).join('');
-
-  // Info strip
-  const currentPhaseLabel = PHASES[currentIdx] ? PHASES[currentIdx].label : commission.currentPhase;
-  const nextSession = commission.sessions.find(s=>s.status==='scheduled') || commission.sessions.find(s=>s.status==='upcoming' && s.date) || null;
-  let nextSessionTitle = 'To be confirmed';
-  let nextSessionDate = '';
-  if(nextSession){
-    nextSessionTitle = 'Session ' + nextSession.number + ' — ' + nextSession.title;
-    nextSessionDate = nextSession.date + (nextSession.time ? ' — ' + nextSession.time : '');
-  }
-  document.getElementById('info-strip').innerHTML = `
-    <div class="info-cell"><div class="info-label">Current Phase</div><div class="info-value gold">${currentPhaseLabel}</div></div>
-    <div class="info-cell"><div class="info-label">Next Session</div><div class="info-value">${nextSessionTitle}<span class="sub">${nextSessionDate}</span></div></div>
-    <div class="info-cell"><div class="info-label">Estimated Delivery</div><div class="info-value">${commission.estimatedDelivery}</div></div>
-  `;
+  document.getElementById('sb-commission-id').textContent=commission.commissionId;
+  document.getElementById('ov-commission-id').textContent='Commission '+commission.commissionId;
+  document.getElementById('ov-founder').textContent=commission.founderName;
+  document.getElementById('ov-analyst').textContent=commission.analystName;
+  document.getElementById('sb-analyst').textContent='Analyst — '+commission.analystName;
+  document.getElementById('analyst-date').textContent='Last updated '+commission.analystNoteDate;
+  document.getElementById('analyst-body').textContent=commission.analystNote;
+  document.getElementById('est-delivery').textContent=commission.estimatedDelivery;
 }
-
 function renderEvidence(){
-  const awaiting = document.getElementById('evidence-awaiting');
-  const received = document.getElementById('evidence-received');
-  if(commission.evidenceState === 'awaiting'){
-    awaiting.style.display='block';
-    received.style.display='none';
-    // pass commission to iframe
-    const iframe = document.getElementById('secure-iframe-awaiting');
-    if(iframe){
-      try{
-        const url = new URL(iframe.src);
-        url.searchParams.set('commission', commission.commissionId);
-        url.searchParams.set('founder', commission.founderName);
-        iframe.src = url.toString();
-      }catch(e){}
-    }
-  } else {
-    awaiting.style.display='none';
-    received.style.display='block';
-    document.getElementById('ev-date').textContent = commission.evidenceSubmissionDate;
-    document.getElementById('ev-count').textContent = commission.evidenceItemCount;
-    document.getElementById('ev-status').textContent = commission.evidenceReviewStatus;
-  }
+  const awaiting=document.getElementById('evidence-awaiting');const received=document.getElementById('evidence-received');
+  if(commission.evidenceState==='awaiting'){awaiting.style.display='block';received.style.display='none';const iframe=document.getElementById('secure-iframe-awaiting');if(iframe){try{const url=new URL(iframe.src);url.searchParams.set('commission',commission.commissionId);url.searchParams.set('founder',commission.founderName);iframe.src=url.toString();}catch(e){}}}else{awaiting.style.display='none';received.style.display='block';document.getElementById('ev-date').textContent=commission.evidenceSubmissionDate;document.getElementById('ev-count').textContent=commission.evidenceItemCount;document.getElementById('ev-status').textContent=commission.evidenceReviewStatus;}
 }
-
 function renderSessions(){
-  const stack = document.getElementById('sessions-stack');
-  stack.innerHTML = commission.sessions.map(s=>{
-    const status = s.status;
-    let statusClass = 'upcoming';
-    let statusText = 'UPCOMING';
-    if(status==='complete'){ statusClass='complete'; statusText='COMPLETE'; }
-    if(status==='scheduled'){ statusClass='scheduled'; statusText='SCHEDULED'; }
-    const isUpcoming = status==='upcoming';
-    const dateLine = s.date ? (s.date + (s.time ? ' — ' + s.time : '')) : 'Date to be confirmed';
-    return `<div class="session-card ${status} ${isUpcoming?'upcoming':''}">
-      <div class="session-head"><div class="session-title">SESSION ${s.number} — ${s.title.toUpperCase()}</div><div class="session-status ${statusClass}">${statusText}</div></div>
-      <div class="session-date">${isUpcoming ? dateLine : 'Conducted ' + s.date}</div>
-      ${!isUpcoming ? `<div class="session-desc">${s.description}</div>` : ''}
-      ${s.note && status==='complete' ? `<div class="session-note">${s.note}</div>` : ''}
-      ${s.preparation && status==='scheduled' ? `<div class="session-prep"><div class="prep-row"><div class="k">Preparation</div><div class="v">${s.preparation}</div></div></div>` : ''}
-    </div>`;
+  const stack=document.getElementById('sessions-stack');
+  stack.innerHTML=commission.sessions.map(s=>{
+    const status=s.status;let statusClass='upcoming';let statusText='UPCOMING';if(status==='complete'){statusClass='complete';statusText='COMPLETE';}if(status==='scheduled'){statusClass='scheduled';statusText='SCHEDULED';}
+    const isUpcoming=status==='upcoming';const dateLine=s.date?(s.date+(s.time?' — '+s.time:'')):'Date to be confirmed';
+    return `<div class="session-card ${status} ${isUpcoming?'upcoming':''}"><div class="session-head"><div class="session-title">SESSION ${s.number} — ${s.title.toUpperCase()}</div><div class="session-status ${statusClass}">${statusText}</div></div><div class="session-date">${isUpcoming?dateLine:'Conducted '+s.date}</div>${!isUpcoming?`<div class="session-desc">${s.description}</div>`:''}${s.note&&status==='complete'?`<div class="session-note">${s.note}</div>`:''}${s.preparation&&status==='scheduled'?`<div class="session-prep"><div class="prep-row"><div class="k">Preparation</div><div class="v">${s.preparation}</div></div></div>`:''}</div>`;
   }).join('');
 }
-
-function renderDocuments(){
-  const container = document.getElementById('docs-container');
-  const sections = [
-    { key:'foundation', label:'Foundation' },
-    { key:'extraction', label:'Extraction' },
-    { key:'production', label:'Production' }
-  ];
-  let html = '';
-  sections.forEach(sec=>{
-    const docs = commission.documents[sec.key] || [];
-    if(docs.length===0) return;
-    html += `<div class="doc-section"><div class="doc-section-title">${sec.label}</div>`;
-    docs.forEach(d=>{
-      const pending = !d.visible;
-      html += `<div class="doc-row">
-        <span class="doc-name ${pending?'pending':''}">${d.name}</span>
-        <span class="doc-meta">${pending ? 'Pending' : d.date}</span>
-        <span>${pending ? '' : '<a class="doc-view" href="#">View</a>'}</span>
-      </div>`;
-    });
-    html += `</div><div class="divider gold" style="margin-top:16px"></div>`;
-  });
-  container.innerHTML = html;
-}
-
 function renderCommission(){
-  const grid = document.getElementById('record-grid');
-  const useText = commission.intendedUse.join('<br>');
-  grid.innerHTML = `
-    <div class="k">Commission ID</div><div class="v mono">${commission.commissionId}</div>
-    <div class="k">Edition</div><div class="v">Thesis Ledger™</div>
-    <div class="k">Status</div><div class="v">Active</div>
-    <div class="k">Opened</div><div class="v mono">${commission.openedDate}</div>
-    <div class="k">Estimated Delivery</div><div class="v mono">${commission.estimatedDelivery}</div>
-    <div class="k" style="margin-top:16px">Founder</div><div class="v" style="margin-top:16px">${commission.founderName}</div>
-    <div class="k">Analyst</div><div class="v">${commission.analystName}</div>
-    <div class="k" style="margin-top:16px">Intended Use</div><div class="v">${useText}</div>
-  `;
-  const payTable = document.getElementById('pay-table');
-  let total = 0;
-  const rows = commission.payments.map(p=>{
-    const amountNum = parseFloat(p.amount.replace(/[^0-9.]/g,''));
-    if(!isNaN(amountNum)) total+=amountNum;
-    const isReceived = p.status==='received';
-    const icon = isReceived ? '✓' : '○';
-    const dateText = isReceived ? 'Received ' + p.date : 'Pending';
-    return `<tr><td>${p.name}</td><td>${p.amount}</td><td>${icon}  ${dateText}</td></tr>`;
-  }).join('');
-  payTable.innerHTML = rows + `<tr class="total-row"><td>Total Commission</td><td>US$${total.toLocaleString()}</td><td></td></tr>`;
-
-  document.getElementById('post-instruction').textContent = commission.postCompletionInstruction || 'To be confirmed';
-  document.getElementById('contact-email').textContent = commission.founderEmail;
-  document.getElementById('contact-comm').textContent = commission.preferredCommunication;
-  document.getElementById('contact-platform').textContent = commission.sessionPlatform;
+  const grid=document.getElementById('record-grid');const useText=commission.intendedUse.join('<br>');
+  grid.innerHTML=`<div class="k">Commission ID</div><div class="v mono">${commission.commissionId}</div><div class="k">Edition</div><div class="v">Thesis Ledger™</div><div class="k">Status</div><div class="v">Active</div><div class="k">Opened</div><div class="v mono">${commission.openedDate}</div><div class="k">Estimated Delivery</div><div class="v mono">${commission.estimatedDelivery}</div><div class="k" style="margin-top:16px">Founder</div><div class="v" style="margin-top:16px">${commission.founderName}</div><div class="k">Analyst</div><div class="v">${commission.analystName}</div><div class="k" style="margin-top:16px">Intended Use</div><div class="v">${useText}</div>`;
+  const payTable=document.getElementById('pay-table');let total=0;const rows=commission.payments.map(p=>{const amountNum=parseFloat(p.amount.replace(/[^0-9.]/g,''));if(!isNaN(amountNum)) total+=amountNum;const isReceived=p.status==='received';const icon=isReceived?'✓':'○';const dateText=isReceived?'Received '+p.date:'Pending';return `<tr><td>${p.name}</td><td>${p.amount}</td><td>${icon}  ${dateText}</td></tr>`;}).join('');
+  payTable.innerHTML=rows+`<tr class="total-row"><td>Total Commission</td><td>US$${total.toLocaleString()}</td><td></td></tr>`;
+  document.getElementById('post-instruction').textContent=commission.postCompletionInstruction||'To be confirmed';
+  document.getElementById('contact-email').textContent=commission.founderEmail;
+  document.getElementById('contact-comm').textContent=commission.preferredCommunication;
+  document.getElementById('contact-platform').textContent=commission.sessionPlatform;
 }
-
-function init(){
-  renderOverview();
-  renderEvidence();
-  renderSessions();
-  renderDocuments();
-  renderCommission();
-}
-init();
-
-// Navigation
-const nav = document.getElementById('nav');
-const pages = document.querySelectorAll('.page');
-nav.addEventListener('click', e=>{
-  const btn = e.target.closest('.nav-item');
-  if(!btn) return;
-  const target = btn.dataset.page;
-  document.querySelectorAll('.nav-item').forEach(b=>b.classList.remove('active'));
-  btn.classList.add('active');
-  pages.forEach(p=>p.classList.remove('active'));
-  const el = document.getElementById('page-'+target);
-  if(el){ el.classList.add('active'); window.scrollTo({top:0,behavior:'auto'}); }
-  // close mobile
-  document.getElementById('sidebar').classList.remove('open');
-  document.getElementById('sidebarOverlay').classList.remove('open');
-});
-
-// Mobile
-const hamburger = document.getElementById('hamburger');
-const sidebar = document.getElementById('sidebar');
-const overlay = document.getElementById('sidebarOverlay');
-hamburger.addEventListener('click', ()=>{
-  sidebar.classList.toggle('open');
-  overlay.classList.toggle('open');
-});
-overlay.addEventListener('click', ()=>{
-  sidebar.classList.remove('open');
-  overlay.classList.remove('open');
-});
+function init(){renderOverview();renderEvidence();renderSessions();renderCommission();}init();
+const nav=document.getElementById('nav');const pages=document.querySelectorAll('.page');
+nav.addEventListener('click',e=>{const btn=e.target.closest('.nav-item');if(!btn)return;const target=btn.dataset.page;document.querySelectorAll('.nav-item').forEach(b=>b.classList.remove('active'));btn.classList.add('active');pages.forEach(p=>p.classList.remove('active'));const el=document.getElementById('page-'+target);if(el){el.classList.add('active');window.scrollTo({top:0,behavior:'auto'});}document.getElementById('sidebar').classList.remove('open');document.getElementById('sidebarOverlay').classList.remove('open');});
+const hamburger=document.getElementById('hamburger');const sidebar=document.getElementById('sidebar');const overlay=document.getElementById('sidebarOverlay');
+hamburger.addEventListener('click',()=>{sidebar.classList.toggle('open');overlay.classList.toggle('open');});
+overlay.addEventListener('click',()=>{sidebar.classList.remove('open');overlay.classList.remove('open');});
 </script>
 </body>
 </html>
