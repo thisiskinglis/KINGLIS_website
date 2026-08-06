@@ -7,20 +7,27 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#0A0A0A;
-  --surface:#111111;
-  --card:#161616;
-  --card-alt:#1A1A1A;
-  --border:#1E1E1E;
+  /* Colours matched to L02 — THESIS EDITION cover */
+  --bg:#0A1931;
+  --bg-deep:#081425;
+  --surface:#0F223E;
+  --surface-2:#112845;
+  --card:#122A4A;
+  --card-alt:#0E2340;
+  --border:rgba(90,141,190,0.12);
+  --border-strong:rgba(201,168,76,0.22);
   --gold:#C9A84C;
   --gold-subtle:#A8893D;
   --gold-line:rgba(201,168,76,0.22);
   --gold-line-strong:rgba(201,168,76,0.35);
-  --text-primary:#F5F0E8;
-  --text-secondary:#8A8478;
-  --text-muted:#4A4640;
+  --blue-accent:#5A8DBE;
+  --blue-faint:rgba(90,141,190,0.18);
+  --text-primary:#E8E6E1;
+  --text-secondary:#9BA9BE;
+  --text-muted:#5E6E86;
+  --text-faint:#3A4A64;
   --success:#4A7C59;
-  --pending:#2A2A2A;
+  --pending:#1A2A44;
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -33,6 +40,14 @@ body{
   line-height:1.65;
   -webkit-font-smoothing:antialiased;
   -moz-osx-font-smoothing:grayscale;
+  /* blueprint grid - matches cover background */
+  background-image:
+    linear-gradient(rgba(90,141,190,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(90,141,190,0.04) 1px, transparent 1px),
+    linear-gradient(rgba(90,141,190,0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(90,141,190,0.02) 1px, transparent 1px);
+  background-size: 80px 80px, 80px 80px, 16px 16px, 16px 16px;
+  background-position: -1px -1px;
 }
 a{color:inherit;text-decoration:none}
 button{font-family:inherit}
@@ -42,8 +57,9 @@ button{font-family:inherit}
 .app{display:flex;min-height:100vh}
 .sidebar{
   position:fixed;left:0;top:0;bottom:0;width:220px;
-  background:var(--surface);
+  background:rgba(8,20,37,0.92);
   border-right:1px solid var(--border);
+  backdrop-filter:blur(12px);
   display:flex;flex-direction:column;justify-content:space-between;
   z-index:20;
 }
@@ -91,11 +107,11 @@ button{font-family:inherit}
 .main{margin-left:220px;flex:1;min-height:100vh;padding:48px 48px 120px 48px;display:flex;flex-direction:column}
 .content-inner{max-width:820px;width:100%;flex:1}
 .eyebrow{
-  font-family:'Inter', sans-serif;
+  font-family:'JetBrains Mono', monospace;
   font-size:0.65rem;
   letter-spacing:0.15em;
   text-transform:uppercase;
-  color:var(--text-muted);
+  color:var(--blue-accent);
   font-weight:400;
 }
 .eyebrow.gold{color:var(--gold-subtle)}
@@ -110,9 +126,11 @@ button{font-family:inherit}
 .overview-header{margin-bottom:40px}
 .thesis-mark{
   font-family:'Cormorant Garamond', serif;
-  font-weight:400;
+  font-weight:300;
   font-size:28px;
-  color:var(--gold);
+  color:var(--text-primary);
+}
+.thesis-mark .tm{color:var(--gold);font-weight:400;letter-spacing:0.08em}
   letter-spacing:0.02em;
   line-height:1;
 }
