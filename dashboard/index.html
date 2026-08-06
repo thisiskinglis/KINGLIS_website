@@ -6,6 +6,7 @@
 <title>KINGLIS — Commission LL-2027-004</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
 <style>
+
 :root{
   --bg:#FDFBF7;--surface:#F8F4EE;--surface-2:#FCFAF6;--card:#FFFFFF;--card-alt:#F9F5EF;
   --border:#EAE1D2;--border-soft:#F0E8D8;--gold:#C9A84C;--gold-deep:#A8893D;
@@ -20,49 +21,77 @@ button{font-family:inherit}a{color:inherit;text-decoration:none}
 .sidebar-top{padding:32px 20px 20px 20px}
 .wordmark{font-family:'Cormorant Garamond', serif;font-weight:400;letter-spacing:0.22em;font-size:17px;color:var(--gold);line-height:1}
 .commission-id{font-family:var(--mono);font-size:10px;letter-spacing:0.08em;color:var(--text-3);margin-top:8px}
-.nav{margin-top:48px;display:flex;flex-direction:column;gap:1px}
-.nav-item{display:block;width:100%;text-align:left;background:none;border:none;border-left:2px solid transparent;padding:8px 18px;font-size:11.8px;letter-spacing:0.02em;color:var(--text-2);cursor:pointer;transition:all 200ms ease}
-.nav-item:hover{color:var(--text)}.nav-item.active{border-left-color:var(--gold);color:var(--text);font-weight:400}
+.nav{margin-top:48px;display:flex;flex-direction:column;gap:2px}
+.nav-item{display:block;width:100%;text-align:left;background:none;border:none;border-left:2px solid transparent;padding:9px 18px;font-size:11.8px;letter-spacing:0.02em;color:#7A756E;cursor:pointer;transition:all 200ms ease}
+.nav-item:hover{color:var(--text);background:rgba(0,0,0,0.02)}.nav-item.active{border-left-color:var(--gold);color:var(--text);font-weight:500;background:var(--card)}
 .sidebar-bottom{border-top:1px solid var(--border-soft);padding:14px 20px;display:flex;align-items:center;justify-content:space-between;font-family:var(--mono);font-size:10px;color:var(--text-3)}
 .dot{width:5px;height:5px;background:var(--gold);border-radius:50%;display:inline-block}
-.main{margin-left:192px;flex:1;min-height:100vh;padding:0 48px 100px 48px;display:flex;flex-direction:column}
+.main{margin-left:192px;flex:1;min-height:100vh;padding:0 56px 100px 56px;display:flex;flex-direction:column}
 .content-inner{max-width:800px;width:100%;flex:1}
-.eyebrow{font-family:'Inter', sans-serif;font-size:0.56rem;letter-spacing:0.18em;text-transform:uppercase;color:#B0AAA2;font-weight:400}
-.eyebrow.gold{color:var(--gold-deep);opacity:0.9}.mono{font-family:var(--mono)}
+.eyebrow{font-family:'Inter', sans-serif;font-size:0.56rem;letter-spacing:0.18em;text-transform:uppercase;color:#B0AAA2;font-weight:500}
+.eyebrow.gold{color:var(--gold-deep);opacity:0.95}.mono{font-family:var(--mono)}
 .divider{height:1px;background:var(--border);width:100%}.divider.gold{background:var(--gold-line)}
 .page{display:none}.page.active{display:block;animation:fade 240ms ease}@keyframes fade{from{opacity:0}to{opacity:1}}
-.commission-hero{padding-top:56px}.hero-title{font-family:'Cormorant Garamond', serif;font-weight:300;font-size:42px;line-height:0.95;letter-spacing:-0.02em;margin:0;color:var(--text)}
-.hero-prepared{margin-top:56px;font-family:'Cormorant Garamond', serif;font-weight:300;font-size:38px;line-height:1.12;color:var(--text);letter-spacing:-0.015em}
-.spacer-72{height:64px}.current-phase-block{margin-top:32px;max-width:600px}
-.phase-name{font-family:'Cormorant Garamond', serif;font-size:52px;font-weight:300;line-height:0.95;letter-spacing:-0.025em;color:var(--text);margin-top:8px}
-.phase-desc{margin-top:20px;font-size:15.5px;line-height:1.9;color:var(--text-2);max-width:520px}
-.action-wrap{margin-top:88px}.action-simple{margin-top:18px;max-width:480px}
-.action-label{font-size:14px;color:var(--text-2);line-height:1.7}
-.action-list{list-style:none;margin:12px 0 0 0;padding:0}.action-list li{font-size:15px;line-height:1.9;color:var(--text);padding-left:18px;position:relative;font-weight:400}
-.action-list li::before{content:'•';position:absolute;left:0;color:var(--gold);font-size:10px;top:1px}
-.action-meta{margin-top:18px;font-family:var(--mono);font-size:10.5px;color:var(--text-3);letter-spacing:0.04em;line-height:1.6}
-.timeline-editorial{margin-top:88px}.tl-minimal{margin-top:20px;position:relative;padding-left:2px}
-.tl-minimal::before{content:'';position:absolute;left:4px;top:8px;bottom:8px;width:1px;background:var(--border-soft)}
-.tl-m-row{display:flex;gap:22px;padding:14px 0;align-items:flex-start}.tl-m-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0;margin-top:8px;background:var(--bg);border:1px solid var(--text-faint);z-index:1}
-.tl-m-dot.filled{background:var(--text);border-color:var(--text);width:9px;height:9px;margin-top:7px}
-.tl-m-dot.check{border:none;background:none;color:var(--text);font-size:10px;line-height:1;width:9px;height:14px;display:flex;align-items:center;justify-content:center;font-weight:400}
-.tl-m-text{font-size:13.5px;line-height:1.5}.tl-m-text .n{color:var(--text);font-weight:400}.tl-m-text .n.completed{color:var(--text);font-weight:400}.tl-m-text .n.future{color:#C8C2B8;font-weight:300}
-.tl-m-text .n.current{font-family:'Cormorant Garamond', serif;font-size:19px;font-weight:500;line-height:1.2;letter-spacing:-0.01em;color:var(--text)}.tl-m-text .d{color:var(--text-3);font-size:12px;margin-top:3px;line-height:1.6}
-.observation-wrap{margin-top:88px}.observation-card{margin-top:20px;max-width:560px;padding-left:22px;border-left:1px solid var(--gold-line-faint)}
-.observation-meta{font-family:var(--mono);font-size:10px;color:var(--text-3);margin-bottom:14px;letter-spacing:0.04em}
-.observation-text{font-family:'Cormorant Garamond', serif;font-size:20px;line-height:1.6;font-weight:300;font-style:italic;color:var(--text)}
-.observation-sub{margin-top:14px;font-size:13.5px;line-height:1.85;color:var(--text-2);font-family:'Inter', sans-serif}
-.foot-note{margin-top:88px;padding-top:20px;border-top:1px solid var(--border-soft);display:flex;gap:28px;flex-wrap:wrap;font-family:var(--mono);font-size:10px;color:var(--text-3)}
-.page-header{padding-top:48px;margin-bottom:28px}.page-title{font-family:'Cormorant Garamond', serif;font-weight:300;font-size:42px;line-height:1.02;letter-spacing:-0.02em;margin:10px 0 0 0}
+
+/* Commission - clearer editorial */
+.context-bar{font-family:var(--mono);font-size:9px;letter-spacing:0.16em;text-transform:uppercase;color:#B8B2A8;padding:18px 0 0 0;margin-bottom:24px;display:flex;gap:12px;align-items:center}
+.context-bar .sep{opacity:0.4}
+.commission-hero{padding-top:24px}
+.hero-title{font-family:'Cormorant Garamond', serif;font-weight:300;font-size:40px;line-height:0.95;letter-spacing:-0.02em;margin:0;color:var(--text)}
+.hero-prepared{margin-top:48px;font-family:'Cormorant Garamond', serif;font-weight:400;font-size:42px;line-height:1.05;color:var(--text);letter-spacing:-0.02em}
+.hero-prepared .for{font-size:15px;font-family:'Inter', sans-serif;font-weight:300;color:var(--text-3);letter-spacing:0.04em;display:block;margin-bottom:10px;text-transform:uppercase;letter-spacing:0.12em}
+.spacer-72{height:48px}
+.current-phase-block{margin-top:40px;max-width:640px;background:var(--card);border:1px solid var(--border-soft);border-left:2px solid var(--gold);padding:28px 28px 24px 28px;border-radius:2px}
+.phase-label-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+.phase-name{font-family:'Cormorant Garamond', serif;font-size:48px;font-weight:300;line-height:0.95;letter-spacing:-0.025em;color:var(--text);margin-top:4px}
+.phase-desc{margin-top:16px;font-size:15px;line-height:1.85;color:var(--text-2);max-width:520px}
+.phase-what-next{margin-top:18px;padding-top:16px;border-top:1px solid var(--border-soft);font-size:13px;line-height:1.7;color:var(--text-2)}
+.phase-what-next strong{font-weight:500;color:var(--text)}
+
+.action-wrap{margin-top:64px;max-width:640px}
+.action-simple{background:var(--card);border:1px solid var(--border-soft);padding:24px 26px;border-radius:2px;margin-top:16px}
+.action-label{font-size:13px;color:var(--text-3);font-family:'Inter', sans-serif;letter-spacing:0.02em;margin-bottom:10px;text-transform:uppercase;font-size:11px;letter-spacing:0.1em;font-weight:500}
+.action-list{list-style:none;margin:0;padding:0}
+.action-list li{font-size:15px;line-height:1.7;color:var(--text);padding:10px 0 10px 22px;position:relative;font-weight:400;border-bottom:1px solid var(--border-soft)}
+.action-list li:last-child{border-bottom:none}
+.action-list li::before{content:'1';position:absolute;left:0;top:11px;font-family:var(--mono);font-size:10px;color:var(--gold-deep);font-weight:500}
+.action-list li:nth-child(2)::before{content:'2'}
+.action-list li:nth-child(3)::before{content:'3'}
+.action-meta{margin-top:16px;display:flex;align-items:center;gap:10px;font-family:var(--mono);font-size:10px;color:var(--text-3);letter-spacing:0.04em;line-height:1.6;background:var(--surface);padding:8px 12px;border-radius:2px;width:fit-content}
+.action-help{margin-top:14px;font-size:12.5px;color:var(--text-2);line-height:1.6}
+.action-help a{color:var(--gold-deep);text-decoration:underline;text-underline-offset:3px}
+
+.timeline-editorial{margin-top:72px;max-width:640px}
+.tl-minimal{margin-top:18px;position:relative;padding-left:0}
+.tl-m-row{display:flex;gap:16px;padding:18px 0 18px 0;align-items:flex-start;border-bottom:1px solid var(--border-soft);position:relative}
+.tl-m-row:last-child{border-bottom:none}
+.tl-m-dot{width:22px;height:22px;border-radius:50%;flex-shrink:0;background:var(--card);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:10px;z-index:1;margin-top:1px}
+.tl-m-dot.filled{background:var(--text);border-color:var(--text);color:var(--bg)}
+.tl-m-dot.check{background:var(--text);border-color:var(--text);color:var(--bg)}
+.tl-m-text{font-size:13.5px;line-height:1.5;flex:1}
+.tl-m-text .n{color:var(--text);font-weight:500;font-size:14px}
+.tl-m-text .n.completed{color:var(--text);font-weight:500}
+.tl-m-text .n.future{color:#C8C2B8;font-weight:300}
+.tl-m-text .n.current{font-family:'Cormorant Garamond', serif;font-size:20px;font-weight:500;line-height:1.2;letter-spacing:-0.01em;color:var(--text)}
+.tl-m-text .d{color:var(--text-2);font-size:12.5px;margin-top:4px;line-height:1.6}
+
+.observation-wrap{margin-top:72px;max-width:640px}
+.observation-card{margin-top:16px;background:var(--card);border:1px solid var(--border-soft);padding:22px 24px 20px 24px;border-radius:2px;border-left:2px solid var(--border)}
+.observation-meta{font-family:var(--mono);font-size:10px;color:var(--text-3);margin-bottom:12px;letter-spacing:0.04em;display:flex;justify-content:space-between}
+.observation-text{font-family:'Cormorant Garamond', serif;font-size:19px;line-height:1.55;font-weight:400;font-style:italic;color:var(--text)}
+.observation-sub{margin-top:12px;font-size:13px;line-height:1.75;color:var(--text-2);font-family:'Inter', sans-serif}
+.foot-note{margin-top:72px;padding-top:18px;border-top:1px solid var(--border-soft);display:flex;gap:24px;flex-wrap:wrap;font-family:var(--mono);font-size:10px;color:var(--text-3)}
+
+.page-header{padding-top:40px;margin-bottom:24px}.page-title{font-family:'Cormorant Garamond', serif;font-weight:300;font-size:42px;line-height:1.02;letter-spacing:-0.02em;margin:10px 0 0 0}
 .page-sub{margin-top:12px;font-size:13.5px;color:var(--text-2);line-height:1.8;max-width:540px}
-.tl-full{margin-top:18px}.tl-row{display:grid;grid-template-columns:110px 20px 1fr;gap:16px;padding:22px 0}
+.tl-full{margin-top:18px}.tl-row{display:grid;grid-template-columns:110px 20px 1fr;gap:16px;padding:22px 0;border-bottom:1px solid var(--border-soft)}
 .tl-date{font-family:var(--mono);font-size:11px;color:var(--text-3);padding-top:2px}.tl-ind{display:flex;justify-content:center;padding-top:5px}
-.tl-ind .c{width:7px;height:7px;border-radius:50%;border:1px solid var(--text-faint)}.tl-ind .c.filled{background:var(--text);border-color:var(--text);width:8px;height:8px}
-.tl-ind .c.check{border:none;color:var(--text);font-size:11px;width:auto;height:auto}
-.tl-content .name{font-size:14px;font-weight:400}.tl-content .name.completed{color:var(--text)}.tl-content .name.future{color:#C8C2B8;font-weight:300}
+.tl-ind .c{width:22px;height:22px;border-radius:50%;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:10px}
+.tl-ind .c.filled{background:var(--text);border-color:var(--text);color:var(--bg)}.tl-ind .c.check{background:var(--text);border-color:var(--text);color:var(--bg)}
+.tl-content .name{font-size:14px;font-weight:500}.tl-content .name.completed{color:var(--text)}.tl-content .name.future{color:#C8C2B8;font-weight:300}
 .tl-content .name.current{font-family:'Cormorant Garamond', serif;font-size:20px;font-weight:500;letter-spacing:-0.01em;color:var(--text)}
 .tl-content .desc{font-size:13px;color:var(--text-2);margin-top:4px;line-height:1.7}
-.ev-section{margin-top:36px}.ev-label{margin-bottom:16px}.ev-item{display:flex;justify-content:space-between;gap:16px;padding:10px 0;border-bottom:1px solid var(--border-soft);font-size:13.5px}
+.ev-section{margin-top:36px}.ev-label{margin-bottom:16px}.ev-item{display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-bottom:1px solid var(--border-soft);font-size:13.5px}
 .ev-item:last-child{border-bottom:none}.ev-left{display:flex;gap:14px}.ev-mark{width:14px;text-align:center;font-size:11px;flex-shrink:0}.ev-mark.gold{color:var(--gold)}.ev-mark.muted{color:var(--text-faint)}
 .ev-name{color:var(--text);font-weight:400}.ev-pending .ev-name{color:#B8B2A8;font-weight:300}.ev-meta{font-family:var(--mono);font-size:11px;color:var(--text-3);white-space:nowrap}.ev-context{font-size:12px;color:var(--text-3);font-style:italic;margin:2px 0 8px 28px;line-height:1.6}
 .session-stack{display:flex;flex-direction:column;gap:16px;margin-top:22px}.session-card{background:var(--card);border:1px solid var(--border);border-radius:2px;padding:26px 26px}
@@ -84,8 +113,8 @@ button{font-family:inherit}a{color:inherit;text-decoration:none}
 .record-grid{display:grid;grid-template-columns:170px 1fr;gap:10px 24px;font-size:13.5px;margin-top:20px}.record-grid .k{color:var(--text-3);font-size:0.58rem;letter-spacing:0.13em;text-transform:uppercase;padding-top:3px}.record-grid .v{color:var(--text);font-weight:400}
 .pay-table{margin-top:18px;width:100%;border-collapse:collapse}.pay-table td{padding:10px 0;border-bottom:1px solid var(--border-soft);font-size:13.5px}
 .pay-table td:last-child{text-align:right;font-family:var(--mono);font-size:11px;color:var(--text-3)}.pay-table td:nth-child(2){font-family:var(--mono);font-size:12px;text-align:right;color:var(--text-2)}.total-row td{border-bottom:none;font-weight:500;padding-top:14px}
-.workspace-footer{margin-top:auto;padding-top:64px;padding-bottom:24px;font-family:var(--mono);font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:#C2BDB5;opacity:0.8}
-@media(max-width:900px){.sidebar{position:relative;width:100%;border-right:none;border-bottom:1px solid var(--border)}.main{margin-left:0;padding:0 20px 80px 20px}.nav{margin-top:20px;flex-direction:row;flex-wrap:wrap;gap:6px 14px}.nav-item{width:auto;border-left:none;border-bottom:2px solid transparent;padding:5px 2px 6px 2px}.nav-item.active{border-left-color:transparent;border-bottom-color:var(--gold)}.hero-title{font-size:32px}.hero-prepared{font-size:28px;margin-top:40px}.phase-name{font-size:38px}.record-grid{grid-template-columns:1fr}.tl-row{grid-template-columns:84px 18px 1fr}}
+.workspace-footer{margin-top:auto;padding-top:48px;padding-bottom:24px;font-family:var(--mono);font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:#C2BDB5;opacity:0.8;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+@media(max-width:900px){.sidebar{position:relative;width:100%;border-right:none;border-bottom:1px solid var(--border)}.main{margin-left:0;padding:0 20px 80px 20px}.nav{margin-top:20px;flex-direction:row;flex-wrap:wrap;gap:6px 14px}.nav-item{width:auto;border-left:none;border-bottom:2px solid transparent;padding:5px 2px 6px 2px}.nav-item.active{border-left-color:transparent;border-bottom-color:var(--gold)}.hero-title{font-size:32px}.hero-prepared{font-size:32px;margin-top:32px}.phase-name{font-size:38px}.record-grid{grid-template-columns:1fr}.tl-row{grid-template-columns:84px 18px 1fr}}
 .edit-badge{position:fixed;bottom:18px;right:18px;background:var(--text);color:var(--bg);font-family:var(--mono);font-size:11px;padding:10px 14px;border-radius:2px;cursor:pointer;z-index:100;display:none;letter-spacing:0.06em}
 body.is-edit .edit-badge{display:block}
 .edit-panel{position:fixed;inset:0;background:rgba(253,251,247,0.97);z-index:200;display:none;overflow:auto;padding:40px}
@@ -102,6 +131,7 @@ body.is-edit .edit-badge{display:block}
 .btn.primary{background:var(--text);color:var(--bg);border-color:var(--text)}.btn.gold{color:var(--gold-deep);border-color:var(--gold-line)}
 .live-dot{display:inline-block;width:6px;height:6px;background:#4A7C59;border-radius:50%;margin-right:6px;animation:livepulse 2s infinite}
 @keyframes livepulse{0%{opacity:1}50%{opacity:0.4}100%{opacity:1}}
+
 </style>
 </head>
 <body>
@@ -222,21 +252,25 @@ body.is-edit .edit-badge{display:block}
       <div id="loading" style="padding-top:80px;font-family:var(--mono);font-size:11px;color:var(--text-3);letter-spacing:0.08em"><span class="live-dot"></span>Loading commission…</div>
       <div id="content-root" style="display:none">
         <section class="page active" id="page-commission">
-          <div class="commission-hero">
+          
+      <div class="commission-hero">
+            <div class="context-bar"><span>Private Commission Workspace</span><span class="sep">•</span><span id="cb-id">LL-2027-004</span><span class="sep">•</span><span id="cb-phase">Evidence Discovery</span></div>
             <div><div class="eyebrow gold" style="letter-spacing:0.2em;margin-bottom:14px">Legacy Ledger™</div>
             <h1 class="hero-title" id="h-commission-id">Commission LL-2027-004</h1></div>
-            <div class="hero-prepared">Prepared exclusively for<br><span id="h-founder">[Founder Name]</span></div>
+            <div class="hero-prepared"><span class="for">Prepared exclusively for</span><span id="h-founder">[Founder Name]</span></div>
             <div class="spacer-72"></div>
             <div class="current-phase-block">
-              <div class="eyebrow" style="margin-bottom:10px">Current Phase</div>
+              <div class="phase-label-row"><div class="eyebrow">Current Phase</div><div class="mono" style="font-size:10px;color:var(--text-3)" id="phase-counter">Phase 3 of 9</div></div>
               <div class="phase-name" id="h-phase"></div>
               <div class="phase-desc" id="h-phase-desc"></div>
+              <div class="phase-what-next"><strong>What this means:</strong> <span id="phase-what-next">We are reviewing your materials to build the Decision Inventory. No action is needed from you unless noted below.</span></div>
             </div>
-            <div class="action-wrap"><div class="eyebrow">Next Action</div><div class="action-simple"><div class="action-label">Please upload:</div><ul class="action-list" id="h-action-list"></ul><div class="action-meta" id="h-action-meta"></div></div></div>
-            <div class="timeline-editorial"><div class="eyebrow">Commission Timeline</div><div class="tl-minimal" id="h-tl-mini"></div></div>
-            <div class="observation-wrap"><div class="eyebrow">Analyst Observation</div><div class="observation-card"><div class="observation-meta" id="h-obs-meta"></div><div class="observation-text" id="h-obs-text"></div><div class="observation-sub" id="h-obs-sub"></div></div></div>
+            <div class="action-wrap"><div class="eyebrow">Next Action — 15 min</div><div class="action-simple"><div class="action-label">Please upload when ready:</div><ul class="action-list" id="h-action-list"></ul><div class="action-meta" id="h-action-meta"></div><div class="action-help">Send files directly to your analyst or <a href="#" onclick="document.querySelector('[data-page=messages]').click();return false;">message via Correspondence</a> — Estimated time: 15 minutes. No rush.</div></div></div>
+            <div class="timeline-editorial"><div class="eyebrow">Commission Timeline — Where we are</div><div class="tl-minimal" id="h-tl-mini"></div></div>
+            <div class="observation-wrap"><div class="eyebrow">Analyst Observation</div><div class="observation-card"><div class="observation-meta"><span id="h-obs-meta"></span><span class="mono" style="font-size:9px;opacity:0.6">Private note</span></div><div class="observation-text" id="h-obs-text"></div><div class="observation-sub" id="h-obs-sub"></div></div></div>
             <div class="foot-note"><span id="f-evidence">Evidence Picture — Growing</span><span id="f-completion"></span><span id="f-analyst"></span></div>
           </div>
+
         </section>
         <section class="page" id="page-timeline"><div class="page-header"><div class="eyebrow gold">History</div><h1 class="page-title">Timeline</h1><div class="page-sub">Full history of Commission <span class="js-commission-id"></span>. A confidential archival record.</div></div><div class="tl-full" id="tl-full"></div></section>
         <section class="page" id="page-evidence"><div class="page-header"><div class="eyebrow gold">Register</div><h1 class="page-title">Evidence</h1><div class="page-sub">Material submitted, pending, and requested for this commission.</div></div><div class="ev-section"><div class="eyebrow ev-label">Received</div><div id="ev-received"></div></div><div class="ev-section"><div class="eyebrow ev-label">Pending</div><div id="ev-pending"></div></div><div class="ev-section"><div class="eyebrow ev-label" style="color:var(--gold-deep)">Requested by your Analyst</div><div id="ev-requested"></div></div></section>
@@ -287,6 +321,9 @@ function render(){
   if(!DATA) return;
   document.title = `KINGLIS — Commission ${DATA.commissionId}`;
   document.getElementById('sb-commission-id').textContent = DATA.commissionId;
+  const cbId = document.getElementById('cb-id'); if(cbId) cbId.textContent = DATA.commissionId;
+  const cbPhase = document.getElementById('cb-phase'); if(cbPhase) cbPhase.textContent = DATA.currentPhase;
+  const phaseCounter = document.getElementById('phase-counter'); if(phaseCounter){ const idx = DATA.timeline.findIndex(t=>t.status==='current'); phaseCounter.textContent = `Phase ${idx+1} of ${DATA.timeline.length}`; }
   document.getElementById('sb-analyst').textContent = `Analyst — ${DATA.analyst}`;
   document.getElementById('h-commission-id').textContent = `Commission ${DATA.commissionId}`;
   document.getElementById('h-founder').textContent = DATA.founderName;
@@ -302,15 +339,15 @@ function render(){
   document.querySelectorAll('.js-commission-id').forEach(el=>el.textContent=DATA.commissionId);
   const mini = DATA.timeline.slice(0,7);
   document.getElementById('h-tl-mini').innerHTML = mini.map(t=>{
-    let dot = '<div class="tl-m-dot"></div>'; let cls='future';
+    let dot = '<div class="tl-m-dot">○</div>'; let cls='future';
     if(t.status==='completed'){dot='<div class="tl-m-dot check">✓</div>'; cls='completed';}
-    if(t.status==='current'){dot='<div class="tl-m-dot filled"></div>'; cls='current';}
+    if(t.status==='current'){dot='<div class="tl-m-dot filled">●</div>'; cls='current';}
     return `<div class="tl-m-row">${dot}<div class="tl-m-text"><div class="n ${cls}">${t.name}${t.date!=='—'?' — '+t.date:''}</div>${t.desc && t.status!=='future'?`<div class="d">${t.desc}</div>`:''}</div></div>`;
   }).join('');
   document.getElementById('tl-full').innerHTML = DATA.timeline.map(t=>{
-    let c='<div class="c"></div>'; let nameCls='future';
+    let c='<div class="c">○</div>'; let nameCls='future';
     if(t.status==='completed'){c='<div class="c check">✓</div>'; nameCls='completed';}
-    if(t.status==='current'){c='<div class="c filled"></div>'; nameCls='current';}
+    if(t.status==='current'){c='<div class="c filled">●</div>'; nameCls='current';}
     return `<div class="tl-row"><div class="tl-date">${t.date}</div><div class="tl-ind">${c}</div><div class="tl-content"><div class="name ${nameCls}">${t.name}</div>${t.desc?`<div class="desc">${t.desc}</div>`:''}</div></div>`;
   }).join('');
   document.getElementById('ev-received').innerHTML = DATA.evidence.received.map(e=>`<div class="ev-item"><div class="ev-left"><span class="ev-mark gold">✓</span><span class="ev-name">${e.name}</span></div><span class="ev-meta">${e.date}</span></div>`).join('');
