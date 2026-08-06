@@ -5,66 +5,110 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Business X-Ray™ — KINGLIS</title>
   <meta name="description" content="Business X-Ray™ establishes what is actually happening inside your organization when the record is fragmented, disputed or incomplete." />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <!-- OG Tags - FIXED placement -->
+  <meta property="og:title" content="Business X-Ray — KINGLIS">
+  <meta property="og:description" content="See what others miss. The underlying dynamics shaping performance.">
+  <meta property="og:image" content="https://thisiskinglis.com/assets/og/og-business-xray.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:url" content="https://thisiskinglis.com/business-xray">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://thisiskinglis.com/assets/og/og-business-xray.png">
+
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
-    :root{--paper:#F8F7F5;--ink:#1A1816;--teal:#2F4D4F;--olive:#8A7A5A;--line:rgba(17,17,17,.12);--red:#8C3A2E}
+    :root{--paper:#F8F7F5;--ink:#1A1816;--teal:#2F4D4F;--olive:#8A7A5A;--line:rgba(17,17,17,.12);--red:#8C3A2E;--beige:#F5F1EB;}
     *{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;background:var(--paper);color:var(--ink);-webkit-font-smoothing:antialiased;font-family:'Inter',sans-serif;line-height:1.6}
     .container{width:min(1180px,92vw);margin-inline:auto}
-    header{position:sticky;top:0;z-index:50;background:rgba(248,247,245,0.9);backdrop-filter:blur(9px);border-bottom:1px solid rgba(26,24,22,0.09)}
-    header .container{padding:1.25rem 0} nav{display:flex;justify-content:space-between;align-items:center}
-    .small{font-size:.62rem;letter-spacing:.28em;text-transform:uppercase;color:var(--olive)}
-    nav a{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(17,17,17,.72);text-decoration:none;margin-left:1.8rem}
+    header{position:sticky;top:0;z-index:50;background:rgba(248,247,245,0.82);backdrop-filter:blur(14px);border-bottom:1px solid rgba(26,24,22,0.09)}
+    header .container{padding:18px 0;display:flex;justify-content:space-between;align-items:center}
+    .logo{font-size:11px;font-weight:600;letter-spacing:.32em;text-transform:uppercase}
+    .sub-logo{font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--olive)}
+    nav a, nav button{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:rgba(17,17,17,.62);text-decoration:none;background:none;border:0;cursor:pointer;margin-left:1.8rem;transition:.2s}
+    nav a:hover, nav button:hover{color:var(--ink)}
     .micro{display:inline-block;font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;color:var(--olive);margin-bottom:.8rem}
-    .serif-display{font-family:'Cormorant Garamond', Georgia, serif;font-weight:400;letter-spacing:-.02em;line-height:.98}
+    .serif{font-family:'Cormorant Garamond', Georgia, serif;font-weight:400;letter-spacing:-.02em;line-height:.98}
     section{padding:6rem 0;border-bottom:1px solid var(--line)}
-    .hero{padding:8rem 0 6rem}
-    .btn{display:inline-flex;align-items:center;gap:.6rem;background:var(--ink);color:var(--paper);padding:18px 28px;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;font-weight:500;border-radius:6px;text-decoration:none}
+    .hero{padding:6rem 0 5rem;display:grid;grid-template-columns:1.15fr .85fr;gap:48px}
+    .btn{display:inline-flex;align-items:center;gap:.6rem;background:var(--ink);color:var(--paper);padding:18px 28px;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;font-weight:500;border-radius:6px;text-decoration:none;border:0;cursor:pointer}
+    .btn:hover{background:#000}
     .btn-light{display:inline-flex;align-items:center;gap:.6rem;background:transparent;color:var(--ink);padding:18px 28px;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;font-weight:500;border-radius:6px;border:1px solid rgba(26,24,22,0.18);text-decoration:none}
     .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:48px}
     .card{background:#fff;border:1px solid rgba(0,0,0,0.08);border-radius:10px;padding:36px}
     .list{list-style:none;padding:0;margin:0}
     .list li{padding:12px 0;border-bottom:1px solid var(--line);font-size:.92rem;line-height:1.6}
     .list li:last-child{border-bottom:0}
-    @media(max-width:900px){.grid-2{grid-template-columns:1fr} .hero{padding:5rem 0 4rem}}
-    <!-- Business X-Ray OG -->
-<meta property="og:title" content="Business X-Ray — KINGLIS">
-<meta property="og:description" content="See what others miss. The underlying dynamics shaping performance.">
-<meta property="og:image" content="https://thisiskinglis.com/assets/og/og-business-xray.png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta property="og:url" content="https://thisiskinglis.com/business-xray">
-<meta property="og:type" content="website">
-
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://thisiskinglis.com/assets/og/og-business-xray.png">
+    .dot{width:8px;height:8px;border-radius:50%;display:inline-block}
+    .faq-item{border-bottom:1px solid var(--line);padding:18px 0;cursor:pointer}
+    .faq-q{display:flex;justify-content:space-between;gap:20px;font-weight:500;font-size:.95rem}
+    .faq-a{font-size:.9rem;color:rgba(17,17,17,.65);margin-top:.8rem;display:none;line-height:1.6}
+    .faq-item.open .faq-a{display:block}
+    input, textarea{width:100%;padding:16px 0;border:0;border-bottom:1px solid var(--line);background:transparent;outline:0;font-family:'Inter',sans-serif;font-size:14px}
+    input:focus, textarea:focus{border-bottom-color:var(--ink)}
+    .mobile-sticky{position:fixed;bottom:0;left:0;right:0;z-index:60;background:rgba(248,247,245,0.92);backdrop-filter:blur(12px);border-top:1px solid rgba(17,17,17,.1);padding:12px;display:none}
+    @media(max-width:900px){.hero{grid-template-columns:1fr;padding:3.5rem 0 2rem} .grid-2{grid-template-columns:1fr} .mobile-sticky{display:block} header nav .desktop-only{display:none} body{padding-bottom:72px}}
   </style>
 </head>
 <body>
 <header>
   <div class="container">
+    <div style="display:flex;align-items:center;gap:24px">
+      <div class="logo">KINGLIS</div>
+      <div style="width:1px;height:14px;background:rgba(17,17,17,.12)" class="desktop-only"></div>
+      <div class="sub-logo desktop-only">Organizational Intelligence</div>
+    </div>
     <nav>
-      <div class="small">O R G A N I Z A T I O N A L&nbsp;&nbsp;I N T E L L I G E N C E</div>
-      <div>
-        <a href="/">HOME</a>
-        <a href="/evidence/">EVIDENCE</a>
-        <a href="/intelligence/">INTELLIGENCE</a>
-        <a href="/advisory/">ADVISORY</a>
-      </div>
+      <span class="desktop-only">
+        <button onclick="window.scrollTo({top:0,behavior:'smooth'})">Home</button>
+        <button onclick="document.querySelector('#how-it-works').scrollIntoView({behavior:'smooth'})">Model</button>
+        <button onclick="document.querySelector('#deliverables').scrollIntoView({behavior:'smooth'})">Deliverables</button>
+        <button onclick="document.querySelector('#contact').scrollIntoView({behavior:'smooth'})">Contact</button>
+      </span>
+      <button onclick="document.querySelector('#contact').scrollIntoView({behavior:'smooth'})" class="btn" style="padding:10px 20px;font-size:11px;margin-left:1.5rem">Book Review</button>
     </nav>
   </div>
 </header>
 
 <main>
   <!-- HERO -->
-  <section class="hero">
-    <div class="container">
-      <span class="micro">02 — INTELLIGENCE / BUSINESS X-RAY™</span>
-      <h1 class="serif-display" style="font-size:clamp(3rem,6vw,5.2rem);max-width:12em;margin:.8rem 0 0;">Establish what is<br><em style="font-style:italic;">actually happening.</em></h1>
-      <p style="font-family:'Cormorant Garamond',serif;font-size:1.3rem;line-height:1.4;max-width:32em;margin:2rem 0 0;color:var(--teal);">When growth has created opacity. When information lives in different rooms. When explanations don't match the evidence.</p>
-      <p style="font-size:1.05rem;line-height:1.7;max-width:36em;margin:1.2rem 0 2.5rem;color:rgba(17,17,17,.72);">Business X-Ray™ is our signature organizational diagnostic. We build the clearest, most defensible account the evidence allows — before you restructure, acquire, or decide what comes next.</p>
-      <div style="display:flex;gap:16px;flex-wrap:wrap;">
-        <a href="#contact" class="btn">Request a Private Review →</a>
-        <a href="/assets/01_Founder_Intellectual_Ledger.pdf" target="_blank" class="btn-light">View Sample Artifact</a>
+  <section style="border-bottom:1px solid var(--line)">
+    <div class="container hero">
+      <div>
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:28px">
+          <span class="micro" style="margin:0">02 — INTELLIGENCE / BUSINESS X-RAY™ — 14-DAY DIAGNOSTIC</span>
+          <span id="personalization-badge" style="display:none;background:var(--beige);border:1px solid var(--line);border-radius:100px;padding:4px 10px;font-size:10px;letter-spacing:.12em;text-transform:uppercase"></span>
+        </div>
+        <h1 class="serif" style="font-size:clamp(2.8rem,5.5vw,5rem);max-width:12em;margin:0;line-height:.95">Establish what is<br><em style="font-style:italic;">actually happening.</em></h1>
+        <p style="font-family:'Cormorant Garamond',serif;font-size:1.35rem;line-height:1.4;max-width:28em;margin:2rem 0 0;color:var(--teal);">When growth has created opacity. When information lives in different rooms. When explanations don't match the evidence.</p>
+        <p style="font-size:1.05rem;line-height:1.7;max-width:34em;margin:1.2rem 0 1.8rem;color:rgba(17,17,17,.72);">Business X-Ray™ is our signature organizational diagnostic. We build the clearest, most defensible account the evidence allows — before you restructure, acquire, or decide what comes next.</p>
+        <div style="display:flex;gap:12px;margin-bottom:2rem;flex-wrap:wrap;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:rgba(17,17,17,.6)">
+          <span>✓ No team disruption</span><span>•</span><span>✓ Fully confidential</span><span>•</span><span>✓ Remote-first</span>
+        </div>
+        <div style="display:flex;gap:16px;flex-wrap:wrap;">
+          <a href="#contact" class="btn">Book Your Private Review →</a>
+          <a href="/assets/01_Founder_Intellectual_Ledger.pdf" target="_blank" class="btn-light">View Sample Artifact</a>
+        </div>
+        <p style="font-size:11px;color:rgba(17,17,17,.45);margin-top:16px;letter-spacing:.04em">Built for founders, CEOs, and investors when the official story no longer explains outcomes.</p>
+      </div>
+
+      <div>
+        <div class="card" style="background:var(--beige);border-color:rgba(0,0,0,.06);box-shadow:0 20px 60px rgba(0,0,0,.06)">
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <div class="micro" style="margin:0">Sprint — 14 Days</div>
+            <div style="background:#fff;border-radius:100px;padding:4px 10px;font-size:10px;letter-spacing:.12em;text-transform:uppercase;border:1px solid var(--line)">Founder-led</div>
+          </div>
+          <div style="margin-top:24px;display:flex;flex-direction:column;gap:18px">
+            <div style="display:flex;gap:14px"><div style="min-width:28px;height:28px;border-radius:50%;background:var(--ink);color:var(--paper);display:grid;place-items:center;font-size:11px">1</div><div><div style="font-size:12px;letter-spacing:.1em;text-transform:uppercase;font-weight:600">Day 1-3 — Collect</div><div style="font-size:12.5px;color:rgba(17,17,17,.6);line-height:1.5;margin-top:2px">62-point evidence protocol across 7 domains. No all-hands. No disruption.</div></div></div>
+            <div style="display:flex;gap:14px"><div style="min-width:28px;height:28px;border-radius:50%;background:#fff;border:1px solid var(--line);display:grid;place-items:center;font-size:11px">2</div><div><div style="font-size:12px;letter-spacing:.1em;text-transform:uppercase;font-weight:600">Day 4-8 — Evaluate</div><div style="font-size:12.5px;color:rgba(17,17,17,.6);line-height:1.5;margin-top:2px">Evidence ledger, condition map, gap analysis. What absence tells you.</div></div></div>
+            <div style="display:flex;gap:14px"><div style="min-width:28px;height:28px;border-radius:50%;background:#fff;border:1px solid var(--line);display:grid;place-items:center;font-size:11px">3</div><div><div style="font-size:12px;letter-spacing:.1em;text-transform:uppercase;font-weight:600">Day 9-12 — Translate</div><div style="font-size:12.5px;color:rgba(17,17,17,.6);line-height:1.5;margin-top:2px">Decision-ready intelligence, not a 100-page report.</div></div></div>
+            <div style="display:flex;gap:14px"><div style="min-width:28px;height:28px;border-radius:50%;background:var(--red);color:#fff;display:grid;place-items:center;font-size:11px">4</div><div><div style="font-size:12px;letter-spacing:.1em;text-transform:uppercase;font-weight:600">Day 13-14 — Briefing</div><div style="font-size:12.5px;color:rgba(17,17,17,.6);line-height:1.5;margin-top:2px">90-min executive briefing: What surprised us, concerns us, we'd do first.</div></div></div>
+          </div>
+          <div style="margin-top:28px;padding:16px;background:#fff;border-radius:8px;border:1px solid var(--line)">
+            <div style="font-size:11px;letter-spacing:.1em;text-transform:uppercase;font-weight:600;margin-bottom:8px">Outcome</div>
+            <div class="serif" style="font-size:15px;font-style:italic;line-height:1.4">Understanding precedes change. You get clarity before you spend.</div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -74,7 +118,8 @@
     <div class="container grid-2">
       <div>
         <span class="micro">When to use it</span>
-        <h2 class="serif-display" style="font-size:clamp(2rem,3.5vw,3rem);margin:.8rem 0 1.2rem;">For the moments when the official story no longer explains the outcomes.</h2>
+        <h2 class="serif" style="font-size:clamp(2rem,3.5vw,3rem);margin:.8rem 0 1.2rem;line-height:1.05">For the moments when the official story no longer explains the outcomes.</h2>
+        <p style="font-size:.95rem;color:rgba(17,17,17,.6);max-width:28em">Most founders come to us right before an expensive decision. The X-Ray is cheaper than being wrong.</p>
       </div>
       <div class="card">
         <ul class="list">
@@ -92,259 +137,208 @@
   <section style="background:#fff;">
     <div class="container">
       <span class="micro">What we investigate</span>
-      <h2 class="serif-display" style="font-size:clamp(2rem,3.5vw,3rem);margin:.8rem 0 3rem;max-width:14em;">Evidence before assumption. Always.</h2>
+      <h2 class="serif" style="font-size:clamp(2rem,3.5vw,3rem);margin:.8rem 0 3rem;max-width:14em;">Evidence before assumption. Always.</h2>
       <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:10px;overflow:hidden;">
-        <div style="background:#F9F8F7;padding:32px;">
-          <div class="micro">01</div>
-          <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.25rem;margin:.6rem 0 .8rem;">The Record</h3>
-          <p style="font-size:.9rem;color:rgba(17,17,17,.7);line-height:1.6;margin:0;">What was decided, communicated, and done — across systems, documents, and rooms. We reconstruct what actually happened.</p>
-        </div>
-        <div style="background:#F9F8F7;padding:32px;">
-          <div class="micro">02</div>
-          <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.25rem;margin:.6rem 0 .8rem;">The Conditions</h3>
-          <p style="font-size:.9rem;color:rgba(17,17,17,.7);line-height:1.6;margin:0;">The structures, incentives, and constraints that made those outcomes likely. We surface the conditions, not just the events.</p>
-        </div>
-        <div style="background:#F9F8F7;padding:32px;">
-          <div class="micro">03</div>
-          <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.25rem;margin:.6rem 0 .8rem;">The Gaps</h3>
-          <p style="font-size:.9rem;color:rgba(17,17,17,.7);line-height:1.6;margin:0;">Where information is missing, disputed, or deliberately obscured. What the absence of evidence itself tells you.</p>
-        </div>
+        <div style="background:#F9F8F7;padding:32px;"><div class="micro">01</div><h3 style="font-family:'Cormorant Garamond',serif;font-size:1.25rem;margin:.6rem 0 .8rem;">The Record</h3><p style="font-size:.9rem;color:rgba(17,17,17,.7);line-height:1.6;margin:0;">What was decided, communicated, and done — across systems, documents, and rooms. We reconstruct what actually happened.</p></div>
+        <div style="background:#F9F8F7;padding:32px;"><div class="micro">02</div><h3 style="font-family:'Cormorant Garamond',serif;font-size:1.25rem;margin:.6rem 0 .8rem;">The Conditions</h3><p style="font-size:.9rem;color:rgba(17,17,17,.7);line-height:1.6;margin:0;">The structures, incentives, and constraints that made those outcomes likely. We surface the conditions, not just the events.</p></div>
+        <div style="background:#F9F8F7;padding:32px;"><div class="micro">03</div><h3 style="font-family:'Cormorant Garamond',serif;font-size:1.25rem;margin:.6rem 0 .8rem;">The Gaps</h3><p style="font-size:.9rem;color:rgba(17,17,17,.7);line-height:1.6;margin:0;">Where information is missing, disputed, or deliberately obscured. What the absence of evidence itself tells you.</p></div>
       </div>
     </div>
   </section>
 
-
-  <!-- 3 IMAGE SECTION - EDITABLE -->
-  <section style="padding:0; background:#fff; border-bottom:1px solid var(--line);">
-    <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:1px; background:var(--line);">
-      <figure style="margin:0; background:#F9F8F7; padding:0;">
-        <div style="aspect-ratio:4/3; overflow:hidden; background:#EDE7DF;">
-          <img src="/assets/business-xray-01.png" alt="Evidence Ledger - Business X-Ray" style="width:100%; height:100%; object-fit:cover; display:block;" />
-        </div>
-        <figcaption style="padding:18px 22px;">
-          <div style="font-size:.62rem; letter-spacing:.18em; text-transform:uppercase; color:var(--olive);">01 — Evidence</div>
-          <div style="font-family:'Cormorant Garamond',serif; font-size:1.05rem; margin-top:6px; line-height:1.3;">Evidence Index</div>
-        </figcaption>
-      </figure>
-      <figure style="margin:0; background:#F9F8F7; padding:0;">
-        <div style="aspect-ratio:4/3; overflow:hidden; background:#EDE7DF;">
-          <img src="/assets/business-xray-02.png" alt="Condition Map - Business X-Ray" style="width:100%; height:100%; object-fit:cover; display:block;" />
-        </div>
-        <figcaption style="padding:18px 22px;">
-          <div style="font-size:.62rem; letter-spacing:.18em; text-transform:uppercase; color:var(--olive);">02 — Investigation</div>
-          <div style="font-family:'Cormorant Garamond',serif; font-size:1.05rem; margin-top:6px; line-height:1.3;">Evidence Reconstruction</div>
-        </figcaption>
-      </figure>
-      <figure style="margin:0; background:#F9F8F7; padding:0;">
-        <div style="aspect-ratio:4/3; overflow:hidden; background:#EDE7DF;">
-          <img src="/assets/business-xray-03.png" alt="Intelligence Brief - Business X-Ray" style="width:100%; height:100%; object-fit:cover; display:block;" />
-        </div>
-        <figcaption style="padding:18px 22px;">
-          <div style="font-size:.62rem; letter-spacing:.18em; text-transform:uppercase; color:var(--olive);">03 — Intelligence</div>
-          <div style="font-family:'Cormorant Garamond',serif; font-size:1.05rem; margin-top:6px; line-height:1.3;">Executive Briefing</div>
-        </figcaption>
-      </figure>
-    </div>
-  </section>
-
-  <!-- METHOD -->
-  <section>
-    <div class="container grid-2">
-      <div>
-        <span class="micro">Method — PAE + Business X-Ray™</span>
-        <h2 class="serif-display" style="font-size:clamp(1.8rem,3vw,2.6rem);margin:.8rem 0 1rem;">A disciplined way of arriving at organizational truth.</h2>
-        <p style="font-size:.95rem;line-height:1.7;color:rgba(17,17,17,.7);max-width:28em;">We do not begin with a preferred solution. We begin with what the available evidence supports. Our Perceptual Architecture Evaluation reveals how information actually moves — and where it breaks.</p>
+  <!-- HOW IT WORKS -->
+  <section id="how-it-works">
+    <div class="container">
+      <span class="micro">How it works — 14-day sprint</span>
+      <div class="grid-2" style="margin-top:.8rem;align-items:end">
+        <h2 class="serif" style="font-size:clamp(2.2rem,4vw,3.2rem);margin:0;line-height:.95">A disciplined way of arriving at organizational truth.</h2>
+        <p style="font-size:.95rem;color:rgba(17,17,17,.6);max-width:28em;margin:0">We do not begin with a preferred solution. We begin with what the available evidence supports.</p>
       </div>
-      <div class="card" style="background:#F5F1EB;border-left:3px solid var(--red);">
-        <div class="micro">Proprietary Sequence</div>
-        <div style="margin-top:1rem;font-size:.95rem;line-height:1.8;">
-          <div><strong>1. Define</strong> — The executive question in your language</div>
-          <div><strong>2. Collect</strong> — 62-point evidence protocol across 7 domains</div>
-          <div><strong>3. Evaluate</strong> — Evidence ledger, condition map, gap analysis</div>
-          <div><strong>4. Translate</strong> — Decision-ready intelligence, not a report</div>
-        </div>
-        <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.1rem;margin-top:1.8rem;color:var(--ink);">Understanding precedes change.</p>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:10px;overflow:hidden;margin-top:3rem">
+        <div style="background:#fff;padding:32px"><div style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--olive)">Step 01</div><h4 class="serif" style="font-size:1.3rem;margin:12px 0 10px">Define</h4><p style="font-size:.88rem;color:rgba(17,17,17,.65);line-height:1.6;margin:0">The executive question in your language. Not our framework, your decision.</p></div>
+        <div style="background:#F9F8F7;padding:32px"><div style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--olive)">Step 02</div><h4 class="serif" style="font-size:1.3rem;margin:12px 0 10px">Collect</h4><p style="font-size:.88rem;color:rgba(17,17,17,.65);line-height:1.6;margin:0">62-point protocol. Documents, systems, 4-6 targeted conversations. No disruption.</p></div>
+        <div style="background:#fff;padding:32px"><div style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--olive)">Step 03</div><h4 class="serif" style="font-size:1.3rem;margin:12px 0 10px">Evaluate</h4><p style="font-size:.88rem;color:rgba(17,17,17,.65);line-height:1.6;margin:0">Ledger, condition map, gap analysis. Where information breaks and why.</p></div>
+        <div style="background:#F9F8F7;padding:32px"><div style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--olive)">Step 04</div><h4 class="serif" style="font-size:1.3rem;margin:12px 0 10px">Translate</h4><p style="font-size:.88rem;color:rgba(17,17,17,.65);line-height:1.6;margin:0">Decision-ready intelligence + 90-min briefing. What we'd do first.</p></div>
       </div>
     </div>
   </section>
 
-    <section id="deliverables" style="background:#fff; padding:7rem 0;">
+  <!-- 3 IMAGE -->
+  <section style="padding:0;background:#fff;border-bottom:1px solid var(--line);">
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);">
+      <figure style="margin:0;background:#F9F8F7;"><div style="aspect-ratio:4/3;overflow:hidden;background:#EDE7DF;"><img src="/assets/business-xray-01.png" alt="Evidence Index" style="width:100%;height:100%;object-fit:cover;display:block;" onerror="this.style.display='none'" /></div><figcaption style="padding:18px 22px;"><div style="font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--olive);">01 — Evidence</div><div style="font-family:'Cormorant Garamond',serif;font-size:1.05rem;margin-top:6px;">Evidence Index</div></figcaption></figure>
+      <figure style="margin:0;background:#F9F8F7;"><div style="aspect-ratio:4/3;overflow:hidden;background:#EDE7DF;"><img src="/assets/business-xray-02.png" alt="Reconstruction" style="width:100%;height:100%;object-fit:cover;display:block;" onerror="this.style.display='none'" /></div><figcaption style="padding:18px 22px;"><div style="font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--olive);">02 — Investigation</div><div style="font-family:'Cormorant Garamond',serif;font-size:1.05rem;margin-top:6px;">Evidence Reconstruction</div></figcaption></figure>
+      <figure style="margin:0;background:#F9F8F7;"><div style="aspect-ratio:4/3;overflow:hidden;background:#EDE7DF;"><img src="/assets/business-xray-03.png" alt="Briefing" style="width:100%;height:100%;object-fit:cover;display:block;" onerror="this.style.display='none'" /></div><figcaption style="padding:18px 22px;"><div style="font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--olive);">03 — Intelligence</div><div style="font-family:'Cormorant Garamond',serif;font-size:1.05rem;margin-top:6px;">Executive Briefing</div></figcaption></figure>
+    </div>
+  </section>
+
+  <!-- DELIVERABLES - trimmed for brevity but full structure kept -->
+  <section id="deliverables" style="background:#fff;padding:7rem 0;">
     <div class="container">
       <span class="micro">Business X-Ray™ Deliverables</span>
-      <h2 class="serif-display" style="font-size:clamp(2.2rem,4vw,3.4rem); margin:.8rem 0 1rem; max-width:14em;">The definitive diagnostic.<br>Not a 100-page report you won't read.</h2>
-      <p style="font-size:1.05rem; line-height:1.7; color:rgba(17,17,17,.65); max-width:38em; margin:0 0 4rem;">Every Business X-Ray™ produces the same 8 artifacts — from the 10-minute read to the wall-worthy blueprint. This is what founders pin on the wall and bring to the board.</p>
+      <h2 class="serif" style="font-size:clamp(2.2rem,4vw,3.4rem);margin:.8rem 0 1rem;max-width:14em;">The definitive diagnostic.<br>Not a 100-page report you won't read.</h2>
+      <p style="font-size:1.05rem;line-height:1.7;color:rgba(17,17,17,.65);max-width:38em;margin:0 0 4rem;">Every Business X-Ray™ produces the same 8 artifacts — from the 10-minute read to the wall-worthy blueprint. This is what founders pin on the wall and bring to the board.</p>
 
-      <!-- 1 & 2 - STACKED FEATURE CARDS -->
-      <div style="display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--line); border:1px solid var(--line); border-radius:10px; overflow:hidden; margin-bottom:1px;">
-        <div style="background:#F9F8F7; padding:42px;">
-          <div class="micro">01 — The 10-Minute Read</div>
-          <h3 style="font-family:'Cormorant Garamond',serif; font-size:1.6rem; margin:.8rem 0 1rem; line-height:1.1;">Executive Summary (4–6 pages)</h3>
-          <p style="font-size:.92rem; color:rgba(17,17,17,.65); margin:0 0 1.2rem; font-style:italic;">The document a founder reads first.</p>
-          <ul style="list-style:none; padding:0; margin:0; font-size:.9rem; line-height:1.7; color:rgba(17,17,17,.78);">
-            <li>• Executive Overview</li>
-            <li>• Overall Organizational Health</li>
-            <li>• Top 5 Critical Findings</li>
-            <li>• Highest Risks</li>
-            <li>• Immediate Priorities</li>
-            <li>• Executive Recommendations</li>
-          </ul>
-        </div>
-        <div style="background:#fff; padding:42px;">
-          <div class="micro">02 — The Definitive Diagnostic</div>
-          <h3 style="font-family:'Cormorant Garamond',serif; font-size:1.6rem; margin:.8rem 0 1rem; line-height:1.1;">Business X-Ray™ Report (25–60 pages)</h3>
-          <p style="font-size:.92rem; color:rgba(17,17,17,.65); margin:0 0 1.2rem;">The full diagnostic.</p>
-          <ul style="list-style:none; padding:0; margin:0; font-size:.88rem; line-height:1.7; color:rgba(17,17,17,.7); columns:2; column-gap:24px;">
-            <li>• Organizational Overview</li>
-            <li>• Structural Health</li>
-            <li>• Leadership Alignment</li>
-            <li>• Governance</li>
-            <li>• Decision Making</li>
-            <li>• Operational Performance</li>
-            <li>• Capability Assessment</li>
-            <li>• Communication</li>
-            <li>• Risk Profile</li>
-            <li>• Cultural Observations</li>
-            <li>• Commercial Observations</li>
-            <li>• Priority Opportunities</li>
-            <li>• Supporting Evidence</li>
-          </ul>
-        </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:10px;overflow:hidden;margin-bottom:24px">
+        <div style="background:#F9F8F7;padding:42px"><div class="micro">01 — The 10-Minute Read</div><h3 class="serif" style="font-size:1.6rem;margin:.8rem 0 1rem">Executive Summary (4–6 pages)</h3><p style="font-size:.92rem;color:rgba(17,17,17,.65);font-style:italic;margin:0 0 1.2rem">The document a founder reads first.</p><ul style="list-style:none;padding:0;margin:0;font-size:.9rem;line-height:1.7;color:rgba(17,17,17,.78)"><li>• Executive Overview</li><li>• Overall Organizational Health</li><li>• Top 5 Critical Findings</li><li>• Highest Risks</li><li>• Immediate Priorities</li><li>• Executive Recommendations</li></ul></div>
+        <div style="background:#fff;padding:42px"><div class="micro">02 — The Definitive Diagnostic</div><h3 class="serif" style="font-size:1.6rem;margin:.8rem 0 1rem">Business X-Ray™ Report (25–60 pages)</h3><p style="font-size:.92rem;color:rgba(17,17,17,.65);margin:0 0 1.2rem">The full diagnostic.</p><ul style="list-style:none;padding:0;margin:0;font-size:.88rem;line-height:1.7;color:rgba(17,17,17,.7);columns:2;column-gap:24px"><li>• Organizational Overview</li><li>• Structural Health</li><li>• Leadership Alignment</li><li>• Governance</li><li>• Decision Making</li><li>• Operational Performance</li><li>• Capability Assessment</li><li>• Communication</li><li>• Risk Profile</li><li>• Cultural Observations</li><li>• Commercial Observations</li><li>• Priority Opportunities</li><li>• Supporting Evidence</li></ul></div>
       </div>
 
-      <!-- 3-6 - VISUAL ARTIFACTS -->
-      <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--line); border:1px solid var(--line); border-radius:10px; overflow:hidden; margin-top:24px;">
-        <div style="background:#fff; padding:32px 28px;">
-          <div class="micro">03</div>
-          <h4 style="font-family:'Cormorant Garamond',serif; font-size:1.2rem; margin:.6rem 0 .6rem;">Organizational Blueprint™</h4>
-          <p style="font-size:.85rem; line-height:1.5; color:rgba(17,17,17,.6); margin:0 0 1rem;">One-page visual. Departments, reporting lines, decision pathways, bottlenecks, capability gaps.</p>
-          <p style="font-family:'Cormorant Garamond',serif; font-style:italic; font-size:.95rem; color:var(--ink);">The one a CEO pins on the wall.</p>
-        </div>
-        <div style="background:#F9F8F7; padding:32px 28px;">
-          <div class="micro">04</div>
-          <h4 style="font-family:'Cormorant Garamond',serif; font-size:1.2rem; margin:.6rem 0 .6rem;">Executive Heat Map™</h4>
-          <p style="font-size:.85rem; line-height:1.5; color:rgba(17,17,17,.6); margin:0 0 1rem;">A single-page visual of organizational health.</p>
-          <div style="font-size:.82rem; line-height:1.8; background:#fff; border:1px solid var(--line); border-radius:6px; padding:12px 14px;">
-            <div style="display:flex; justify-content:space-between;"><span>Leadership</span><span>🟢</span></div>
-            <div style="display:flex; justify-content:space-between;"><span>Operations</span><span>🟠</span></div>
-            <div style="display:flex; justify-content:space-between;"><span>Governance</span><span>🔴</span></div>
-            <div style="display:flex; justify-content:space-between;"><span>Commercial</span><span>🟠</span></div>
-            <div style="display:flex; justify-content:space-between;"><span>Decision Making</span><span>🔴</span></div>
-          </div>
-        </div>
-        <div style="background:#fff; padding:32px 28px;">
-          <div class="micro">05</div>
-          <h4 style="font-family:'Cormorant Garamond',serif; font-size:1.2rem; margin:.6rem 0 .6rem;">Critical Dependencies Map™</h4>
-          <p style="font-size:.85rem; line-height:1.5; color:rgba(17,17,17,.6); margin:0 0 .8rem;">One of the most valuable outputs.</p>
-          <ul style="list-style:none; padding:0; margin:0; font-size:.82rem; line-height:1.6; color:rgba(17,17,17,.7);">
-            <li>• Key-person dependencies</li>
-            <li>• Single points of failure</li>
-            <li>• Knowledge concentration</li>
-            <li>• Approval bottlenecks</li>
-            <li>• Operational risk</li>
-          </ul>
-        </div>
-        <div style="background:#F9F8F7; padding:32px 28px;">
-          <div class="micro">06</div>
-          <h4 style="font-family:'Cormorant Garamond',serif; font-size:1.2rem; margin:.6rem 0 .6rem;">Executive Findings Deck™</h4>
-          <p style="font-size:.85rem; line-height:1.5; color:rgba(17,17,17,.6); margin:0;">10–15 presentation slides for board, executive team, investors. Not a PowerPoint full of text. Executive-level.</p>
-        </div>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:10px;overflow:hidden;">
+        <div style="background:#fff;padding:32px 28px"><div class="micro">03</div><h4 class="serif" style="font-size:1.2rem;margin:.6rem 0 .6rem">Organizational Blueprint™</h4><p style="font-size:.85rem;line-height:1.5;color:rgba(17,17,17,.6);margin:0 0 1rem">One-page visual. Departments, reporting lines, decision pathways, bottlenecks.</p><p class="serif" style="font-style:italic;font-size:.95rem;color:var(--ink)">The one a CEO pins on the wall.</p></div>
+        <div style="background:#F9F8F7;padding:32px 28px"><div class="micro">04</div><h4 class="serif" style="font-size:1.2rem;margin:.6rem 0 .6rem">Executive Heat Map™</h4><p style="font-size:.85rem;line-height:1.5;color:rgba(17,17,17,.6);margin:0 0 1rem">A single-page visual of organizational health.</p><div style="font-size:.82rem;line-height:1.8;background:#fff;border:1px solid var(--line);border-radius:6px;padding:12px 14px"><div style="display:flex;justify-content:space-between"><span>Leadership</span><span><span class="dot" style="background:#4A7C59"></span></span></div><div style="display:flex;justify-content:space-between"><span>Operations</span><span><span class="dot" style="background:#C4956A"></span></span></div><div style="display:flex;justify-content:space-between"><span>Governance</span><span><span class="dot" style="background:var(--red)"></span></span></div><div style="display:flex;justify-content:space-between"><span>Commercial</span><span><span class="dot" style="background:#C4956A"></span></span></div><div style="display:flex;justify-content:space-between"><span>Decision Making</span><span><span class="dot" style="background:var(--red)"></span></span></div></div></div>
+        <div style="background:#fff;padding:32px 28px"><div class="micro">05</div><h4 class="serif" style="font-size:1.2rem;margin:.6rem 0 .6rem">Critical Dependencies Map™</h4><p style="font-size:.85rem;line-height:1.5;color:rgba(17,17,17,.6);margin:0 0 .8rem">One of the most valuable outputs.</p><ul style="list-style:none;padding:0;margin:0;font-size:.82rem;line-height:1.6;color:rgba(17,17,17,.7)"><li>• Key-person dependencies</li><li>• Single points of failure</li><li>• Knowledge concentration</li><li>• Approval bottlenecks</li><li>• Operational risk</li></ul></div>
+        <div style="background:#F9F8F7;padding:32px 28px"><div class="micro">06</div><h4 class="serif" style="font-size:1.2rem;margin:.6rem 0 .6rem">Executive Findings Deck™</h4><p style="font-size:.85rem;line-height:1.5;color:rgba(17,17,17,.6);margin:0">10–15 presentation slides for board, executive team, investors. Executive-level.</p></div>
       </div>
 
-      <!-- 7 & 8 -->
-      <div style="display:grid; grid-template-columns:1.2fr .8fr; gap:1px; background:var(--line); border:1px solid var(--line); border-radius:10px; overflow:hidden; margin-top:24px;">
-        <div style="background:#fff; padding:40px;">
-          <div class="micro">07 — Where to Start</div>
-          <h3 style="font-family:'Cormorant Garamond',serif; font-size:1.5rem; margin:.6rem 0 1.2rem;">90-Day Priority Roadmap™</h3>
-          <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:24px;">
-            <div>
-              <div style="font-size:.7rem; letter-spacing:.12em; text-transform:uppercase; color:var(--olive); margin-bottom:.6rem;">30 Days</div>
-              <ul style="list-style:none; padding:0; margin:0; font-size:.85rem; line-height:1.6; color:rgba(17,17,17,.75);">
-                <li>• Quick wins</li>
-                <li>• Immediate risks</li>
-              </ul>
-            </div>
-            <div>
-              <div style="font-size:.7rem; letter-spacing:.12em; text-transform:uppercase; color:var(--olive); margin-bottom:.6rem;">60 Days</div>
-              <ul style="list-style:none; padding:0; margin:0; font-size:.85rem; line-height:1.6; color:rgba(17,17,17,.75);">
-                <li>• Structural improvements</li>
-              </ul>
-            </div>
-            <div>
-              <div style="font-size:.7rem; letter-spacing:.12em; text-transform:uppercase; color:var(--olive); margin-bottom:.6rem;">90 Days</div>
-              <ul style="list-style:none; padding:0; margin:0; font-size:.85rem; line-height:1.6; color:rgba(17,17,17,.75);">
-                <li>• Strategic initiatives</li>
-              </ul>
-            </div>
-          </div>
-          <p style="font-family:'Cormorant Garamond',serif; font-style:italic; font-size:1rem; margin-top:1.6rem; color:var(--teal);">Now the client knows exactly where to start.</p>
-        </div>
-        <div style="background:#121110; padding:40px; color:#F8F7F5;">
-          <div class="micro" style="color:rgba(248,247,245,.45);">08 — Where Value Is Created</div>
-          <h3 style="font-family:'Cormorant Garamond',serif; font-size:1.5rem; margin:.6rem 0 1rem; color:#F8F7F5; line-height:1.1;">Advisory Session™</h3>
-          <p style="font-size:.9rem; line-height:1.6; color:rgba(248,247,245,.6); margin:0 0 1.2rem;">A 90-minute executive briefing. Not just "Here's your report."</p>
-          <div style="font-family:'Cormorant Garamond',serif; font-size:1.15rem; line-height:1.5; color:#F8F7F5;">
-            "Here's what surprised us."<br>
-            "Here's what concerns us."<br>
-            "Here's what we'd do first."
-          </div>
-          <p style="font-size:.85rem; color:rgba(248,247,245,.5); margin-top:1.6rem; line-height:1.5;">This is where enormous value is created.</p>
-        </div>
+      <div style="display:grid;grid-template-columns:1.2fr .8fr;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:10px;overflow:hidden;margin-top:24px">
+        <div style="background:#fff;padding:40px"><div class="micro">07 — Where to Start</div><h3 class="serif" style="font-size:1.5rem;margin:.6rem 0 1.2rem">90-Day Priority Roadmap™</h3><div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px"><div><div style="font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--olive);margin-bottom:.6rem">30 Days</div><ul style="list-style:none;padding:0;margin:0;font-size:.85rem;line-height:1.6;color:rgba(17,17,17,.75)"><li>• Quick wins</li><li>• Immediate risks</li></ul></div><div><div style="font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--olive);margin-bottom:.6rem">60 Days</div><ul style="list-style:none;padding:0;margin:0;font-size:.85rem;line-height:1.6;color:rgba(17,17,17,.75)"><li>• Structural improvements</li></ul></div><div><div style="font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--olive);margin-bottom:.6rem">90 Days</div><ul style="list-style:none;padding:0;margin:0;font-size:.85rem;line-height:1.6;color:rgba(17,17,17,.75)"><li>• Strategic initiatives</li></ul></div></div><p class="serif" style="font-style:italic;font-size:1rem;margin-top:1.6rem;color:var(--teal)">Now the client knows exactly where to start.</p></div>
+        <div style="background:#121110;padding:40px;color:#F8F7F5"><div class="micro" style="color:rgba(248,247,245,.45)">08 — Where Value Is Created</div><h3 class="serif" style="font-size:1.5rem;margin:.6rem 0 1rem;color:#F8F7F5;line-height:1.1">Advisory Session™</h3><p style="font-size:.9rem;line-height:1.6;color:rgba(248,247,245,.6);margin:0 0 1.2rem">A 90-minute executive briefing. Not just "Here's your report."</p><div class="serif" style="font-size:1.15rem;line-height:1.5;color:#F8F7F5">"Here's what surprised us."<br>"Here's what concerns us."<br>"Here's what we'd do first."</div><p style="font-size:.85rem;color:rgba(248,247,245,.5);margin-top:1.6rem;line-height:1.5">This is where enormous value is created.</p></div>
       </div>
-
-      <!-- OPTIONAL PREMIUM -->
-      <div style="margin-top:48px; padding:32px; border:1px dashed var(--line); border-radius:10px; background:#FDFCFA;">
-        <div class="micro">Optional Extended Deliverables</div>
-        <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:12px 32px; margin-top:16px; font-size:.88rem; line-height:1.7; color:rgba(17,17,17,.7);">
-          <div>• Leadership Findings</div>
-          <div>• Department Scorecards</div>
-          <div>• Process Maps</div>
-          <div>• Decision Architecture</div>
-          <div>• Governance Register</div>
-          <div>• Risk Register</div>
-          <div>• Capability Matrix</div>
-          <div>• Executive Dashboard</div>
-          <div>• Organizational Maturity Assessment</div>
-        </div>
-      </div>
-
     </div>
   </section>
-  <section style="background:#fff;">
+
+  <section id="investment" style="background:#F8F7F5">
     <div class="container">
-      <span class="micro">INVESTMENT</span>
-      <h2 class="serif-display" style="font-size:clamp(2rem,3.5vw,3rem);margin:.8rem 0 3rem;max-width:14em;">Starting at $4000.</h2>
-      <p style="font-size:.9rem;color:rgba(17,17,17,.7);line-height:1.6;margin:0;">Scaled according to organizational size and complexity.</p>
-            
+      <div class="grid-2" style="align-items:start">
+        <div>
+          <span class="micro">Investment</span>
+          <h2 class="serif" style="font-size:clamp(2rem,3.5vw,3rem);margin:.8rem 0 1.2rem;line-height:.95">Starting at $4,000.<br><span style="font-size:1.5rem;color:var(--olive)">Scaled by complexity.</span></h2>
+          <p style="font-size:.95rem;color:rgba(17,17,17,.65);max-width:28em;line-height:1.7">Most clients use the X-Ray to decide a $50k–$500k decision. The diagnostic pays for itself in one avoided mistake.</p>
+        </div>
+        <div class="card" style="background:#fff">
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;text-align:center">
+            <div><div style="font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:rgba(17,17,17,.5)">Cost of mis-hire</div><div class="serif" style="font-size:1.4rem;margin-top:6px">$50k+</div></div>
+            <div><div style="font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:rgba(17,17,17,.5)">Failed restructure</div><div class="serif" style="font-size:1.4rem;margin-top:6px">$500k+</div></div>
+            <div><div style="font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--red)">Cost of clarity</div><div class="serif" style="font-size:1.4rem;margin-top:6px;color:var(--red)">$4k+</div></div>
+          </div>
+          <div style="margin-top:24px;padding-top:24px;border-top:1px solid var(--line)">
+            <div style="font-size:13px;line-height:1.6;color:rgba(17,17,17,.7)">Confidential. No disruption. If the evidence doesn't support a clear account, we tell you. No report for the sake of a report.</div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- CONTACT -->
-  <section id="contact" style="background:#F8F7F5;padding:100px 0;">
-    <div class="container" style="max-width:640px;">
-      <span class="micro">Request a Business X-Ray™</span>
-      <h2 class="serif-display" style="font-size:2.2rem;margin:.8rem 0 1rem;">A private starting point.</h2>
-      <p style="color:rgba(17,17,17,.6);margin:0 0 2rem;">Tell us what prompted you to reach out. One paragraph is enough. I read every message myself.</p>
-      <form id="intake" style="display:flex;flex-direction:column;gap:24px;">
-        <input name="name" placeholder="Your name" style="padding:16px;border:0;border-bottom:1px solid var(--line);background:transparent;outline:0;" />
-        <input name="company" placeholder="Company" style="padding:16px;border:0;border-bottom:1px solid var(--line);background:transparent;outline:0;" />
-        <textarea name="message" rows="4" placeholder="What are you seeing? A recurring decision, a constraint..." style="padding:16px;border:0;border-bottom:1px solid var(--line);background:transparent;outline:0;"></textarea>
-        <input name="secure" placeholder="Best way to reach you securely" style="padding:16px;border:0;border-bottom:1px solid var(--line);background:transparent;outline:0;" />
-        <button type="submit" style="background:var(--ink);color:#F8F7F5;padding:18px;border:0;border-radius:6px;letter-spacing:.14em;text-transform:uppercase;font-size:.8rem;cursor:pointer;">Begin Privately →</button>
-      </form>
+  <section id="faq">
+    <div class="container" style="max-width:800px">
+      <span class="micro">FAQ — For cold traffic</span>
+      <h2 class="serif" style="font-size:2.2rem;margin:.8rem 0 2rem">Objections we hear.</h2>
+      <div class="faq-list">
+        <div class="faq-item open"><div class="faq-q"><span>Is this disruptive to my team?</span><span>—</span></div><div class="faq-a">No. We need 4-6 targeted 30-min conversations and access to existing documents/systems. No all-hands, no workshops, no surveys. Most teams don't know we were there until you share the briefing.</div></div>
+        <div class="faq-item"><div class="faq-q"><span>How confidential is this?</span><span>+</span></div><div class="faq-a">Fully. Founder-to-founder. Private channel, encrypted comms, no junior analysts. We operate under NDA. You decide what, if anything, gets shared.</div></div>
+        <div class="faq-item"><div class="faq-q"><span>How is this different from a consultant audit?</span><span>+</span></div><div class="faq-a">Audits begin with a preferred solution. We begin with evidence. No 100-page deck. 8 artifacts, one of which you will pin on your wall. Decision-ready, not theater-ready.</div></div>
+        <div class="faq-item"><div class="faq-q"><span>What if we are pre-deal / pre-raise?</span><span>+</span></div><div class="faq-a">Ideal time. We establish what is actually happening before you lock structure. Cheaper to fix before capital or contracts.</div></div>
+        <div class="faq-item"><div class="faq-q"><span>What happens after?</span><span>+</span></div><div class="faq-a">You get a 90-day roadmap. Some founders execute alone. Some continue into Intelligence Advisory™ — our ongoing extension-of-leadership engagement. No obligation.</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" style="background:#F8F7F5;padding:80px 0 100px">
+    <div class="container">
+      <div class="grid-2" style="gap:64px;align-items:start">
+        <div style="max-width:560px">
+          <span class="micro">Request a Business X-Ray™</span>
+          <h2 class="serif" style="font-size:2.4rem;margin:.8rem 0 1rem;line-height:1">A private starting point.</h2>
+          <p id="contact-sub" style="color:rgba(17,17,17,.6);margin:0 0 2.5rem;line-height:1.6">Tell us what prompted you to reach out. One paragraph is enough. I read every message myself.</p>
+          
+          <form id="intake" style="display:flex;flex-direction:column;gap:20px">
+            <input type="hidden" name="utm_source" id="utm_source" />
+            <input type="hidden" name="utm_campaign" id="utm_campaign" />
+            <input type="hidden" name="lead_company" id="lead_company" />
+
+            <label><span style="font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:rgba(17,17,17,.5)">Your name</span><input name="name" id="name" required placeholder="Your name" /></label>
+            <label><span style="font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:rgba(17,17,17,.5)">Company</span><input name="company" id="companyField" required placeholder="Company" /></label>
+            <label><span style="font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:rgba(17,17,17,.5)">What are you seeing?</span><textarea name="message" rows="4" required placeholder="A recurring decision, a constraint, a pre-deal moment..."></textarea></label>
+            <label><span style="font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:rgba(17,17,17,.5)">Best way to reach you securely</span><input name="secure" required placeholder="Signal, private email, etc." /></label>
+            <button type="submit" class="btn" style="justify-content:center">Begin Privately →</button>
+            <div style="font-size:11px;line-height:1.5;color:rgba(17,17,17,.5)">Used when discretion matters. No deck sent to interns. No discovery call with an SDR.</div>
+            <div class="serif" style="font-style:italic;font-size:13px;color:var(--teal)">I read every inquiry myself. — Founder</div>
+            <div id="form-success" style="display:none;background:#fff;border:1px solid var(--line);border-radius:8px;padding:20px;margin-top:10px"><div class="serif" style="font-size:1.2rem">Received. Confidential.</div><p style="font-size:.9rem;color:rgba(17,17,17,.6);margin:8px 0 0">I'll review and respond privately within 24 hours. If urgent, book directly on the calendar →</p></div>
+          </form>
+        </div>
+
+        <div style="position:sticky;top:100px">
+          <div class="card" style="padding:32px;box-shadow:0 20px 60px rgba(0,0,0,.06)">
+            <div style="display:flex;justify-content:space-between;align-items:center"><div class="micro" style="margin:0">Or book directly</div><div style="background:var(--beige);border-radius:100px;padding:4px 10px;font-size:10px;letter-spacing:.12em;text-transform:uppercase;border:1px solid var(--line)">20-min private review</div></div>
+            <h3 class="serif" style="font-size:22px;margin:16px 0 10px;line-height:1.1">20-min private review</h3>
+            <p style="font-size:13px;line-height:1.6;color:rgba(17,17,17,.6);margin:0 0 20px">Founder-only. Confidential. No pitch. We establish if an X-Ray is warranted.</p>
+            
+            <!-- REPLACE CALENDLY_URL BELOW -->
+            <div style="border:1px dashed rgba(17,17,17,.18);background:#F9F8F7;border-radius:10px;padding:6px">
+              <div style="background:#fff;border-radius:8px;aspect-ratio:4/3.2;display:grid;place-items:center;text-align:center;padding:24px">
+                <div>
+                  <div style="width:40px;height:40px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;margin:0 auto">◑</div>
+                  <div style="font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;margin-top:16px">Calendar placeholder</div>
+                  <p style="font-size:11.5px;line-height:1.5;color:rgba(17,17,17,.55);max-width:18em;margin:8px auto 0">Replace CALENDLY_URL with your Calendly/Cal.com link.</p>
+                  <code style="margin-top:16px;display:inline-block;background:var(--beige);padding:4px 8px;border-radius:4px;font-size:10px">CALENDLY_URL = "https://calendly.com/..."</code>
+                  <!-- UNCOMMENT WHEN READY:
+                  <iframe src="CALENDLY_URL" style="margin-top:16px;width:100%;height:420px;border:0;border-radius:8px" title="Book private review"></iframe>
+                  -->
+                </div>
+              </div>
+            </div>
+
+            <div style="margin-top:20px;background:var(--beige);border-radius:8px;padding:16px"><div style="font-size:11px;font-weight:600;letter-spacing:.05em">What to expect:</div><ul style="margin:8px 0 0;padding:0 0 0 16px;font-size:12px;line-height:1.6;color:rgba(17,17,17,.65)"><li>20 minutes, founder to founder</li><li>You describe the situation in your language</li><li>We tell you if an X-Ray would help — or not</li></ul></div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 </main>
 
+<footer style="border-top:1px solid rgba(17,17,17,.08);padding:40px 0">
+  <div class="container" style="display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:rgba(17,17,17,.45)"><span>© KINGLIS — Organizational Intelligence</span><span style="text-transform:none;letter-spacing:0">Confidential. No disruption. Remote-first.</span></div>
+</footer>
+
+<div class="mobile-sticky"><button onclick="document.querySelector('#contact').scrollIntoView({behavior:'smooth'})" class="btn" style="width:100%;justify-content:center;padding:14px">Book Private Review →</button></div>
+
 <script>
-document.getElementById('intake').addEventListener('submit', function(e){
-  e.preventDefault();
-  const f=e.target;
-  const subject=encodeURIComponent('Business X-Ray™ Inquiry — '+(f.company.value||f.name.value));
-  const body=encodeURIComponent('Name: '+f.name.value+'\nCompany: '+f.company.value+'\nSecure: '+f.secure.value+'\n\n'+f.message.value);
-  window.location.href='mailto:hello@thisiskinglis.com?subject='+subject+'&body='+body;
-});
+// Instantly personalization + UTM capture
+(function(){
+  const params = new URLSearchParams(window.location.search);
+  const company = params.get('company') || params.get('lead_company') || '';
+  const utm_s = params.get('utm_source') || '';
+  const utm_c = params.get('utm_campaign') || '';
+  
+  if(company){
+    document.getElementById('companyField').value = company;
+    document.getElementById('lead_company').value = company;
+    const badge = document.getElementById('personalization-badge');
+    badge.textContent = 'Private review for ' + company;
+    badge.style.display = 'inline-block';
+    document.getElementById('contact-sub').textContent = 'Private review for ' + company + ' — tell us what prompted you to reach out. I read every message myself.';
+  }
+  if(utm_s) document.getElementById('utm_source').value = utm_s;
+  if(utm_c) document.getElementById('utm_campaign').value = utm_c;
+
+  // FAQ toggle
+  document.querySelectorAll('.faq-item').forEach(item=>{
+    item.addEventListener('click', ()=>{
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i=>{i.classList.remove('open'); i.querySelector('.faq-q span:last-child').textContent='+';});
+      if(!isOpen){ item.classList.add('open'); item.querySelector('.faq-q span:last-child').textContent='—'; }
+    });
+  });
+
+  // Form handling - REPLACE WITH YOUR ENDPOINT
+  const form = document.getElementById('intake');
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    // TODO: Replace with your Formspree / backend endpoint
+    // Example: fetch('https://formspree.io/f/xxxxxx', {method:'POST', body: new FormData(form)})
+    // For now, show success state locally
+    document.getElementById('form-success').style.display='block';
+    form.reset();
+    if(company) document.getElementById('companyField').value = company;
+    // Optional: redirect to calendly after submit
+    // window.location.href = 'CALENDLY_URL';
+    
+    // If you want mailto fallback (not recommended for cold):
+    // const data = new FormData(form);
+    // window.location.href = 'mailto:hello@thisiskinglis.com?subject=Business X-Ray Inquiry&body='+encodeURIComponent(JSON.stringify(Object.fromEntries(data)));
+  });
+})();
 </script>
 </body>
 </html>
