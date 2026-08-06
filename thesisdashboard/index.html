@@ -3,297 +3,821 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>KINGLIS — Thesis Workspace</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@0,300;0,400;1,300&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@300&display=swap" rel="stylesheet">
+<title>KINGLIS — Thesis Ledger</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#0A1931;--surface:#0F223E;--card:#122A4A;--border:rgba(255,255,255,0.08);--border-strong:rgba(201,168,76,0.22);--gold:#C9A84C;--blue:#5A8DBE;--text:#E8E6E1;--text-2:#9BA9BE;--text-3:#5E6E86;--mono:'JetBrains Mono', monospace}
-*{box-sizing:border-box}html{scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--text);font-family:'Inter', sans-serif;font-weight:300;line-height:1.7;-webkit-font-smoothing:antialiased;
-background-image:linear-gradient(rgba(90,141,190,0.04) 1px, transparent 1px),linear-gradient(90deg, rgba(90,141,190,0.04) 1px, transparent 1px);background-size:80px 80px}
+:root{
+  --bg:#0A0A0A;
+  --surface:#111111;
+  --card:#161616;
+  --card-alt:#1A1A1A;
+  --border:#1E1E1E;
+  --gold:#C9A84C;
+  --gold-subtle:#A8893D;
+  --gold-line:rgba(201,168,76,0.22);
+  --gold-line-strong:rgba(201,168,76,0.35);
+  --text-primary:#F5F0E8;
+  --text-secondary:#8A8478;
+  --text-muted:#4A4640;
+  --success:#4A7C59;
+  --pending:#2A2A2A;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--text-primary);
+  font-family:'Inter', sans-serif;
+  font-weight:300;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit}
+.mono{font-family:'JetBrains Mono', monospace}
+
+/* App */
 .app{display:flex;min-height:100vh}
-.sidebar{position:fixed;left:0;top:0;bottom:0;width:208px;background:rgba(8,20,37,0.92);border-right:1px solid var(--border);display:flex;flex-direction:column;justify-content:space-between;backdrop-filter:blur(12px);z-index:10}
-.sidebar-top{padding:32px 22px 20px 22px}
-.wordmark{font-family:'Cormorant Garamond', serif;letter-spacing:0.22em;font-size:16px;color:var(--gold)}
-.commission-id{font-family:var(--mono);font-size:9px;color:var(--text-3);margin-top:8px;text-transform:uppercase;letter-spacing:0.1em}
-.edition-tag{margin-top:18px;border:1px solid var(--border-strong);padding:6px 10px;display:inline-block;font-family:var(--mono);font-size:8.5px;letter-spacing:0.12em;color:var(--gold);text-transform:uppercase}
-.nav{margin-top:48px;display:flex;flex-direction:column;gap:1px}
-.nav-item{display:block;width:100%;text-align:left;background:none;border:none;border-left:2px solid transparent;padding:10px 20px;font-size:11.5px;color:var(--text-2);cursor:pointer}
-.nav-item:hover{color:var(--text);background:rgba(255,255,255,0.03)}
-.nav-item.active{border-left-color:var(--gold);color:var(--text);background:rgba(201,168,76,0.06)}
-.sidebar-bottom{border-top:1px solid var(--border);padding:16px 22px;font-family:var(--mono);font-size:9px;color:var(--text-3)}
-.main{margin-left:208px;flex:1;min-height:100vh;padding:0 56px 100px 56px;display:flex;flex-direction:column}
-.content-inner{max-width:880px;width:100%;flex:1}
-.eyebrow{font-family:var(--mono);font-size:9px;letter-spacing:0.18em;text-transform:uppercase;color:var(--blue)}
-.eyebrow.gold{color:var(--gold)}
-.page{display:none}.page.active{display:block;animation:fade 300ms ease}@keyframes fade{from{opacity:0}to{opacity:1}}
-.page-header{margin-bottom:32px;padding-top:40px}
-.page-title{font-family:'Cormorant Garamond', serif;font-weight:300;font-size:42px;line-height:0.95;letter-spacing:-0.02em;margin:12px 0 0 0}
-.page-sub{margin-top:14px;font-size:14px;color:var(--text-2);line-height:1.6;max-width:560px}
-.hero-question{font-family:'Cormorant Garamond', serif;font-weight:300;font-size:16px;color:var(--blue);font-style:italic;margin-bottom:24px}
-.hero-title{font-family:'Cormorant Garamond', serif;font-size:52px;font-weight:300;line-height:0.95;letter-spacing:-0.02em;margin:0}
-.hero-sub{margin-top:18px;font-size:15px;color:var(--text-2);max-width:420px}
-.hero-sub strong{color:var(--text);font-weight:500}
-.hero-line{width:48px;height:1px;background:var(--gold);margin-top:20px}
-.arch-progress{margin-top:64px;max-width:640px}
-.arch-item{margin-bottom:26px}
-.arch-item-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px}
-.arch-name{font-size:14px;font-weight:500}
-.arch-stage{font-family:var(--mono);font-size:9px;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);border:1px solid rgba(201,168,76,0.14);padding:3px 8px}
-.arch-bar{height:4px;background:rgba(255,255,255,0.06);border-radius:2px;overflow:hidden}
-.arch-bar-fill{height:100%;background:var(--gold);border-radius:2px}
-.assets-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:24px}
-.asset-card{background:var(--card);border:1px solid var(--border);padding:20px;border-radius:2px}
-.asset-count{font-family:'Cormorant Garamond', serif;font-size:42px;font-weight:300;line-height:1}
-.asset-label{font-family:var(--mono);font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-3);margin-top:8px}
-.simple-list{margin-top:24px}
-.simple-row{display:flex;justify-content:space-between;padding:14px 0;border-bottom:1px solid var(--border);font-size:13px}
-.simple-row strong{font-weight:500}
-.workspace-footer{margin-top:80px;padding-top:24px;border-top:1px solid var(--border);display:flex;justify-content:space-between;font-family:var(--mono);font-size:8px;letter-spacing:0.16em;text-transform:uppercase;color:var(--text-3)}
-.edit-badge{position:fixed;bottom:18px;right:18px;background:var(--gold);color:var(--bg);font-family:var(--mono);font-size:11px;padding:10px 14px;border-radius:2px;cursor:pointer;z-index:100;display:none}
-body.is-edit .edit-badge{display:block}
-.edit-panel{position:fixed;inset:0;background:rgba(8,20,37,0.96);z-index:200;display:none;overflow:auto;padding:40px}
-.edit-panel.open{display:block}.edit-panel-inner{max-width:640px;margin:0 auto;background:var(--card);border:1px solid var(--border);padding:32px}
-.edit-panel h2{font-family:'Cormorant Garamond', serif;font-size:28px;font-weight:300;margin:0 0 12px 0;color:var(--text)}
-.edit-field{display:flex;flex-direction:column;gap:6px;margin-bottom:16px}
-.edit-field label{font-family:var(--mono);font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-3)}
-.edit-field input,.edit-field select{border:1px solid var(--border);background:var(--bg);color:var(--text);padding:10px 12px;font-family:'Inter', sans-serif;font-size:13px}
-.btn{border:1px solid var(--border);background:var(--card);color:var(--text);padding:10px 16px;border-radius:2px;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer}
-.btn.primary{background:var(--gold);color:var(--bg);border-color:var(--gold)}
-@media(max-width:900px){.sidebar{position:relative;width:100%}.main{margin-left:0;padding:0 20px 80px 20px}.assets-grid{grid-template-columns:1fr 1fr}}
+.sidebar{
+  position:fixed;left:0;top:0;bottom:0;width:220px;
+  background:var(--surface);
+  border-right:1px solid var(--border);
+  display:flex;flex-direction:column;justify-content:space-between;
+  z-index:20;
+}
+.sidebar-top{padding:36px 24px 24px 24px}
+.wordmark{
+  font-family:'Cormorant Garamond', serif;
+  font-weight:400;
+  font-size:16px;
+  letter-spacing:0.2em;
+  color:var(--gold);
+  line-height:1;
+  text-transform:uppercase;
+}
+.commission-id{
+  font-family:'JetBrains Mono', monospace;
+  font-size:10px;
+  letter-spacing:0.06em;
+  color:var(--text-muted);
+  margin-top:10px;
+}
+.nav{margin-top:56px;display:flex;flex-direction:column;gap:1px}
+.nav-item{
+  display:block;width:100%;text-align:left;
+  background:none;border:none;
+  border-left:2px solid transparent;
+  padding:12px 24px;
+  font-family:'Inter', sans-serif;
+  font-size:13px;font-weight:400;
+  color:var(--text-secondary);
+  cursor:pointer;
+  transition:opacity 200ms ease, color 200ms ease, border-color 200ms ease;
+}
+.nav-item:hover{color:var(--text-primary)}
+.nav-item.active{border-left-color:var(--gold);color:var(--text-primary)}
+.sidebar-bottom{
+  border-top:1px solid var(--border);
+  padding:18px 24px;
+  display:flex;align-items:center;justify-content:space-between;
+  font-size:11px;font-family:'Inter', sans-serif;
+  color:var(--text-muted);
+}
+.dot{width:6px;height:6px;background:var(--gold);border-radius:50%;display:inline-block;flex-shrink:0}
+
+/* Main */
+.main{margin-left:220px;flex:1;min-height:100vh;padding:48px 48px 120px 48px;display:flex;flex-direction:column}
+.content-inner{max-width:820px;width:100%;flex:1}
+.eyebrow{
+  font-family:'Inter', sans-serif;
+  font-size:0.65rem;
+  letter-spacing:0.15em;
+  text-transform:uppercase;
+  color:var(--text-muted);
+  font-weight:400;
+}
+.eyebrow.gold{color:var(--gold-subtle)}
+.divider{height:1px;background:var(--border);width:100%}
+.divider.gold{background:var(--gold-line)}
+.divider.gold-strong{background:var(--gold-line-strong)}
+.page{display:none}
+.page.active{display:block;animation:fadeIn 200ms ease}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+
+/* Overview */
+.overview-header{margin-bottom:40px}
+.thesis-mark{
+  font-family:'Cormorant Garamond', serif;
+  font-weight:400;
+  font-size:28px;
+  color:var(--gold);
+  letter-spacing:0.02em;
+  line-height:1;
+}
+.commission-line{
+  margin-top:10px;
+  font-family:'JetBrains Mono', monospace;
+  font-size:11px;
+  letter-spacing:0.06em;
+  color:var(--text-muted);
+}
+.header-rule{height:1px;background:var(--gold-line);margin-top:18px;width:100%}
+.founder-line{
+  margin-top:18px;
+  font-family:'Inter', sans-serif;
+  font-size:13px;
+  color:var(--text-secondary);
+  line-height:1.8;
+}
+.founder-line span{color:var(--text-primary);font-weight:400}
+
+/* Phase tracker */
+.section-label{
+  font-family:'Inter', sans-serif;
+  font-size:0.65rem;
+  letter-spacing:0.15em;
+  text-transform:uppercase;
+  color:var(--text-muted);
+  font-weight:400;
+  margin:0 0 20px 0;
+}
+.phase-tracker{position:relative;padding-left:0;margin-top:8px}
+.phase-tracker::before{
+  content:'';
+  position:absolute;left:7px;top:8px;bottom:8px;width:1px;background:var(--border);
+}
+.phase{
+  display:flex;align-items:flex-start;gap:18px;
+  padding:8px 0;
+  position:relative;
+}
+.phase-ind{
+  width:16px;height:16px;
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;margin-top:1px;
+  background:var(--bg);
+  position:relative;z-index:1;
+  font-size:11px;line-height:1;
+}
+.phase-ind .circle{width:9px;height:9px;border:1px solid var(--text-muted);border-radius:50%}
+.phase-ind .circle.filled{background:var(--gold);border-color:var(--gold)}
+.phase-ind .check{color:var(--gold);font-size:11px}
+.phase-text{font-size:13px;line-height:1.4;font-family:'Inter', sans-serif}
+.phase.completed .phase-text{color:var(--text-muted)}
+.phase.current .phase-text{color:var(--gold);font-weight:400}
+.phase.current{border-left:2px solid var(--gold);margin-left:-24px;padding-left:22px}
+.phase.future .phase-text{color:var(--text-muted)}
+
+/* Info strip */
+.info-strip{
+  display:grid;grid-template-columns:1fr 1fr 1fr;
+  border-top:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+  margin-top:40px;
+}
+.info-cell{padding:16px 20px 16px 0;position:relative}
+.info-cell:not(:last-child)::after{
+  content:'';position:absolute;right:0;top:16px;bottom:16px;width:1px;background:var(--gold-line);
+}
+.info-label{
+  font-family:'Inter', sans-serif;
+  font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;
+  color:var(--text-muted);margin-bottom:8px;
+}
+.info-value{font-family:'Inter', sans-serif;font-size:13px;color:var(--text-primary);line-height:1.5}
+.info-value.gold{color:var(--gold)}
+.info-value .sub{display:block;color:var(--text-secondary);margin-top:2px;font-size:12px}
+
+/* Analyst Note */
+.analyst-card{
+  margin-top:40px;
+  background:var(--card);
+  border-left:2px solid var(--gold);
+  padding:24px;
+  max-width:620px;
+}
+.analyst-meta{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:16px;gap:16px;flex-wrap:wrap}
+.analyst-date{font-family:'JetBrains Mono', monospace;font-size:10px;color:var(--text-muted);letter-spacing:0.02em}
+.analyst-body{font-family:'Inter', sans-serif;font-size:13px;line-height:1.8;color:var(--text-secondary);max-width:520px}
+
+/* Estimated Delivery */
+.est-row{
+  margin-top:40px;
+  border-top:1px solid var(--gold-line);
+  padding-top:14px;
+  display:flex;justify-content:space-between;align-items:baseline;
+  max-width:620px;
+  font-family:'Inter', sans-serif;font-size:13px;
+}
+.est-row .label{font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-muted)}
+.est-row .value{color:var(--text-primary)}
+
+/* Evidence */
+.evidence-title{
+  font-family:'Cormorant Garamond', serif;
+  font-weight:300;font-size:32px;line-height:1.1;
+  color:var(--text-primary);letter-spacing:-0.01em;
+  margin:0 0 20px 0;
+}
+.evidence-body{font-family:'Inter', sans-serif;font-size:13px;line-height:1.8;color:var(--text-secondary);max-width:480px}
+.evidence-body p{margin:0 0 16px 0}
+.upload-btn{
+  display:inline-block;
+  margin-top:24px;
+  border:2px solid var(--gold);
+  color:var(--gold);
+  background:transparent;
+  padding:10px 20px;
+  font-family:'Inter', sans-serif;
+  font-size:12px;letter-spacing:0.06em;
+  text-transform:uppercase;
+  cursor:pointer;
+  transition:all 200ms ease;
+  border-radius:2px;
+  text-decoration:none;
+}
+.upload-btn:hover{background:var(--gold);color:var(--bg)}
+.evidence-meta-grid{
+  margin-top:32px;
+  border-top:1px solid var(--gold-line);
+  padding-top:20px;
+  max-width:480px;
+}
+.ev-meta-row{display:flex;justify-content:space-between;padding:8px 0;font-size:13px;border-bottom:1px solid var(--border)}
+.ev-meta-row .k{color:var(--text-muted);font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;padding-top:2px}
+.ev-meta-row .v{color:var(--text-primary)}
+.secure-embed{margin-top:32px;border:1px solid var(--border);overflow:hidden;border-radius:2px;max-width:620px}
+.secure-embed-head{padding:10px 16px;background:var(--surface);border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center}
+.secure-embed-head span{font-family:'JetBrains Mono', monospace;font-size:9px;color:var(--text-muted);letter-spacing:0.08em;text-transform:uppercase}
+
+/* Sessions */
+.sessions-stack{display:flex;flex-direction:column;gap:16px;margin-top:8px}
+.session-card{
+  border:1px solid var(--border);
+  padding:24px 24px 20px 24px;
+  background:var(--bg);
+  border-radius:2px;
+  position:relative;
+}
+.session-card.scheduled{border-left:2px solid var(--gold)}
+.session-head{display:flex;justify-content:space-between;align-items:flex-start;gap:16px}
+.session-title{font-family:'Cormorant Garamond', serif;font-size:18px;font-weight:400;line-height:1.2;color:var(--text-primary);letter-spacing:-0.01em}
+.session-status{
+  font-family:'Inter', sans-serif;
+  font-size:10px;letter-spacing:0.12em;text-transform:uppercase;
+  padding:4px 8px;border:1px solid var(--border);
+  border-radius:2px;white-space:nowrap;
+}
+.session-status.complete{color:var(--success);border-color:rgba(74,124,89,0.3);background:rgba(74,124,89,0.08)}
+.session-status.scheduled{color:var(--gold);border-color:var(--gold-line);background:rgba(201,168,76,0.08)}
+.session-status.upcoming{color:var(--text-muted);border-color:var(--border)}
+.session-date{font-family:'JetBrains Mono', monospace;font-size:11px;color:var(--text-muted);margin-top:8px}
+.session-desc{font-size:13px;color:var(--text-secondary);margin-top:12px;line-height:1.7;max-width:520px}
+.session-note{margin-top:12px;font-size:12px;color:var(--text-muted);font-style:italic}
+.session-prep{margin-top:18px;border-top:1px solid var(--border);padding-top:14px}
+.prep-row{display:grid;grid-template-columns:80px 1fr;gap:10px;font-size:12px;padding:4px 0}
+.prep-row .k{font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-muted)}
+.prep-row .v{color:var(--text-secondary);line-height:1.6;font-style:italic}
+.session-card.upcoming{background:var(--surface);opacity:0.7;padding:18px 24px}
+.session-card.upcoming .session-title{font-size:15px;color:var(--text-muted)}
+.session-card.upcoming .session-date{color:var(--text-muted)}
+
+/* Documents */
+.doc-intro{font-size:13px;color:var(--text-secondary);line-height:1.7;max-width:520px;margin-top:8px}
+.doc-section{margin-top:32px}
+.doc-section-title{font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-muted);margin:0 0 14px 0}
+.doc-row{display:flex;justify-content:space-between;gap:16px;padding:10px 0;border-bottom:1px solid var(--border);font-size:13px;align-items:baseline}
+.doc-name{color:var(--text-primary);font-weight:400}
+.doc-name.pending{color:var(--text-muted);font-weight:300}
+.doc-meta{font-family:'JetBrains Mono', monospace;font-size:11px;color:var(--text-muted);white-space:nowrap}
+.doc-view{color:var(--gold);font-family:'Inter', sans-serif;font-size:11px;letter-spacing:0.06em;text-transform:uppercase;cursor:pointer;text-decoration:none}
+.doc-view:hover{text-decoration:underline;text-underline-offset:3px}
+.sealed-block{margin-top:48px;padding-top:24px;border-top:1px solid var(--gold-line);display:flex;gap:14px;max-width:520px}
+.sealed-block p{margin:0;font-size:13px;color:var(--text-muted);font-style:italic;line-height:1.7}
+
+/* Commission */
+.record-grid{display:grid;grid-template-columns:170px 1fr;gap:10px 24px;font-size:13px;margin-top:8px}
+.record-grid .k{color:var(--text-muted);font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;padding-top:3px}
+.record-grid .v{color:var(--text-primary);font-weight:400}
+.pay-table{margin-top:8px;width:100%;border-collapse:collapse;max-width:620px}
+.pay-table td{padding:12px 0;border-bottom:1px solid var(--border);font-size:13px}
+.pay-table td:last-child{text-align:right;font-family:'JetBrains Mono', monospace;font-size:11px;color:var(--text-muted)}
+.pay-table td:nth-child(2){font-family:'JetBrains Mono', monospace;font-size:12px;text-align:right;color:var(--text-secondary)}
+.total-row td{border-bottom:none;font-weight:500;padding-top:16px;color:var(--text-primary)}
+.custody-text{max-width:520px;font-size:13px;color:var(--text-secondary);line-height:1.7;margin-top:8px}
+
+/* Mobile */
+.mobile-top{display:none;position:fixed;top:0;left:0;right:0;height:56px;background:var(--surface);border-bottom:1px solid var(--border);z-index:30;align-items:center;justify-content:space-between;padding:0 20px}
+.mobile-wordmark{font-family:'Cormorant Garamond', serif;letter-spacing:0.2em;color:var(--gold);font-size:15px;text-transform:uppercase}
+.hamburger{width:24px;height:18px;display:flex;flex-direction:column;justify-content:space-between;cursor:pointer;background:none;border:none;padding:0}
+.hamburger span{display:block;height:1px;background:var(--text-primary);width:100%}
+.sidebar-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:15}
+@media(max-width:900px){
+  .mobile-top{display:flex}
+  .sidebar{transform:translateX(-100%);transition:transform 200ms ease;z-index:25}
+  .sidebar.open{transform:translateX(0)}
+  .sidebar-overlay.open{display:block}
+  .main{margin-left:0;padding:72px 20px 80px 20px}
+  .info-strip{grid-template-columns:1fr;gap:0}
+  .info-cell{padding:14px 0}
+  .info-cell:not(:last-child)::after{display:none}
+  .info-cell{border-bottom:1px solid var(--border)}
+  .record-grid{grid-template-columns:1fr;gap:6px}
+  .pay-table td{font-size:12px}
+}
 </style>
 </head>
 <body>
 
-<!-- =====================================================
-     EDIT ONLY THIS BLOCK - 20 LINES - NO JSON, JUST PLAIN TEXT
-     ===================================================== -->
-<script>
-const THESIS = {
-  id: "L02-2027-001",
-  founder: "[Founder Name]",
-  analyst: "Kaylee-Jane",
-
-  // 4 bars - value 0-10, stage: Emerging / Developing / Established / Validated / Complete
-  progress: {
-    foundations: { value: 9, stage: "Established" },
-    decision: { value: 6, stage: "Developing" },
-    execution: { value: 8, stage: "Established" },
-    transferability: { value: 4, stage: "Emerging" }
-  },
-
-  // Asset counts - just numbers
-  assets: { frameworks: 14, doctrines: 9, mentalModels: 27, heuristics: 41, patterns: 18, diagnostics: 7 },
-
-  // Simple lists - one per line
-  evidenceReceived: ["Strategy Decks", "Investment Papers", "Pricing Documents", "Whiteboards", "Founder Notes"],
-  evidencePending: ["Customer Contracts", "Org Charts"],
-
-  // Extraction - name + status
-  extraction: [
-    ["Value Logic", "Validated"],
-    ["Mental Models", "In Progress"],
-    ["Doctrines", "Validated"],
-    ["Frameworks", "Emerging"],
-    ["Heuristics", "In Progress"]
-  ],
-
-  // Validation - id + name + status
-  validation: [
-    ["Framework 17", "Pricing Conviction Model", "Pending Review"],
-    ["Doctrine 3", "Never Discount Expertise", "Validated"],
-    ["Pattern 9", "Founder Dependency", "Needs Clarification"]
-  ],
-
-  // Deliverables - name + status
-  deliverables: [
-    ["Executive Summary", "Ready"],
-    ["Framework Catalogue", "Draft"],
-    ["Thesis Ledger", "Writing"],
-    ["Due Diligence Brief", "Pending"]
-  ],
-
-  // Health - for you internally - area + strength + action
-  health: [
-    ["Value Logic", "Strong", "Validated"],
-    ["Frameworks", "Incomplete", "Need another interview"],
-    ["Pricing", "Weak", "Need 2018-2020 docs"]
-  ]
-};
-</script>
-<!-- END EDIT BLOCK - EVERYTHING BELOW IS AUTOMATIC -->
+<div class="mobile-top" id="mobileTop">
+  <div class="mobile-wordmark">KINGLIS</div>
+  <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+</div>
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
 
 <div class="app">
-  <aside class="sidebar">
+  <aside class="sidebar" id="sidebar">
     <div class="sidebar-top">
       <div class="wordmark">KINGLIS</div>
-      <div class="commission-id" id="sb-id">L02 — THESIS EDITION</div>
-      <div class="edition-tag">Thesis Workspace</div>
+      <div class="commission-id" id="sb-commission-id">TL-2027-001</div>
       <nav class="nav" id="nav">
-        <button class="nav-item active" data-page="commission">Commission</button>
-        <button class="nav-item" data-page="architecture">Architecture</button>
-        <button class="nav-item" data-page="assets">Assets</button>
+        <button class="nav-item active" data-page="overview">Overview</button>
         <button class="nav-item" data-page="evidence">Evidence</button>
-        <button class="nav-item" data-page="extraction">Extraction</button>
-        <button class="nav-item" data-page="validation">Validation</button>
-        <button class="nav-item" data-page="deliverables">Deliverables</button>
-        <button class="nav-item" data-page="health" style="opacity:0.5;font-style:italic">Architecture Health</button>
+        <button class="nav-item" data-page="sessions">Sessions</button>
+        <button class="nav-item" data-page="documents">Documents</button>
+        <button class="nav-item" data-page="commission">Commission</button>
       </nav>
     </div>
-    <div class="sidebar-bottom"><span id="sb-analyst">Analyst — Kaylee-Jane</span></div>
+    <div class="sidebar-bottom">
+      <span id="sb-analyst">Analyst — Kaylee-Jane</span>
+      <span class="dot"></span>
+    </div>
   </aside>
+
   <main class="main">
     <div class="content-inner">
-      <section class="page active" id="page-commission">
-        <div style="padding-top:42px">
-          <div style="font-family:var(--mono);font-size:8.5px;letter-spacing:0.18em;text-transform:uppercase;color:var(--text-3);margin-bottom:32px">Private Thesis Workspace • <span id="cb-id">L02-2027-001</span> • Operating System Extraction</div>
-          <div class="hero-question">"What operating system are we extracting?"</div>
-          <h1 class="hero-title">The Thesis Ledger™</h1>
-          <div class="hero-sub">When your life's work needs to become<br><strong>a transferable business asset.</strong></div>
-          <div class="hero-line"></div>
-          <div class="arch-progress">
-            <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:28px"><div style="font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:300">Intellectual Architecture</div><div class="eyebrow gold">Architecture Progress</div></div>
-            <div id="progress-list"></div>
+
+      <!-- OVERVIEW -->
+      <section class="page active" id="page-overview">
+        <div class="overview-header">
+          <div class="thesis-mark">THESIS LEDGER™</div>
+          <div class="commission-line" id="ov-commission-id">Commission TL-2027-001</div>
+          <div class="header-rule"></div>
+          <div class="founder-line">
+            <div>A private commission for <span id="ov-founder">[Founder Name]</span></div>
+            <div>Analyst — <span id="ov-analyst">Kaylee-Jane</span></div>
           </div>
+        </div>
+
+        <div style="margin-top:40px">
+          <div class="section-label">Phase Progress</div>
+          <div class="phase-tracker" id="phase-tracker"></div>
+        </div>
+
+        <div class="info-strip" id="info-strip"></div>
+
+        <div class="analyst-card">
+          <div class="analyst-meta">
+            <div class="eyebrow">Analyst Note</div>
+            <div class="analyst-date" id="analyst-date">Last updated 8 October 2027</div>
+          </div>
+          <div class="analyst-body" id="analyst-body"></div>
+        </div>
+
+        <div class="est-row">
+          <div class="label">Estimated Delivery</div>
+          <div class="value" id="est-delivery">14 November 2027</div>
         </div>
       </section>
 
-      <section class="page" id="page-architecture">
-        <div class="page-header"><div class="eyebrow gold">Living System</div><h1 class="page-title">Architecture</h1><div class="page-sub">The map grows as you extract. By Session Five, the OS is visible.</div></div>
-        <div style="background:rgba(15,34,62,0.6);border:1px solid var(--border);padding:32px;margin-top:24px;text-align:center">
-          <div style="font-family:var(--mono);font-size:11px;letter-spacing:0.16em;color:var(--gold);border:1px solid var(--gold);padding:14px 28px;display:inline-block;background:rgba(201,168,76,0.1)">VALUE LOGIC<br><span style="font-size:9px;color:var(--text-3)">Validated</span></div>
-          <div style="width:1px;height:24px;background:rgba(201,168,76,0.22);margin:0 auto"></div>
-          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;max-width:500px;margin:0 auto">
-            <div style="border:1px solid var(--border);padding:10px;font-family:var(--mono);font-size:10px">MENTAL MODELS<br><span id="mm-count">27</span></div>
-            <div style="border:1px solid var(--gold);padding:10px;font-family:var(--mono);font-size:10px;color:var(--gold)">DOCTRINES<br>9</div>
-            <div style="border:1px solid var(--border);padding:10px;font-family:var(--mono);font-size:10px">PRINCIPLES<br>12</div>
-          </div>
-          <div style="margin:16px auto;width:80%;height:1px;background:var(--border)"></div>
-          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;max-width:500px;margin:0 auto">
-            <div style="border:1px solid var(--border);padding:10px;font-family:var(--mono);font-size:10px">FRAMEWORKS<br><span id="fw-count">14</span></div>
-            <div style="border:1px solid var(--blue);padding:10px;font-family:var(--mono);font-size:10px;color:var(--blue)">HEURISTICS<br>41</div>
-            <div style="border:1px solid var(--border);padding:10px;font-family:var(--mono);font-size:10px">PATTERNS<br>18</div>
-          </div>
-        </div>
-      </section>
-
-      <section class="page" id="page-assets">
-        <div class="page-header"><div class="eyebrow gold">Inventory</div><h1 class="page-title">Assets</h1><div class="page-sub">Intellectual assets, not files.</div></div>
-        <div class="assets-grid" id="assets-grid"></div>
-      </section>
-
+      <!-- EVIDENCE -->
       <section class="page" id="page-evidence">
-        <div class="page-header"><div class="eyebrow gold">Source</div><h1 class="page-title">Evidence</h1></div>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:24px"><div><div class="eyebrow" style="margin-bottom:12px">Received ✓</div><div id="ev-r"></div></div><div><div class="eyebrow" style="margin-bottom:12px">Pending</div><div id="ev-p"></div></div></div>
-        <div style="margin-top:32px;border:1px solid var(--border);padding:0;overflow:hidden"><div style="padding:12px 16px;background:rgba(255,255,255,0.03);font-family:var(--mono);font-size:9px;letter-spacing:0.12em;color:var(--text-2)">SECURE SUBMISSION • secure.thisiskinglis.com</div><iframe src="https://secure.thisiskinglis.com/" style="width:100%;height:520px;border:none;background:#fff" loading="lazy"></iframe></div>
+        <div id="evidence-awaiting" style="display:none">
+          <div class="evidence-title">Evidence</div>
+          <div class="evidence-body">
+            <p>Your Intellectual Asset Discovery Guide has been issued.</p>
+            <p>When you are ready, please submit your evidence through the secure upload area below.</p>
+            <p>All submitted materials are held under the terms of your Commission Agreement and Custodianship provisions.</p>
+            <a class="upload-btn" href="https://secure.thisiskinglis.com/" target="_blank">Upload Evidence →</a>
+          </div>
+          <div class="secure-embed">
+            <div class="secure-embed-head"><span>Secure Submission • Encrypted</span><span>SECURE.THISISKINGLIS.COM</span></div>
+            <iframe id="secure-iframe-awaiting" src="https://secure.thisiskinglis.com/" style="width:100%;height:560px;border:none;background:#fff;display:block" title="Secure Drop" loading="lazy"></iframe>
+          </div>
+        </div>
+
+        <div id="evidence-received" style="display:none">
+          <div class="evidence-title">Evidence</div>
+          <div style="margin-top:8px">
+            <div class="eyebrow gold">Submission Received</div>
+            <div class="mono" style="font-size:11px;color:var(--text-muted);margin-top:6px" id="ev-date">14 September 2027</div>
+          </div>
+          <div class="evidence-body" style="margin-top:20px">
+            <p>Your evidence has been received and is currently under review. Your analyst will contact you when the review is complete and extraction sessions are ready to be scheduled.</p>
+          </div>
+          <div class="evidence-meta-grid">
+            <div class="ev-meta-row"><span class="k">Items Submitted</span><span class="v" id="ev-count">47 documents across 6 categories</span></div>
+            <div class="ev-meta-row"><span class="k">Review Status</span><span class="v" id="ev-status">In Progress</span></div>
+          </div>
+          <div style="margin-top:24px;font-size:12px;color:var(--text-muted);line-height:1.6;max-width:480px">
+            Questions about your submission?<br>Send a message through the Commission page.
+          </div>
+        </div>
       </section>
 
-      <section class="page" id="page-extraction">
-        <div class="page-header"><div class="eyebrow gold">Ontology</div><h1 class="page-title">Extraction</h1><div class="page-sub">What have we extracted?</div></div>
-        <div id="extract-list" style="margin-top:24px"></div>
+      <!-- SESSIONS -->
+      <section class="page" id="page-sessions">
+        <div class="overview-header" style="margin-bottom:24px">
+          <div class="thesis-mark" style="font-size:22px">Sessions</div>
+          <div class="commission-line">Five sessions — extraction of the intellectual architecture</div>
+          <div class="header-rule" style="margin-top:12px"></div>
+        </div>
+        <div class="sessions-stack" id="sessions-stack"></div>
       </section>
 
-      <section class="page" id="page-validation">
-        <div class="page-header"><div class="eyebrow gold">Favourite</div><h1 class="page-title">Validation</h1></div>
-        <div id="valid-list" style="margin-top:24px"></div>
+      <!-- DOCUMENTS -->
+      <section class="page" id="page-documents">
+        <div class="overview-header" style="margin-bottom:24px">
+          <div class="thesis-mark" style="font-size:22px">Commission Documents</div>
+          <div class="doc-intro">All documents produced for Commission <span id="doc-commission-id">TL-2027-001</span>.</div>
+          <div class="header-rule" style="margin-top:16px"></div>
+        </div>
+        <div id="docs-container"></div>
+        <div class="sealed-block">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="2" y="6" width="10" height="7" stroke="#4A4640" stroke-width="0.9"/><path d="M4 6V4.5C4 2.5 5.8 1 7 1C8.2 1 10 2.5 10 4.5V6" stroke="#4A4640" stroke-width="0.9"/><circle cx="7" cy="9.5" r="1.1" fill="#4A4640"/></svg>
+          <p>▪ Sealed materials are held under the conditions you defined. They are not visible here.</p>
+        </div>
       </section>
 
-      <section class="page" id="page-deliverables">
-        <div class="page-header"><div class="eyebrow gold">Output</div><h1 class="page-title">Deliverables</h1></div>
-        <div id="deliv-list" style="margin-top:24px"></div>
+      <!-- COMMISSION -->
+      <section class="page" id="page-commission">
+        <div class="overview-header" style="margin-bottom:24px">
+          <div class="thesis-mark" style="font-size:22px">Commission Record</div>
+          <div class="header-rule" style="margin-top:12px"></div>
+        </div>
+
+        <div class="record-grid" id="record-grid"></div>
+
+        <div style="margin-top:40px"><div class="section-label">Payments</div><table class="pay-table" id="pay-table"></table></div>
+
+        <div style="margin-top:40px">
+          <div class="section-label">Custodianship</div>
+          <div class="custody-text">
+            Evidence handling and post-completion options are governed by your Commission Agreement.<br><br>
+            <span class="eyebrow" style="display:inline">Post-completion instruction</span><span style="margin-left:12px;color:var(--text-muted);font-family:'JetBrains Mono',monospace;font-size:11px" id="post-instruction">To be confirmed</span>
+          </div>
+        </div>
+
+        <div style="margin-top:40px">
+          <div class="section-label">Contact</div>
+          <div class="record-grid">
+            <div class="k">Founder Email</div><div class="v" id="contact-email">james@whitfieldgroup.com</div>
+            <div class="k">Preferred Communication</div><div class="v" id="contact-comm">Email</div>
+            <div class="k">Session Platform</div><div class="v" id="contact-platform">Zoom</div>
+          </div>
+        </div>
       </section>
 
-      <section class="page" id="page-health">
-        <div class="page-header"><div class="eyebrow gold">Internal • Analyst Only</div><h1 class="page-title">Architecture Health</h1><div class="page-sub">Where to probe next.</div></div>
-        <div id="health-list" style="margin-top:24px"></div>
-      </section>
     </div>
-    <div class="workspace-footer"><span>Private Thesis Workspace</span><span>L02 — THESIS EDITION</span></div>
   </main>
 </div>
 
-<div class="edit-badge" id="editBadge">Edit — ?edit mode</div>
-<div class="edit-panel" id="editPanel"><div class="edit-panel-inner">
-  <h2>Edit Thesis Workspace</h2><p style="font-size:12px;color:var(--text-2);margin:0 0 20px 0;line-height:1.6">Change values here, then Download. No code needed.</p>
-  <div id="editGrid"></div>
-  <div style="display:flex;gap:10px;margin-top:20px"><button class="btn primary" id="downloadBtn">Download index.html</button><button class="btn" id="closeEdit">Close</button></div>
-</div></div>
-
 <script>
-function render(){
-  document.getElementById('sb-id').textContent = THESIS.id;
-  document.getElementById('cb-id').textContent = THESIS.id;
-  document.getElementById('sb-analyst').textContent = 'Analyst — ' + THESIS.analyst;
+// ============================================
+// COMMISSION CONFIGURATION
+// Edit only this section to update the portal
+// ============================================
 
-  const progMap = {foundations:'Foundations', decision:'Decision Systems', execution:'Execution Logic', transferability:'Commercial Transferability'};
-  document.getElementById('progress-list').innerHTML = Object.entries(THESIS.progress).map(([k,v])=>{
-    const pct = v.value*10;
-    return `<div class="arch-item"><div class="arch-item-head"><span style="font-size:14px;font-weight:500">${progMap[k]||k}</span><span class="arch-stage">${v.stage}</span></div><div class="arch-bar"><div class="arch-bar-fill" style="width:${pct}%"></div></div></div>`;
+const commission = {
+
+  // FOUNDER DETAILS
+  founderName: "James Whitfield",
+  commissionId: "TL-2027-001",
+  analystName: "Kaylee-Jane",
+  openedDate: "12 July 2027",
+  estimatedDelivery: "14 November 2027",
+  intendedUse: ["Exit Preparation", "Succession Planning"],
+
+  // CURRENT PHASE
+  // Options: "activation" | "evidence" | "extraction" |
+  //          "validation" | "writing" | "production" | "delivered"
+  currentPhase: "extraction",
+
+  // ANALYST NOTE
+  analystNote: "Session 2 identified three strong Doctrine candidates across the governance layer. Session 3 will focus on Framework extraction — the most evidence-intensive phase of the commission.",
+  analystNoteDate: "8 October 2027",
+
+  // EVIDENCE STATE
+  // Options: "awaiting" | "received"
+  evidenceState: "received",
+  evidenceSubmissionDate: "14 September 2027",
+  evidenceItemCount: "47 documents across 6 categories",
+  evidenceReviewStatus: "In Progress",
+
+  // SESSIONS
+  sessions: [
+    {
+      number: 1,
+      title: "Foundations",
+      description: "The Value Logic and Mental Models that form the deepest layer of the intellectual architecture.",
+      status: "complete",
+      date: "24 September 2027",
+      time: "",
+      preparation: "",
+      note: "Session register recorded."
+    },
+    {
+      number: 2,
+      title: "Governance",
+      description: "The Doctrines, Principles, and Operating Rules that govern behaviour.",
+      status: "complete",
+      date: "8 October 2027",
+      time: "",
+      preparation: "",
+      note: "Session register recorded."
+    },
+    {
+      number: 3,
+      title: "Decision Systems",
+      description: "The Frameworks and Diagnostics that govern how consequential decisions are made.",
+      status: "scheduled",
+      date: "14 October 2027",
+      time: "10:00",
+      preparation: "Consider: How do you make your most consequential decisions — what is the actual mechanism?"
+    },
+    {
+      number: 4,
+      title: "Execution",
+      description: "The Patterns, Triggers, and Thresholds that activate the decision architecture.",
+      status: "upcoming",
+      date: "",
+      time: "",
+      preparation: ""
+    },
+    {
+      number: 5,
+      title: "Transferability",
+      description: "Testing every extracted object against the transferability standard.",
+      status: "upcoming",
+      date: "",
+      time: "",
+      preparation: ""
+    }
+  ],
+
+  // DOCUMENTS
+  documents: {
+    foundation: [
+      { name: "Commission Agreement", date: "Signed 12 Jul 2027", visible: true },
+      { name: "Mutual Confidentiality Agreement", date: "Signed 12 Jul 2027", visible: true },
+      { name: "Thesis Intelligence Profile™", date: "Completed 19 Jul 2027", visible: true },
+      { name: "Intellectual Asset Discovery Guide™", date: "Issued 24 Jul 2027", visible: true }
+    ],
+    extraction: [
+      { name: "Session 1 Register", date: "Completed 24 Sep 2027", visible: true },
+      { name: "Session 2 Register", date: "Completed 8 Oct 2027", visible: true },
+      { name: "Session 3 Register", date: "", visible: false },
+      { name: "Session 4 Register", date: "", visible: false },
+      { name: "Session 5 Register", date: "", visible: false }
+    ],
+    production: [
+      { name: "Framework Catalogue™", date: "", visible: false },
+      { name: "Intellectual Asset Register™", date: "", visible: false },
+      { name: "Thesis Ledger Draft", date: "", visible: false },
+      { name: "Validation Copy", date: "", visible: false },
+      { name: "Final Thesis Ledger™", date: "", visible: false },
+      { name: "Completion Certificate", date: "", visible: false }
+    ]
+  },
+
+  // PAYMENTS
+  payments: [
+    { name: "Commission Activation Fee", amount: "US$7,500", status: "received", date: "12 Jul 2027" },
+    { name: "Evidence & Extraction Fee", amount: "US$10,000", status: "pending", date: "" },
+    { name: "Production Fee", amount: "US$7,500", status: "pending", date: "" }
+  ],
+
+  // CONTACT
+  founderEmail: "james@whitfieldgroup.com",
+  sessionPlatform: "Zoom",
+  preferredCommunication: "Email",
+  postCompletionInstruction: "To be confirmed"
+
+};
+
+// ============================================
+// END OF COMMISSION CONFIGURATION
+// Do not edit below this line
+// ============================================
+
+// Phase definitions
+const PHASES = [
+  { key: "activation", label: "Commission Activated" },
+  { key: "profile", label: "Thesis Intelligence Profile" },
+  { key: "evidence", label: "Evidence Discovery" },
+  { key: "extraction", label: "Extraction" },
+  { key: "validation", label: "Validation" },
+  { key: "writing", label: "Writing" },
+  { key: "production", label: "Production" },
+  { key: "delivered", label: "Delivery" }
+];
+
+const PHASE_ORDER = {
+  "activation": 0,
+  "evidence": 2,
+  "extraction": 3,
+  "validation": 4,
+  "writing": 5,
+  "production": 6,
+  "delivered": 7
+};
+
+function getCurrentPhaseIndex(){
+  const key = commission.currentPhase;
+  if(PHASE_ORDER.hasOwnProperty(key)) return PHASE_ORDER[key];
+  // fallback if profile
+  if(key === "profile") return 1;
+  return 0;
+}
+
+function renderOverview(){
+  document.getElementById('sb-commission-id').textContent = commission.commissionId;
+  document.getElementById('ov-commission-id').textContent = 'Commission ' + commission.commissionId;
+  document.getElementById('ov-founder').textContent = commission.founderName;
+  document.getElementById('ov-analyst').textContent = commission.analystName;
+  document.getElementById('sb-analyst').textContent = 'Analyst — ' + commission.analystName;
+  document.getElementById('analyst-date').textContent = 'Last updated ' + commission.analystNoteDate;
+  document.getElementById('analyst-body').textContent = commission.analystNote;
+  document.getElementById('est-delivery').textContent = commission.estimatedDelivery;
+  document.getElementById('doc-commission-id').textContent = commission.commissionId;
+
+  // Phase tracker
+  const currentIdx = getCurrentPhaseIndex();
+  const tracker = document.getElementById('phase-tracker');
+  tracker.innerHTML = PHASES.map((p, idx)=>{
+    let state = 'future';
+    let icon = '<div class="circle"></div>';
+    if(idx < currentIdx){ state='completed'; icon='<div class="check">✓</div>'; }
+    if(idx === currentIdx){ state='current'; icon='<div class="circle filled"></div>'; }
+    return `<div class="phase ${state}"><div class="phase-ind">${icon}</div><div class="phase-text">${p.label}</div></div>`;
   }).join('');
 
-  document.getElementById('assets-grid').innerHTML = `
-    <div class="asset-card"><div class="asset-count">${THESIS.assets.frameworks}</div><div class="asset-label">Frameworks</div></div>
-    <div class="asset-card"><div class="asset-count">${THESIS.assets.doctrines}</div><div class="asset-label">Doctrines</div></div>
-    <div class="asset-card"><div class="asset-count">${THESIS.assets.mentalModels}</div><div class="asset-label">Mental Models</div></div>
-    <div class="asset-card"><div class="asset-count" style="color:var(--gold)">${THESIS.assets.heuristics}</div><div class="asset-label">Heuristics</div></div>
-    <div class="asset-card"><div class="asset-count">${THESIS.assets.patterns}</div><div class="asset-label">Patterns</div></div>
-    <div class="asset-card"><div class="asset-count">${THESIS.assets.diagnostics}</div><div class="asset-label">Diagnostics</div></div>
+  // Info strip
+  const currentPhaseLabel = PHASES[currentIdx] ? PHASES[currentIdx].label : commission.currentPhase;
+  const nextSession = commission.sessions.find(s=>s.status==='scheduled') || commission.sessions.find(s=>s.status==='upcoming' && s.date) || null;
+  let nextSessionTitle = 'To be confirmed';
+  let nextSessionDate = '';
+  if(nextSession){
+    nextSessionTitle = 'Session ' + nextSession.number + ' — ' + nextSession.title;
+    nextSessionDate = nextSession.date + (nextSession.time ? ' — ' + nextSession.time : '');
+  }
+  document.getElementById('info-strip').innerHTML = `
+    <div class="info-cell"><div class="info-label">Current Phase</div><div class="info-value gold">${currentPhaseLabel}</div></div>
+    <div class="info-cell"><div class="info-label">Next Session</div><div class="info-value">${nextSessionTitle}<span class="sub">${nextSessionDate}</span></div></div>
+    <div class="info-cell"><div class="info-label">Estimated Delivery</div><div class="info-value">${commission.estimatedDelivery}</div></div>
   `;
-  document.getElementById('mm-count').textContent = THESIS.assets.mentalModels;
-  document.getElementById('fw-count').textContent = THESIS.assets.frameworks;
-
-  document.getElementById('ev-r').innerHTML = THESIS.evidenceReceived.map(n=>`<div style="padding:8px 0;border-bottom:1px solid var(--border);font-size:13px;color:var(--text-2)">✓ ${n}</div>`).join('');
-  document.getElementById('ev-p').innerHTML = THESIS.evidencePending.map(n=>`<div style="padding:8px 0;border-bottom:1px solid var(--border);font-size:13px;color:var(--text-3)">○ ${n}</div>`).join('');
-
-  document.getElementById('extract-list').innerHTML = THESIS.extraction.map(([name,status])=>`<div class="simple-row"><strong>${name}</strong><span style="font-family:var(--mono);font-size:10px;border:1px solid var(--border);padding:3px 8px">${status}</span></div>`).join('');
-
-  document.getElementById('valid-list').innerHTML = THESIS.validation.map(([id,name,status])=>`<div style="display:grid;grid-template-columns:100px 1fr 120px;gap:16px;padding:16px;background:var(--card);border:1px solid var(--border);margin-bottom:8px"><div style="font-family:var(--mono);font-size:10px;color:var(--text-3)">${id}</div><div><div style="font-size:14px;font-weight:500">${name}</div></div><div style="font-family:var(--mono);font-size:9px;border:1px solid var(--border);padding:5px 8px;height:fit-content;text-align:center">${status}</div></div>`).join('');
-
-  document.getElementById('deliv-list').innerHTML = THESIS.deliverables.map(([name,status])=>`<div class="simple-row"><div><strong>${name}</strong></div><span style="font-family:var(--mono);font-size:10px;border:1px solid var(--border);padding:4px 8px">${status}</span></div>`).join('');
-
-  document.getElementById('health-list').innerHTML = THESIS.health.map(([area,strength,action])=>`<div style="display:grid;grid-template-columns:140px 90px 1fr;gap:12px;padding:12px 0;border-bottom:1px solid var(--border);font-size:13px"><strong>${area}</strong><span style="font-family:var(--mono);font-size:10px;border:1px solid var(--border);padding:3px 6px;text-align:center">${strength}</span><span style="font-size:12px;color:var(--text-2);font-style:italic">${action}</span></div>`).join('');
 }
-render();
 
-const nav=document.getElementById('nav');const pages=document.querySelectorAll('.page');
-nav.addEventListener('click',e=>{const b=e.target.closest('.nav-item');if(!b)return;const t=b.dataset.page;document.querySelectorAll('.nav-item').forEach(x=>x.classList.remove('active'));b.classList.add('active');pages.forEach(p=>p.classList.remove('active'));document.getElementById('page-'+t).classList.add('active');window.scrollTo({top:0});});
+function renderEvidence(){
+  const awaiting = document.getElementById('evidence-awaiting');
+  const received = document.getElementById('evidence-received');
+  if(commission.evidenceState === 'awaiting'){
+    awaiting.style.display='block';
+    received.style.display='none';
+    // pass commission to iframe
+    const iframe = document.getElementById('secure-iframe-awaiting');
+    if(iframe){
+      try{
+        const url = new URL(iframe.src);
+        url.searchParams.set('commission', commission.commissionId);
+        url.searchParams.set('founder', commission.founderName);
+        iframe.src = url.toString();
+      }catch(e){}
+    }
+  } else {
+    awaiting.style.display='none';
+    received.style.display='block';
+    document.getElementById('ev-date').textContent = commission.evidenceSubmissionDate;
+    document.getElementById('ev-count').textContent = commission.evidenceItemCount;
+    document.getElementById('ev-status').textContent = commission.evidenceReviewStatus;
+  }
+}
 
-// Edit mode
-const isEdit = location.search.includes('edit');
-if(isEdit) document.body.classList.add('is-edit');
-document.getElementById('editBadge').addEventListener('click',()=>document.getElementById('editPanel').classList.add('open'));
-document.getElementById('closeEdit').addEventListener('click',()=>document.getElementById('editPanel').classList.remove('open'));
-function buildEdit(){
-  const g=document.getElementById('editGrid');
-  g.innerHTML = `
-    <div class="edit-field"><label>Commission ID</label><input id="e-id" value="${THESIS.id}"></div>
-    <div class="edit-field"><label>Founder Name</label><input id="e-founder" value="${THESIS.founder}"></div>
-    <div class="edit-field"><label>Foundations - value 0-10</label><input id="e-f-val" type="number" min="0" max="10" value="${THESIS.progress.foundations.value}"></div>
-    <div class="edit-field"><label>Foundations - Stage</label><select id="e-f-stage"><option>Emerging</option><option>Developing</option><option>Established</option><option>Validated</option><option>Complete</option></select></div>
-    <div class="edit-field"><label>Decision Systems - value 0-10</label><input id="e-d-val" type="number" min="0" max="10" value="${THESIS.progress.decision.value}"></div>
-    <div class="edit-field"><label>Transferability - value 0-10</label><input id="e-t-val" type="number" min="0" max="10" value="${THESIS.progress.transferability.value}"></div>
-    <div class="edit-field"><label>Frameworks count</label><input id="e-fw" type="number" value="${THESIS.assets.frameworks}"></div>
-    <div class="edit-field"><label>Heuristics count</label><input id="e-he" type="number" value="${THESIS.assets.heuristics}"></div>
-  `;
-  document.getElementById('e-f-stage').value = THESIS.progress.foundations.stage;
-  g.querySelectorAll('input,select').forEach(el=>{
-    el.addEventListener('input',()=>{
-      THESIS.id=document.getElementById('e-id').value;
-      THESIS.founder=document.getElementById('e-founder').value;
-      THESIS.progress.foundations.value=parseInt(document.getElementById('e-f-val').value||0);
-      THESIS.progress.foundations.stage=document.getElementById('e-f-stage').value;
-      THESIS.progress.decision.value=parseInt(document.getElementById('e-d-val').value||0);
-      THESIS.progress.transferability.value=parseInt(document.getElementById('e-t-val').value||0);
-      THESIS.assets.frameworks=parseInt(document.getElementById('e-fw').value||0);
-      THESIS.assets.heuristics=parseInt(document.getElementById('e-he').value||0);
-      render();
+function renderSessions(){
+  const stack = document.getElementById('sessions-stack');
+  stack.innerHTML = commission.sessions.map(s=>{
+    const status = s.status;
+    let statusClass = 'upcoming';
+    let statusText = 'UPCOMING';
+    if(status==='complete'){ statusClass='complete'; statusText='COMPLETE'; }
+    if(status==='scheduled'){ statusClass='scheduled'; statusText='SCHEDULED'; }
+    const isUpcoming = status==='upcoming';
+    const dateLine = s.date ? (s.date + (s.time ? ' — ' + s.time : '')) : 'Date to be confirmed';
+    return `<div class="session-card ${status} ${isUpcoming?'upcoming':''}">
+      <div class="session-head"><div class="session-title">SESSION ${s.number} — ${s.title.toUpperCase()}</div><div class="session-status ${statusClass}">${statusText}</div></div>
+      <div class="session-date">${isUpcoming ? dateLine : 'Conducted ' + s.date}</div>
+      ${!isUpcoming ? `<div class="session-desc">${s.description}</div>` : ''}
+      ${s.note && status==='complete' ? `<div class="session-note">${s.note}</div>` : ''}
+      ${s.preparation && status==='scheduled' ? `<div class="session-prep"><div class="prep-row"><div class="k">Preparation</div><div class="v">${s.preparation}</div></div></div>` : ''}
+    </div>`;
+  }).join('');
+}
+
+function renderDocuments(){
+  const container = document.getElementById('docs-container');
+  const sections = [
+    { key:'foundation', label:'Foundation' },
+    { key:'extraction', label:'Extraction' },
+    { key:'production', label:'Production' }
+  ];
+  let html = '';
+  sections.forEach(sec=>{
+    const docs = commission.documents[sec.key] || [];
+    if(docs.length===0) return;
+    html += `<div class="doc-section"><div class="doc-section-title">${sec.label}</div>`;
+    docs.forEach(d=>{
+      const pending = !d.visible;
+      html += `<div class="doc-row">
+        <span class="doc-name ${pending?'pending':''}">${d.name}</span>
+        <span class="doc-meta">${pending ? 'Pending' : d.date}</span>
+        <span>${pending ? '' : '<a class="doc-view" href="#">View</a>'}</span>
+      </div>`;
     });
+    html += `</div><div class="divider gold" style="margin-top:16px"></div>`;
   });
+  container.innerHTML = html;
 }
-if(isEdit) buildEdit();
-document.getElementById('downloadBtn').addEventListener('click',()=>{
-  const blob = new Blob([document.documentElement.outerHTML],{type:'text/html'});
-  const url = URL.createObjectURL(blob);
-  const a=document.createElement('a');a.href=url;a.download='index.html';a.click();URL.revokeObjectURL(url);
+
+function renderCommission(){
+  const grid = document.getElementById('record-grid');
+  const useText = commission.intendedUse.join('<br>');
+  grid.innerHTML = `
+    <div class="k">Commission ID</div><div class="v mono">${commission.commissionId}</div>
+    <div class="k">Edition</div><div class="v">Thesis Ledger™</div>
+    <div class="k">Status</div><div class="v">Active</div>
+    <div class="k">Opened</div><div class="v mono">${commission.openedDate}</div>
+    <div class="k">Estimated Delivery</div><div class="v mono">${commission.estimatedDelivery}</div>
+    <div class="k" style="margin-top:16px">Founder</div><div class="v" style="margin-top:16px">${commission.founderName}</div>
+    <div class="k">Analyst</div><div class="v">${commission.analystName}</div>
+    <div class="k" style="margin-top:16px">Intended Use</div><div class="v">${useText}</div>
+  `;
+  const payTable = document.getElementById('pay-table');
+  let total = 0;
+  const rows = commission.payments.map(p=>{
+    const amountNum = parseFloat(p.amount.replace(/[^0-9.]/g,''));
+    if(!isNaN(amountNum)) total+=amountNum;
+    const isReceived = p.status==='received';
+    const icon = isReceived ? '✓' : '○';
+    const dateText = isReceived ? 'Received ' + p.date : 'Pending';
+    return `<tr><td>${p.name}</td><td>${p.amount}</td><td>${icon}  ${dateText}</td></tr>`;
+  }).join('');
+  payTable.innerHTML = rows + `<tr class="total-row"><td>Total Commission</td><td>US$${total.toLocaleString()}</td><td></td></tr>`;
+
+  document.getElementById('post-instruction').textContent = commission.postCompletionInstruction || 'To be confirmed';
+  document.getElementById('contact-email').textContent = commission.founderEmail;
+  document.getElementById('contact-comm').textContent = commission.preferredCommunication;
+  document.getElementById('contact-platform').textContent = commission.sessionPlatform;
+}
+
+function init(){
+  renderOverview();
+  renderEvidence();
+  renderSessions();
+  renderDocuments();
+  renderCommission();
+}
+init();
+
+// Navigation
+const nav = document.getElementById('nav');
+const pages = document.querySelectorAll('.page');
+nav.addEventListener('click', e=>{
+  const btn = e.target.closest('.nav-item');
+  if(!btn) return;
+  const target = btn.dataset.page;
+  document.querySelectorAll('.nav-item').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  pages.forEach(p=>p.classList.remove('active'));
+  const el = document.getElementById('page-'+target);
+  if(el){ el.classList.add('active'); window.scrollTo({top:0,behavior:'auto'}); }
+  // close mobile
+  document.getElementById('sidebar').classList.remove('open');
+  document.getElementById('sidebarOverlay').classList.remove('open');
+});
+
+// Mobile
+const hamburger = document.getElementById('hamburger');
+const sidebar = document.getElementById('sidebar');
+const overlay = document.getElementById('sidebarOverlay');
+hamburger.addEventListener('click', ()=>{
+  sidebar.classList.toggle('open');
+  overlay.classList.toggle('open');
+});
+overlay.addEventListener('click', ()=>{
+  sidebar.classList.remove('open');
+  overlay.classList.remove('open');
 });
 </script>
 </body>
