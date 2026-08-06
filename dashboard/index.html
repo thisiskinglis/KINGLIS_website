@@ -265,7 +265,31 @@ body.is-edit .edit-badge{display:block}
               <div class="phase-desc" id="h-phase-desc"></div>
               <div class="phase-what-next"><strong>What this means:</strong> <span id="phase-what-next">We are reviewing your materials to build the Decision Inventory. No action is needed from you unless noted below.</span></div>
             </div>
-            <div class="action-wrap"><div class="eyebrow">Next Action — 15 min</div><div class="action-simple"><div class="action-label">Please upload when ready:</div><ul class="action-list" id="h-action-list"></ul><div class="action-meta" id="h-action-meta"></div><div class="action-help">Send files directly to your analyst or <a href="#" onclick="document.querySelector('[data-page=messages]').click();return false;">message via Correspondence</a> — Estimated time: 15 minutes. No rush.</div></div></div>
+            <div class="action-wrap"><div class="eyebrow">Next Action — 15 min</div><div class="action-simple"><div class="action-label">Please upload when ready:</div><ul class="action-list" id="h-action-list"></ul><div class="action-meta" id="h-action-meta"></div><div class="action-help">Send files directly to your analyst or <a href="#" onclick="document.querySelector('[data-page=messages]').click();return false;">message via Correspondence</a> — Estimated time: 15 minutes. No rush.</div></div>
+              <!-- SECURE DROP - PASTE YOUR EMBED HERE -->
+              <div id="secure-drop-zone" style="margin-top:20px;background:#FFFFFF;border:1px dashed #EAE1D2;padding:22px;border-radius:2px">
+                <div style="font-family:'Inter',sans-serif;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#B0AAA2;font-weight:500;margin-bottom:10px">Secure Drop</div>
+                <div id="secure-drop-container">
+                  <!-- 
+                    PASTE YOUR DRAG-AND-DROP APP CODE HERE
+                    Examples:
+                    - Dropbox: <iframe src="https://www.dropbox.com/...">
+                    - Filestack, Uploadcare, Google Drive picker
+                    - Your custom app embed
+
+                    Example placeholder below - replace with your app:
+                  -->
+                  <div id="drop-placeholder" style="border:1px dashed #C9A84C;background:#FDFBF7;padding:28px;text-align:center;border-radius:2px;cursor:pointer" onclick="document.getElementById('file-input').click()">
+                    <div style="font-family:'Cormorant Garamond',serif;font-size:18px;color:var(--text)">Drop files here or click to upload</div>
+                    <div style="font-size:12px;color:var(--text-3);margin-top:6px">Secure • Encrypted • Private to this commission</div>
+                    <input type="file" id="file-input" multiple style="display:none">
+                    <div id="file-list" style="margin-top:12px;font-family:var(--mono);font-size:11px;color:var(--text-2)"></div>
+                  </div>
+                  <!-- END PLACEHOLDER - DELETE AND PASTE YOUR REAL APP ABOVE THIS LINE -->
+                </div>
+              </div>
+              <!-- END SECURE DROP -->
+            </div>
             <div class="timeline-editorial"><div class="eyebrow">Commission Timeline — Where we are</div><div class="tl-minimal" id="h-tl-mini"></div></div>
             <div class="observation-wrap"><div class="eyebrow">Analyst Observation</div><div class="observation-card"><div class="observation-meta"><span id="h-obs-meta"></span><span class="mono" style="font-size:9px;opacity:0.6">Private note</span></div><div class="observation-text" id="h-obs-text"></div><div class="observation-sub" id="h-obs-sub"></div></div></div>
             <div class="foot-note"><span id="f-evidence">Evidence Picture — Growing</span><span id="f-completion"></span><span id="f-analyst"></span></div>
@@ -438,6 +462,31 @@ document.getElementById('downloadBtn').addEventListener('click',()=>{
   const url = URL.createObjectURL(blob);
   const a=document.createElement('a');a.href=url;a.download='data.json';a.click();URL.revokeObjectURL(url);
 });
+
+// Simple demo for file drop - replace with your secure app
+const fileInput = document.getElementById('file-input');
+const fileList = document.getElementById('file-list');
+const dropPlaceholder = document.getElementById('drop-placeholder');
+if(fileInput){
+  fileInput.addEventListener('change', (e)=>{
+    const files = Array.from(e.target.files);
+    fileList.innerHTML = files.map(f=>`• ${f.name} (${(f.size/1024).toFixed(0)} KB)`).join('<br>');
+    // TODO: Replace this with your secure upload API call
+    // Example: uploadToSecureDrop(files)
+  });
+}
+if(dropPlaceholder){
+  dropPlaceholder.addEventListener('dragover', e=>{e.preventDefault(); dropPlaceholder.style.borderColor='#A8893D'; dropPlaceholder.style.background='#F9F5EF';});
+  dropPlaceholder.addEventListener('dragleave', e=>{dropPlaceholder.style.borderColor='#C9A84C'; dropPlaceholder.style.background='#FDFBF7';});
+  dropPlaceholder.addEventListener('drop', e=>{
+    e.preventDefault();
+    dropPlaceholder.style.borderColor='#C9A84C'; dropPlaceholder.style.background='#FDFBF7';
+    const files = Array.from(e.dataTransfer.files);
+    if(fileList) fileList.innerHTML = files.map(f=>`• ${f.name} (${(f.size/1024).toFixed(0)} KB)`).join('<br>');
+    // TODO: Replace with your secure upload
+  });
+}
+
 </script>
 </body>
 </html>
