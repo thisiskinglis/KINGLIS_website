@@ -158,64 +158,6 @@
     <div class="hidden lg:block"></div>
   </section>
 
- 
-<!-- MODAL - KEEP THIS RIGHT AFTER SECTION -->
-<div id="im-modal" class="im-modal" aria-hidden="true">
-  <div class="im-modal-backdrop" data-close></div>
-  <div class="im-modal-panel">
-    <button class="im-modal-close font-mono-label text- tracking-[0.2em] uppercase" data-close>✕</button>
-    <div class="font-mono-label text- tracking-[0.2em] uppercase opacity-40 mb-4" id="im-kicker"></div>
-    <h3 class="font-serif-display text- md:text- leading-[1.05] mb-4" id="im-title"></h3>
-    <p class="font-serif-display text- leading-[1.7] opacity-70" id="im-body"></p>
-    <div class="mt-8">
-      <div class="font-mono-label text- tracking-[0.16em] uppercase opacity-40 mt-3">Private commission. NDA by default. No templates distributed.</div>
-    </div>
-  </div>
-</div>
-
-<script>
-// === EDIT YOUR CONTENT HERE ===
-const pieces = {
-  moi: {
-    kicker:"01 / GOVERNANCE — CATALOGUE PIECE",
-    title:"Memorandum of Incorporation",
-    body:"A private articulation of how authority, ownership and decision rights actually operate in your organisation today. Commissioned against current practice, not the original draft. Includes authority map, decision thresholds, and alignment to Companies Act.",
-    subject:"Intelligence Memorandum — MOI"
-  },
-  doa: {
-    kicker:"02 / AUTHORITY — CATALOGUE PIECE",
-    title:"Delegation of Authority",
-    body:"A clear framework for who can decide what, at what financial and risk threshold, and when escalation is required. Built to stop decisions stalling or overreaching. Board-ready.",
-    subject:"Intelligence Memorandum — Delegation of Authority"
-  },
-  srr: {
-    kicker:"03 / RISK — CATALOGUE PIECE",
-    title:"Strategic Risk Register",
-    body:"Translating vague concerns into a usable register that can be reviewed, prioritized and sequenced. Designed for board discussion before risk becomes incident.",
-    subject:"Intelligence Memorandum — Strategic Risk Register"
-  }
-};
-// === NO NEED TO EDIT BELOW ===
-const modal = document.getElementById('im-modal');
-const kicker = document.getElementById('im-kicker');
-const mTitle = document.getElementById('im-title');
-const mBody = document.getElementById('im-body');
-const cta = document.getElementById('im-cta');
-function openPiece(key){
-  const p = pieces[key]; if(!p) return;
-  kicker.textContent = p.kicker; mTitle.textContent = p.title; mBody.textContent = p.body;
-  cta.href = `mailto:intelligence@thisiskinglis.com?subject=${encodeURIComponent(p.subject)}`;
-  modal.classList.add('is-open'); modal.setAttribute('aria-hidden','false'); document.body.style.overflow='hidden';
-}
-function closeModal(){
-  modal.classList.remove('is-open'); modal.setAttribute('aria-hidden','true'); document.body.style.overflow='';
-}
-document.querySelectorAll('[data-piece]').forEach(el=> el.addEventListener('click', ()=> openPiece(el.dataset.piece)));
-document.querySelectorAll('[data-close]').forEach(el=> el.addEventListener('click', closeModal));
-document.addEventListener('keydown', e=>{ if(e.key==='Escape') closeModal(); });
-</script>
-<!-- ========= END LUXE SECTION ========= -->
-
   <!-- 04 OUTCOME -->
   <section class="border-t border-[#D8D2CC] py-14 md:py-20 grid md:grid-cols-[140px_1fr] lg:grid-cols-[180px_1fr_140px] gap-8 md:gap-12">
     <div class="font-mono-label text-[10px] tracking-[0.2em] uppercase">04 / OUTCOME</div>
