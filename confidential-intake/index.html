@@ -16,22 +16,41 @@ tailwind.config={
         sans:['Inter','sans-serif'],
         mono:['JetBrains Mono','monospace']
       },
-    colors:{
-  ink:'#1E1B18',        // was #070E1A → Main text + Primary button bg
-  ink2:'#1E1B18',       // was #0E1C2E → same, primary button
-  paper:'#F1F0EB',      // was #F5F1EA → Background
-  line:'#D8D5D0',        // was rgba 12% → Borders (now solid)
-  line2:'#D8D5D0',       // was rgba 8% → Borders
-  muted:'#6E685F',      // was rgba 58% → Secondary text
-  fog:'rgba(110,104,95,0.58)', // was rgba 38% → faded secondary
-  beige:'#E8E6E1',       // was #CFC7BA → Form fields / secondary panels
-  rust:'#6E3A2E',        // NEW → Rust accents
-  buttonText:'#F1F0EB'  // NEW → Primary button text
+      colors:{
+        ink:'#1E1B18',
+        ink2:'#1E1B18',
+        paper:'#F1F0EB',
+        line:'#D8D5D0',
+        line2:'#D8D5D0',
+        muted:'#6E685F',
+        fog:'#6E685F',
+        beige:'#E8E6E1',
+        rust:'#6E3A2E',
+        buttonText:'#F1F0EB'
       }
     }
   }
 }
 </script>
+<style>
+  body{ background:#F1F0EB; color:#1E1B18; }
+  input, textarea, select{
+    background: #E8E6E1 !important;
+    border-color: #D8D5D0 !important;
+    color:#1E1B18 !important;
+    border-radius:2px;
+  }
+  input::placeholder, textarea::placeholder{ color:rgba(110,104,95,0.6); }
+  input:focus, textarea:focus, select:focus{
+    border-color: #1E1B18 !important;
+    box-shadow:0 0 0 1px #1E1B18;
+    outline:none;
+    background: #FFFFFF !important;
+  }
+  select option{ background:#F1F0EB; color:#1E1B18; }
+  .mono-label{ font-family:'JetBrains Mono', monospace; font-size:10px; letter-spacing:0.16em; text-transform:uppercase; color:#6E685F; }
+  .section-rule{ height:1px; background:linear-gradient(90deg, #D8D5D0, transparent); }
+</style>
 <style>
   body{ background:#080F1D; color:#F5F1EA; }
   input, textarea, select{
