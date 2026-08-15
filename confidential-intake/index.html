@@ -18,13 +18,12 @@ tailwind.config={
       },
       colors:{
         ink:'#1E1B18',
-        ink2:'#1E1B18',
         paper:'#F1F0EB',
+        beige:'#E8E6E1',
         line:'#D8D5D0',
         line2:'#D8D5D0',
         muted:'#6E685F',
         fog:'#6E685F',
-        beige:'#E8E6E1',
         rust:'#6E3A2E',
         buttonText:'#F1F0EB'
       }
@@ -35,40 +34,22 @@ tailwind.config={
 <style>
   body{ background:#F1F0EB; color:#1E1B18; }
   input, textarea, select{
-    background: #E8E6E1 !important;
-    border-color: #D8D5D0 !important;
+    background:#E8E6E1 !important;
+    border-color:#D8D5D0 !important;
     color:#1E1B18 !important;
-    border-radius:2px;
+    border-radius:6px;
   }
-  input::placeholder, textarea::placeholder{ color:rgba(110,104,95,0.6); }
+  input::placeholder, textarea::placeholder{ color:rgba(110,104,95,0.5); }
   input:focus, textarea:focus, select:focus{
-    border-color: #1E1B18 !important;
+    border-color:#1E1B18 !important;
     box-shadow:0 0 0 1px #1E1B18;
     outline:none;
-    background: #FFFFFF !important;
+    background:#FFFFFF !important;
   }
+  select{ -webkit-appearance:none; appearance:none; background-image:url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%236E685F' stroke-width='1.2'/%3E%3C/svg%3E"); background-repeat:no-repeat; background-position:right 16px center; }
   select option{ background:#F1F0EB; color:#1E1B18; }
   .mono-label{ font-family:'JetBrains Mono', monospace; font-size:10px; letter-spacing:0.16em; text-transform:uppercase; color:#6E685F; }
-  .section-rule{ height:1px; background:linear-gradient(90deg, #D8D5D0, transparent); }
-</style>
-<style>
-  body{ background:#080F1D; color:#F5F1EA; }
-  input, textarea, select{
-    background: rgba(245,241,234,0.04) !important;
-    border-color: rgba(245,241,234,0.14) !important;
-    color:#F5F1EA !important;
-    border-radius:2px;
-  }
-  input::placeholder, textarea::placeholder{ color:rgba(245,241,234,0.32); }
-  input:focus, textarea:focus, select:focus{
-    border-color: rgba(245,241,234,0.4) !important;
-    box-shadow:0 0 0 1px rgba(245,241,234,0.4);
-    outline:none;
-    background: rgba(245,241,234,0.07) !important;
-  }
-  select option{ background:#0E1C2E; }
-  .mono-label{ font-family:'JetBrains Mono', monospace; font-size:10px; letter-spacing:0.16em; text-transform:uppercase; color:rgba(245,241,234,0.42); }
-  .section-rule{ height:1px; background:linear-gradient(90deg, rgba(245,241,234,0.18), transparent); }
+  .cb-box{ accent-color:#1E1B18; }
 </style>
 </head>
 <body class="min-h-screen antialiased">
@@ -83,22 +64,24 @@ tailwind.config={
   </header>
 
   <main class="mx-auto px-6 md:px-10 py-16 md:py-24" style="max-width:860px">
-    <!-- Header -->
     <div class="mb-16 md:mb-20">
-      <div class="mono-label mb-6">KINGLIS / CONFIDENTIAL INTAKE™ / REQUIRED PRIOR TO ANY ENGAGEMENT</div>
+      <div class="mono-label mb-6">KINGLIS / CONFIDENTIAL INTAKE™</div>
       <h1 class="font-serif font-medium leading-[0.95] tracking-tight" style="font-size:clamp(42px,5vw,64px)">Confidential<br>Intake™</h1>
       <div class="mt-8 grid md:grid-cols-[1.2fr_0.8fr] gap-10 border-t border-line pt-8">
-        <p class="leading-7 text-[15px] text-muted" style="max-width:52ch">Every KINGLIS engagement begins with a Confidential Intake. Before findings, investigative work or advisory can begin, we establish an initial understanding of the organisation, the circumstances, and the decisions that depend on clarity.</p>
-        <p class="leading-6 text-[13px] text-fog font-mono">This is not an assessment or consultation. It enables KINGLIS to determine whether the matter falls within our field of work and whether a Business X-Ray™ or another engagement is appropriate.<br><br>DO NOT SUBMIT CONFIDENTIAL DOCUMENTS AT THIS STAGE.</p>
+        <div class="space-y-4">
+          <p class="leading-7 text-[18px] font-medium">Every KINGLIS engagement begins here.</p>
+          <p class="leading-7 text-[15px] text-muted" style="max-width:52ch">The Confidential Intake gives us enough context to understand what is happening, what needs to be understood, and whether KINGLIS is the right fit.</p>
+          <p class="leading-6 text-[14px] text-muted">This is not an assessment or consultation. No findings or advice are provided at this stage.</p>
+        </div>
+        <p class="leading-6 text-[11px] text-rust font-mono border border-rust/20 bg-rust/5 p-3 rounded-[6px]">DO NOT SUBMIT CONFIDENTIAL DOCUMENTS, PRIVILEGED MATERIAL OR SENSITIVE PERSONAL INFORMATION AT THIS STAGE.</p>
       </div>
     </div>
 
-    <form id="intakeForm" action="https://formspree.io/f/xnjeyryd" method="POST" class="space-y-24">
+    <form id="intakeForm" action="https://formspree.io/f/xnjeyryd" method="POST" class="space-y-20">
 
-      <!-- 01 -->
       <section>
         <div class="flex items-baseline justify-between border-b border-line pb-4 mb-10">
-          <div class="flex items-baseline gap-4"><span class="font-mono text-beige" style="font-size:11px">[01]</span><h2 class="font-serif text-[22px]">Your Details</h2></div>
+          <div class="flex items-baseline gap-4"><span class="font-mono text-rust" style="font-size:11px">[01]</span><h2 class="font-serif text-[26px]">Your Details</h2></div>
           <span class="mono-label">IDENTITY / AUTHORITY</span>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -111,137 +94,142 @@ tailwind.config={
         </div>
       </section>
 
-      <!-- 02 -->
       <section>
         <div class="flex items-baseline justify-between border-b border-line pb-4 mb-10">
-          <div class="flex items-baseline gap-4"><span class="font-mono text-beige" style="font-size:11px">[02]</span><h2 class="font-serif text-[22px]">Organisational Context</h2></div>
-          <span class="mono-label">STRUCTURE / SCALE</span>
+          <div class="flex items-baseline gap-4"><span class="font-mono text-rust" style="font-size:11px">[02]</span><h2 class="font-serif text-[26px]">Organisation</h2></div>
+          <span class="mono-label">CONTEXT / SCALE</span>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div><label class="mono-label block mb-2">Employees *</label><select required name="employeeCount" class="w-full border px-4 py-3.5 text-[14px]"><option value="" disabled selected>Select one</option><option>1–10</option><option>11–25</option><option>26–50</option><option>51–100</option><option>101–250</option><option>251+</option></select></div>
+          <div><label class="mono-label block mb-2">Number of Employees *</label><select required name="employeeCount" class="w-full border px-4 py-3.5 text-[14px] pr-10"><option value="" disabled selected>Select one</option><option>1–10</option><option>11–25</option><option>26–50</option><option>51–100</option><option>101–250</option><option>251+</option></select></div>
           <div><label class="mono-label block mb-2">Primary Country *</label><input required name="country" type="text" class="w-full border px-4 py-3.5 text-[14px]" placeholder="Country" /></div>
-          <div class="md:col-span-2"><label class="mono-label block mb-2">Multi-entity / office / country? *</label><select required name="multiEntity" class="w-full border px-4 py-3.5 text-[14px]"><option value="" disabled selected>Select one</option><option>No</option><option>Yes — multiple entities</option><option>Yes — multiple offices</option><option>Yes — multiple countries</option><option>Yes — a combination</option></select></div>
+          <div class="md:col-span-2"><label class="mono-label block mb-2">Does the organisation operate across multiple entities, offices or countries? *</label><select required name="multiEntity" class="w-full border px-4 py-3.5 text-[14px] pr-10"><option value="" disabled selected>Select one</option><option>No</option><option>Yes — multiple entities</option><option>Yes — multiple offices</option><option>Yes — multiple countries</option><option>Yes — a combination</option></select></div>
           <div class="md:col-span-2 mt-2">
-            <label class="mono-label block mb-3">Areas Directly Involved * — Select All That Apply</label>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-3 border border-line2 p-5 bg-beige">
-              <label class="flex gap-3 text-[13px] text-muted"><input type="checkbox" name="areas" value="Strategy" class="mt-1"> Strategy</label>
-              <label class="flex gap-3 text-[13px] text-muted"><input type="checkbox" name="areas" value="Structure" class="mt-1"> Structure</label>
-              <label class="flex gap-3 text-[13px] text-muted"><input type="checkbox" name="areas" value="Governance" class="mt-1"> Governance</label>
-              <label class="flex gap-3 text-[13px] text-muted"><input type="checkbox" name="areas" value="Operations" class="mt-1"> Operations</label>
-              <label class="flex gap-3 text-[13px] text-muted"><input type="checkbox" name="areas" value="Leadership" class="mt-1"> Leadership</label>
-              <label class="flex gap-3 text-[13px] text-muted"><input type="checkbox" name="areas" value="Performance" class="mt-1"> Performance</label>
-              <label class="flex gap-3 text-[13px] text-muted"><input type="checkbox" name="areas" value="Decision-making" class="mt-1"> Decision-making</label>
-              <label class="flex gap-3 text-[13px] text-muted"><input type="checkbox" name="areas" value="Reporting" class="mt-1"> Reporting and information</label>
-              <label class="flex gap-3 text-[13px] text-muted"><input type="checkbox" name="areas" value="Roles" class="mt-1"> Roles and accountability</label>
-              <label class="flex gap-3 text-[13px] text-muted"><input type="checkbox" name="areas" value="Cross-functional" class="mt-1"> Cross-functional coordination</label>
-              <label class="flex gap-3 text-[13px] text-muted"><input type="checkbox" name="areas" value="Knowledge" class="mt-1"> Organisational knowledge</label>
-              <label class="flex gap-3 text-[13px] text-muted"><input type="checkbox" name="areas" value="Other" class="mt-1"> Other</label>
+            <label class="mono-label block mb-3">Which areas appear relevant? * — Select all that apply.</label>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-3 border border-line p-5 bg-beige rounded-[8px]">
+              <label class="flex gap-3 text-[13px] text-muted"><input type="checkbox" name="areas" value="Strategy" class="cb-box mt-1"> Strategy</label>
+              <label class="flex gap-3 text-[13px] text-muted"><input type="checkbox" name="areas" value="Structure" class="cb-box mt-1"> Structure</label>
+              <label class="flex gap-3 text-[13px] text-muted"><input type="checkbox" name="areas" value="Governance" class="cb-box mt-1"> Governance</label>
+              <label class="flex gap-3 text-[13px] text-muted"><input type="checkbox" name="areas" value="Operations" class="cb-box mt-1"> Operations</label>
+              <label class="flex gap-3 text-[13px] text-muted"><input type="checkbox" name="areas" value="Leadership" class="cb-box mt-1"> Leadership</label>
+              <label class="flex gap-3 text-[13px] text-muted"><input type="checkbox" name="areas" value="Performance" class="cb-box mt-1"> Performance</label>
+              <label class="flex gap-3 text-[13px] text-muted"><input type="checkbox" name="areas" value="Decision-making" class="cb-box mt-1"> Decision-making</label>
+              <label class="flex gap-3 text-[13px] text-muted"><input type="checkbox" name="areas" value="Reporting & information" class="cb-box mt-1"> Reporting & information</label>
+              <label class="flex gap-3 text-[13px] text-muted"><input type="checkbox" name="areas" value="Roles & accountability" class="cb-box mt-1"> Roles & accountability</label>
+              <label class="flex gap-3 text-[13px] text-muted"><input type="checkbox" name="areas" value="Cross-functional coordination" class="cb-box mt-1"> Cross-functional coordination</label>
+              <label class="flex gap-3 text-[13px] text-muted"><input type="checkbox" name="areas" value="Organisational knowledge" class="cb-box mt-1"> Organisational knowledge</label>
+              <label class="flex gap-3 text-[13px] text-muted"><input type="checkbox" name="areas" value="Other / Not yet clear" class="cb-box mt-1"> Other / Not yet clear</label>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- 03 -->
       <section>
-        <div class="flex items-baseline justify-between border-b border-line pb-4 mb-3">
-          <div class="flex items-baseline gap-4"><span class="font-mono text-beige" style="font-size:11px">[03]</span><h2 class="font-serif text-[22px]">What Needs To Be Understood</h2></div>
-          <span class="mono-label">THIS IS THE IMPORTANT PART</span>
+        <div class="flex items-baseline justify-between border-b border-line pb-4 mb-10">
+          <div class="flex items-baseline gap-4"><span class="font-mono text-rust" style="font-size:11px">[03]</span><h2 class="font-serif text-[26px]">The Matter</h2></div>
+          <span class="mono-label">WHAT NEEDS TO BE UNDERSTOOD</span>
         </div>
-        <div class="space-y-8 mt-10">
-          <div><label class="block font-medium mb-3" style="font-size:14px">What prompted you to seek an external perspective? *</label><textarea required name="prompt" rows="4" class="w-full border px-4 py-3.5 text-[14px] leading-7"></textarea><p class="mono-label mt-2 normal-case">Describe the situation, event, pattern or uncertainty that led you here.</p></div>
-          <div><label class="block font-medium mb-3" style="font-size:14px">What is the single most important question you need answered? *</label><textarea required name="singleQuestion" rows="3" class="w-full border px-4 py-3.5 text-[14px] leading-7"></textarea><p class="mono-label mt-2 normal-case">If KINGLIS could establish clarity around one matter, what should it be?</p></div>
-          <div><label class="block font-medium mb-3" style="font-size:14px">What decisions currently depend upon reaching that understanding? *</label><textarea required name="dependentDecisions" rows="3" class="w-full border px-4 py-3.5 text-[14px] leading-7"></textarea></div>
-          <div><label class="block font-medium mb-3" style="font-size:14px">What have you already tried? *</label><textarea required name="tried" rows="3" class="w-full border px-4 py-3.5 text-[14px] leading-7"></textarea><p class="mono-label mt-2 normal-case">Include any internal discussions, restructuring, systems, consultants, policies.</p></div>
-          <div><label class="block font-medium mb-3" style="font-size:14px">What would happen if the matter remained unresolved for 6 months? *</label><textarea required name="ifUnresolved" rows="3" class="w-full border px-4 py-3.5 text-[14px] leading-7"></textarea></div>
-          <div><label class="mono-label block mb-2">How urgent is the matter? *</label><select required name="urgency" class="w-full border px-4 py-3.5 text-[14px]"><option value="" disabled selected>Select one</option><option>Immediate — a decision is pending</option><option>Within 30 days</option><option>Within 90 days</option><option>Important, but not time-critical</option><option>Not yet established</option></select></div>
+        <div class="space-y-8">
+          <div><label class="block font-medium mb-3" style="font-size:14px">What is happening? *</label><textarea required name="whatHappening" rows="4" class="w-full border px-4 py-3.5 text-[14px] leading-7" placeholder="Describe the problem, pattern, event or uncertainty that brought you here."></textarea></div>
+          <div><label class="block font-medium mb-3" style="font-size:14px">What needs to be understood? *</label><textarea required name="needsUnderstood" rows="3" class="w-full border px-4 py-3.5 text-[14px] leading-7" placeholder="What currently does not make sense, remain unclear, or require an independent view?"></textarea></div>
+          <div><label class="block font-medium mb-3" style="font-size:14px">What decision, action or outcome depends on resolving it? *</label><textarea required name="dependsOn" rows="3" class="w-full border px-4 py-3.5 text-[14px] leading-7" placeholder="Tell us what cannot responsibly move forward without greater clarity."></textarea></div>
+          <div><label class="block font-medium mb-3" style="font-size:14px">What has already been tried?</label><textarea name="tried" rows="3" class="w-full border px-4 py-3.5 text-[14px] leading-7" placeholder="Include relevant internal discussions, changes, systems, policies, consultants or other interventions."></textarea></div>
+          <div><label class="block font-medium mb-3" style="font-size:14px">What happens if nothing changes? *</label><textarea required name="ifNothingChanges" rows="3" class="w-full border px-4 py-3.5 text-[14px] leading-7" placeholder="Briefly describe the likely consequence if the matter remains unresolved."></textarea></div>
+          <div><label class="mono-label block mb-2">How urgent is the matter? *</label><select required name="urgency" class="w-full border px-4 py-3.5 text-[14px] pr-10"><option value="" disabled selected>Select one</option><option>Immediate — a decision is pending</option><option>Within 30 days</option><option>Within 90 days</option><option>Important, but not time-critical</option><option>Not yet established</option></select></div>
         </div>
       </section>
 
-      <!-- 04 -->
       <section>
         <div class="flex items-baseline justify-between border-b border-line pb-4 mb-10">
-          <div class="flex items-baseline gap-4"><span class="font-mono text-beige" style="font-size:11px">[04]</span><h2 class="font-serif text-[22px]">Available Evidence</h2></div>
-          <span class="mono-label">EVIDENCE-LED / NO DECKS</span>
+          <div class="flex items-baseline gap-4"><span class="font-mono text-rust" style="font-size:11px">[04]</span><h2 class="font-serif text-[26px]">Available Evidence</h2></div>
+          <span class="mono-label">WHAT ALREADY EXISTS</span>
         </div>
-        <p class="font-mono text-[11px] leading-5 text-fog mb-8" style="max-width:62ch">KINGLIS is evidence-led. At this stage, indicate what material exists. Do not submit confidential documents until fit is confirmed and handling instructions are provided.</p>
+        <p class="font-mono text-[11px] leading-5 text-muted mb-8" style="max-width:62ch">KINGLIS works from evidence. At this stage, we only need to understand what material may be available. Do not upload documents yet.</p>
         <div class="space-y-8">
           <div>
-            <label class="mono-label block mb-3">Forms of evidence currently available? *</label>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-3 border border-line2 p-5 bg-white/[0.02]">
-              <label class="flex gap-3 text-[13px] text-muted"><input type="checkbox" name="evidence" value="Org charts" class="mt-1"> Organisation charts</label>
-              <label class="flex gap-3 text-[13px] text-muted"><input type="checkbox" name="evidence" value="Role descriptions" class="mt-1"> Role descriptions</label>
-              <label class="flex gap-3 text-[13px] text-muted"><input type="checkbox" name="evidence" value="Policies" class="mt-1"> Policies and procedures</label>
-              <label class="flex gap-3 text-[13px] text-muted"><input type="checkbox" name="evidence" value="Management reports" class="mt-1"> Management reports</label>
-              <label class="flex gap-3 text-[13px] text-muted"><input type="checkbox" name="evidence" value="KPI reports" class="mt-1"> Performance / KPI reports</label>
-              <label class="flex gap-3 text-[13px] text-muted"><input type="checkbox" name="evidence" value="Meeting minutes" class="mt-1"> Meeting minutes</label>
-              <label class="flex gap-3 text-[13px] text-muted"><input type="checkbox" name="evidence" value="Decision records" class="mt-1"> Decision records</label>
-              <label class="flex gap-3 text-[13px] text-muted"><input type="checkbox" name="evidence" value="Workflow" class="mt-1"> Workflow / process docs</label>
-              <label class="flex gap-3 text-[13px] text-muted"><input type="checkbox" name="evidence" value="Internal comms" class="mt-1"> Internal communications</label>
-              <label class="flex gap-3 text-[13px] text-muted"><input type="checkbox" name="evidence" value="Strategic plans" class="mt-1"> Strategic plans</label>
-              <label class="flex gap-3 text-[13px] text-muted"><input type="checkbox" name="evidence" value="System exports" class="mt-1"> System exports</label>
-              <label class="flex gap-3 text-[13px] text-muted"><input type="checkbox" name="evidence" value="Contracts" class="mt-1"> Contracts / legal docs</label>
-              <label class="flex gap-3 text-[13px] text-muted"><input type="checkbox" name="evidence" value="Feedback" class="mt-1"> Employee / stakeholder feedback</label>
-              <label class="flex gap-3 text-[13px] text-muted"><input type="checkbox" name="evidence" value="Other" class="mt-1"> Other / Not yet known</label>
+            <label class="mono-label block mb-3">What forms of evidence are available? *</label>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-3 border border-line p-5 bg-beige rounded-[8px]">
+              <label class="flex gap-3 text-[13px] text-muted"><input type="checkbox" name="evidence" value="Organisation charts" class="cb-box mt-1"> Organisation charts</label>
+              <label class="flex gap-3 text-[13px] text-muted"><input type="checkbox" name="evidence" value="Role descriptions" class="cb-box mt-1"> Role descriptions</label>
+              <label class="flex gap-3 text-[13px] text-muted"><input type="checkbox" name="evidence" value="Policies & procedures" class="cb-box mt-1"> Policies & procedures</label>
+              <label class="flex gap-3 text-[13px] text-muted"><input type="checkbox" name="evidence" value="Management reports" class="cb-box mt-1"> Management reports</label>
+              <label class="flex gap-3 text-[13px] text-muted"><input type="checkbox" name="evidence" value="Performance / KPI reports" class="cb-box mt-1"> Performance / KPI reports</label>
+              <label class="flex gap-3 text-[13px] text-muted"><input type="checkbox" name="evidence" value="Meeting minutes" class="cb-box mt-1"> Meeting minutes</label>
+              <label class="flex gap-3 text-[13px] text-muted"><input type="checkbox" name="evidence" value="Decision or approval records" class="cb-box mt-1"> Decision or approval records</label>
+              <label class="flex gap-3 text-[13px] text-muted"><input type="checkbox" name="evidence" value="Workflow / process documents" class="cb-box mt-1"> Workflow / process documents</label>
+              <label class="flex gap-3 text-[13px] text-muted"><input type="checkbox" name="evidence" value="Internal communications" class="cb-box mt-1"> Internal communications</label>
+              <label class="flex gap-3 text-[13px] text-muted"><input type="checkbox" name="evidence" value="Strategic plans" class="cb-box mt-1"> Strategic plans</label>
+              <label class="flex gap-3 text-[13px] text-muted"><input type="checkbox" name="evidence" value="System records / exports" class="cb-box mt-1"> System records / exports</label>
+              <label class="flex gap-3 text-[13px] text-muted"><input type="checkbox" name="evidence" value="Contracts / legal documents" class="cb-box mt-1"> Contracts / legal documents</label>
+              <label class="flex gap-3 text-[13px] text-muted"><input type="checkbox" name="evidence" value="Employee / stakeholder feedback" class="cb-box mt-1"> Employee / stakeholder feedback</label>
+              <label class="flex gap-3 text-[13px] text-muted"><input type="checkbox" name="evidence" value="Other" class="cb-box mt-1"> Other</label>
+              <label class="flex gap-3 text-[13px] text-muted"><input type="checkbox" name="evidence" value="Not yet known" class="cb-box mt-1"> Not yet known</label>
             </div>
           </div>
-          <div><label class="mono-label block mb-2">Is material held in one place? *</label><select required name="evidenceLocation" class="w-full border px-4 py-3.5 text-[14px]"><option value="" disabled selected>Select one</option><option>Yes, substantially</option><option>Partially</option><option>No, fragmented across people/systems</option><option>Not known</option></select></div>
-          <div><label class="mono-label block mb-2">Confidentiality / legal / access restrictions?</label><textarea name="restrictions" rows="2" class="w-full border px-4 py-3.5 text-[14px]" placeholder="Identify only the nature of the restriction. Do not include privileged content."></textarea></div>
+          <div><label class="mono-label block mb-2">Is the relevant material held in one place? *</label><select required name="materialHeld" class="w-full border px-4 py-3.5 text-[14px] pr-10"><option value="" disabled selected>Select one</option><option>Yes, substantially</option><option>Partially</option><option>No, fragmented across people/systems</option><option>Not known</option></select></div>
+          <div><label class="mono-label block mb-2">Are there any confidentiality, legal or access restrictions we should know about?</label><textarea name="restrictions" rows="2" class="w-full border px-4 py-3.5 text-[14px]" placeholder="Identify only the nature of the restriction. Do not include privileged or confidential content."></textarea></div>
         </div>
       </section>
 
-      <!-- 05 -->
       <section>
         <div class="flex items-baseline justify-between border-b border-line pb-4 mb-10">
-          <div class="flex items-baseline gap-4"><span class="font-mono text-beige" style="font-size:11px">[05]</span><h2 class="font-serif text-[22px]">Authority and Involvement</h2></div>
-          <span class="mono-label">DECISION / ACCESS</span>
+          <div class="flex items-baseline gap-4"><span class="font-mono text-rust" style="font-size:11px">[05]</span><h2 class="font-serif text-[26px]">Authority & Access</h2></div>
+          <span class="mono-label">COMMISSIONING / PARTICIPATION</span>
         </div>
         <div class="space-y-6">
-          <div><label class="mono-label block mb-2">Role in commissioning? *</label><select required name="commissioningRole" class="w-full border px-4 py-3.5 text-[14px]"><option value="" disabled selected>Select one</option><option>I am authorised to commission</option><option>I am the principal decision-maker</option><option>I am evaluating for another decision-maker</option><option>I would require internal approval</option><option>Other</option></select></div>
-          <div><label class="mono-label block mb-2">Who else would need to participate / approve?</label><textarea name="otherStakeholders" rows="2" class="w-full border px-4 py-3.5 text-[14px]" placeholder="Roles or functions are sufficient. Names optional."></textarea></div>
-          <div><label class="mono-label block mb-2">Would execs be available for factual input? *</label><select required name="availability" class="w-full border px-4 py-3.5 text-[14px]"><option value="" disabled selected>Select one</option><option>Yes</option><option>Probably</option><option>Uncertain</option><option>No</option></select></div>
+          <div><label class="mono-label block mb-2">What is your role in commissioning this work? *</label><select required name="commissionRole" class="w-full border px-4 py-3.5 text-[14px] pr-10"><option value="" disabled selected>Select one</option><option>I am authorised to commission</option><option>I am the principal decision-maker</option><option>I am evaluating for another decision-maker</option><option>I would require internal approval</option><option>Other</option></select></div>
+          <div><label class="mono-label block mb-2">Who else would need to approve or participate?</label><textarea name="whoElse" rows="2" class="w-full border px-4 py-3.5 text-[14px]" placeholder="Roles or functions are sufficient. Names are optional."></textarea></div>
+          <div><label class="mono-label block mb-2">Would relevant leaders or stakeholders be available for factual input if required? *</label><select required name="leadersAvailable" class="w-full border px-4 py-3.5 text-[14px] pr-10"><option value="" disabled selected>Select one</option><option>Yes</option><option>Probably</option><option>Uncertain</option><option>No</option></select></div>
         </div>
       </section>
 
-      <!-- 06 -->
       <section>
         <div class="flex items-baseline justify-between border-b border-line pb-4 mb-10">
-          <div class="flex items-baseline gap-4"><span class="font-mono text-beige" style="font-size:11px">[06]</span><h2 class="font-serif text-[22px]">Source</h2></div>
-          <span class="mono-label">ATTRIBUTION</span>
+          <div class="flex items-baseline gap-4"><span class="font-mono text-rust" style="font-size:11px">[06]</span><h2 class="font-serif text-[26px]">Source</h2></div>
+          <span class="mono-label">HOW YOU FOUND KINGLIS</span>
         </div>
         <div class="grid md:grid-cols-2 gap-6">
-          <div><label class="mono-label block mb-2">How did you find KINGLIS? *</label><select required id="sourceSelect" name="source" class="w-full border px-4 py-3.5 text-[14px]"><option value="" disabled selected>Select one</option><option>Direct email from KINGLIS</option><option>LinkedIn</option><option>Upwork</option><option>Referral</option><option>Search engine</option><option>KINGLIS website / publication</option><option>Previous engagement</option><option>Instantly / Cold Email</option><option>Other</option></select></div>
+          <div><label class="mono-label block mb-2">How did you find KINGLIS? *</label><select required id="sourceSelect" name="source" class="w-full border px-4 py-3.5 text-[14px] pr-10"><option value="" disabled selected>Select one</option><option>Direct email from KINGLIS</option><option>LinkedIn</option><option>Upwork</option><option>Referral</option><option>Search engine</option><option>KINGLIS website / publication</option><option>Previous engagement</option><option>Instantly / Cold Email</option><option>Other</option></select></div>
           <div id="referrerWrap" class="hidden"><label class="mono-label block mb-2">Referred by?</label><input name="introducedBy" type="text" class="w-full border px-4 py-3.5 text-[14px]" placeholder="Optional" /></div>
-          <div id="refCodeWrap" class="md:col-span-2 hidden"><label class="mono-label block mb-2">Private Reference (auto from URL)</label><input id="privateRef" name="privateRef" type="text" readonly class="w-full border px-4 py-3.5 text-[13px] text-fog bg-white/[0.03]" placeholder="e.g. PVT-261311" /></div>
+          <div id="refCodeWrap" class="md:col-span-2 hidden"><label class="mono-label block mb-2">Private Reference (auto from URL)</label><input id="privateRef" name="privateRef" type="text" readonly class="w-full border px-4 py-3.5 text-[13px] bg-beige" placeholder="e.g. PVT-261311" /></div>
         </div>
       </section>
 
-      <!-- 07 -->
-      <section class="border border-line p-6 md:p-8 bg-white/[0.02]">
-        <div class="flex items-baseline gap-4 mb-6"><span class="font-mono text-beige" style="font-size:11px">[07]</span><h2 class="font-serif text-[20px]">Declaration</h2></div>
-        <ul class="space-y-2 font-mono text-[11px] leading-6 text-fog list-disc pl-5">
+      <section class="border border-line p-6 md:p-8 bg-beige rounded-[12px]">
+        <div class="flex items-baseline gap-4 mb-6"><span class="font-mono text-rust" style="font-size:11px">[07]</span><h2 class="font-serif text-[22px]">Declaration</h2></div>
+        <p class="mono-label mb-4">Before submitting, please confirm:</p>
+        <ul class="space-y-2 font-mono text-[11px] leading-6 text-muted list-disc pl-5">
           <li>I am authorised to provide the information contained in this submission.</li>
-          <li>I have not included confidential documents, privileged material or unnecessary personal information.</li>
-          <li>The information may be reviewed by KINGLIS for the purpose of determining engagement fit.</li>
-          <li>I agree to handling per Privacy Policy and Terms of Service.</li>
+          <li>I have not submitted confidential documents, privileged material or unnecessary personal information.</li>
+          <li>I understand that KINGLIS may review this information solely to determine whether and how we may be able to assist.</li>
+          <li>I agree to the handling of this submission in accordance with the Privacy Policy and Terms of Service.</li>
         </ul>
         <div class="flex items-start gap-3 mt-8">
-          <input required type="checkbox" id="declarationCheck" name="declaration" class="mt-1 w-4 h-4 accent-white">
-          <label for="declarationCheck" class="leading-6 text-muted" style="font-size:13px">I confirm the above and agree to handling per <a href="/privacy-policy/" class="underline">Privacy Policy</a> and <a href="/terms-of-service/" class="underline">Terms</a>. *</label>
+          <input required type="checkbox" id="declarationCheck" name="declaration" class="mt-1 w-4 h-4 accent-[#1E1B18] cb-box">
+          <label for="declarationCheck" class="leading-6 text-muted" style="font-size:13px">I confirm the above. *</label>
         </div>
-        <button type="submit" class="mt-10 w-full md:w-auto bg-ink text-paper uppercase px-10 py-4 hover:bg-[#2A2725] transition font-medium tracking-widest" style="font-size:11px;letter-spacing:0.18em">Submit Confidential Intake™</button>
-        <p class="mt-4 mono-label">SECURE AND CONFIDENTIAL · REQUIRED FOR ALL ENGAGEMENTS</p>
+        <button type="submit" class="mt-10 w-full md:w-auto bg-ink text-paper uppercase px-10 py-4 hover:bg-black transition font-medium tracking-widest rounded-[6px]" style="font-size:11px;letter-spacing:0.18em">Submit Confidential Intake™</button>
+        <p class="mt-4 mono-label text-[9px]">PRIVATE · NO DOCUMENT UPLOAD REQUIRED · NO ENGAGEMENT CREATED BY SUBMISSION</p>
       </section>
 
-      <div class="pt-12 border-t border-line2">
-        <h3 class="font-serif mb-4 text-[18px]">What happens next</h3>
-        <p class="font-mono text-[12px] leading-6 text-fog" style="max-width:68ch">Your submission will receive a Private Reference. KINGLIS will review the circumstances, the question requiring resolution and the available evidence. You will then receive one of: request for clarification / invitation to confidential scoping / recommended pathway / confirmation outside scope. Submitting an intake does not create an advisory relationship.</p>
+      <div class="pt-12 border-t border-line max-w-[760px]">
+        <h3 class="font-serif mb-4 text-[22px]">What Happens Next</h3>
+        <p class="font-mono text-[13px] leading-6 text-muted mb-8" style="max-width:62ch">KINGLIS will review the matter, the context provided and the evidence potentially available.</p>
+        <p class="mono-label mb-4">You will receive one of four responses:</p>
+        <div class="grid gap-[1px] bg-line border border-line rounded-[8px] overflow-hidden">
+          <div class="bg-beige px-6 py-5 flex gap-6"><span class="mono-label text-rust">01</span><div><div class="text-[14px] font-medium">— Fit confirmed</div><p class="text-[13px] text-muted">We will outline the appropriate next step.</p></div></div>
+          <div class="bg-beige px-6 py-5 flex gap-6"><span class="mono-label text-rust">02</span><div><div class="text-[14px] font-medium">— Clarification required</div><p class="text-[13px] text-muted">We need limited additional information before determining fit.</p></div></div>
+          <div class="bg-beige px-6 py-5 flex gap-6"><span class="mono-label text-rust">03</span><div><div class="text-[14px] font-medium">— Alternative scope recommended</div><p class="text-[13px] text-muted">The matter may be better addressed through a different KINGLIS engagement or scope.</p></div></div>
+          <div class="bg-beige px-6 py-5 flex gap-6"><span class="mono-label text-rust">04</span><div><div class="text-[14px] font-medium">— Outside scope</div><p class="text-[13px] text-muted">We will tell you directly if the matter falls outside our field of work.</p></div></div>
+        </div>
+        <p class="mt-8 font-mono text-[11px] leading-6 text-muted">Submitting a Confidential Intake does not create an engagement or advisory relationship. Work begins only after scope and commercial terms have been agreed.</p>
       </div>
     </form>
 
     <div id="successState" class="hidden py-16">
-      <div class="border border-line bg-ink2 p-10 md:p-14">
-        <h2 class="font-serif font-medium leading-tight" style="font-size:38px">Intake Received</h2>
-        <p class="mt-6 leading-7 text-muted font-mono text-[13px]">Your intake has been received and will undergo initial structural review. You will receive a Private Reference shortly.</p>
+      <div class="border border-line bg-beige p-10 md:p-14 rounded-[12px]">
+        <div class="mono-label text-rust mb-4">SUBMISSION RECEIVED — 01</div>
+        <h2 class="font-serif font-medium leading-tight" style="font-size:38px">Intake Received.</h2>
+        <p class="mt-6 leading-7 text-muted font-mono text-[13px]">Your intake has been received and will undergo initial review. KINGLIS will review the matter, context and evidence.</p>
       </div>
     </div>
   </main>
@@ -261,7 +249,7 @@ tailwind.config={
     if(wrap2) wrap2.classList.remove('hidden');
   }
   document.getElementById('sourceSelect')?.addEventListener('change', function(){
-    const isRef = this.value === 'Referral' || this.value.includes('Referral');
+    const isRef = this.value === 'Referral';
     document.getElementById('referrerWrap')?.classList.toggle('hidden', !isRef);
     if(r) document.getElementById('refCodeWrap')?.classList.toggle('hidden', !isRef);
   });
@@ -276,9 +264,9 @@ tailwind.config={
     btn.textContent='Sending...'; btn.disabled=true;
     const data=new FormData(form);
     try{
-      const r=await fetch(form.action,{method:'POST',body:data,headers:{'Accept':'application/json'}});
-      const j=await r.json().catch(()=>({}));
-      if(r.ok){ form.classList.add('hidden'); document.getElementById('successState').classList.remove('hidden'); window.scrollTo({top:0,behavior:'smooth'}); }
+      const res=await fetch(form.action,{method:'POST',body:data,headers:{'Accept':'application/json'}});
+      const j=await res.json().catch(()=>({}));
+      if(res.ok){ form.classList.add('hidden'); document.getElementById('successState').classList.remove('hidden'); window.scrollTo({top:0,behavior:'smooth'}); }
       else { alert('Submission error: ' + (j.error || 'Check required fields')); btn.textContent='Submit Confidential Intake™'; btn.disabled=false; }
     }catch(err){ alert('Network error: ' + err.message); btn.textContent='Submit Confidential Intake™'; btn.disabled=false; }
   });
