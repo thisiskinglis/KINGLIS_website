@@ -5,18 +5,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Business Assessment — Foundation | KINGLIS</title>
 <!-- 
-  KINGLIS BUSINESS X-RAY FOUNDATION - FINAL BLUE REPO-SAFE BUILD
-  Color: Thesis Blue #0c1826 sampled from your Thesis Ledger image
-  EDITABLE: Search for EDIT to find CTA links
-  REPO-SAFE: No Jekyll liquid, UTF-8, no external deps, works on GitHub Pages + GHL Web
+  KINGLIS BUSINESS X-RAY FOUNDATION - FINAL REPO-SAFE BUILD
+  EDITABLE: Search for EDIT to find CTA links + colors
+  Thesis Blue #0c1826 sampled from your Thesis Ledger image
 -->
 <style>
   :root{
-    --bg:#F1F0EB; /* EDIT: main blue - exact from your image */
-    --bg2:#E8E6E1; /* card blue */
-    --bg3:#8C3A2E; /* notice blue */
-    --line:#8C3A2E; /* border blue */
-    --text:#1E1B18;
+    --bg:#F1F0EB; /* EDIT: page background */
+    --bg2:#E8E6E1; /* EDIT: card background */
+    --bg3:#EDEBE6; /* EDIT: highlight card / notice bg */
+    --line:#D8D5D0; /* EDIT: border / line color */
+    --text:#0c1826; /* EDIT: Thesis Blue - main text */
     --muted:#6E685F;
     --muted2:#A0A0A0;
     --gold:#8C5A45;
@@ -32,10 +31,11 @@
   h1{font-size:clamp(32px,5vw,52px);line-height:0.95;letter-spacing:-0.03em;font-weight:700;margin:0 0 20px}
   h2{font-size:clamp(24px,3.2vw,36px);line-height:1.05;letter-spacing:-0.02em;font-weight:700;margin:0 0 16px}
   h3{font-size:14px;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);font-weight:600;margin:0 0 12px}
+  h4{font-size:15px;font-weight:700;margin:0 0 10px;letter-spacing:-0.01em}
   p{margin:0 0 16px;color:var(--text)}
   .muted{color:var(--muted)}
   .small{font-size:13px;line-height:1.5}
-  .btn{display:inline-flex;align-items:center;justify-content:center;padding:14px 22px;border-radius:8px;;font-size:13px;font-weight:600;border:1px solid var(--text);background:var(--text);color:var(--bg);cursor:pointer;transition:.2s}
+  .btn{display:inline-flex;align-items:center;justify-content:center;padding:14px 22px;border-radius:8px;font-size:13px;font-weight:600;letter-spacing:0.02em;border:1px solid var(--text);background:var(--text);color:var(--bg);cursor:pointer;transition:.2s}
   .btn:hover{opacity:.9;transform:translateY(-1px)}
   .btn-secondary{background:transparent;color:var(--text);border-color:var(--line)}
   .hero{padding:88px 0 48px;border-bottom:1px solid var(--line)}
@@ -59,17 +59,24 @@
   .spec-table{width:100%;border-collapse:collapse;margin-top:24px;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
   .spec-table th{text-align:left;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted2);padding:14px 18px;background:var(--bg3);border-bottom:1px solid var(--line)}
   .spec-table td{padding:14px 18px;font-size:14px;border-bottom:1px solid var(--line);background:var(--bg2)}
-  .steps{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--line);border:1px solid var(--line);--radius:18px;overflow:hidden;margin-top:24px}
+  .steps{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:18px;overflow:hidden;margin-top:24px}
   .steps div{background:var(--bg2);padding:22px}
   .steps b{font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted2);display:block;margin-bottom:10px}
-  .steps strong{display:block;font-size:14px;margin-bottom:8px}
+  .steps strong{display:block;font-size:14px;margin-bottom:8px;line-height:1.3}
   .steps p{font-size:13px;color:var(--muted);margin:0}
   .deliverables{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:24px}
-  .notice{background:var(--bg3);border:1px dashed var(--line);--radius:18px;padding:20px;margin-top:24px}
+  .notice{background:var(--bg3);border:1px dashed var(--line);border-radius:18px;padding:20px;margin-top:24px}
   .faq details{background:var(--bg2);border:1px solid var(--line);border-radius:12px;padding:18px 20px;margin-bottom:10px}
   .faq summary{cursor:pointer;font-weight:600;font-size:15px;list-style:none}
-  .investment-box{background:var(--text);color:var(--bg);--radius:18px;padding:28px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
-  @media(max-width:900px){.hero-grid,.two-col{grid-template-columns:1fr}.scope-strip{grid-template-columns:1fr 1fr}.lens-grid{grid-template-columns:1fr 1fr}.steps{grid-template-columns:1fr}.deliverables{grid-template-columns:1fr}}
+  .faq summary::-webkit-details-marker{display:none}
+  .investment-box{background:var(--text);color:var(--bg);border-radius:18px;padding:28px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+  @media(max-width:900px){
+    .hero-grid,.two-col{grid-template-columns:1fr}
+    .scope-strip{grid-template-columns:1fr 1fr}
+    .lens-grid{grid-template-columns:1fr 1fr}
+    .steps{grid-template-columns:1fr}
+    .deliverables{grid-template-columns:1fr}
+  }
 </style>
 </head>
 <body>
@@ -84,6 +91,7 @@
         <div class="cta-row">
           <!-- EDIT: Replace href with your Intake form URL -->
           <a href="#intake" class="btn">Begin Confidential Intake</a>
+          <!-- EDIT: Replace with your sample PDF URL -->
           <a href="/assets/sample-deliverable.pdf" class="btn btn-secondary" target="_blank" rel="noopener">View Sample Deliverables →</a>
         </div>
         <div class="qual">For one organization or bounded operating unit. One agreed central executive question. Confidential, founder-led and remote-first.</div>
@@ -159,7 +167,7 @@
   </div>
 </section>
 
-  <section>
+<section>
   <div class="wrap">
     <div class="eyebrow">What you receive</div>
     <h2>Four practical outputs from the investigation.</h2>
@@ -187,7 +195,8 @@
         <tr><td>Delivery</td><td>Within 10 business days once the information needed to begin the investigation has been received.</td></tr>
         <tr><td>Corrections</td><td>One consolidated factual-correction round</td></tr>
         <tr><td>Payment</td><td>Upfront. Payment confirms the agreed scope.</td></tr>
-      </div>
+      </tbody>
+    </table>
   </div>
 </section>
 
@@ -197,8 +206,8 @@
     <h2>A clear process from question to answer.</h2>
     <div class="steps">
       <div><b>01 - Define the problem</b><strong>We agree on the business problem or question.</strong><p>What needs to be examined, and the scope of the investigation.</p></div>
-      <div><b>02 - ather the evidence</b><strong>I identify the information needed and review what is available.</strong><p>The 10-business-day delivery period begins once I have enough relevant information to investigate the problem properly.</p></div>
-      <div><b>03 - Investigate</b><strong>I reconstruct what is actually happening.</strong><p>Examining relevant decisions, events, responsibilities, information flows and dependencies. Up to three stakeholder interviews may be used to test or clarify what the evidence.</p></div>
+      <div><b>02 - Gather the evidence</b><strong>I identify the information needed and review what is available.</strong><p>The 10-business-day delivery period begins once I have enough relevant information to investigate the problem properly.</p></div>
+      <div><b>03 - Investigate</b><strong>I reconstruct what is actually happening.</strong><p>Examining relevant decisions, events, responsibilities, information flows and dependencies. Up to three stakeholder interviews may be used to test or clarify what the evidence shows.</p></div>
       <div><b>04 - Test the findings</b><strong>I test the evidence against different explanations.</strong><p>Looking for corroboration, contradictions and underlying conditions before reaching conclusions.</p></div>
       <div><b>05 - Deliver</b><strong>You receive the findings.</strong><p>A visual map of how the problem fits together, a 90-day action plan and a confidential 60-minute meeting to discuss what it means and what should happen next.</p></div>
     </div>
@@ -209,35 +218,42 @@
   <div class="wrap">
     <div class="eyebrow">FAQ</div>
     <h2>Clarity before engagement.</h2>
-    <div class="faq">
-      <details><summary>Will this disrupt the business?</summary><p class="small muted">No. The investigation primarily uses existing information, with up to three targeted stakeholder interviews where needed.</p></details>
-      <details><summary>When does the ten-business-day period begin?</summary><p class="small muted">Once I have enough relevant information to begin the investigation properly.</p></details>
-      <details><summary>Will you tell us what needs to change?</summary><p class="small muted">Yes. The findings establish what's happening, what's causing it, what requires attention and what should happen next — including anything that should deliberately not change yet.</p></details>
-      <details><summary>What if there isn't enough evidence to reach a clear conclusion?</summary><p class="small muted">I'll say so. Uncertainty, contradictions and gaps in the evidence are reported rather than turned into unsupported conclusions.</p></details>
-      <details><summary>Can the scope change once we've started?</summary><p class="small muted">Yes. If the problem turns out to require a broader investigation, we'll agree the additional scope before proceeding.</p></details>
+    <div class="faq" style="margin-top:24px">
+      <details><summary>Will this disrupt the business?</summary><p class="small muted" style="margin-top:12px">No. The investigation primarily uses existing information, with up to three targeted stakeholder interviews where needed.</p></details>
+      <details><summary>When does the ten-business-day period begin?</summary><p class="small muted" style="margin-top:12px">Once I have enough relevant information to begin the investigation properly.</p></details>
+      <details><summary>Will you tell us what needs to change?</summary><p class="small muted" style="margin-top:12px">Yes. The findings establish what's happening, what's causing it, what requires attention and what should happen next — including anything that should deliberately not change yet.</p></details>
+      <details><summary>What if there isn't enough evidence to reach a clear conclusion?</summary><p class="small muted" style="margin-top:12px">I'll say so. Uncertainty, contradictions and gaps in the evidence are reported rather than turned into unsupported conclusions.</p></details>
+      <details><summary>Can the scope change once we've started?</summary><p class="small muted" style="margin-top:12px">Yes. If the problem turns out to require a broader investigation, we'll agree the additional scope before proceeding.</p></details>
     </div>
   </div>
 </section>
 
-<section id="intake" style="background:var(--text);color:var(--bg);padding:88px 0">
+<section id="intake" style="background:var(--text);color:var(--bg);padding:88px 0;border-bottom:none">
   <div class="wrap">
     <div class="two-col">
       <div>
         <div class="eyebrow" style="color:var(--muted2)">Confidential Intake</div>
         <h2 style="color:var(--bg)">Bring me the problem.</h2>
-        <p style="color:#444">Tell me what's happening, what doesn't make sense, and what you've already tried or considered. I'll review it confidentially and determine whether I can help.</p>
+        <p style="color:#A0A0A0">Tell me what's happening, what doesn't make sense, and what you've already tried or considered. I'll review it confidentially and determine whether I can help.</p>
         <div style="display:flex;gap:12px;margin-top:24px;flex-wrap:wrap">
+          <!-- EDIT: Replace href with your Intake form URL -->
           <a href="/confidential-intake/" class="btn" style="background:var(--bg);color:var(--text);border-color:var(--bg)">Begin Confidential Intake</a>
         </div>
       </div>
       <div>
+        <div class="card" style="background:rgba(255,255,255,0.06);border-color:rgba(255,255,255,0.12)">
+          <h3 style="color:var(--bg)">What to include</h3>
+          <p class="small" style="color:var(--muted2)">Organization / unit, central question, current symptoms, what you've tried, and any time constraints. No sensitive attachments at this stage.</p>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
   
-    <footer style="background:#0a0a0a; padding:50px 20px; text-align:center; margin-top:80px;">
-  <a href="mailto:hello@thisiskinglis.com" style="color:#fff; text-decoration:none; font-size:14px; letter-spacing:0.5px;">
-    hello@thisiskinglis.com
-  </a>
-  <p style="color:#525252; font-size:11px; margin-top:12px; letter-spacing:1px;">© 2026 KINGLIS</p>
+<footer style="background:#0a0a0a;padding:50px 20px;text-align:center;">
+  <!-- EDIT: your email -->
+  <a href="mailto:hello@thisiskinglis.com" style="color:#fff;text-decoration:none;font-size:14px;letter-spacing:0.5px;">hello@thisiskinglis.com</a>
+  <p style="color:#525252;font-size:11px;margin-top:12px;letter-spacing:1px;">© 2026 KINGLIS</p>
 </footer>
 
 </body>
