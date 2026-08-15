@@ -16,15 +16,17 @@ tailwind.config={
         sans:['Inter','sans-serif'],
         mono:['JetBrains Mono','monospace']
       },
-      colors:{
-        ink:'#070E1A',
-        ink2:'#0E1C2E',
-        paper:'#F5F1EA',
-        line:'rgba(245,241,234,0.12)',
-        line2:'rgba(245,241,234,0.08)',
-        muted:'rgba(245,241,234,0.58)',
-        fog:'rgba(245,241,234,0.38)',
-        beige:'#CFC7BA'
+    colors:{
+  ink:'#1E1B18',        // was #070E1A → Main text + Primary button bg
+  ink2:'#1E1B18',       // was #0E1C2E → same, primary button
+  paper:'#F1F0EB',      // was #F5F1EA → Background
+  line:'#D8D5D0',        // was rgba 12% → Borders (now solid)
+  line2:'#D8D5D0',       // was rgba 8% → Borders
+  muted:'#6E685F',      // was rgba 58% → Secondary text
+  fog:'rgba(110,104,95,0.58)', // was rgba 38% → faded secondary
+  beige:'#E8E6E1',       // was #CFC7BA → Form fields / secondary panels
+  rust:'#6E3A2E',        // NEW → Rust accents
+  buttonText:'#F1F0EB'  // NEW → Primary button text
       }
     }
   }
