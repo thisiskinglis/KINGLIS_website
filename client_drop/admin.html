@@ -9,10 +9,9 @@ body{margin:0;font-family:system-ui;background:#0a0a0a;color:#fff;display:flex;j
 .card{background:#141414;border:1px solid #222;border-radius:20px;padding:20px;margin-top:16px}
 input{width:100%;padding:12px;background:#0a0a0a;border:1px solid #2a2a2a;border-radius:10px;color:#fff;box-sizing:border-box;margin-top:8px}
 .drop{border:2px dashed #2a2a2a;border-radius:16px;padding:30px;text-align:center;margin-top:12px;cursor:pointer;display:block}
-.drop.drag{border-color:#fff;background:#1a1a1a}
 .btn{width:100%;padding:14px;background:#fff;color:#000;border-radius:12px;border:0;font-weight:800;cursor:pointer;margin-top:12px}
 .btn2{padding:8px 12px;background:#1e1e1e;color:#fff;border:1px solid #333;border-radius:8px;cursor:pointer;font-size:12px}
-.log{font-size:12px;color:#888;white-space:pre-wrap;margin-top:10px;max-height:200px;overflow:auto}
+.log{font-size:12px;color:#888;white-space:pre-wrap;margin-top:10px;max-height:250px;overflow:auto}
 .row{display:flex;gap:8px;align-items:flex-end}
 label{font-size:12px;color:#888;margin-top:12px;display:block}
 </style>
@@ -20,7 +19,7 @@ label{font-size:12px;color:#888;margin-top:12px;display:block}
 <body>
 <div class="wrap">
 <h2 style="letter-spacing:3px;margin:0">KINGLIS ADMIN - TRUE PUSH</h2>
-<div style="color:#666;font-size:13px">Upload + OS-level POP even when client closed browser</div>
+<div style="color:#666;font-size:13px">App ID: 052eb64e-0f35-4945-b4cb-171401e11c71</div>
 
 <div class="card">
 <label>GitHub PAT</label>
@@ -29,7 +28,7 @@ label{font-size:12px;color:#888;margin-top:12px;display:block}
 <input id="repo" value="thisiskinglis/KINGLIS_website">
 <label>Client Code</label>
 <div class="row">
-<input id="client" value="CLIENT-TEST" style="flex:1">
+<input id="client" value="CLIENT-TESTPUSH" style="flex:1">
 <button class="btn2" id="genBtn">Generate</button>
 </div>
 <label for="fileInput" class="drop" id="drop">
@@ -37,22 +36,20 @@ label{font-size:12px;color:#888;margin-top:12px;display:block}
 <input type="file" id="fileInput" multiple hidden>
 </label>
 <div id="preview"></div>
-<button class="btn" id="send">SEND + Push POP to their PC</button>
+<button class="btn" id="send">SEND + POP on their PC (even if closed)</button>
 <div class="log" id="log"></div>
 </div>
 
 <div class="card">
-<div style="font-weight:700">OneSignal Setup (once, free)</div>
-<label>OneSignal App ID</label>
-<input id="os_app_id" placeholder="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx">
-<label>OneSignal REST API Key</label>
-<input id="os_api_key" type="password" placeholder="REST API Key from Settings > Keys & IDs">
-<button class="btn2" id="saveOs" style="margin-top:10px">Save Keys</button>
-<div style="font-size:11px;color:#555;margin-top:8px">App ID goes in client page too. We save it in localStorage so you paste once.</div>
+<label>OneSignal App ID (already set)</label>
+<input id="os_app_id" value="052eb64e-0f35-4945-b4cb-171401e11c71">
+<label>OneSignal REST API Key - PASTE HERE from Settings > Keys & IDs</label>
+<input id="os_api_key" type="password" placeholder="os_v2_... paste here">
+<button class="btn2" id="saveOs" style="margin-top:10px">Save Key</button>
 </div>
 
 <div class="card" style="font-size:12px;color:#777">
-<div>Client link to send:</div>
+<div>Client link:</div>
 <div id="link" style="color:#fff;word-break:break-all;margin-top:4px"></div>
 </div>
 </div>
@@ -66,17 +63,14 @@ drop.addEventListener('dragover', e=>{e.preventDefault();drop.classList.add('dra
 drop.addEventListener('dragleave', ()=>drop.classList.remove('drag'))
 drop.addEventListener('drop', e=>{e.preventDefault();drop.classList.remove('drag');handleFiles(e.dataTransfer.files)})
 
-function genSecure(){
-  const chars='ABCDEFGHJKLMNPQRSTUVWXYZ23456789'; let r=''; for(let i=0;i<6;i++) r+=chars[Math.floor(Math.random()*chars.length)]
-  return 'CLIENT-'+r
-}
+function genSecure(){ const chars='ABCDEFGHJKLMNPQRSTUVWXYZ23456789'; let r=''; for(let i=0;i<6;i++) r+=chars[Math.floor(Math.random()*chars.length)]; return 'CLIENT-'+r }
 document.getElementById('genBtn').onclick=()=>{ document.getElementById('client').value=genSecure(); updateLink() }
 function updateLink(){ const c=document.getElementById('client').value.trim().toUpperCase()||'CLIENT-XXXXXX'; document.getElementById('link').innerText=location.origin + '/client_drop/?c=' + c }
 document.getElementById('client').addEventListener('input', updateLink); updateLink()
 
 const ids=['pat','repo','os_app_id','os_api_key']
-ids.forEach(id=>{ const el=document.getElementById(id); const v=localStorage.getItem(id); if(v) el.value=v; el.addEventListener('input',()=>localStorage.setItem(id, el.value)) })
-document.getElementById('saveOs').onclick=()=>{ ids.forEach(id=>localStorage.setItem(id, document.getElementById(id).value)); alert('Saved') }
+ids.forEach(id=>{ const el=document.getElementById(id); const v=localStorage.getItem(id); if(v && !el.value) el.value=v; el.addEventListener('input',()=>localStorage.setItem(id, el.value)) })
+document.getElementById('saveOs').onclick=()=>{ ids.forEach(id=>localStorage.setItem(id, document.getElementById(id).value)); alert('Saved - now you can send push') }
 
 function ghFetch(path, method, body){
   const [owner, repoName]=document.getElementById('repo').value.trim().split('/')
@@ -84,28 +78,22 @@ function ghFetch(path, method, body){
   return fetch(`https://api.github.com/repos/${owner}/${repoName}/contents/${path}`,{method, headers:{'Authorization':'token '+token, 'Accept':'application/vnd.github.v3+json'}, body: body?JSON.stringify(body):undefined}).then(r=>r.json())
 }
 function toBase64(file){ return new Promise(r=>{const reader=new FileReader();reader.onload=()=>r(reader.result.split(',')[1]);reader.readAsDataURL(file)}) }
-
 async function sendPush(clientCode, fileNames){
   const appId=document.getElementById('os_app_id').value.trim()
   const apiKey=document.getElementById('os_api_key').value.trim()
-  if(!appId || !apiKey){ log.textContent+='⚠ No OneSignal keys - files uploaded but no push sent\n'; return }
+  if(!apiKey){ log.textContent+='⚠ No REST API Key - upload done but no push\n'; return }
   const link = location.origin + '/client_drop/?c=' + clientCode
   const body = {
     app_id: appId,
     filters: [{field:'tag', key:'client_code', relation:'=', value: clientCode}],
     headings: {en: 'KINGLIS has sent you files'},
     contents: {en: fileNames + ' - Click to open'},
-    url: link,
-    web_url: link
+    url: link, web_url: link
   }
-  const res = await fetch('https://onesignal.com/api/v1/notifications',{
-    method:'POST',
-    headers:{'Content-Type':'application/json', 'Authorization':'Basic '+apiKey},
-    body: JSON.stringify(body)
-  }).then(r=>r.json())
-  log.textContent+=`Push response: ${JSON.stringify(res).slice(0,400)}\n`
-  if(res.id) log.textContent+=`✓ PUSH sent - Will POP on their PC even if browser closed!\n`
-  else log.textContent+=`Push error - check keys\n`
+  log.textContent+='Sending push...\n'
+  const res = await fetch('https://onesignal.com/api/v1/notifications',{method:'POST', headers:{'Content-Type':'application/json', 'Authorization':'Basic '+apiKey}, body: JSON.stringify(body)}).then(r=>r.json())
+  log.textContent+=`Push: ${JSON.stringify(res).slice(0,500)}\n`
+  if(res.id) log.textContent+=`✓ PUSH SENT - Will POP even if they closed browser!\n`
 }
 
 document.getElementById('send').onclick=async()=>{
@@ -128,8 +116,7 @@ document.getElementById('send').onclick=async()=>{
     if(Array.isArray(dirRes)){ manifest=dirRes.filter(f=>f.type==='file').map(f=>({name:f.name, url:`./files/${clientCode}/${f.name}`, time:new Date().toISOString()})) }
     const newContent=btoa(JSON.stringify(manifest, null, 2))
     await ghFetch(`client_drop/manifest_${clientCode}.json`,'PUT',{message:`Secure manifest for ${clientCode}`, content:newContent, sha:sha||undefined})
-    log.textContent+=`✓ manifest_${clientCode}.json updated\n`
-    // SEND PUSH
+    log.textContent+=`✓ Manifest updated\n`
     await sendPush(clientCode, files.map(f=>f.name).join(', '))
   }catch(err){ log.textContent+='ERROR: '+err.message+'\n' }
   btn.disabled=false
