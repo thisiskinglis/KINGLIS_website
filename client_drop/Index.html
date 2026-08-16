@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KINGLIS Docs</title>
+<style>
+body{margin:0;font-family:system-ui;background:#0a0a0a;color:#fff;display:flex;align-items:center;justify-content:center;min-height:100vh}
+.card{background:#141414;border:1px solid #222;border-radius:20px;padding:32px;max-width:420px;width:90%;text-align:center}
+.logo{font-weight:900;letter-spacing:3px;font-size:22px}
+.sub{color:#888;font-size:13px;margin:8px 0 20px}
+.btn{width:100%;padding:14px;background:#fff;color:#000;border-radius:12px;border:0;font-weight:700;cursor:pointer}
+.file{background:#1c1c1c;border:1px solid #2a2a2a;padding:12px;border-radius:12px;display:flex;justify-content:space-between;align-items:center;margin-top:10px;text-align:left}
+.file a{color:#fff;text-decoration:none;font-weight:600}
+.status{font-size:12px;color:#555;margin-top:14px}
+.pulse{width:8px;height:8px;background:#22c55e;border-radius:50%;display:inline-block;margin-right:6px;animation:pulse 2s infinite}
+@keyframes pulse{0%{opacity:1}50%{opacity:.3}100%{opacity:1}}
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="logo">KINGLIS</div>
+  <div class="sub" id="sub">Secure drop</div>
+  <button class="btn" id="enableBtn">Enable POP Notifications</button>
+  <div class="status"><span class="pulse"></span><span id="status">Waiting for files...</span></div>
+  <div id="files"></div>
+</div>
+<script>
+const params = new URLSearchParams(location.search)
+const clientCode = (params.get('c') || 'CLIENT001').toUpperCase()
+document.getElementById('sub').innerText = 'Client: ' + clientCode
+
+let seen = new Set(JSON.parse(localStorage.getItem('seen_'+clientCode) || '[]'))
+
+document.getElementById('enableBtn').onclick = async () => {
+  const p = await Notification.requestPermission()
+  if(p==='granted'){
+    document.getElementById('enableBtn').innerText='✓ POP Enabled'
+    new Notification('KINGLIS','You will get a POP when files arrive')
+  }
+}
+
+function showPop(name, url){
+  if(Notification.permission==='granted'){
+    const n = new Notification('KINGLIS has sent you files', { body: name + ' - Click to download' })
+    n.onclick = ()=> window.open(url, '_blank')
+  }
+}
+
+async function check(){
+  try{
+    const res = await fetch('./manifest.json?t='+Date.now(), {cache:'no-store'})
+    const data = await res.json()
+    const rows = data[clientCode] || []
+    const container = document.getElementById('files')
+    container.innerHTML=''
+    rows.slice().reverse().forEach(row=>{
+      const div=document.createElement('div')
+      div.className='file'
+      div.innerHTML=`<div><div style="font-size:14px">${row.name}</div><div style="font-size:11px;color:#666">${new Date(row.time).toLocaleString()}</div></div><a href="${row.url}" target="_blank" download>Download</a>`
+      container.appendChild(div)
+      if(!seen.has(row.url)){
+        seen.add(row.url)
+        showPop(row.name, row.url)
+      }
+    })
+    localStorage.setItem('seen_'+clientCode, JSON.stringify([...seen]))
+    document.getElementById('status').innerText = 'Connected - checking every 10s'
+  }catch(e){
+    document.getElementById('status').innerText='Waiting... (manifest not found yet)'
+  }
+}
+check()
+setInterval(check, 10000)
+</script>
+</body>
+</html>

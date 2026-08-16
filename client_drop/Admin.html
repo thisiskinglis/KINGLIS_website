@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KINGLIS Admin</title>
+<style>
+body{margin:0;font-family:system-ui;background:#0a0a0a;color:#fff;display:flex;justify-content:center;padding:30px 16px}
+.wrap{max-width:600px;width:100%}
+.card{background:#141414;border:1px solid #222;border-radius:20px;padding:20px;margin-top:16px}
+input{width:100%;padding:12px;background:#0a0a0a;border:1px solid #2a2a2a;border-radius:10px;color:#fff;box-sizing:border-box;margin-top:8px}
+.drop{border:2px dashed #2a2a2a;border-radius:16px;padding:30px;text-align:center;margin-top:12px;cursor:pointer}
+.btn{width:100%;padding:14px;background:#fff;color:#000;border-radius:12px;border:0;font-weight:800;cursor:pointer;margin-top:12px}
+.log{font-size:12px;color:#888;white-space:pre-wrap;margin-top:10px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<h2 style="letter-spacing:3px;margin:0">KINGLIS ADMIN</h2>
+<div style="color:#666;font-size:13px">Drop files -> they POP on client</div>
+
+<div class="card">
+<label>GitHub PAT (classic, with repo scope) - saved locally only</label>
+<input id="pat" type="password" placeholder="ghp_...">
+<label style="margin-top:12px;display:block">Repo (owner/repo)</label>
+<input id="repo" value="yourusername/thisiskinglis.com">
+<label>Client Code</label>
+<input id="client" value="CLIENT001">
+<div class="drop" id="drop">Drag & drop files here or click</div>
+<input type="file" id="fileInput" multiple style="display:none">
+<div id="preview"></div>
+<button class="btn" id="send">SEND - Commit to GitHub</button>
+<div class="log" id="log"></div>
+</div>
+
+<div class="card" style="color:#777;font-size:12px">
+Client link to send: <span id="link" style="color:#fff"></span><br><br>
+1. Create PAT: GitHub > Settings > Developer settings > Tokens (classic) > repo scope<br>
+2. This page commits files directly to your repo folder /client_drop/files/CLIENTCODE/<br>
+3. Client page polls manifest.json every 10s and shows POP
+</div>
+</div>
+
+<script>
+const drop=document.getElementById('drop'), fileInput=document.getElementById('fileInput'), preview=document.getElementById('preview'), log=document.getElementById('log')
+let files=[]
+drop.onclick=()=>fileInput.click()
+drop.ondragover=e=>{e.preventDefault();drop.style.borderColor='#fff'}
+drop.ondragleave=()=>drop.style.borderColor='#2a2a2a'
+drop.ondrop=e=>{e.preventDefault();handle(e.dataTransfer.files)}
+fileInput.onchange=e=>handle(e.target.files)
+
+function handle(list){
+  files=Array.from(list)
+  preview.innerHTML=files.map(f=>`<div style="background:#1c1c1c;padding:8px;border-radius:8px;margin-top:6px;font-size:13px">📄 ${f.name}</div>`).join('')
+}
+
+document.getElementById('client').addEventListener('input', updateLink)
+function updateLink(){
+  const c=document.getElementById('client').value.trim()||'CLIENT001'
+  document.getElementById('link').innerText=location.origin+'/client_drop/?c='+c
+}
+updateLink()
+
+// Save PAT locally
+pat.value=localStorage.getItem('gh_pat')||''
+repo.value=localStorage.getItem('gh_repo')||repo.value
+pat.addEventListener('input',()=>localStorage.setItem('gh_pat',pat.value))
+repo.addEventListener('input',()=>localStorage.setItem('gh_repo',repo.value))
+
+async function ghFetch(path, method, body){
+  const [owner, repoName] = document.getElementById('repo').value.split('/')
+  const token = document.getElementById('pat').value
+  const res = await fetch(`https://api.github.com/repos/${owner}/${repoName}/contents/${path}`,{
+    method,
+    headers:{'Authorization':'token '+token, 'Accept':'application/vnd.github.v3+json'},
+    body: body ? JSON.stringify(body) : undefined
+  })
+  return res.json()
+}
+
+async function toBase64(file){
+  return new Promise(r=>{
+    const reader=new FileReader()
+    reader.onload=()=>r(reader.result.split(',')[1])
+    reader.readAsDataURL(file)
+  })
+}
+
+document.getElementById('send').onclick=async()=>{
+  const clientCode=document.getElementById('client').value.trim().toUpperCase()
+  if(!files.length) return alert('Select files')
+  log.textContent='Uploading...
+'
+  
+  // 1. Upload each file
+  for(const file of files){
+    const b64=await toBase64(file)
+    const filePath=`client_drop/files/${clientCode}/${Date.now()}_${file.name}`
+    log.textContent+=`→ ${file.name} -> ${filePath}
+`
+    const res=await ghFetch(filePath,'PUT',{message:`Add ${file.name} for ${clientCode}`, content:b64})
+    if(res.content) log.textContent+=`✓ Committed
+`
+    else log.textContent+=`ERROR: ${JSON.stringify(res).slice(0,200)}
+`
+  }
+  
+  // 2. Update manifest.json
+  log.textContent+='Updating manifest.json...
+'
+  let manifest={}, sha=null
+  try{
+    const existing=await ghFetch('client_drop/manifest.json','GET')
+    if(existing.content){
+      manifest=JSON.parse(atob(existing.content))
+      sha=existing.sha
+    }
+  }catch(e){}
+  
+  if(!manifest[clientCode]) manifest[clientCode]=[]
+  files.forEach(f=>{
+    manifest[clientCode].push({
+      name:f.name,
+      url:`./files/${clientCode}/${Date.now()}_${f.name}`,
+      time:new Date().toISOString()
+    })
+  })
+  // Fix urls to actual committed names - we used Date.now() above, need to get last commits, simpler: re-use manifest entry with actual file names from GitHub listing is complex, so we store with correct names by rebuilding
+  // For simplicity, reload manifest after - but we already have names. The URLs above have timestamp, but we uploaded with timestamp. Let's keep it simple: we uploaded with timestamp, so manifest should match that timestamped name. We'll fix by using same timestamp
+  // Actually we need to re-upload logic with fixed timestamp - quick fix: manifest urls are wrong timestamp. So we will just list files generically and client will fetch directory via API fallback.
+  // For now, overwrite manifest with correct listing from uploaded files (we need to store exact path)
+  
+  // Rebuild manifest correctly from what we just uploaded
+  // To avoid mismatch, we will fetch directory listing via API after upload
+  try{
+    const [owner, repoName]=document.getElementById('repo').value.split('/')
+    const token=document.getElementById('pat').value
+    const dirRes=await fetch(`https://api.github.com/repos/${owner}/${repoName}/contents/client_drop/files/${clientCode}`,{
+      headers:{'Authorization':'token '+token}
+    }).then(r=>r.json())
+    const fileList=Array.isArray(dirRes)?dirRes.map(f=>({name:f.name, url:`./files/${clientCode}/${f.name}`, time:new Date().toISOString()})):[]
+    manifest[clientCode]=fileList
+  }catch(e){}
+
+  const newContent=btoa(JSON.stringify(manifest, null, 2))
+  const putRes=await ghFetch('client_drop/manifest.json','PUT',{message:`Update manifest for ${clientCode}`, content:newContent, sha:sha||undefined})
+  if(putRes.content) log.textContent+='✓ manifest.json updated - POP will happen in 10-30s (GitHub Pages deploy)
+'
+  else log.textContent+='Manifest error: '+JSON.stringify(putRes).slice(0,300)
+}
+</script>
+</body>
+</html>
