@@ -21,9 +21,8 @@ a{color:#fff}
 <p id="status" class="small">Loading secure link...</p>
 <button id="enableBtn" class="btn" style="display:none">Enable POP Notifications > Allow</button>
 <div id="files"></div>
-<p class="small">This link is private to you. Bookmark it. Files stay here to download anytime.<br>After you click Allow, you can close this window — you'll still get popups: "KINGLIS has sent you files"</p>
+<p class="small">Bookmark this link. After Allow, you can close — you'll still get: "KINGLIS has sent you files"</p>
 </div>
-
 <script>
 const params = new URLSearchParams(location.search);
 const clientCode = params.get('c');
@@ -31,8 +30,6 @@ const titleEl = document.getElementById('title');
 const statusEl = document.getElementById('status');
 const filesEl = document.getElementById('files');
 const btn = document.getElementById('enableBtn');
-
-// PUT YOUR ONESIGNAL APP ID HERE - replace this line after you create app
 const ONESIGNAL_APP_ID = '052eb64e-0f35-4945-b4cb-171401e11c71';
 
 if(!clientCode){
@@ -47,60 +44,47 @@ if(!clientCode){
 async function loadManifest(){
   try{
     const res = await fetch(`./manifest_${clientCode}.json?t=${Date.now()}`);
-    if(!res.ok) throw new Error('no manifest yet');
+    if(!res.ok) throw new Error('no manifest');
     const data = await res.json();
-    filesEl.innerHTML = '';
-    (data.files || []).reverse().forEach(f=>{
-      const div = document.createElement('div');
+    filesEl.innerHTML='';
+    (data.files||[]).reverse().forEach(f=>{
+      const div=document.createElement('div');
       div.className='file';
-      div.innerHTML = `<span>${f.name}</span><a href="${f.url}" download target="_blank">Download</a>`;
+      div.innerHTML=`<span>${f.name}</span><a href="${f.url}" download target="_blank">Download</a>`;
       filesEl.appendChild(div);
     });
-    if((data.files||[]).length===0) filesEl.innerHTML='<p class="small">No files yet — KINGLIS will drop them here.</p>';
-  }catch(e){
-    filesEl.innerHTML='<p class="small">No files yet — waiting for KINGLIS...</p>';
-  }
+  }catch(e){ filesEl.innerHTML='<p class="small">No files yet — KINGLIS will drop them here.</p>'; }
 }
 
 function initOneSignal(){
-  if(ONESIGNAL_APP_ID.includes('REPLACE')){
-    statusEl.textContent += ' | Add OneSignal App ID in index.html line 30';
-    btn.style.display='none';
-    return;
-  }
   window.OneSignalDeferred = window.OneSignalDeferred || [];
   OneSignalDeferred.push(async function(OneSignal){
-    await OneSignal.init({
-      appId: ONESIGNAL_APP_ID,
-      notifyButton: { enable: true },
-      allowLocalhostAsSecureOrigin: true,
-    });
-    // Tag this subscriber with client code so admin can target only him
-    await OneSignal.login(clientCode);
-    await OneSignal.User.addTag("client_code", clientCode);
-    
-    const permission = await OneSignal.Notifications.permission;
-    if(!permission){
+    try{
+      await OneSignal.init({ appId: ONESIGNAL_APP_ID, notifyButton: { enable: false }, allowLocalhostAsSecureOrigin: true });
+      await OneSignal.login(clientCode);
+      await OneSignal.User.addTag("client_code", clientCode);
+      const permission = await OneSignal.Notifications.permission;
+      if(!permission){
+        btn.style.display='block';
+        btn.onclick = async ()=>{
+          await OneSignal.Notifications.requestPermission();
+          statusEl.textContent='Background POP enabled for '+clientCode+' — you can now close this.';
+          btn.style.display='none';
+          try{ new Notification("KINGLIS — Background POP enabled", {body:"You'll get KINGLIS has sent you files even when closed"}); }catch(e){}
+        };
+      } else {
+        statusEl.textContent='POP enabled — you will get KINGLIS popups even when tab is closed.';
+      }
+      OneSignal.Notifications.addEventListener('click', ()=>{ window.focus(); loadManifest(); });
+    }catch(err){
+      console.error(err);
+      statusEl.textContent='OneSignal error: '+err.message;
       btn.style.display='block';
-      btn.onclick = async ()=>{
-        await OneSignal.Notifications.requestPermission();
-        statusEl.textContent = 'Background POP enabled for ' + clientCode + ' — you can now close this.';
-        btn.style.display='none';
-        // Test notification instantly
-        new Notification("KINGLIS — Background POP enabled", {body:"You'll get KINGLIS has sent you files even when closed"});
-      };
-    } else {
-      statusEl.textContent = 'POP enabled — you will get KINGLIS popups even when this tab is closed.';
+      btn.textContent='Enable POP (fallback)';
+      btn.onclick=()=>Notification.requestPermission();
     }
-    // Listen for foreground notifications - show files
-    OneSignal.Notifications.addEventListener('click', (event)=>{
-      window.focus();
-      loadManifest();
-    });
   });
 }
-
-// Poll manifest every 45 sec as backup if push missed
 setInterval(loadManifest, 45000);
 </script>
 </body>
