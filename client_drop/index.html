@@ -1,66 +1,107 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>KINGLIS Docs</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KINGLIS Secure Portal</title>
+<link rel="manifest" href="./manifest.webmanifest">
 <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
 <style>
-body{margin:0;font-family:system-ui;background:#0a0a0a;color:#fff;display:flex;align-items:center;justify-content:center;min-height:100vh;padding:20px}
-.card{background:#141414;border:1px solid #222;border-radius:20px;padding:32px;max-width:460px;width:100%;text-align:center}
-.logo{font-weight:900;letter-spacing:3px;font-size:22px}
-.sub{color:#888;font-size:13px;margin:8px 0 20px}
-.file{background:#1c1c1c;border:1px solid #2a2a2a;padding:14px;border-radius:12px;display:flex;justify-content:space-between;align-items:center;margin-top:12px;text-align:left;gap:12px}
-.file-name{font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.file-date{font-size:11px;color:#666;margin-top:2px}
-.file a{background:#fff;color:#000;padding:8px 14px;border-radius:8px;text-decoration:none;font-weight:700;font-size:13px;flex-shrink:0}
-.status{font-size:12px;color:#555;margin-top:14px}
+body{font-family:Inter,system-ui;background:#0a0a0a;color:#fff;display:flex;align-items:center;justify-content:center;min-height:100vh;margin:0}
+.card{background:#141414;border:1px solid #222;border-radius:16px;padding:32px;max-width:480px;width:90%}
+.btn{background:#fff;color:#000;padding:12px 18px;border-radius:10px;border:0;font-weight:700;cursor:pointer;width:100%;margin-top:12px}
+.small{color:#888;font-size:12px;margin-top:10px}
+.file{background:#1e1e1e;padding:12px;border-radius:10px;margin-top:8px;display:flex;justify-content:space-between;align-items:center}
+a{color:#fff}
 </style>
 </head>
 <body>
 <div class="card">
-  <div class="logo">KINGLIS</div>
-  <div class="sub" id="sub">True push active</div>
-  <div id="files"></div>
-  <div class="status" id="status">Connecting...</div>
+<h2 id="title">KINGLIS Secure Portal</h2>
+<p id="status" class="small">Loading secure link...</p>
+<button id="enableBtn" class="btn" style="display:none">Enable POP Notifications > Allow</button>
+<div id="files"></div>
+<p class="small">This link is private to you. Bookmark it. Files stay here to download anytime.<br>After you click Allow, you can close this window — you'll still get popups: "KINGLIS has sent you files"</p>
 </div>
-<script>
-const params = new URLSearchParams(location.search)
-let clientCode = (params.get('c') || '').toUpperCase().trim()
-document.getElementById('sub').innerText = clientCode ? 'Client: ' + clientCode : 'Add ?c=YOURCODE to link'
 
-window.OneSignalDeferred = window.OneSignalDeferred || [];
-OneSignalDeferred.push(async function(OneSignal) {
-  await OneSignal.init({
-    appId: "052eb64e-0f35-4945-b4cb-171401e11c71",
-  })
-  if(clientCode){
-    OneSignal.login(clientCode)
-    OneSignal.User.addTag("client_code", clientCode)
-  }
-})
-function cleanName(n){ return n.replace(/^\d+_/,'') }
-async function check(){
-  if(!clientCode) return
-  try{
-    let res = await fetch('./manifest_'+clientCode+'.json?t='+Date.now(), {cache:'no-store'})
-    let rows
-    if(res.ok) rows = await res.json()
-    else{
-      res = await fetch('./manifest.json?t='+Date.now(), {cache:'no-store'})
-      const data = await res.json(); rows = data[clientCode]||[]
-    }
-    const container = document.getElementById('files')
-    container.innerHTML=''
-    document.getElementById('status').innerText = rows.length ? 'Connected - Push active' : 'No files yet'
-    rows.slice().reverse().forEach(row=>{
-      const div=document.createElement('div')
-      div.className='file'
-      div.innerHTML=`<div class="file-name">${cleanName(row.name)}</div><a href="${row.url}" target="_blank" download>Download</a>`
-      container.appendChild(div)
-    })
-  }catch(e){ document.getElementById('status').innerText='Waiting...' }
+<script>
+const params = new URLSearchParams(location.search);
+const clientCode = params.get('c');
+const titleEl = document.getElementById('title');
+const statusEl = document.getElementById('status');
+const filesEl = document.getElementById('files');
+const btn = document.getElementById('enableBtn');
+
+// PUT YOUR ONESIGNAL APP ID HERE - replace this line after you create app
+const ONESIGNAL_APP_ID = 'REPLACE_WITH_YOUR_ONESIGNAL_APP_ID';
+
+if(!clientCode){
+  statusEl.textContent = 'Invalid link — missing ?c=CLIENT-... code';
+} else {
+  titleEl.textContent = 'KINGLIS • ' + clientCode;
+  statusEl.textContent = 'Secure link active: ' + clientCode;
+  loadManifest();
+  initOneSignal();
 }
-if(clientCode){ check(); setInterval(check, 15000) }
+
+async function loadManifest(){
+  try{
+    const res = await fetch(`./manifest_${clientCode}.json?t=${Date.now()}`);
+    if(!res.ok) throw new Error('no manifest yet');
+    const data = await res.json();
+    filesEl.innerHTML = '';
+    (data.files || []).reverse().forEach(f=>{
+      const div = document.createElement('div');
+      div.className='file';
+      div.innerHTML = `<span>${f.name}</span><a href="${f.url}" download target="_blank">Download</a>`;
+      filesEl.appendChild(div);
+    });
+    if((data.files||[]).length===0) filesEl.innerHTML='<p class="small">No files yet — KINGLIS will drop them here.</p>';
+  }catch(e){
+    filesEl.innerHTML='<p class="small">No files yet — waiting for KINGLIS...</p>';
+  }
+}
+
+function initOneSignal(){
+  if(ONESIGNAL_APP_ID.includes('REPLACE')){
+    statusEl.textContent += ' | Add OneSignal App ID in index.html line 30';
+    btn.style.display='none';
+    return;
+  }
+  window.OneSignalDeferred = window.OneSignalDeferred || [];
+  OneSignalDeferred.push(async function(OneSignal){
+    await OneSignal.init({
+      appId: ONESIGNAL_APP_ID,
+      notifyButton: { enable: true },
+      allowLocalhostAsSecureOrigin: true,
+    });
+    // Tag this subscriber with client code so admin can target only him
+    await OneSignal.login(clientCode);
+    await OneSignal.User.addTag("client_code", clientCode);
+    
+    const permission = await OneSignal.Notifications.permission;
+    if(!permission){
+      btn.style.display='block';
+      btn.onclick = async ()=>{
+        await OneSignal.Notifications.requestPermission();
+        statusEl.textContent = 'Background POP enabled for ' + clientCode + ' — you can now close this.';
+        btn.style.display='none';
+        // Test notification instantly
+        new Notification("KINGLIS — Background POP enabled", {body:"You'll get KINGLIS has sent you files even when closed"});
+      };
+    } else {
+      statusEl.textContent = 'POP enabled — you will get KINGLIS popups even when this tab is closed.';
+    }
+    // Listen for foreground notifications - show files
+    OneSignal.Notifications.addEventListener('click', (event)=>{
+      window.focus();
+      loadManifest();
+    });
+  });
+}
+
+// Poll manifest every 45 sec as backup if push missed
+setInterval(loadManifest, 45000);
 </script>
 </body>
 </html>
