@@ -3,15 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>KINGLIS Admin - True Push</title>
+<title>KINGLIS Admin — SEND + TRUE POP</title>
 <style>
-body{font-family:Inter,system-ui;background:#0a0a0a;color:#fff;padding:24px}
-.card{background:#141414;border:1px solid #222;border-radius:16px;padding:24px;max-width:720px;margin:auto;margin-bottom:20px}
-input,button{padding:12px;border-radius:10px;border:1px solid #333;background:#1a1a1a;color:#fff;width:100%;margin-top:8px;box-sizing:border-box}
-.btn{background:#fff;color:#000;font-weight:700;cursor:pointer;border:0}
-.btn-push{background:#ff3b30;color:#fff;font-weight:700;cursor:pointer;border:0;margin-top:12px}
-.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.small{color:#888;font-size:12px}
+body{font-family:Inter,system-ui;background:#0a0a0a;color:#fff;margin:0;padding:24px}
+.card{background:#141414;border:1px solid #222;border-radius:16px;padding:24px;max-width:800px;margin:0 auto 20px}
+input,button{width:100%;padding:12px;border-radius:10px;border:1px solid #333;background:#1a1a1a;color:#fff;margin-top:8px;box-sizing:border-box}
+button{background:#fff;color:#000;font-weight:800;cursor:pointer;border:0}
+button.red{background:#ff3b3b;color:#fff;margin-top:12px}
+button:disabled{opacity:0.5}
+.small{color:#888;font-size:12px;margin-top:8px}
+.file{background:#1e1e1e;padding:10px;border-radius:8px;margin-top:6px}
 </style>
 </head>
 <body>
@@ -19,133 +20,177 @@ input,button{padding:12px;border-radius:10px;border:1px solid #333;background:#1
 <h2>KINGLIS Admin — SEND + TRUE POP</h2>
 <p class="small">Drop files > SEND — client gets OS popup even if Chrome closed: "KINGLIS has sent you files"</p>
 <label>Client Code (e.g. CLIENT-SMITH-A7K9P2)</label>
-<input id="clientCode" placeholder="CLIENT-...">
-<label>Drop Files</label>
+<input id="clientCode" placeholder="CLIENT-AK47" value="CLIENT-AK47">
+<label style="margin-top:12px;display:block">Drop Files</label>
 <input type="file" id="fileInput" multiple>
 <div id="fileList" class="small"></div>
-<button id="sendBtn" class="btn">SEND Files</button>
-<button id="sendPushBtn" class="btn-push">SEND + Push POP "KINGLIS has sent you files"</button>
-<p id="log" class="small"></p>
+<button id="sendBtn">SEND Files</button>
+<button id="popBtn" class="red">SEND + Push POP "KINGLIS has sent you files"</button>
+<div id="log" class="small"></div>
 </div>
 
 <div class="card">
 <h3>Settings (saved locally)</h3>
-<div class="row">
-<div><label>GitHub PAT (for upload)</label><input id="ghToken" placeholder="ghp_..."></div>
-<div><label>GitHub Repo (owner/repo)</label><input id="ghRepo" placeholder="yourname/thisiskinglis.com"></div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+<div><label>GitHub PAT (for upload)</label><input id="pat" placeholder="ghp_..."></div>
+<div><label>GitHub Repo (owner/repo)</label><input id="repo" placeholder="thisiskinglis/KINGLIS_website"></div>
+<div><label>OneSignal App ID</label><input id="appId" placeholder="052eb64e-0f35-4945-b4cb-171401e11c71"></div>
+<div><label>OneSignal REST API Key</label><input id="restKey" placeholder="os_v2_app_..."></div>
 </div>
-<div class="row">
-<div><label>OneSignal App ID</label><input id="osAppId" placeholder="xxxxxxxx-xxxx..."></div>
-<div><label>OneSignal REST API Key</label><input id="osRest" placeholder="OS REST Key"></div>
-</div>
-<button onclick="saveKeys()" class="btn">Save Keys</button>
+<button id="saveBtn" style="margin-top:16px">Save Keys</button>
 <p class="small">Keys stay in your browser localStorage only. Never committed.</p>
 </div>
 
 <script>
-const fileInput = document.getElementById('fileInput');
-const fileList = document.getElementById('fileList');
-const log = document.getElementById('log');
-let files = [];
-fileInput.onchange = e=>{ files = [...e.target.files]; fileList.textContent = files.map(f=>f.name).join(', '); };
+const $ = id=>document.getElementById(id);
+const clientCodeEl=$('clientCode'), fileInput=$('fileInput'), fileListEl=$('fileList'), logEl=$('log');
+const patEl=$('pat'), repoEl=$('repo'), appIdEl=$('appId'), restKeyEl=$('restKey');
 
-function saveKeys(){
-  localStorage.setItem('gh_token', document.getElementById('ghToken').value);
-  localStorage.setItem('gh_repo', document.getElementById('ghRepo').value);
-  localStorage.setItem('os_app_id', document.getElementById('osAppId').value);
-  localStorage.setItem('os_rest', document.getElementById('osRest').value);
-  log.textContent='Saved!';
+function loadSettings(){
+  patEl.value=localStorage.getItem('gh_pat')||'';
+  repoEl.value=localStorage.getItem('gh_repo')||'thisiskinglis/KINGLIS_website';
+  appIdEl.value=localStorage.getItem('os_app_id')||'052eb64e-0f35-4945-b4cb-171401e11c71';
+  restKeyEl.value=localStorage.getItem('os_rest')||'';
+  clientCodeEl.value=localStorage.getItem('last_client')||'CLIENT-AK47';
 }
-window.onload=()=>{
-  document.getElementById('ghToken').value=localStorage.getItem('gh_token')||'';
-  document.getElementById('ghRepo').value=localStorage.getItem('gh_repo')||'';
-  document.getElementById('osAppId').value=localStorage.getItem('os_app_id')||'';
-  document.getElementById('osRest').value=localStorage.getItem('os_rest')||'';
+loadSettings();
+
+$('saveBtn').onclick=()=>{
+  localStorage.setItem('gh_pat', patEl.value.trim());
+  localStorage.setItem('gh_repo', repoEl.value.trim());
+  localStorage.setItem('os_app_id', appIdEl.value.trim());
+  localStorage.setItem('os_rest', restKeyEl.value.trim());
+  localStorage.setItem('last_client', clientCodeEl.value.trim());
+  logEl.textContent='Saved! Refreshing...';
+  setTimeout(()=>location.reload(),600);
 };
 
-async function uploadToGitHub(clientCode, file){
-  const token = localStorage.getItem('gh_token');
-  const repo = localStorage.getItem('gh_repo');
-  if(!token || !repo) throw new Error('Set GitHub PAT + repo in settings');
-  const path = `client_drop/files/${clientCode}/${Date.now()}_${file.name}`;
-  const content = await file.arrayBuffer().then(b=>btoa(String.fromCharCode(...new Uint8Array(b))));
-  const res = await fetch(`https://api.github.com/repos/${repo}/contents/${path}`,{
-    method:'PUT',
-    headers:{'Authorization':`Bearer ${token}`,'Content-Type':'application/json'},
-    body: JSON.stringify({message:`Upload ${file.name} for ${clientCode}`, content, branch:'main'})
-  });
-  if(!res.ok){ const t=await res.text(); throw new Error('GitHub upload failed: '+t); }
-  const json = await res.json();
-  return {name:file.name, url: json.content.download_url, path};
+let files=[];
+fileInput.onchange=()=>{
+  files=Array.from(fileInput.files);
+  fileListEl.innerHTML=files.map(f=>`<div class="file">${f.name} — ${(f.size/1024/1024).toFixed(2)} MB</div>`).join('');
+};
+
+function arrayBufferToBase64(buffer){
+  const bytes=new Uint8Array(buffer);
+  const chunkSize=0x8000;
+  let binary='';
+  for(let i=0;i<bytes.length;i+=chunkSize){
+    const chunk=bytes.subarray(i,i+chunkSize);
+    binary+=String.fromCharCode.apply(null, chunk);
+  }
+  return btoa(binary);
 }
 
-async function getAndUpdateManifest(clientCode, newFiles){
-  const token = localStorage.getItem('gh_token');
-  const repo = localStorage.getItem('gh_repo');
-  const manifestPath = `client_drop/manifest_${clientCode}.json`;
-  let existing = {client_code:clientCode, files:[]};
-  let sha=null;
+async function githubUpload(path, base64Content, message){
+  const repo=repoEl.value.trim();
+  const pat=patEl.value.trim();
+  if(!repo||!pat) throw new Error('Set GitHub PAT + repo in settings');
+  const url=`https://api.github.com/repos/${repo}/contents/${path}`;
+  // check if exists to get sha
+  let sha;
   try{
-    const r = await fetch(`https://api.github.com/repos/${repo}/contents/${manifestPath}`,{
-      headers:{'Authorization':`Bearer ${token}`}
-    });
-    if(r.ok){ const j=await r.json(); sha=j.sha; existing=JSON.parse(atob(j.content)); }
+    const res=await fetch(url,{headers:{Authorization:`token ${pat}`}});
+    if(res.ok){ const j=await res.json(); sha=j.sha; }
   }catch(e){}
-  existing.files = [...(existing.files||[]), ...newFiles];
-  existing.updated_at = new Date().toISOString();
-  const content = btoa(JSON.stringify(existing, null, 2));
-  const res = await fetch(`https://api.github.com/repos/${repo}/contents/${manifestPath}`,{
+  const body={message, content:base64Content, branch:'main'};
+  if(sha) body.sha=sha;
+  const putRes=await fetch(url,{
     method:'PUT',
-    headers:{'Authorization':`Bearer ${token}`,'Content-Type':'application/json'},
-    body: JSON.stringify({message:`Update manifest for ${clientCode}`, content, sha, branch:'main'})
+    headers:{Authorization:`token ${pat}`, 'Content-Type':'application/json'},
+    body:JSON.stringify(body)
   });
-  if(!res.ok) throw new Error('Manifest update failed');
+  const putJson=await putRes.json();
+  if(!putRes.ok) throw new Error('GitHub upload failed: '+(putJson.message||putRes.status));
+  return putJson.content.download_url || putJson.content.path;
 }
 
-async function sendOneSignalPush(clientCode, fileNames){
-  const appId = localStorage.getItem('os_app_id');
-  const rest = localStorage.getItem('os_rest');
-  if(!appId || !rest) throw new Error('Set OneSignal keys');
-  const body = {
-    app_id: appId,
-    filters: [{field:'tag', key:'client_code', relation:'=', value: clientCode}],
-    headings: {en: 'KINGLIS has sent you files'},
-    contents: {en: fileNames.join(', ') + ' — Click to download'},
-    url: `https://thisiskinglis.com/client_drop/?c=${clientCode}`,
-    chrome_web_icon: 'https://thisiskinglis.com/favicon.ico',
-    isChromeWeb: true
-  };
-  const res = await fetch('https://api.onesignal.com/notifications',{
+async function uploadAll(){
+  const clientCode=clientCodeEl.value.trim();
+  if(!clientCode) throw new Error('Enter Client Code');
+  if(files.length===0) throw new Error('Choose files');
+  localStorage.setItem('last_client', clientCode);
+  logEl.textContent=`Uploading ${files.length} file(s)...`;
+
+  const uploaded=[];
+  for(let f of files){
+    logEl.textContent=`Reading ${f.name}...`;
+    const buf=await f.arrayBuffer();
+    logEl.textContent=`Encoding ${f.name}...`;
+    const b64=arrayBufferToBase64(buf);
+    const safeName=f.name.replace(/[^a-zA-Z0-9._-]/g,'_');
+    const ghPath=`client_drop/files/${clientCode}_${safeName}`;
+    logEl.textContent=`Uploading ${f.name} to GitHub...`;
+    await githubUpload(ghPath, b64, `KINGLIS drop ${clientCode}: ${f.name}`);
+    // public Pages URL
+    const publicUrl=`https://thisiskinglis.com/client_drop/files/${clientCode}_${safeName}`;
+    uploaded.push({name:f.name, url:publicUrl, time:new Date().toISOString()});
+  }
+
+  // merge with existing manifest
+  let existing={files:[]};
+  try{
+    const repo=repoEl.value.trim();
+    const pat=patEl.value.trim();
+    const manPath=`client_drop/manifest_${clientCode}.json`;
+    const url=`https://api.github.com/repos/${repo}/contents/${manPath}`;
+    const res=await fetch(url,{headers:{Authorization:`token ${pat}`}});
+    if(res.ok){
+      const j=await res.json();
+      const content=atob(j.content.replace(/\n/g,''));
+      existing=JSON.parse(content);
+    }
+  }catch(e){}
+
+  const mergedFiles=[...(existing.files||[]), ...uploaded];
+  const manifest={client:clientCode, updated:new Date().toISOString(), files:mergedFiles};
+  const manifestB64=btoa(unescape(encodeURIComponent(JSON.stringify(manifest,null,2))));
+  await githubUpload(`client_drop/manifest_${clientCode}.json`, manifestB64, `Update manifest ${clientCode}`);
+  return mergedFiles;
+}
+
+async function sendPop(clientCode){
+  const appId=appIdEl.value.trim();
+  const rest=restKeyEl.value.trim();
+  if(!appId||!rest) throw new Error('Set OneSignal App ID + REST Key');
+  const res=await fetch('https://onesignal.com/api/v1/notifications',{
     method:'POST',
-    headers:{'Authorization':`Basic ${rest}`,'Content-Type':'application/json'},
-    body: JSON.stringify(body)
+    headers:{'Content-Type':'application/json', 'Authorization':`Basic ${rest}`},
+    body:JSON.stringify({
+      app_id:appId,
+      filters:[{field:'tag', key:'client_code', relation:'=', value:clientCode}],
+      headings:{en:'KINGLIS'},
+      contents:{en:'KINGLIS has sent you files — click to open'},
+      url:`https://thisiskinglis.com/client_drop/?c=${clientCode}`,
+      chrome_web_icon:'https://thisiskinglis.com/favicon.ico'
+    })
   });
-  const j = await res.json();
-  if(!res.ok) throw new Error('OneSignal failed: '+JSON.stringify(j));
+  const j=await res.json();
+  if(!res.ok) throw new Error('OneSignal push failed: '+JSON.stringify(j));
   return j;
 }
 
-async function handleSend(withPush){
-  const clientCode = document.getElementById('clientCode').value.trim();
-  if(!clientCode) return alert('Enter client code');
-  if(files.length===0) return alert('Select files');
-  log.textContent='Uploading '+files.length+' files...';
+$('sendBtn').onclick=async()=>{
   try{
-    const uploaded=[];
-    for(const f of files){ log.textContent=`Uploading ${f.name}...`; const u=await uploadToGitHub(clientCode,f); uploaded.push(u); }
-    await getAndUpdateManifest(clientCode, uploaded);
-    log.textContent='Files uploaded to GitHub. '+ (withPush ? 'Sending PUSH...' : 'Done (no push)');
-    if(withPush){
-      const pushRes = await sendOneSignalPush(clientCode, files.map(f=>f.name));
-      log.textContent=`DONE! Files sent + PUSH sent to ${clientCode}. OneSignal ID: ${pushRes.id} — Client will get OS popup within 15 sec even if Chrome closed.`;
-    } else {
-      log.textContent='DONE! Files sent. Client sees them when they refresh link.';
-    }
-  }catch(e){ log.textContent='ERROR: '+e.message; console.error(e); }
-}
+    $('sendBtn').disabled=true;
+    logEl.textContent='Starting...';
+    const mf=await uploadAll();
+    logEl.textContent=`DONE! Uploaded ${mf.length} files. Client link: https://thisiskinglis.com/client_drop/?c=${clientCodeEl.value.trim()}`;
+  }catch(e){ logEl.textContent='ERROR: '+e.message; console.error(e); }
+  finally{ $('sendBtn').disabled=false; }
+};
 
-document.getElementById('sendBtn').onclick=()=>handleSend(false);
-document.getElementById('sendPushBtn').onclick=()=>handleSend(true);
+$('popBtn').onclick=async()=>{
+  try{
+    $('popBtn').disabled=true;
+    logEl.textContent='Uploading + Pushing POP...';
+    await uploadAll();
+    logEl.textContent='Files uploaded, now sending OS POP...';
+    const r=await sendPop(clientCodeEl.value.trim());
+    logEl.textContent=`POP SENT! ID: ${r.id} — Recipients: ${r.recipients}. Client gets "KINGLIS has sent you files" even if closed.`;
+  }catch(e){ logEl.textContent='ERROR: '+e.message; console.error(e); }
+  finally{ $('popBtn').disabled=false; }
+};
 </script>
 </body>
 </html>
