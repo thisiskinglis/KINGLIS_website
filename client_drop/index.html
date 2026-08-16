@@ -2,8 +2,8 @@
 <html>
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>KINGLIS Docs</title>
-<link rel="manifest" href="./manifest.webmanifest">
+<title>KINGLIS Docs - True Push</title>
+<script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
 <style>
 body{margin:0;font-family:system-ui;background:#0a0a0a;color:#fff;display:flex;align-items:center;justify-content:center;min-height:100vh;padding:20px}
 .card{background:#141414;border:1px solid #222;border-radius:20px;padding:32px;max-width:460px;width:100%;text-align:center}
@@ -16,95 +16,64 @@ body{margin:0;font-family:system-ui;background:#0a0a0a;color:#fff;display:flex;a
 .file-date{font-size:11px;color:#666;margin-top:2px}
 .file a{background:#fff;color:#000;padding:8px 14px;border-radius:8px;text-decoration:none;font-weight:700;font-size:13px;flex-shrink:0}
 .status{font-size:12px;color:#555;margin-top:14px}
-.pulse{width:8px;height:8px;background:#22c55e;border-radius:50%;display:inline-block;margin-right:6px;animation:pulse 2s infinite}
-@keyframes pulse{0%{opacity:1}50%{opacity:.3}100%{opacity:1}}
 </style>
 </head>
 <body>
 <div class="card">
   <div class="logo">KINGLIS</div>
-  <div class="sub" id="sub">Secure document drop - Background enabled</div>
-  <button class="btn" id="enableBtn">Enable POP Notifications</button>
-  <div class="status"><span class="pulse"></span><span id="status">Checking for files...</span></div>
+  <div class="sub" id="sub">True push enabled</div>
+  <div style="font-size:12px;color:#666;margin-bottom:12px">Allow notifications once — then you get POP even when you close this page and are in Word/Excel</div>
   <div id="files"></div>
-  <div style="margin-top:16px;font-size:11px;color:#444">Tip: Click Install when prompted to get desktop icon + background POP</div>
+  <div class="status" id="status">Connecting...</div>
 </div>
 <script>
 const params = new URLSearchParams(location.search)
 let clientCode = (params.get('c') || '').toUpperCase().trim()
-if(!clientCode){ document.getElementById('sub').innerText='Add ?c=YOURCODE to link' }
-else document.getElementById('sub').innerText='Client: ' + clientCode
+document.getElementById('sub').innerText = clientCode ? 'Client: ' + clientCode : 'Add ?c=YOURCODE'
 
-let seen = []
-try{ seen = JSON.parse(localStorage.getItem('seen_'+clientCode) || '[]') }catch(e){}
+let seen=[]
+try{ seen = JSON.parse(localStorage.getItem('seen_'+clientCode)||'[]') }catch{}
 
-// Register Service Worker for background POP
-if('serviceWorker' in navigator){
-  navigator.serviceWorker.register('./sw.js').then(reg=>{
-    console.log('SW registered')
-    if(clientCode){
-      // send code to SW
-      const send = ()=> {
-        if(navigator.serviceWorker.controller){
-          navigator.serviceWorker.controller.postMessage({clientCode, seen: JSON.stringify(seen)})
-        } else if(reg.active){
-          reg.active.postMessage({clientCode, seen: JSON.stringify(seen)})
-        }
-      }
-      setTimeout(send,1000)
-      setInterval(send, 5000)
-    }
+window.OneSignalDeferred = window.OneSignalDeferred || [];
+OneSignalDeferred.push(async function(OneSignal) {
+  // PUT YOUR ONESIGNAL APP ID HERE
+  const APP_ID = localStorage.getItem('os_app_id') || 'REPLACE_WITH_YOUR_ONESIGNAL_APP_ID'
+  await OneSignal.init({
+    appId: APP_ID,
+    notifyButton: { enable: true },
   })
-}
+  if(clientCode){
+    OneSignal.login(clientCode) // use client code as external ID
+    OneSignal.User.addTag('client_code', clientCode)
+    console.log('Tagged with client_code', clientCode)
+  }
+})
 
-document.getElementById('enableBtn').onclick = async () => {
-  const p = await Notification.requestPermission()
-  if(p==='granted'){
-    document.getElementById('enableBtn').innerText='✓ POP Enabled - Background Active'
-    new Notification('KINGLIS','Background POP enabled. You can minimize or close tab - if Chrome runs in background you will still get POP.')
-  }
-}
-function cleanName(name){ return name.replace(/^\d+_/, '') }
-function showPop(name, url){
-  if(Notification.permission==='granted'){
-    const n = new Notification('KINGLIS has sent you files', { body: cleanName(name) + ' - Click to download' })
-    n.onclick = ()=> window.open(url, '_blank')
-  }
-}
+function cleanName(n){ return n.replace(/^\d+_/,'') }
+
 async function check(){
   if(!clientCode) return
   try{
     let res = await fetch('./manifest_'+clientCode+'.json?t='+Date.now(), {cache:'no-store'})
     let rows
-    if(res.ok){ rows = await res.json() }
+    if(res.ok) rows = await res.json()
     else{
       res = await fetch('./manifest.json?t='+Date.now(), {cache:'no-store'})
-      if(!res.ok) throw new Error('no manifest')
-      const data = await res.json()
-      rows = data[clientCode] || []
+      const data = await res.json(); rows = data[clientCode]||[]
     }
     const container = document.getElementById('files')
     container.innerHTML=''
-    if(!rows.length) document.getElementById('status').innerText='No files yet - will POP when sent'
-    else document.getElementById('status').innerText='Connected - Background checking every 30s'
+    document.getElementById('status').innerText = rows.length ? 'Connected - Push active' : 'No files yet'
     rows.slice().reverse().forEach(row=>{
-      const display = cleanName(row.name)
       const div=document.createElement('div')
       div.className='file'
-      div.innerHTML=`<div class="file-info"><div class="file-name">${display}</div><div class="file-date">${new Date(row.time).toLocaleString()}</div></div><a href="${row.url}" target="_blank" download>Download</a>`
+      div.innerHTML=`<div class="file-info"><div class="file-name">${cleanName(row.name)}</div><div class="file-date">${new Date(row.time).toLocaleString()}</div></div><a href="${row.url}" target="_blank" download>Download</a>`
       container.appendChild(div)
-      if(!seen.includes(row.url)){
-        seen.push(row.url)
-        showPop(row.name, row.url)
-        if(navigator.serviceWorker.controller){
-          navigator.serviceWorker.controller.postMessage({clientCode, seen: JSON.stringify(seen)})
-        }
-      }
     })
-    localStorage.setItem('seen_'+clientCode, JSON.stringify(seen))
-  }catch(e){ document.getElementById('status').innerText='Waiting for files...' }
+    localStorage.setItem('seen_'+clientCode, JSON.stringify(rows.map(r=>r.url)))
+  }catch(e){ document.getElementById('status').innerText='Waiting...' }
 }
-if(clientCode){ check(); setInterval(check, 10000) }
+if(clientCode){ check(); setInterval(check, 15000) }
 </script>
 </body>
 </html>
