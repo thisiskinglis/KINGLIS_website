@@ -1,0 +1,9 @@
+{
+  "name": "KINGLIS Client Drop",
+  "short_name": "KINGLIS",
+  "display": "standalone",
+  "background_color": "#0a0a0a",
+  "theme_color": "#0a0a0a",
+  "start_url": "./",
+  "icons": [{"src": "https://thisiskinglis.com/favicon.ico", "sizes": "64x64", "type": "image/x-icon"}]
+}
