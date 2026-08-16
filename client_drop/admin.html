@@ -2,153 +2,142 @@
 <html>
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>KINGLIS Admin</title>
+<title>KINGLIS Admin - Secure</title>
 <style>
 body{margin:0;font-family:system-ui;background:#0a0a0a;color:#fff;display:flex;justify-content:center;padding:30px 16px}
-.wrap{max-width:600px;width:100%}
+.wrap{max-width:620px;width:100%}
 .card{background:#141414;border:1px solid #222;border-radius:20px;padding:20px;margin-top:16px}
 input{width:100%;padding:12px;background:#0a0a0a;border:1px solid #2a2a2a;border-radius:10px;color:#fff;box-sizing:border-box;margin-top:8px}
 .drop{border:2px dashed #2a2a2a;border-radius:16px;padding:30px;text-align:center;margin-top:12px;cursor:pointer;display:block}
 .drop.drag{border-color:#fff;background:#1a1a1a}
 .btn{width:100%;padding:14px;background:#fff;color:#000;border-radius:12px;border:0;font-weight:800;cursor:pointer;margin-top:12px}
-.log{font-size:12px;color:#888;white-space:pre-wrap;margin-top:10px}
+.btn2{padding:8px 12px;background:#1e1e1e;color:#fff;border:1px solid #333;border-radius:8px;cursor:pointer;font-size:12px}
+.log{font-size:12px;color:#888;white-space:pre-wrap;margin-top:10px;max-height:200px;overflow:auto}
+.row{display:flex;gap:8px;align-items:flex-end}
 </style>
 </head>
 <body>
 <div class="wrap">
-<h2 style="letter-spacing:3px;margin:0">KINGLIS ADMIN</h2>
-<div style="color:#666;font-size:13px">Drop files -> they POP on client</div>
+<h2 style="letter-spacing:3px;margin:0">KINGLIS ADMIN - SECURE</h2>
+<div style="color:#666;font-size:13px">Per-client manifests • No central list • Random codes</div>
 
 <div class="card">
 <label>GitHub PAT (ghp_...)</label>
 <input id="pat" type="password" placeholder="ghp_...">
 <label style="margin-top:12px;display:block">Repo (owner/repo)</label>
 <input id="repo" value="thisiskinglis/KINGLIS_website">
-<label>Client Code</label>
-<input id="client" value="CLIENT001">
 
-<!-- FIXED: label triggers file input natively, no JS click needed -->
+<label style="margin-top:12px;display:block">Client Code (unguessable)</label>
+<div class="row">
+<input id="client" value="CLIENT001" style="flex:1">
+<button class="btn2" id="genBtn">Generate Secure</button>
+</div>
+<div style="font-size:11px;color:#666;margin-top:6px">Use format: CLIENT-A7K9P2 or SMITH-JOHN-9F3K. Never CLIENT001, CLIENT002.</div>
+
 <label for="fileInput" class="drop" id="drop">
   <div style="font-size:16px">📁 Click to select files or drag & drop here</div>
-  <div style="font-size:12px;color:#666;margin-top:6px">You can select 5 files at once</div>
+  <div style="font-size:12px;color:#666;margin-top:6px">Select up to 10 files</div>
   <input type="file" id="fileInput" multiple hidden>
 </label>
 
 <div id="preview"></div>
-<button class="btn" id="send">SEND - Commit to GitHub</button>
+<button class="btn" id="send">SEND - Secure Commit</button>
 <div class="log" id="log"></div>
 </div>
 
 <div class="card" style="color:#777;font-size:12px">
-Client link: <span id="link" style="color:#fff"></span><br><br>
-If drag still fails, just click the box - it will open file picker.
+<div>Client link:</div>
+<div id="link" style="color:#fff;word-break:break-all;margin-top:4px"></div>
+<div style="margin-top:12px;color:#555">New system: Each client has <code>manifest_CODE.json</code>. No one can see other clients. Make repo Private in GitHub Settings.</div>
 </div>
 </div>
 
 <script>
-const fileInput = document.getElementById('fileInput');
-const drop = document.getElementById('drop');
-const preview = document.getElementById('preview');
-const log = document.getElementById('log');
-let files = [];
+const fileInput=document.getElementById('fileInput'), drop=document.getElementById('drop'), preview=document.getElementById('preview'), log=document.getElementById('log')
+let files=[]
+function handleFiles(list){ files=Array.from(list); preview.innerHTML=files.map(f=>`<div style="background:#1c1c1c;padding:8px;border-radius:8px;margin-top:6px;font-size:13px">📄 ${f.name} (${(f.size/1024).toFixed(0)} KB)</div>`).join('') }
+fileInput.addEventListener('change', e=>handleFiles(e.target.files))
+drop.addEventListener('dragover', e=>{e.preventDefault();drop.classList.add('drag')})
+drop.addEventListener('dragleave', ()=>drop.classList.remove('drag'))
+drop.addEventListener('drop', e=>{e.preventDefault();drop.classList.remove('drag');handleFiles(e.dataTransfer.files)})
 
-function handleFiles(list){
-  files = Array.from(list);
-  preview.innerHTML = files.map(f=>`<div style="background:#1c1c1c;padding:8px;border-radius:8px;margin-top:6px;font-size:13px">📄 ${f.name} (${(f.size/1024).toFixed(0)} KB)</div>`).join('');
+function genSecure(){
+  const chars='ABCDEFGHJKLMNPQRSTUVWXYZ23456789'
+  let r=''
+  for(let i=0;i<6;i++) r+=chars[Math.floor(Math.random()*chars.length)]
+  return 'CLIENT-'+r
 }
-
-fileInput.addEventListener('change', (e)=> handleFiles(e.target.files));
-
-// drag & drop
-drop.addEventListener('dragover', (e)=>{ e.preventDefault(); drop.classList.add('drag'); });
-drop.addEventListener('dragleave', ()=> drop.classList.remove('drag'));
-drop.addEventListener('drop', (e)=>{
-  e.preventDefault();
-  drop.classList.remove('drag');
-  handleFiles(e.dataTransfer.files);
-});
-
-document.getElementById('client').addEventListener('input', updateLink);
+document.getElementById('genBtn').onclick=()=>{
+  document.getElementById('client').value=genSecure()
+  updateLink()
+}
 function updateLink(){
-  const c=document.getElementById('client').value.trim()||'CLIENT001';
-  document.getElementById('link').innerText = location.origin + '/client_drop/?c=' + c;
+  const c=document.getElementById('client').value.trim().toUpperCase()||'CLIENT-XXXXXX'
+  document.getElementById('link').innerText=location.origin + '/client_drop/?c=' + c
 }
-updateLink();
+document.getElementById('client').addEventListener('input', updateLink)
+updateLink()
 
-// Save PAT
-const patEl = document.getElementById('pat');
-const repoEl = document.getElementById('repo');
-patEl.value = localStorage.getItem('gh_pat')||'';
-repoEl.value = localStorage.getItem('gh_repo')||repoEl.value;
-patEl.addEventListener('input',()=>localStorage.setItem('gh_pat',patEl.value));
-repoEl.addEventListener('input',()=>localStorage.setItem('gh_repo',repoEl.value));
+// localStorage
+const patEl=document.getElementById('pat'), repoEl=document.getElementById('repo')
+patEl.value=localStorage.getItem('gh_pat')||''; repoEl.value=localStorage.getItem('gh_repo')||repoEl.value
+patEl.addEventListener('input',()=>localStorage.setItem('gh_pat',patEl.value))
+repoEl.addEventListener('input',()=>localStorage.setItem('gh_repo',repoEl.value))
 
 async function ghFetch(path, method, body){
-  const [owner, repoName] = document.getElementById('repo').value.trim().split('/');
-  const token = document.getElementById('pat').value.trim();
-  const res = await fetch(`https://api.github.com/repos/${owner}/${repoName}/contents/${path}`,{
-    method,
-    headers:{'Authorization':'token '+token, 'Accept':'application/vnd.github.v3+json'},
-    body: body ? JSON.stringify(body) : undefined
-  });
-  return res.json();
+  const [owner, repoName]=document.getElementById('repo').value.trim().split('/')
+  const token=document.getElementById('pat').value.trim()
+  const res=await fetch(`https://api.github.com/repos/${owner}/${repoName}/contents/${path}`,{
+    method, headers:{'Authorization':'token '+token, 'Accept':'application/vnd.github.v3+json'},
+    body: body?JSON.stringify(body):undefined
+  })
+  return res.json()
 }
-
 async function toBase64(file){
-  return new Promise(r=>{
-    const reader=new FileReader();
-    reader.onload=()=>r(reader.result.split(',')[1]);
-    reader.readAsDataURL(file);
-  });
+  return new Promise(r=>{const reader=new FileReader();reader.onload=()=>r(reader.result.split(',')[1]);reader.readAsDataURL(file)})
 }
 
 document.getElementById('send').onclick=async()=>{
-  const clientCode=document.getElementById('client').value.trim().toUpperCase();
-  if(!files.length) return alert('Select files first - click the box');
-  const token=document.getElementById('pat').value.trim();
-  if(!token) return alert('Paste your ghp_ token first');
-  
-  log.textContent='Uploading...\n';
-  const btn=document.getElementById('send');
-  btn.disabled=true;
-
+  const clientCode=document.getElementById('client').value.trim().toUpperCase()
+  if(!files.length) return alert('Select files first')
+  const token=document.getElementById('pat').value.trim()
+  if(!token) return alert('Paste ghp_ token')
+  log.textContent='Uploading...\n'
+  const btn=document.getElementById('send'); btn.disabled=true
   try{
     for(const file of files){
-      const b64=await toBase64(file);
-      const filePath=`client_drop/files/${clientCode}/${Date.now()}_${file.name}`;
-      log.textContent+=`→ ${file.name}\n`;
-      const res=await ghFetch(filePath,'PUT',{message:`Add ${file.name} for ${clientCode}`, content:b64});
-      if(res.content) log.textContent+=`✓ Committed ${file.name}\n`;
-      else log.textContent+=`ERROR: ${JSON.stringify(res).slice(0,300)}\n`;
+      const b64=await toBase64(file)
+      const filePath=`client_drop/files/${clientCode}/${Date.now()}_${file.name}`
+      log.textContent+=`→ ${file.name}\n`
+      const res=await ghFetch(filePath,'PUT',{message:`Add ${file.name} for ${clientCode}`, content:b64})
+      if(res.content) log.textContent+=`✓ Committed ${file.name}\n`
+      else log.textContent+=`ERROR: ${JSON.stringify(res).slice(0,300)}\n`
     }
-    
-    // Update manifest
-    log.textContent+='Updating manifest.json...\n';
-    let manifest={}, sha=null;
+    log.textContent+='Building secure manifest_'+clientCode+'.json...\n'
+    let sha=null
     try{
-      const existing=await ghFetch('client_drop/manifest.json','GET');
-      if(existing.content){ manifest=JSON.parse(atob(existing.content)); sha=existing.sha; }
-    }catch(e){}
-    
-    try{
-      const [owner, repoName]=document.getElementById('repo').value.trim().split('/');
-      const dirRes=await fetch(`https://api.github.com/repos/${owner}/${repoName}/contents/client_drop/files/${clientCode}`,{
-        headers:{'Authorization':'token '+token}
-      }).then(r=>r.json());
-      if(Array.isArray(dirRes)){
-        manifest[clientCode]=dirRes.filter(f=>f.type==='file').map(f=>({name:f.name, url:`./files/${clientCode}/${f.name}`, time:new Date().toISOString()}));
-      }
+      const existing=await ghFetch(`client_drop/manifest_${clientCode}.json`,'GET')
+      if(existing.sha) sha=existing.sha
     }catch(e){}
 
-    const newContent=btoa(JSON.stringify(manifest, null, 2));
-    const putRes=await ghFetch('client_drop/manifest.json','PUT',{message:`Update manifest for ${clientCode}`, content:newContent, sha:sha||undefined});
-    if(putRes.content) log.textContent+='✓ DONE! Check repo, will POP in ~60s\n';
-    else log.textContent+='Manifest error: '+JSON.stringify(putRes).slice(0,300)+'\n';
-  }catch(err){
-    log.textContent+='ERROR: '+err.message+'\n';
-  }
-  btn.disabled=false;
-};
+    // Get directory listing for this client only
+    const [owner, repoName]=document.getElementById('repo').value.trim().split('/')
+    const dirRes=await fetch(`https://api.github.com/repos/${owner}/${repoName}/contents/client_drop/files/${clientCode}`,{
+      headers:{'Authorization':'token '+token}
+    }).then(r=>r.json())
+
+    let manifest=[]
+    if(Array.isArray(dirRes)){
+      manifest=dirRes.filter(f=>f.type==='file').map(f=>({name:f.name, url:`./files/${clientCode}/${f.name}`, time:new Date().toISOString()}))
+    }
+
+    const newContent=btoa(JSON.stringify(manifest, null, 2))
+    const putRes=await ghFetch(`client_drop/manifest_${clientCode}.json`,'PUT',{message:`Secure manifest for ${clientCode}`, content:newContent, sha:sha||undefined})
+    if(putRes.content) log.textContent+=`✓ SECURE! manifest_${clientCode}.json created\n→ Client link: ${location.origin}/client_drop/?c=${clientCode}\nWill POP in ~60s`
+    else log.textContent+='Manifest error: '+JSON.stringify(putRes).slice(0,500)+'\n'
+  }catch(err){ log.textContent+='ERROR: '+err.message+'\n' }
+  btn.disabled=false
+}
 </script>
 </body>
 </html>
