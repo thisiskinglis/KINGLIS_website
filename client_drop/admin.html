@@ -2,10 +2,10 @@
 <html>
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>KINGLIS Admin - Secure</title>
+<title>KINGLIS Admin - True Push</title>
 <style>
 body{margin:0;font-family:system-ui;background:#0a0a0a;color:#fff;display:flex;justify-content:center;padding:30px 16px}
-.wrap{max-width:620px;width:100%}
+.wrap{max-width:640px;width:100%}
 .card{background:#141414;border:1px solid #222;border-radius:20px;padding:20px;margin-top:16px}
 input{width:100%;padding:12px;background:#0a0a0a;border:1px solid #2a2a2a;border-radius:10px;color:#fff;box-sizing:border-box;margin-top:8px}
 .drop{border:2px dashed #2a2a2a;border-radius:16px;padding:30px;text-align:center;margin-top:12px;cursor:pointer;display:block}
@@ -14,127 +14,123 @@ input{width:100%;padding:12px;background:#0a0a0a;border:1px solid #2a2a2a;border
 .btn2{padding:8px 12px;background:#1e1e1e;color:#fff;border:1px solid #333;border-radius:8px;cursor:pointer;font-size:12px}
 .log{font-size:12px;color:#888;white-space:pre-wrap;margin-top:10px;max-height:200px;overflow:auto}
 .row{display:flex;gap:8px;align-items:flex-end}
+label{font-size:12px;color:#888;margin-top:12px;display:block}
 </style>
 </head>
 <body>
 <div class="wrap">
-<h2 style="letter-spacing:3px;margin:0">KINGLIS ADMIN - SECURE</h2>
-<div style="color:#666;font-size:13px">Per-client manifests • No central list • Random codes</div>
+<h2 style="letter-spacing:3px;margin:0">KINGLIS ADMIN - TRUE PUSH</h2>
+<div style="color:#666;font-size:13px">Upload + OS-level POP even when client closed browser</div>
 
 <div class="card">
-<label>GitHub PAT (ghp_...)</label>
+<label>GitHub PAT</label>
 <input id="pat" type="password" placeholder="ghp_...">
-<label style="margin-top:12px;display:block">Repo (owner/repo)</label>
+<label>Repo</label>
 <input id="repo" value="thisiskinglis/KINGLIS_website">
-
-<label style="margin-top:12px;display:block">Client Code (unguessable)</label>
+<label>Client Code</label>
 <div class="row">
-<input id="client" value="CLIENT001" style="flex:1">
-<button class="btn2" id="genBtn">Generate Secure</button>
+<input id="client" value="CLIENT-TEST" style="flex:1">
+<button class="btn2" id="genBtn">Generate</button>
 </div>
-<div style="font-size:11px;color:#666;margin-top:6px">Use format: CLIENT-A7K9P2 or SMITH-JOHN-9F3K. Never CLIENT001, CLIENT002.</div>
-
 <label for="fileInput" class="drop" id="drop">
-  <div style="font-size:16px">📁 Click to select files or drag & drop here</div>
-  <div style="font-size:12px;color:#666;margin-top:6px">Select up to 10 files</div>
-  <input type="file" id="fileInput" multiple hidden>
+<div>📁 Click or drag files</div>
+<input type="file" id="fileInput" multiple hidden>
 </label>
-
 <div id="preview"></div>
-<button class="btn" id="send">SEND - Secure Commit</button>
+<button class="btn" id="send">SEND + Push POP to their PC</button>
 <div class="log" id="log"></div>
 </div>
 
-<div class="card" style="color:#777;font-size:12px">
-<div>Client link:</div>
+<div class="card">
+<div style="font-weight:700">OneSignal Setup (once, free)</div>
+<label>OneSignal App ID</label>
+<input id="os_app_id" placeholder="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx">
+<label>OneSignal REST API Key</label>
+<input id="os_api_key" type="password" placeholder="REST API Key from Settings > Keys & IDs">
+<button class="btn2" id="saveOs" style="margin-top:10px">Save Keys</button>
+<div style="font-size:11px;color:#555;margin-top:8px">App ID goes in client page too. We save it in localStorage so you paste once.</div>
+</div>
+
+<div class="card" style="font-size:12px;color:#777">
+<div>Client link to send:</div>
 <div id="link" style="color:#fff;word-break:break-all;margin-top:4px"></div>
-<div style="margin-top:12px;color:#555">New system: Each client has <code>manifest_CODE.json</code>. No one can see other clients. Make repo Private in GitHub Settings.</div>
 </div>
 </div>
 
 <script>
 const fileInput=document.getElementById('fileInput'), drop=document.getElementById('drop'), preview=document.getElementById('preview'), log=document.getElementById('log')
 let files=[]
-function handleFiles(list){ files=Array.from(list); preview.innerHTML=files.map(f=>`<div style="background:#1c1c1c;padding:8px;border-radius:8px;margin-top:6px;font-size:13px">📄 ${f.name} (${(f.size/1024).toFixed(0)} KB)</div>`).join('') }
+function handleFiles(list){ files=Array.from(list); preview.innerHTML=files.map(f=>`<div style="background:#1c1c1c;padding:8px;border-radius:8px;margin-top:6px;font-size:13px">📄 ${f.name}</div>`).join('') }
 fileInput.addEventListener('change', e=>handleFiles(e.target.files))
 drop.addEventListener('dragover', e=>{e.preventDefault();drop.classList.add('drag')})
 drop.addEventListener('dragleave', ()=>drop.classList.remove('drag'))
 drop.addEventListener('drop', e=>{e.preventDefault();drop.classList.remove('drag');handleFiles(e.dataTransfer.files)})
 
 function genSecure(){
-  const chars='ABCDEFGHJKLMNPQRSTUVWXYZ23456789'
-  let r=''
-  for(let i=0;i<6;i++) r+=chars[Math.floor(Math.random()*chars.length)]
+  const chars='ABCDEFGHJKLMNPQRSTUVWXYZ23456789'; let r=''; for(let i=0;i<6;i++) r+=chars[Math.floor(Math.random()*chars.length)]
   return 'CLIENT-'+r
 }
-document.getElementById('genBtn').onclick=()=>{
-  document.getElementById('client').value=genSecure()
-  updateLink()
-}
-function updateLink(){
-  const c=document.getElementById('client').value.trim().toUpperCase()||'CLIENT-XXXXXX'
-  document.getElementById('link').innerText=location.origin + '/client_drop/?c=' + c
-}
-document.getElementById('client').addEventListener('input', updateLink)
-updateLink()
+document.getElementById('genBtn').onclick=()=>{ document.getElementById('client').value=genSecure(); updateLink() }
+function updateLink(){ const c=document.getElementById('client').value.trim().toUpperCase()||'CLIENT-XXXXXX'; document.getElementById('link').innerText=location.origin + '/client_drop/?c=' + c }
+document.getElementById('client').addEventListener('input', updateLink); updateLink()
 
-// localStorage
-const patEl=document.getElementById('pat'), repoEl=document.getElementById('repo')
-patEl.value=localStorage.getItem('gh_pat')||''; repoEl.value=localStorage.getItem('gh_repo')||repoEl.value
-patEl.addEventListener('input',()=>localStorage.setItem('gh_pat',patEl.value))
-repoEl.addEventListener('input',()=>localStorage.setItem('gh_repo',repoEl.value))
+const ids=['pat','repo','os_app_id','os_api_key']
+ids.forEach(id=>{ const el=document.getElementById(id); const v=localStorage.getItem(id); if(v) el.value=v; el.addEventListener('input',()=>localStorage.setItem(id, el.value)) })
+document.getElementById('saveOs').onclick=()=>{ ids.forEach(id=>localStorage.setItem(id, document.getElementById(id).value)); alert('Saved') }
 
-async function ghFetch(path, method, body){
+function ghFetch(path, method, body){
   const [owner, repoName]=document.getElementById('repo').value.trim().split('/')
   const token=document.getElementById('pat').value.trim()
-  const res=await fetch(`https://api.github.com/repos/${owner}/${repoName}/contents/${path}`,{
-    method, headers:{'Authorization':'token '+token, 'Accept':'application/vnd.github.v3+json'},
-    body: body?JSON.stringify(body):undefined
-  })
-  return res.json()
+  return fetch(`https://api.github.com/repos/${owner}/${repoName}/contents/${path}`,{method, headers:{'Authorization':'token '+token, 'Accept':'application/vnd.github.v3+json'}, body: body?JSON.stringify(body):undefined}).then(r=>r.json())
 }
-async function toBase64(file){
-  return new Promise(r=>{const reader=new FileReader();reader.onload=()=>r(reader.result.split(',')[1]);reader.readAsDataURL(file)})
+function toBase64(file){ return new Promise(r=>{const reader=new FileReader();reader.onload=()=>r(reader.result.split(',')[1]);reader.readAsDataURL(file)}) }
+
+async function sendPush(clientCode, fileNames){
+  const appId=document.getElementById('os_app_id').value.trim()
+  const apiKey=document.getElementById('os_api_key').value.trim()
+  if(!appId || !apiKey){ log.textContent+='⚠ No OneSignal keys - files uploaded but no push sent\n'; return }
+  const link = location.origin + '/client_drop/?c=' + clientCode
+  const body = {
+    app_id: appId,
+    filters: [{field:'tag', key:'client_code', relation:'=', value: clientCode}],
+    headings: {en: 'KINGLIS has sent you files'},
+    contents: {en: fileNames + ' - Click to open'},
+    url: link,
+    web_url: link
+  }
+  const res = await fetch('https://onesignal.com/api/v1/notifications',{
+    method:'POST',
+    headers:{'Content-Type':'application/json', 'Authorization':'Basic '+apiKey},
+    body: JSON.stringify(body)
+  }).then(r=>r.json())
+  log.textContent+=`Push response: ${JSON.stringify(res).slice(0,400)}\n`
+  if(res.id) log.textContent+=`✓ PUSH sent - Will POP on their PC even if browser closed!\n`
+  else log.textContent+=`Push error - check keys\n`
 }
 
 document.getElementById('send').onclick=async()=>{
   const clientCode=document.getElementById('client').value.trim().toUpperCase()
-  if(!files.length) return alert('Select files first')
-  const token=document.getElementById('pat').value.trim()
-  if(!token) return alert('Paste ghp_ token')
-  log.textContent='Uploading...\n'
-  const btn=document.getElementById('send'); btn.disabled=true
+  if(!files.length) return alert('Select files')
+  log.textContent='Uploading...\n'; const btn=document.getElementById('send'); btn.disabled=true
   try{
     for(const file of files){
       const b64=await toBase64(file)
       const filePath=`client_drop/files/${clientCode}/${Date.now()}_${file.name}`
       log.textContent+=`→ ${file.name}\n`
       const res=await ghFetch(filePath,'PUT',{message:`Add ${file.name} for ${clientCode}`, content:b64})
-      if(res.content) log.textContent+=`✓ Committed ${file.name}\n`
-      else log.textContent+=`ERROR: ${JSON.stringify(res).slice(0,300)}\n`
+      log.textContent+= res.content ? `✓ Committed\n` : `ERR ${JSON.stringify(res).slice(0,300)}\n`
     }
-    log.textContent+='Building secure manifest_'+clientCode+'.json...\n'
-    let sha=null
-    try{
-      const existing=await ghFetch(`client_drop/manifest_${clientCode}.json`,'GET')
-      if(existing.sha) sha=existing.sha
-    }catch(e){}
-
-    // Get directory listing for this client only
+    let sha=null; try{ const ex=await ghFetch(`client_drop/manifest_${clientCode}.json`,'GET'); if(ex.sha) sha=ex.sha }catch{}
     const [owner, repoName]=document.getElementById('repo').value.trim().split('/')
-    const dirRes=await fetch(`https://api.github.com/repos/${owner}/${repoName}/contents/client_drop/files/${clientCode}`,{
-      headers:{'Authorization':'token '+token}
-    }).then(r=>r.json())
-
+    const token=document.getElementById('pat').value.trim()
+    const dirRes=await fetch(`https://api.github.com/repos/${owner}/${repoName}/contents/client_drop/files/${clientCode}`,{headers:{'Authorization':'token '+token}}).then(r=>r.json())
     let manifest=[]
-    if(Array.isArray(dirRes)){
-      manifest=dirRes.filter(f=>f.type==='file').map(f=>({name:f.name, url:`./files/${clientCode}/${f.name}`, time:new Date().toISOString()}))
-    }
-
+    if(Array.isArray(dirRes)){ manifest=dirRes.filter(f=>f.type==='file').map(f=>({name:f.name, url:`./files/${clientCode}/${f.name}`, time:new Date().toISOString()})) }
     const newContent=btoa(JSON.stringify(manifest, null, 2))
-    const putRes=await ghFetch(`client_drop/manifest_${clientCode}.json`,'PUT',{message:`Secure manifest for ${clientCode}`, content:newContent, sha:sha||undefined})
-    if(putRes.content) log.textContent+=`✓ SECURE! manifest_${clientCode}.json created\n→ Client link: ${location.origin}/client_drop/?c=${clientCode}\nWill POP in ~60s`
-    else log.textContent+='Manifest error: '+JSON.stringify(putRes).slice(0,500)+'\n'
+    await ghFetch(`client_drop/manifest_${clientCode}.json`,'PUT',{message:`Secure manifest for ${clientCode}`, content:newContent, sha:sha||undefined})
+    log.textContent+=`✓ manifest_${clientCode}.json updated\n`
+    // SEND PUSH
+    await sendPush(clientCode, files.map(f=>f.name).join(', '))
   }catch(err){ log.textContent+='ERROR: '+err.message+'\n' }
   btn.disabled=false
 }
