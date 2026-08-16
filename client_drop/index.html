@@ -17,36 +17,60 @@ body{margin:0;font-family:system-ui;background:#0a0a0a;color:#fff;display:flex;a
 .status{font-size:12px;color:#555;margin-top:14px}
 .pulse{width:8px;height:8px;background:#22c55e;border-radius:50%;display:inline-block;margin-right:6px;animation:pulse 2s infinite}
 @keyframes pulse{0%{opacity:1}50%{opacity:.3}100%{opacity:1}}
+.enter{margin-top:16px}
+.enter input{padding:14px}
 </style>
 </head>
 <body>
 <div class="card">
   <div class="logo">KINGLIS</div>
-  <div class="sub" id="sub">Secure drop</div>
-  <button class="btn" id="enableBtn">Enable POP Notifications</button>
-  <div class="status"><span class="pulse"></span><span id="status">Waiting for files...</span></div>
-  <div id="files"></div>
+  <div class="sub" id="sub">Secure document drop</div>
+  
+  <div id="authArea">
+    <button class="btn" id="enableBtn">Enable POP Notifications</button>
+    <div class="status"><span class="pulse"></span><span id="status">Checking for files...</span></div>
+    <div id="files"></div>
+  </div>
+
+  <div id="codeEntry" style="display:none" class="enter">
+    <div style="font-size:14px;margin-bottom:8px">Enter your client code to retrieve files</div>
+    <input id="codeInput" placeholder="CLIENT-A7K9P2">
+    <button class="btn" id="goBtn" style="margin-top:10px">Open My Files</button>
+    <div style="font-size:11px;color:#666;margin-top:8px">Your code is in your link: ?c=YOURCODE</div>
+  </div>
 </div>
 <script>
 const params = new URLSearchParams(location.search)
-const clientCode = (params.get('c') || 'CLIENT001').toUpperCase()
-document.getElementById('sub').innerText = 'Client: ' + clientCode
+let clientCode = (params.get('c') || '').toUpperCase().trim()
+const sub=document.getElementById('sub')
+const authArea=document.getElementById('authArea')
+const codeEntry=document.getElementById('codeEntry')
 
-let seen = new Set(JSON.parse(localStorage.getItem('seen_'+clientCode) || '[]'))
+if(!clientCode){
+  sub.innerText='Enter code to access files'
+  authArea.style.display='none'
+  codeEntry.style.display='block'
+}else{
+  sub.innerText='Client: ' + clientCode
+}
+
+document.getElementById('goBtn')?.addEventListener('click',()=>{
+  const c=document.getElementById('codeInput').value.trim().toUpperCase()
+  if(c) location.search='?c='+c
+})
+
+let seen = []
+try{ seen = JSON.parse(localStorage.getItem('seen_'+clientCode) || '[]') }catch(e){}
 
 document.getElementById('enableBtn').onclick = async () => {
   const p = await Notification.requestPermission()
   if(p==='granted'){
-    document.getElementById('enableBtn').innerText='✓ POP Enabled - You will get a pop-up'
-    new Notification('KINGLIS','You will now get a POP when files arrive')
+    document.getElementById('enableBtn').innerText='✓ POP Enabled'
+    new Notification('KINGLIS','You will get a POP when files arrive. You can close this tab, keep Chrome running.')
   }
 }
 
-function cleanName(name){
-  // Remove timestamp prefix 1786842677013_
-  return name.replace(/^\d+_/, '')
-}
-
+function cleanName(name){ return name.replace(/^\d+_/, '') }
 function showPop(name, url){
   if(Notification.permission==='granted'){
     const n = new Notification('KINGLIS has sent you files', { body: cleanName(name) + ' - Click to download' })
@@ -55,31 +79,45 @@ function showPop(name, url){
 }
 
 async function check(){
+  if(!clientCode) return
   try{
-    const res = await fetch('./manifest.json?t='+Date.now(), {cache:'no-store'})
-    const data = await res.json()
-    const rows = data[clientCode] || []
+    // SECURE: Try per-client manifest first
+    let res = await fetch('./manifest_'+clientCode+'.json?t='+Date.now(), {cache:'no-store'})
+    let rows
+    if(res.ok){
+      rows = await res.json()
+    }else{
+      // Fallback to old central manifest for old CLIENT001
+      res = await fetch('./manifest.json?t='+Date.now(), {cache:'no-store'})
+      if(!res.ok) throw new Error('no manifest')
+      const data = await res.json()
+      rows = data[clientCode] || []
+    }
+
     const container = document.getElementById('files')
     container.innerHTML=''
+    if(!rows.length){
+      document.getElementById('status').innerText='No files yet - will POP when sent'
+    }else{
+      document.getElementById('status').innerText='Connected - checking every 10s'
+    }
     rows.slice().reverse().forEach(row=>{
       const display = cleanName(row.name)
       const div=document.createElement('div')
       div.className='file'
       div.innerHTML=`<div class="file-info"><div class="file-name">${display}</div><div class="file-date">${new Date(row.time).toLocaleString()}</div></div><a href="${row.url}" target="_blank" download>Download</a>`
       container.appendChild(div)
-      if(!seen.has(row.url)){
-        seen.add(row.url)
+      if(!seen.includes(row.url)){
+        seen.push(row.url)
         showPop(row.name, row.url)
       }
     })
-    localStorage.setItem('seen_'+clientCode, JSON.stringify([...seen]))
-    document.getElementById('status').innerText = 'Connected - checking every 10s'
+    localStorage.setItem('seen_'+clientCode, JSON.stringify(seen))
   }catch(e){
-    document.getElementById('status').innerText='Waiting... (no files yet)'
+    document.getElementById('status').innerText='Waiting for files... (check code)'
   }
 }
-check()
-setInterval(check, 10000)
+if(clientCode) { check(); setInterval(check, 10000) }
 </script>
 </body>
 </html>
