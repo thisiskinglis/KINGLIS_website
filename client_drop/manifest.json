@@ -1,9 +1,15 @@
 {
-  "CLIENT001": [
+  "name": "KINGLIS Secure Portal",
+  "short_name": "KINGLIS",
+  "start_url": "./?c=CLIENT-DEMO",
+  "display": "standalone",
+  "background_color": "#0a0a0a",
+  "theme_color": "#0a0a0a",
+  "icons": [
     {
-      "name": "1786842677013_KINGLIS_Advisory_Matter_Samples.docx",
-      "url": "./files/CLIENT001/1786842677013_KINGLIS_Advisory_Matter_Samples.docx",
-      "time": "2026-08-16T01:11:19.773Z"
+      "src": "https://thisiskinglis.com/favicon.ico",
+      "sizes": "192x192",
+      "type": "image/x-icon"
     }
   ]
 }
