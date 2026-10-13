@@ -142,9 +142,9 @@ h1,h2,h3{font-family:var(--display);line-height:1.15;letter-spacing:-0.02em}
     <p><b>What this is, and is not:</b> art-based psychosocial wellness support that complements your pastoral, counselling and learner-support structures. It is not diagnosis, assessment, psychotherapy, counselling, hypnosis or HPCSA arts therapy, and it does not replace psychological services. Artwork is creative expression only and is never interpreted as diagnostic evidence.</p>
   </div>
 
-<!-- WHO - NEW 3 PICS + BIO UNDERNEATH -->
+<!-- WHO - 2 PICS + BIO UNDERNEATH - FIXED -->
 <div class="card" style="padding:0; overflow:hidden;">
-  <!-- 3 IMAGES TOP - uses your repo assets -->
+  <!-- 2 IMAGES TOP -->
   <div class="founder-photos">
     <figure>
       <img src="assets/founder/kaylee.jpg" alt="Kaylee-Jane working with learners - clay in action" loading="lazy">
@@ -152,44 +152,56 @@ h1,h2,h3{font-family:var(--display);line-height:1.15;letter-spacing:-0.02em}
     <figure>
       <img src="assets/founder/kaylee2.jpg" alt="Kaylee guiding small group - clay first" loading="lazy">
     </figure>
-    <figure>
-      <img src="assets/founder/kaylee3.jpg" alt="Hands-on facilitation with kids" loading="lazy">
-    </figure>
   </div>
   <!-- BIO TEXT UNDERNEATH -->
   <div style="padding:32px;">
     <span class="label">Who Delivers It —</span>
     <h3 style="margin:8px 0 6px; font-size:28px;">Kaylee-Jane Inglis, Founder</h3>
     <p style="font-size:15px; margin:0 0 16px; color:var(--ink-soft); font-style:italic;">I lead every group personally.</p>
-      
     
+    <p class="small" style="line-height:1.8; font-size:13.5px;">
+      Bachelor of Psychology (UKZN, 2017)<br>
+      SEN qualified (UK)<br>
+      Years of therapeutic art-based and equine-assisted work in the UK, mostly with children with special needs<br>
+      SAMHA registered practitioner <span style="color:var(--ink-soft);">(private body, not HPCSA registration)</span><br><br>
+      Based in Ballito and KwaDukuza, I design each programme around one principle: <b>clay first, conversation second.</b> It lets anxious and sensitive learners take part fully, without pressure to perform, explain or share.<br><br>
+      <span style="color:var(--ink-soft);">I supply all materials and manage every session, so your staff carry minimal workload. Police clearance and public liability insurance available on request.</span>
+    </p>
 
-      <!-- TEXT -->
-      <div style="padding:32px;">
-        <span class="label">Who Delivers It —</span>
-        <h3 style="margin:8px 0 6px; font-size:28px;">Kaylee-Jane Inglis, Founder</h3>
-        <p style="font-size:15px; margin:0 0 16px; color:var(--ink-soft); font-style:italic;">I lead every group personally.</p>
-        
-        <p class="small" style="line-height:1.8; font-size:13.5px;">
-          Bachelor of Psychology (UKZN, 2017)<br>
-          SEN qualified (UK)<br>
-          Years of therapeutic art-based and equine-assisted work in the UK, mostly with children with special needs<br>
-          SAMHA registered practitioner <span style="color:var(--ink-soft);">(private body, not HPCSA registration)</span><br><br>
-          
-          Based in Ballito and KwaDukuza, I design each programme around one principle: <b>clay first, conversation second.</b> It lets anxious and sensitive learners take part fully, without pressure to perform, explain or share.<br><br>
-          
-          <span style="color:var(--ink-soft);">I supply all materials and manage every session, so your staff carry minimal workload. Police clearance and public liability insurance available on request.</span>
-        </p>
-
-        <div style="margin-top:24px; padding-top:20px; border-top:1px solid var(--line);">
-          <span class="label" style="margin-bottom:8px;">How We Make It Easy —</span>
-          <p class="small" style="margin:0;"><b>KINGLIS:</b> all materials, consent & assent, screening, registers, safeguarding escalation, programme report.</p>
-          <p class="small" style="margin:8px 0 0;"><b>School:</b> venue with tables & handwashing, safeguarding contact + referral pathway, group identification, timetable, family comms. Teacher/aide for groups above 8.</p>
-        </div>
-      </div>
+    <div style="margin-top:24px; padding-top:20px; border-top:1px solid var(--line);">
+      <span class="label" style="margin-bottom:8px;">How We Make It Easy —</span>
+      <p class="small" style="margin:0;"><b>KINGLIS:</b> all materials, consent & assent, screening, registers, safeguarding escalation, programme report.</p>
+      <p class="small" style="margin:8px 0 0;"><b>School:</b> venue with tables & handwashing, safeguarding contact + referral pathway, group identification, timetable, family comms. Teacher/aide for groups above 8.</p>
     </div>
   </div>
+</div>
 
+<style>
+  .founder-photos{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:0;
+    background:var(--ground-alt);
+    border-bottom:1px solid var(--line);
+  }
+  .founder-photos figure{
+    margin:0;
+    aspect-ratio:4/3;
+    overflow:hidden;
+    background:#e9e6e0;
+  }
+  .founder-photos img{
+    width:100%; height:100%; object-fit:cover; display:block;
+    transition:transform .6s ease; filter:grayscale(8%) contrast(1.02);
+  }
+  .founder-photos figure:hover img{transform:scale(1.03)}
+  .founder-photos figure:first-child{border-right:1px solid var(--line);}
+  @media(max-width:900px){
+    .founder-photos{grid-template-columns:1fr;}
+    .founder-photos figure{aspect-ratio:16/11;}
+    .founder-photos figure:first-child{border-right:0; border-bottom:1px solid var(--line);}
+  }
+</style>
   <!-- mobile stack -->
   <style>
     @media(max-width:900px){
